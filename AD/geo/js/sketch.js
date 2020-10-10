@@ -1,5 +1,5 @@
 const MODE = 'web';
-const MODE_DEBUG = true;
+const MODE_DEBUG = false;
 
 var dataGetter;
 var animations = [];
