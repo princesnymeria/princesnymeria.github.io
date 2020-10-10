@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+
+#defaultCanvas0 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    color: #f8f8f8;
+    background-color: #121212;
+    font-family: 'Raleway', Arial, Helvetica, sans-serif;
+}
+
+div#container {
+    display: flex;
+}
+
+div#solidView>h2 {
+    text-align: center;
+    line-height: 1.5;
+    font-size: 32pt;
+    font-weight: 300;
+    text-transform: capitalize;
+}
+
+div#solidMenu>h3 {
+    margin: 0;
+    display: inline-block;
+    text-align: center;
+    line-height: 3;
+    font-size: 14pt;
+    font-weight: 600;
+}

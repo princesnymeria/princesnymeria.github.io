@@ -1,0 +1,80 @@
+class Lauburo extends Figure {
+
+    constructor(pX, pY) {
+        super(pX, pY);
+        
+        this.name = "Lauburo";
+
+        const c = pX > pY ? pX : pY; 
+        this.vars = {
+            'radius': {
+                v: 350,
+                default: c * 0.35,
+                min: c * 0.05,
+                max: c * 0.75,
+                integer: false
+            },
+            'branches': {
+                v: 0,
+                default: 4,
+                min: 2,
+                max: 10,
+                integer: true
+            },
+            'branchLengh': {
+                v: 0,
+                default: PI-0.00001,
+                min: 0.0001,
+                max: PI-0.0001,
+                integer: false
+            }
+        }
+        /*this.vars['generations'] = {
+            v: 0,
+            default: 4,
+            min: 1,
+            max: 4,
+            integer: true
+        }*/
+    }
+
+    display() {
+        angleMode(RADIANS);
+
+        const c = this.vars['branches'].v;
+        for (let i = 0; i < c; i++)
+            this.drawBarnch(i);
+    }
+
+    drawBarnch(iteration) {
+
+        const r = this.vars['radius'].v;
+        const b = this.vars['branches'].v;
+        const l = this.vars['branchLengh'].v;
+
+        var a = TAU / b * iteration;
+        var x = r * cos(a) * 0.5 + this.posX;
+        var y = r * sin(a) * 0.5 + this.posY;
+
+        if(false) var s = a - l;
+        else  var s = a - (PI - l);
+        var e = a + l;
+
+        if(false){
+            var e = a;
+            var a = e + l;
+        }
+
+        if (MODE_DEBUG) { stroke('#ff00ff50'); ellipse(x, y, r, r); stroke('#ff00ffAA'); }
+        arc(x, y, r, r, s, e, OPEN)
+
+        var fx = ( x - this.posX) * 1.5 + this.posX;
+        var fy = ( y - this.posY) * 1.5 + this.posY;
+        if (MODE_DEBUG) { stroke('#ffff0050'); ellipse(fx, fy, r/2, r/2); stroke('#ffff00AA'); }
+        arc(fx, fy, r/2, r/2, e, s, OPEN);
+        var fx = ( x - this.posX) * 0.5 + this.posX;
+        var fy = ( y - this.posY) * 0.5 + this.posY;
+        if (MODE_DEBUG) { stroke('#00ffff50'); ellipse(fx, fy, r/2, r/2); stroke('#00ffffAA'); }
+        arc(fx, fy, r/2, r/2, s, e, OPEN);
+    }
+}
