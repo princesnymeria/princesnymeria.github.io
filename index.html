@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!--
+COSES A FER:
+	* ARREGLAR COLOR STROKE LINES
+	* SCALAR PER MOBIL
+	* INTERACCIO PER MOBIL
+-->
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +23,10 @@
 		transform: translate(-50%, -50%);
 	}
 
+	#firma {
+		stroke: url(#grad);
+	}
+
 	body {
 		margin: 0;
 		height: 100vh;
@@ -23,9 +34,8 @@
 		background: #222222;
 	}
 
-	#firma>path, #firma>line {
+	#firma>path, #firma>line, #firma>circle {
 		fill: none;
-		stroke: url(#grad);
 		stroke-width: 40px;
 		stroke-linecap: round;
 	}
@@ -57,22 +67,27 @@
 </script>
 
 <body>
-	<svg id="firma" width="1250" height="400">
+	<svg id="firma" width="1400" height="600">
+
 		<defs>
 			<linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
 				<stop offset="0%" style="stop-color: hsl(350, 80%, 70%); stop-opacity: 1" />
 				<stop offset="100%" style="stop-color: hsl(300, 80%, 70%); stop-opacity: 1" />
 			</linearGradient>
 		</defs>
-		<line id="M-pal"   x1="20"   y1="20"  x2="20"   y2="270" />
-		<line id="A1-arc"  x1="420"  y1="180" x2="620"  y2="180" />
-		<line id="A2-arc"  x1="1020" y1="180" x2="1220" y2="180" />
-		<path id="M-arc1"  d="  m  20 20     m  00   100     a  100 100 0 0 1 200 0     l  0 150  " />
-		<path id="M-arc2"  d="  m  20 20     m  200  100     a  100 100 0 0 1 200 0     l  0 150  " />
-		<path id="A1-arc"  d="  m  20 20     m  400  100     a  100 100 0 0 1 200 0     l  0 150  " />
-		<path id="R-arc"   d="  m  20 20     m  600  100     a  100 100 0 0 1 200 0     a  100 100 0 0 0 0 150  " />
-		<path id="I-arc"   d="  m  20 20     m  800  100     a  100 100 0 0 1 200 0     l  0 250  " />
-		<path id="A2-arc"  d="  m  20 20     m  1000 100     a  100 100 0 0 1 200 0     l  0 150  " />
+
+		<line id="M-pal"   x1="100"      y1="100"     x2="101"      y2="350" />
+		<line id="A1-arc"  x1="500"      y1="250"     x2="700"      y2="251" />
+		<line id="A2-arc"  x1="1100"     y1="250"     x2="1300"      y2="251" />
+
+		<path id="M-arc1"  d="  m  100 100     m  00   100     a  100 100 0 0 1 200 0     l  0 150  " />
+		<path id="M-arc2"  d="  m  100 100     m  200  100     a  100 100 0 0 1 200 0     l  0 150  " />
+		<path id="A1-arc"  d="  m  100 100     m  400  100     a  100 100 0 0 1 200 0     l  0 150  " />
+		<path id="R-arc"   d="  m  100 100     m  600  100     a  100 100 0 0 1 200 0     a  100 100 0 0 0 0 150  " />
+		<path id="I-arc"   d="  m  100 100     m  800  100     a  100 100 0 0 1 200 0     l  0 250  " />
+		<path id="A2-arc"  d="  m  100 100     m  1000 100     a  100 100 0 0 1 200 0     l  0 150  " />
+
+		<circle cx="1000" cy="-25" r="50" />
 	</svg>
 </body>
 
