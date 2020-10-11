@@ -48,8 +48,8 @@
 	const height = window.innerHeight;
 
 	window.onload = function() {
-		element = document.querySelector('#firma');
-		gradientStops = element.childNodes[1].childNodes[1].childNodes;
+		element = document.getElementById('firma');
+		gradientStops = document.getElementById('grad').childNodes;
 		document.body.addEventListener('mousemove', editGradient );
 		//displayGides();
 	};
