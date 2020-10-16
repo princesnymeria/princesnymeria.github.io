@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Mar...</title>
+</head>
+
+
+<style>
+	#background {
+		height: 100vh;
+		width: 100vw;
+		object-fit: none;
+	}
+	body {
+		margin: 0;
+		height: 100vh;
+		width: 100vw;
+		overflow: hidden;
+	}
+</style>
+
+
+<script>
+	const skyColor = [0, 80, 30];
+	var skyElement, gradSkyStops;
+
+	window.onload = function() {
+		skyElement = document.getElementById('background');
+		gradSkyStops = document.getElementById('gradSky').childNodes;
+		document.body.addEventListener('mousemove', editGradient );
+		setInterval(updateBackground, 100);
+	};
+
+	function editGradient (ev) {
+		skyColor[2] = ev.pageY / window.innerHeight * 40 + 30;
+	};
+
+	function updateBackground () {
+		skyColor[0] = (skyColor[0] + 1) % 360;
+		gradSkyStops[1].style = 'stop-color: hsl(' +  skyColor[0] +      ', ' +  skyColor[1] + '%, ' +  skyColor[2] + '%); stop-opacity: 1';
+		gradSkyStops[3].style = 'stop-color: hsl(' + (skyColor[0]-120) + ', ' +  skyColor[1] + '%, ' +  skyColor[2] + '%); stop-opacity: 1';
+	};
+</script>
+
+
+<body>	
+
+	<svg id="background" xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewbox="0 0 800 600">
+
+		<defs>
+			<linearGradient id="gradSky" x1="0%" y1="0%" x2="0%" y2="100%" >
+				<stop offset="0%"   style="stop-color: hsl(300, 80%, 30%); stop-opacity: 1" />
+				<stop offset="100%" style="stop-color: hsl(180, 80%, 30%); stop-opacity: 1" />
+			</linearGradient>
+		</defs>
+
+		<rect id="bg" x="0" y="0" width="800" height="600" fill="url(#gradSky)" />
+
+	</svg>
+
+
+</body>
+
+</html>

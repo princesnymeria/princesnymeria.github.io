@@ -1,98 +1,98 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 
-<html lang="en">
+	<html lang="en">
 
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<head>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-		<title>mmm...</title>
-	</head>
+			<title>mmm...</title>
+		</head>
 
-	<style>
-		@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
-		body {
-			background-color: #1f1f1f;
-		}
-		ul {
-			text-align: center;
-			list-style-type: none;
-			padding: 0;
-		}
-		ul>li {
-			margin-top: 20px;
-		}
-		ul>li>a {
-			color: #F8F8F8;
-			font-family: 'Raleway', 'Segoe UI Light', 'Segoe UI', Arial, Helvetica, sans-serif;
-			font-size: 24pt;
-			text-decoration: none;
-		}
-		ul>li>a:hover {
-			text-decoration: underline;
-		}
-		.centered {
-			position: fixed;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-		}
-		#marc path, #marc rect {
-			fill: none;
-			stroke: #F8F8F8;
-			stroke-weight: 5px;
-		}
-
-		@media only screen and (max-width: 800px) {
-			#marc {
-				width: 90vw;
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+			body {
+				background-color: #1f1f1f;
 			}
-		}
-	</style>
+			ul {
+				text-align: center;
+				list-style-type: none;
+				padding: 0;
+			}
+			ul>li {
+				margin-top: 20px;
+			}
+			ul>li>a {
+				color: #F8F8F8;
+				font-family: 'Raleway', 'Segoe UI Light', 'Segoe UI', Arial, Helvetica, sans-serif;
+				font-size: 24pt;
+				text-decoration: none;
+			}
+			ul>li>a:hover {
+				text-decoration: underline;
+			}
+			.centered {
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+			#marc path, #marc rect {
+				fill: none;
+				stroke: #F8F8F8;
+				stroke-weight: 5px;
+			}
 
-	<body>
+			@media only screen and (max-width: 800px) {
+				#marc {
+					width: 90vw;
+				}
+			}
+		</style>
 
-		<!-- <svg id="guies" class="centered" xmlns="http://www.w3.org/2000/svg" width="800" height="700" viewBox="0 0 800 600" style="fill: none;stroke: #FF00FF80;stroke-weight: 1px;" >
-			<rect x="350" y="0"   width="100" height="700" />
-  			<rect x="0"   y="25"  width="800" height="600" />
-  			<rect x="25"  y="50"  width="750" height="550" />
-  			<rect x="50"  y="75"  width="700" height="500" />
-  			<rect x="75"  y="100" width="650" height="450" />
-  			<rect x="100" y="125" width="600" height="400" />
-		</svg> -->
+		<body>
 
-		<svg id="marc" class="centered" xmlns="http://www.w3.org/2000/svg" width="800" height="700" viewBox="0 0 800 600" >
-			<!-- <rect x="375"     y="25"      width="25"     height="25"     transform="rotate(45)"/> -->
-			<path d="  m  375 25       l  25  -25     l  25   25      l -25  25    l -25 -25                                                           " />
-			<path d="  m  375 625      l  25  -25     l  25   25      l -25  25    l -25 -25                                                           " />
+			<!-- <svg id="guies" class="centered" xmlns="http://www.w3.org/2000/svg" width="800" height="700" viewBox="0 0 800 600" style="fill: none;stroke: #FF00FF80;stroke-weight: 1px;" >
+				<rect x="350" y="0"   width="100" height="700" />
+				<rect x="0"   y="25"  width="800" height="600" />
+				<rect x="25"  y="50"  width="750" height="550" />
+				<rect x="50"  y="75"  width="700" height="500" />
+				<rect x="75"  y="100" width="650" height="450" />
+				<rect x="100" y="125" width="600" height="400" />
+			</svg> -->
 
-			<path d="  m  0   25       l  350  0      m  100  0       l  350 0     l  0   600     l  -350 0     m  -100 0     l  -350 0     l  0 -600  " />
-			<path d="  m  350 25       l  50   50     l  50  -50                                                                                       " />
-			<path d="  m  350 625      l  50  -50     l  50   50                                                                                       " />
-			<path d="  m  50  50       l  275  0      m  150  0       l  275 0     l  0   550     l  -275 0     m  -150 0     l  -275 0     l  0 -550  " />
-			<path d="  m  25  75       l  275  0      m  200  0       l  275 0     l  0   500     l  -275 0     m  -200 0     l  -275 0     l  0 -500  " />
-			<path d="  m  300 75       l  50   50     l  50  -50      l  50 50     l  50 -50                                                           " />
-			<path d="  m  300 575      l  50  -50     l  50   50      l  50 -50    l  50  50                                                           " />
-			<path d="  m  100 125      l  175  0      m  250  0       l  175 0     l  0   400     l  -175 0     m  -250 0     l  -175 0     l  0 -400  " />
+			<svg id="marc" class="centered" xmlns="http://www.w3.org/2000/svg" width="800" height="650" viewBox="0 25 800 600" >
+				<!-- <rect x="375"     y="25"      width="25"     height="25"     transform="rotate(45)"/> -->
+				<path d="  m  375 25       l  25  -25     l  25   25      l -25  25    l -25 -25                                                           " />
+				<path d="  m  375 625      l  25  -25     l  25   25      l -25  25    l -25 -25                                                           " />
 
-			<rect x="75"      y="100"     width="25"     height="25" />
-			<rect x="700"     y="100"     width="25"     height="25" />
-			<rect x="75"      y="525"     width="25"     height="25" />
-			<rect x="700"     y="525"     width="25"     height="25" />
-		</svg>
+				<path d="  m  0   25       l  350  0      m  100  0       l  350 0     l  0   600     l  -350 0     m  -100 0     l  -350 0     l  0 -600  " />
+				<path d="  m  350 25       l  50   50     l  50  -50                                                                                       " />
+				<path d="  m  350 625      l  50  -50     l  50   50                                                                                       " />
+				<path d="  m  50  50       l  275  0      m  150  0       l  275 0     l  0   550     l  -275 0     m  -150 0     l  -275 0     l  0 -550  " />
+				<path d="  m  25  75       l  275  0      m  200  0       l  275 0     l  0   500     l  -275 0     m  -200 0     l  -275 0     l  0 -500  " />
+				<path d="  m  300 75       l  50   50     l  50  -50      l  50 50     l  50 -50                                                           " />
+				<path d="  m  300 575      l  50  -50     l  50   50      l  50 -50    l  50  50                                                           " />
+				<path d="  m  100 125      l  175  0      m  250  0       l  175 0     l  0   400     l  -175 0     m  -250 0     l  -175 0     l  0 -400  " />
 
-		<div id="container" class="centered">
-			<ul>
-                <li><a href="tree">Recycle</a></li>
-                <li><a href="geo">Recursive Geometry</a></li>
-                <li><a href="draw">Symmetrical Drawing</a></li>
-                <li><a href="poli">Platonic solids</a></li>
-                <!-- <li><a href="basic">Basic ...</a></li> -->
-                <li><a href="fract">Moving Fractals</a></li>
-                <!-- <li><a href="mouse">Mouse</a></li> -->
-            </ul>
-		</div>
-	</body>
+				<rect x="75"      y="100"     width="25"     height="25" />
+				<rect x="700"     y="100"     width="25"     height="25" />
+				<rect x="75"      y="525"     width="25"     height="25" />
+				<rect x="700"     y="525"     width="25"     height="25" />
+			</svg>
 
-</html>
+			<div id="container" class="centered">
+				<ul>
+					<li><a href="tree">Recycle</a></li>
+					<li><a href="geo">Recursive Geometry</a></li>
+					<li><a href="draw">Symmetrical Drawing</a></li>
+					<li><a href="poli">Platonic solids</a></li>
+					<!-- <li><a href="basic">Basic ...</a></li> -->
+					<li><a href="fract">Moving Fractals</a></li>
+					<!-- <li><a href="mouse">Mouse</a></li> -->
+				</ul>
+			</div>
+		</body>
+
+	</html>
