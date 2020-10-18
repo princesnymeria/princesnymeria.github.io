@@ -1,6 +1,8 @@
 # The Symmetry
 
-Visit: http://mariaguell.cat/AD/fract/
+<style>n{color:#0080ff;font-family:"Segoe Print"}</style>
+
+<small>Visit: http://mariaguell.cat/AD/fract/</small>
 
 ## Descripció
 
@@ -50,26 +52,23 @@ fract
 
 ### Interfícies
 
-```mermaid
+<n>...</n>
 
-    ...
-
-```
 ### Programa principal
 
 L'sketch principal no fa gaire feina. L'estructura és la següent:
 
 * Declaració de constants i variables.
 * `setup()`
-	* ...
+	* <n>...</n>
 * `draw()`
-	* ...
+	* <n>...</n>
 
 ## Components
 
-...
+<n>...</n>
 
-## To Do
+## <n>To Do</n>
 
 * [/] Dibuixar una mandala amb formes bàsica
 * [/] Converir els components de la mandala en classes de JavaScript

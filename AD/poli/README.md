@@ -1,6 +1,8 @@
 # Solids Platonics
 
-Visit: http://mariaguell.cat/ad/poli/
+<style>n{color:#0080ff;font-family:"Segoe Print"}</style>
+
+<small>Visit: http://mariaguell.cat/ad/poli/</small>
 
 Entendre els solids platònics és entendre el món.
 
@@ -12,7 +14,7 @@ Aquest projecte és la continuació del projecte `/geo`. Ve a ser el mateix per�
 
 ### Opcions de cada figura:
 
-* ...
+* <n>...</n>
 
 ## Estètica
 
@@ -20,7 +22,7 @@ Les regles d'estètica general:
 
 * Fons: `12`
 * Linies de les figures:
-	* **Color**: ``
+	* **Color**: <n>...</n>
 		* To: canvia gradualment a cada *frame*
 		* Saturació: `80`
 		* Brillentor: `70`
@@ -28,7 +30,7 @@ Les regles d'estètica general:
 
 ## Detalls tècnics
 
-...
+<n>...</n>
 
 ### Estructura de fitxers:
 
@@ -50,7 +52,7 @@ geo
 
 ### Interfícies
 
-...
+<n>...</n>
 
 ```mermaid
 	...
@@ -58,11 +60,11 @@ geo
 
 ### Programa principal
 
-...
+<n>...</n>
 
 #### Estètica (`StyleNColor`)
 
-...
+<n>...</n>
 
 ## Figures
 
@@ -78,4 +80,4 @@ https://www.openprocessing.org/sketch/648811/
 
 ## To do
 
-* [ ] DESCOBRIR COM COLLONS FER EL TEMA DEL 3D
+* [ ] <n>DESCOBRIR COM COLLONS FER EL TEMA DEL 3D</n>

@@ -1,6 +1,8 @@
 # Recursive Geometry
 
-Visit: http://mariaguell.cat/AD/geo/
+<style>n{color:#0080ff;font-family:"Segoe Print"}</style>
+
+<small>Visit: http://mariaguell.cat/AD/geo/</small>
 
 La geometria sacra mola per si sola, però si és recursiva, mola més.
 
@@ -18,7 +20,7 @@ Les regles d'estètica general:
 
 * Fons: `12`
 * Linies de les figures:
-	* **Color**: ``
+	* **Color**:
 		* To: canvia gradualment a cada *frame*
 		* Saturació: `80`
 		* Brillentor: `70`
@@ -154,28 +156,28 @@ Les figures que s'han creat són les següents:
 	* `lenght` (llargaria): llargaria de la branca
 	* `angleBetweenBranches` (angle entre branques): 
 	* `branches` (número de branques): 
-* **Recursive Tree**: ...
-	* `size` (...): 
-	* `theta` (...):  
+* **Recursive Tree**: <n>...</n>
+	* `size` (<n>...</n>): 
+	* `theta` (<n>...</n>):  
 
 Especificacions:
 
 | Figura | Classe JS | Nombre de variables | Origen | Comentaris |
 |---|---|---|---|---|
 | Torus | `Torus` | 3 | Matemàtic | Fet inicialment per la segona pràctica d'EI |
-| Star | `Star` | 3 | Matemàtic | ... |
-| Golden Spiral | `GoldenSpiral` | 2 | Científic | ... |
-| Lauburo | `Lauburo` | 3 | Basc/Celta | ... |
-| Flower of Life | `FlowerLife` | 4 | Oriental | ... |
-| Metatron's Cube | `MetatronsCube` | 2 | Oriental | ... |
-| Moon | `Moon` | 4 | Maria | ... |
-| Ones | `Ones` | 2 | ... | Nom inventat. Caldria arreglar-ho |
-| Casteljau Triangle | `CasteljauTriangle` | 3 | Matemàtic/Enginyeria | ... |
-| YingYang | `YingYang` | 2 | Oriental | ... |
-| Snow flake | `Snowflake` | 3 | ... | ... |
-| Recursive Tree | `RecursiveTree` | 2 | ... | Copiat dels [exemples de p5js](https://p5js.org/examples/simulate-recursive-tree.html) |
+| Star | `Star` | 3 | Matemàtic | <n>...</n> |
+| Golden Spiral | `GoldenSpiral` | 2 | Científic | <n>...</n> |
+| Lauburo | `Lauburo` | 3 | Basc/Celta | <n>...</n> |
+| Flower of Life | `FlowerLife` | 4 | Oriental | <n>...</n> |
+| Metatron's Cube | `MetatronsCube` | 2 | Oriental | <n>...</n> |
+| Moon | `Moon` | 4 | Maria | <n>...</n> |
+| Ones | `Ones` | 2 | <n>...</n> | Nom inventat. Caldria arreglar-ho |
+| Casteljau Triangle | `CasteljauTriangle` | 3 | Matemàtic/Enginyeria | <n>...</n> |
+| YingYang | `YingYang` | 2 | Oriental | <n>...</n> |
+| Snow flake | `Snowflake` | 3 | <n>...</n> | <n>...</n> |
+| Recursive Tree | `RecursiveTree` | 2 | <n>...</n> | Copiat dels [exemples de p5js](https://p5js.org/examples/simulate-recursive-tree.html) |
 
-## To do
+## <n>To Do</n>
 
 * [ ] Documentar que hi ha idees a pinterest
 

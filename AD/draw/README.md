@@ -1,6 +1,8 @@
 # Symmetrical Drawing
 
-Visit: http://mariaguell.cat/AD/draw/
+<style>n{color:#0080ff;font-family:"Segoe Print"}</style>
+
+<small>Visit: http://mariaguell.cat/AD/draw/</small>
 
 Appweb per dibuixar mandales relaxants.
 
@@ -67,7 +69,7 @@ draw
 └── README.MD
 ```
 
-## To do
+## <n>To do</n>
 
 ### Coses per fer
 
