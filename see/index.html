@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Art</title>
+</head>
+
+
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+    }
+
+    #img {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+    }
+</style>
+
+
+<script>
+	window.onload = function() {
+        var element = document.getElementById('img').contentDocument.documentElement;
+        var ar = getGradientAnimationInfo(element);
+        setInterval(function(){updateColors(ar)}, 100);
+	};
+
+    function getGradientAnimationInfo (doc) {
+        var res = [];
+        res.push({
+            'element': doc.getElementById('a'),
+            'stops': []
+        });
+        const stops = res[0]['element'].querySelectorAll('stop');
+        stops.forEach(stop => {
+            const c = Hex2HSL(stop.getAttribute('stop-color'));
+            s = {}
+            s['element'] = stop;
+            s['H'] = c['h'];
+            s['S'] = c['s'];
+            s['L'] = c['l'];
+            s['increment'] = 1;
+            s['Hmin'] = 0;
+            s['Hmax'] = 360;
+            res[0]['stops'].push(s);
+        });
+        return res;
+    };
+
+    function updateColors (animationInfo) {
+        animationInfo.forEach(gradient => {
+            gradient.stops.forEach(stop => {
+                stop['H'] = ( stop['H'] + stop['increment'] ) % ( stop['Hmax'] - stop['Hmin']) + stop['Hmin'];
+                const c = 'HSL(' + stop['H'] + ', ' + stop['S'] + '%, ' + stop['L'] + '%)';
+                stop['element'].setAttribute('stop-color', c);
+            });
+        });
+    };
+
+    function Hex2HSL (hex) {
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            r = parseInt(result[1], 16);
+            g = parseInt(result[2], 16);
+            b = parseInt(result[3], 16);
+            r /= 255, g /= 255, b /= 255;
+            var max = Math.max(r, g, b), min = Math.min(r, g, b);
+            var h, s, l = (max + min) / 2;
+            if(max == min){
+            h = s = 0; // achromatic
+            }else{
+            var d = max - min;
+            s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+            switch(max){
+                case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+                case g: h = (b - r) / d + 2; break;
+                case b: h = (r - g) / d + 4; break;
+            }
+            h /= 6;
+            }
+        return {
+            'h': Math.floor( h * 360 ),
+            's': Math.floor( s * 100 ),
+            'l': Math.floor( l * 100 )
+        };
+    }
+</script>
+
+
+<body>
+    <object id="img" data="imgs/desert.svg" type="image/svg+xml"></object>      
+</body>
+
+
+</html>
