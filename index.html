@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,15 +49,15 @@
 
 	window.onload = function() {
 		element = document.getElementById('firma');
-		gradStops = document.getElementById('grad').childNodes;
+		gradStops = document.getElementById('grad').children;
 		document.body.addEventListener('mousemove', editGradient );
 	};
 
 	function editGradient (ev) {
 		const h1 = ev.pageX / window.innerWidth * 360;
 		const h2 = ev.pageY / window.innerHeight * 360;
-		gradStops[1].style = 'stop-color: hsl(' + h1 + ', 80%, 70%); stop-opacity: 1';
-		gradStops[3].style = 'stop-color: hsl(' + h2 + ', 80%, 70%); stop-opacity: 1';
+		gradStops[0].style = 'stop-color: hsl(' + h1 + ', 80%, 70%); stop-opacity: 1';
+		gradStops[1].style = 'stop-color: hsl(' + h2 + ', 80%, 70%); stop-opacity: 1';
 	};
 
 	function displayGides () {const numCols = 14;const numRows = 5;const cellSize = 100;for (let c = -1; c < numCols; c++) {const line = document.createElementNS('http://www.w3.org/2000/svg','line');line.setAttribute('x1', c * cellSize);line.setAttribute('x2', c * cellSize);line.setAttribute('y1', -cellSize);line.setAttribute('y2', (numRows - 1) * cellSize);line.setAttribute('style', 'stroke:rgb(255, 0,0 ); stroke-width: 2');element.appendChild(line);}for (let r = -1; r < numRows; r++) {const line = document.createElementNS('http://www.w3.org/2000/svg','line');line.setAttribute('x1', -cellSize);line.setAttribute('x2', (numCols - 1) * cellSize);line.setAttribute('y1', r * cellSize);line.setAttribute('y2', r * cellSize);line.setAttribute('style', 'stroke:rgb(255, 0,0 ); stroke-width: 2');element.appendChild(line);}};
@@ -64,7 +65,6 @@
 
 
 <body>
-
 	<svg id="firma" xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="-50 -250 1300 750" ><!--  width="1200" height="250"  -->
 
 		<defs>
@@ -85,7 +85,6 @@
 		<line   id="M-pal"      x1="0"       y1="0"        x2="0.0001"    y2="250" />
 		<circle id="I-punt"     cx="900"     cy="-150"     r="75" />
 	</svg>
-
 </body>
 
 </html>
