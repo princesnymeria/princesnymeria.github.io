@@ -1,17 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1024 1024">
     <defs>
-        <linearGradient id="a" x1="50.31%" x2="50%" y1="74.74%" y2="0%">
-            <stop offset="0%" stop-color="#E26B6B"/>
-            <stop offset="50.28%" stop-color="#F5BCF4"/>
-            <stop offset="100%" stop-color="#8690E1"/>
+        <linearGradient id="a" class="animate" x1="50.31%" x2="50%" y1="74.74%" y2="0%">
+            <stop offset="0%" stop-color="HSL(0, 67%, 65%)"/>
+            <stop offset="50.28%" stop-color="HSL(301, 74%, 85%)"/>
+            <stop offset="100%" stop-color="HSL(233, 60%, 70%)"/>
         </linearGradient>
         <linearGradient id="b" x1="50%" x2="50%" y1="0%" y2="100%">
-            <stop offset="0%" stop-color="#8C9CE7"/>
-            <stop offset="100%" stop-color="#4353A4"/>
+            <stop offset="0%" stop-color="HSL(229, 65%, 73%)"/>
+            <stop offset="100%" stop-color="HSL(230, 42%, 45%)"/>
         </linearGradient>
         <linearGradient id="c" x1="50%" x2="50%" y1="0%" y2="100%">
-            <stop offset="0%" stop-color="#D1D9FF"/>
-            <stop offset="100%" stop-color="#8395EB"/>
+            <stop offset="0%" stop-color="HSL(230, 100%, 91%)"/>
+            <stop offset="100%" stop-color="HSL(230, 72%, 72%)"/>
         </linearGradient>
         <circle id="e" cx="622" cy="663" r="60"/>
         <filter id="d" width="260%" height="260%" x="-80%" y="-80%" filterUnits="objectBoundingBox">
@@ -19,25 +19,25 @@
             <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="32"/>
             <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0"/>
         </filter>
-        <linearGradient id="f" x1="49.87%" x2="49.87%" y1="3.62%" y2="77.75%">
-            <stop offset="0%" stop-color="#B0DDF1"/>
-            <stop offset="100%" stop-color="#325C82"/>
+        <linearGradient id="f" class="animate" x1="49.87%" x2="49.87%" y1="3.62%" y2="77.75%">
+            <stop offset="0%" stop-color="HSL(198, 70%, 82%)"/>
+            <stop offset="100%" stop-color="HSL(209, 44%, 35%)"/>
         </linearGradient>
-        <linearGradient id="g" x1="100%" x2="72.45%" y1="0%" y2="85.2%">
-            <stop offset="0%" stop-color="#1D3A6D"/>
-            <stop offset="100%" stop-color="#467994"/>
+        <linearGradient id="g" class="animate" x1="100%" x2="72.45%" y1="0%" y2="85.2%">
+            <stop offset="0%" stop-color="HSL(218, 58%, 27%)"/>
+            <stop offset="100%" stop-color="HSL(201, 36%, 43%)"/>
         </linearGradient>
-        <linearGradient id="h" x1="49.48%" x2="49.87%" y1="11.66%" y2="77.75%">
-            <stop offset="0%" stop-color="#B9C9F7"/>
-            <stop offset="100%" stop-color="#301863"/>
+        <linearGradient id="h" class="animate" x1="49.48%" x2="49.87%" y1="11.66%" y2="77.75%">
+            <stop offset="0%" stop-color="HSL(225, 79%, 85%)"/>
+            <stop offset="100%" stop-color="HSL(259, 61%, 24%)"/>
         </linearGradient>
-        <linearGradient id="i" x1="91.59%" x2="70.98%" y1="5.89%" y2="88%">
-            <stop offset="0%" stop-color="#2D3173"/>
-            <stop offset="100%" stop-color="#7F90E0"/>
+        <linearGradient id="i" class="animate" x1="91.59%" x2="70.98%" y1="5.89%" y2="88%">
+            <stop offset="0%" stop-color="HSL(237, 44%, 31%)"/>
+            <stop offset="100%" stop-color="HSL(229, 61%, 69%)"/>
         </linearGradient>
-        <linearGradient id="j" x1="70.98%" x2="70.98%" y1="9.88%" y2="88%">
-            <stop offset="0%" stop-color="#2D3173"/>
-            <stop offset="100%" stop-color="#7F90E0"/>
+        <linearGradient id="j" class="animate" x1="70.98%" x2="70.98%" y1="9.88%" y2="88%">
+            <stop offset="0%" stop-color="HSL(237, 44%, 31%)"/>
+            <stop offset="100%" stop-color="HSL(229, 61%, 69%)"/>
         </linearGradient>
     </defs>
     <g fill="none" fill-rule="evenodd">
