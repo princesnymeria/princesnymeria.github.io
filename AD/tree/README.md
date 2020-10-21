@@ -50,13 +50,13 @@ L'estructura del programa principal és:
 - Inicialització de variables
 - `preload()`
 - `setup()`
-     - Creació del canvas
-     - Definició del *framerate*
-     - Inicialització de l'arbre
+	- Creació del canvas
+	- Definició del *framerate*
+	- Inicialització de l'arbre
 - `draw()`
-     - Lectura de *LeapMotion**
-     - Assignació de paràmeters a l'arbre
-     - Update and Display
+	- Lectura de *LeapMotion**
+	- Assignació de paràmeters a l'arbre
+	- Update and Display
 
 ### Classe Tree
 

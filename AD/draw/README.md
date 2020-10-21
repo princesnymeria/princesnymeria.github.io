@@ -23,8 +23,8 @@ A través de la interfície gràfica, el programa permet:
 ### Programa principal
 
 * Declaració de constants i variables:
-    * `iptSym`, `iptAlfa`
-    * `fillColor = [0, 80, 70]`
+	* `iptSym`, `iptAlfa`
+	* `fillColor = [0, 80, 70]`
 * `setup()`
 	* Inicialització de les variables per les dimensions del canvas.
 	* Creació del canvas.
@@ -34,27 +34,27 @@ A través de la interfície gràfica, el programa permet:
 * `draw()`
 	* Actualització de color (`updateColor()`)
 	* Comprobar si el ratolí està pres:
-        * Si ho està, dibuixar a la posició clicada (`drawSymmetrically()`)
+		* Si ho està, dibuixar a la posició clicada (`drawSymmetrically()`)
 
 ### Funcions auxiliars
 
 * `updateColor()`
-    * Inicialitzar les variables referents al color de fons depenent de la opcitat i el to.
-    * Actualitzar el to de la variable del color principal.
-    * Actualitzar el color principal.
+	* Inicialitzar les variables referents al color de fons depenent de la opcitat i el to.
+	* Actualitzar el to de la variable del color principal.
+	* Actualitzar el color principal.
 * `drawSymmetrically()`
-    * capturar la posició del mouse
-    * per cada simetria:
-        * Rotar el canvas la part proporcional
-        * Dibuixar a la part proporcional
+	* capturar la posició del mouse
+	* per cada simetria:
+		* Rotar el canvas la part proporcional
+		* Dibuixar a la part proporcional
 * `clearCanvas()`
-    * Configurar el mode angular. Radians.
-    * Omplir el background.
-    * Configurar el mode de color. HSL.
-    * Configurar el mode de línia. `noStroke()`. 
+	* Configurar el mode angular. Radians.
+	* Omplir el background.
+	* Configurar el mode de color. HSL.
+	* Configurar el mode de línia. `noStroke()`. 
 * `setEvents()`
-    * Afegir l'event al botó per refrescar.
-    * Guardar la ruta dels objectes *sliders* del DOM.
+	* Afegir l'event al botó per refrescar.
+	* Guardar la ruta dels objectes *sliders* del DOM.
 
 ### Estructura de fitxers:
 
@@ -78,8 +78,8 @@ draw
 ### Idees
 
 * [ ] Afegir sliders per poder canviar:
-    * [ ] Suració i brillentor del color
-    * [ ] To de gris del fons
-    * [ ] Gruix del pinzell
-    * [ ] Framerate???
-    * [ ] fill o stroke?
+	* [ ] Suració i brillentor del color
+	* [ ] To de gris del fons
+	* [ ] Gruix del pinzell
+	* [ ] Framerate???
+	* [ ] fill o stroke?

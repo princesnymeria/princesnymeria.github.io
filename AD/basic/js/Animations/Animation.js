@@ -1,77 +1,77 @@
 class Animation {
-    
-    /* ┌──────────────────────────────┐
-       │          Constructor         │
-       └──────────────────────────────┘ */
+	
+	/* ┌──────────────────────────────┐
+	   │          Constructor         │
+	   └──────────────────────────────┘ */
 
-    constructor() {
+	constructor() {
 
-        this.name = "...";
-        
-        this.color = [0, 0, 0];
-        this.posX = 250;
-        this.posY = 250;
-        this.size = 250;
-    }
-
-
-    
-    /* ┌──────────────────────────────┐
-       │       Getters & Setters      │
-       └──────────────────────────────┘ */
-
-    getName() {
-        return this.name;
-    }
-
-    setSize(s) {
-        this.size = s;
-        this.step = this.size * 0.01;
-    }
-
-    setPosition(pX, pY) {
-        this.posX = pX;
-        this.posY = pY;
-    }
-
-    setColor(c) {
-        this.color = c;
-    }
+		this.name = "...";
+		
+		this.color = [0, 0, 0];
+		this.posX = 250;
+		this.posY = 250;
+		this.size = 250;
+	}
 
 
+	
+	/* ┌──────────────────────────────┐
+	   │       Getters & Setters      │
+	   └──────────────────────────────┘ */
 
-    /* ┌──────────────────────────────┐
-       │        Mètodes comuns        │
-       └──────────────────────────────┘ */
+	getName() {
+		return this.name;
+	}
 
-    setValues(v) {
-        this.setColor(v['image']);
-    }
+	setSize(s) {
+		this.size = s;
+		this.step = this.size * 0.01;
+	}
 
-    update() {
-        //...
-    }
+	setPosition(pX, pY) {
+		this.posX = pX;
+		this.posY = pY;
+	}
 
-    display() {
-        background(12);//( 12 i 248 )
-        //noStroke();
-        //fill(this.color);
-        //rectMode(CENTER);
-        //angleMode(RADIANS);
-        colorMode(HSL);//colorMode(RGB);
-        this.draw();
-    }
+	setColor(c) {
+		this.color = c;
+	}
 
 
 
-    /* ┌──────────────────────────────┐
-       │        Mètodes propis        │
-       └──────────────────────────────┘ */
+	/* ┌──────────────────────────────┐
+	   │        Mètodes comuns        │
+	   └──────────────────────────────┘ */
 
-    draw() {
-        colorMode(RGB);
-        fill(this.color[0], this.color[1], this.color[2]);
-        circle(this.posX, this.posY, this.size);
-    }
+	setValues(v) {
+		this.setColor(v['image']);
+	}
+
+	update() {
+		//...
+	}
+
+	display() {
+		background(12);//( 12 i 248 )
+		//noStroke();
+		//fill(this.color);
+		//rectMode(CENTER);
+		//angleMode(RADIANS);
+		colorMode(HSL);//colorMode(RGB);
+		this.draw();
+	}
+
+
+
+	/* ┌──────────────────────────────┐
+	   │        Mètodes propis        │
+	   └──────────────────────────────┘ */
+
+	draw() {
+		colorMode(RGB);
+		fill(this.color[0], this.color[1], this.color[2]);
+		circle(this.posX, this.posY, this.size);
+	}
 
 }

@@ -19,10 +19,10 @@ En una següent fase, es podria crear una interficie on l'usuari pugui crear les
 Les regles d'estètica general:
 
 * Fons:
-    * Color: `12`
+	* Color: `12`
 * Linies de les figures:
-    * Color: `248`
-    * Gruix: `2`
+	* Color: `248`
+	* Gruix: `2`
 
 Estil:
 
@@ -88,4 +88,4 @@ L'sketch principal no fa gaire feina. L'estructura és la següent:
 ### Futur
 
 * [ ] AFEGIR UNA FUNCIÓ PER EXPORTAR MANDALES
-    * [ ] PODER EXPORTAR A SVG???
+	* [ ] PODER EXPORTAR A SVG???
