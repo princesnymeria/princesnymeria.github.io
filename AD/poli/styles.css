@@ -4,6 +4,7 @@ body, button {
 	font-size: 14pt;
 	font-weight: 300;
 	font-family: 'Raleway', sans-serif;
+	color: #CCCCCC;
 }
 
 body {
@@ -18,7 +19,7 @@ canvas {
 	position: absolute;
 	top: 0;
 	left: 0;
-	z-index: -1;
+	z-index: 1;
 }
 
 #solidSelector {
@@ -28,6 +29,7 @@ canvas {
 	transform: translate(-50%, -50%);
 	width: max-content;
 	text-align: center;
+	z-index: 2;
 }
 
 #solidSelector>button {
@@ -40,13 +42,18 @@ canvas {
 }
 
 #solidSelector>button:hover {
-	background-color: #44444410;
+	border-color: #000000
 }
 
 
 
 @media (max-width: 1000px) {
 	#solidSelector {
-		width: auto;
+		width: 95%;
+	}
+	#solidSelector>button {
+		font-size: 12pt;
+		padding: 5px 10px;
+		margin: 10px 2px;
 	}
 }

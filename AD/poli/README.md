@@ -27,21 +27,9 @@ Aquest projecte és la continuació del projecte `/geo`. Ve a ser el mateix per�
 
 <style>n{color:#0080ff;font-family:"Segoe Print"}</style>
 
-## <n>Notes Maria</n>
+## <n>Apunts Maria</n>
 
-### To do
-
-1. Getting Started
-    * [x] <n>Fer l'aplicació bàsica</n>
-    * [x] <n>Aconseguir els models 3D dels solids platònics</n>
-    * [ ] <n>Carregar un model 3D propi</n>
-    * [ ] <n>Ordenar els fitxers</n>
-2. Getting Started
-    * [ ] <n>...</n>
-
-### Apunts
-
-#### Retalls d'internet
+### Retalls d'internet
 
 * <n>Cub de metatron: https://www.openprocessing.org/sketch/648811/</n>
 * <n>Fer els solids platònics en Blender: https://en.wikibooks.org/wiki/Blender_3D:_Noob_to_Pro/Platonic_Solids</n>
