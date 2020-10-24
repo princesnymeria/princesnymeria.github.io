@@ -3,6 +3,7 @@
    └──────────────────────────────────────────────────┘ */
 
 const MODE_DEBUG = false;
+var displayMetatron = true;
 
 let solids = [];
 var selectedSolid;
@@ -20,7 +21,7 @@ function setup() {
 	CANVAS_HEIGHT = window.innerHeight;
 	
 	createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
-	frameRate(10);
+	frameRate(2);
 	clearCanvas();
 
 	solids.push( new Tetrahedron() );
@@ -40,10 +41,10 @@ function draw() {
 	solids.forEach(s => {
 		s.setValues([]);
 		s.update();
-		s.display();
+		s.display(false);
 	});
 	strokeWeight(5);
-	selectedSolid.display();
+	selectedSolid.display(true);
 }
 
 
