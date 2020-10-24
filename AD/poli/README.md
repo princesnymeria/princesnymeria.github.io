@@ -6,10 +6,6 @@ Entendre els solids platònics és entendre el món.
 
 ## Descripció
 
-La idea és homentenjar els solids plàtònics.
-
-Aquest projecte és la continuació del projecte `/geo`. Ve a ser el mateix però en 3D.
-
 <n>Faré el projecte amb [three.js](https://threejs.org/)</n>
 
 ## Figures

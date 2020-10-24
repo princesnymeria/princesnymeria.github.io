@@ -127,7 +127,7 @@ animate();
    │            Línies            │
    └──────────────────────────────┘ */
 
-if (window.dubugMode) {
+if (window.MODE_DEBUG) {
 	var materialLight = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
 
 	var lines = [

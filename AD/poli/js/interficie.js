@@ -1,4 +1,4 @@
-window.dubugMode = false;
+window.MODE_DEBUG = false;
 
 window.onload = function() {
 	window.loadSolid('./models/icosahedron.glb');
