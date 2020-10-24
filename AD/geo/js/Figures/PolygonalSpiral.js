@@ -1,9 +1,9 @@
-class CasteljauSpiral extends Figure {
+class PolygonalSpiral extends Figure {
 
 	constructor(pX, pY) {
 		super(pX, pY);
 
-		this.name = "Casteljau Spiral";
+		this.name = "Polygonal Spiral";
 
 		const c = pX > pY ? pX : pY; 
 		this.vars = {
