@@ -13,8 +13,8 @@ class Dodecahedron extends Solid {
 		for (let i = 0; i < 3; i++) {
 			const a = TAU / 3 * i + PI/6;
 			res['int'][i] = {};
-			res['int'][i]['x'] = this.size * cos(a) * 0.3 + this.posX;
-			res['int'][i]['y'] = this.size * sin(a) * 0.3 + this.posY;        
+			res['int'][i]['x'] = this.size * cos(a) * 0.24 + this.posX;
+			res['int'][i]['y'] = this.size * sin(a) * 0.24 + this.posY;        
 		}
 		res['ext'] = [];
 		for (let i = 0; i < 6; i++) {
@@ -22,10 +22,10 @@ class Dodecahedron extends Solid {
 			const a2 = TAU / 6 * (i+1) + HALF_PI;
 			let p1 = {};
 			let p2 = {};
-			p1['x'] = this.size * cos(a1) * 0.5 + this.posX;
-			p1['y'] = this.size * sin(a1) * 0.5 + this.posY;   
-			p2['x'] = this.size * cos(a2) * 0.5 + this.posX;
-			p2['y'] = this.size * sin(a2) * 0.5 + this.posY;
+			p1['x'] = this.size * cos(a1) * 0.4 + this.posX;
+			p1['y'] = this.size * sin(a1) * 0.4 + this.posY;   
+			p2['x'] = this.size * cos(a2) * 0.4 + this.posX;
+			p2['y'] = this.size * sin(a2) * 0.4 + this.posY;
 			let b = this.divideLine(p1, p2, 3);
 			res['ext'].push(b[0]);
 			res['ext'].push(b[1]);
@@ -45,13 +45,13 @@ class Dodecahedron extends Solid {
 		for (let i = 0; i < 3; i++) {
 			const p1 = points['int'][i];
 			this.updateGradienColor(1);
-			line(p1['x'], p1['y'], p2['x'], p2['y']);    
+			line(p1['x'], p1['y'], p2['x'], p2['y']);
 		}
 		for (let i = 1; i <= 12; i++) {
 			const p1 = points['ext'][i-1];
 			const p2 = i != 12 ? points['ext'][i] : points['ext'][0];
 			this.updateGradienColor(1);
-			line(p1['x'], p1['y'], p2['x'], p2['y']);    
+			line(p1['x'], p1['y'], p2['x'], p2['y']);
 		}
 		var v = 8;
 		for (let i = 0; i < 3; i++) {
@@ -62,7 +62,7 @@ class Dodecahedron extends Solid {
 			this.updateGradienColor(1);
 			line(p1['x'], p1['y'], p2['x'], p2['y']);
 			this.updateGradienColor(1);
-			line(p1['x'], p1['y'], p3['x'], p3['y']);    
+			line(p1['x'], p1['y'], p3['x'], p3['y']);
 		}
 	}
 

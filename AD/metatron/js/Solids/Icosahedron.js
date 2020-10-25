@@ -12,15 +12,15 @@ class Icosahedron extends Solid {
 		for (let i = 0; i < 6; i++) {
 			const a = TAU / 6 * i + HALF_PI;
 			res['exterior'][i] = {};
-			res['exterior'][i]['x'] = this.size * cos(a) * 0.5 + this.posX;
-			res['exterior'][i]['y'] = this.size * sin(a) * 0.5 + this.posY;        
+			res['exterior'][i]['x'] = this.size * cos(a) * 0.4 + this.posX;
+			res['exterior'][i]['y'] = this.size * sin(a) * 0.4 + this.posY;
 		}
 		res['interior'] = [];
 		for (let i = 0; i < 3; i++) {
 			const a = TAU / 3 * i + HALF_PI;
 			res['interior'][i] = {};
-			res['interior'][i]['x'] = this.size * cos(a) * 0.25 + this.posX;
-			res['interior'][i]['y'] = this.size * sin(a) * 0.25 + this.posY;        
+			res['interior'][i]['x'] = this.size * cos(a) * 0.2 + this.posX;
+			res['interior'][i]['y'] = this.size * sin(a) * 0.2 + this.posY;
 		}
 		if (MODE_DEBUG) {
 			stroke("#ffff00"); strokeWeight(10);
@@ -36,19 +36,19 @@ class Icosahedron extends Solid {
 			const p1 = points['exterior'][i];
 			const p2 = i == 5 ? points['exterior'][0] : points['exterior'][i+1];
 			this.updateGradienColor(1);
-			line(p1['x'], p1['y'], p2['x'], p2['y']);    
+			line(p1['x'], p1['y'], p2['x'], p2['y']);
 		}
 		for (let i = 1; i < 6; i+=2) {
 			const p1 = points['exterior'][i];
 			const p2 = i == 5 ? points['exterior'][1] : points['exterior'][i+2];
 			this.updateGradienColor(1);
-			line(p1['x'], p1['y'], p2['x'], p2['y']);    
+			line(p1['x'], p1['y'], p2['x'], p2['y']);
 		}
 		for (let i = 0; i < 3; i++) {
 			const p1 = points['interior'][i];
 			const p2 = i == 2 ? points['interior'][0] : points['interior'][i+1];
 			this.updateGradienColor(1);
-			line(p1['x'], p1['y'], p2['x'], p2['y']);    
+			line(p1['x'], p1['y'], p2['x'], p2['y']);
 		}
 		for (let i = 0; i < 3; i++) {
 			const p1 = points['interior'][i];

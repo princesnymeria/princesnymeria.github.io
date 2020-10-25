@@ -12,8 +12,8 @@ class Tetrahedron extends Solid {
 		for (let i = 0; i < 3; i++) {
 			const a = TAU / 3 * i + PI/6;
 			res[i] = {};
-			res[i]['x'] = this.size * cos(a) * 0.5 + this.posX;
-			res[i]['y'] = this.size * sin(a) * 0.5 + this.posY;        
+			res[i]['x'] = this.size * cos(a) * 0.4 + this.posX;
+			res[i]['y'] = this.size * sin(a) * 0.4 + this.posY;
 		}
 		if (MODE_DEBUG) {stroke("#ffff00"); strokeWeight(10); Object.keys(res).forEach(p => {let P = res[p]; point(P['x'], P['y']);});}
 		return res;

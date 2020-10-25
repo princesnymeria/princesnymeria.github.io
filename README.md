@@ -9,7 +9,7 @@ PrincesNymeria testing things...
 	|---------------------|--------------|----------------------------------------------------------------------------|---------|
 	| Recycle             | `/tree`      |                                                                            |  85 %   |
 	| Recursive Geometry  | `/geo`       | Sacred geometry grinds on its own, but if it is recursive, it grinds more  | 100 %   |
-	| Metatron's Cube     | `/metatron`  |                                                                            |         |
+	| Metatron's Cube     | `/metatron`  |                                                                            | 100 %   |
 	| Symmetrical Drawing | `/draw`      | A tool to draw relaxing mandalas                                           | 100 %   |
 	| Platonic solids     | `/poli`      |                                                                            |  60 %   |
 	| See                 | `/see`       |                                                                            |   0 %   |
