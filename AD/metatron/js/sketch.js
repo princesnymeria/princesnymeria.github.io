@@ -9,6 +9,14 @@ let solids = [];
 var selectedSolid;
 var currentHue = 0;
 var CANVAS_WIDTH, CANVAS_HEIGHT;
+var meta;
+
+
+window.onload = function() {
+	document.getElementById('solidView').onclick = function() {
+		displayMetatron = !displayMetatron;
+	}
+}
 
 
 
@@ -16,7 +24,7 @@ var CANVAS_WIDTH, CANVAS_HEIGHT;
    │                    Processing                    │
    └──────────────────────────────────────────────────┘ */
 
-function setup() {    
+function setup() {
 	CANVAS_WIDTH = window.innerWidth;
 	CANVAS_HEIGHT = window.innerHeight;
 	
@@ -30,21 +38,24 @@ function setup() {
 	solids.push( new Dodecahedron() );
 	solids.push( new Icosahedron() );
 
+	meta = new Metatron();
 	selectedSolid = new Cube();
 
 	arrengeInterface();
 }
 
 function draw() {
-	background(12);//-------------------------[Variable, realcio]
+	clearCanvas();
 	strokeWeight(2);
 	solids.forEach(s => {
 		s.setValues([]);
 		s.update();
 		s.display(false);
 	});
-	strokeWeight(5);
-	selectedSolid.display(true);
+	strokeWeight(0.5);
+	if (displayMetatron) meta.display(false);
+	strokeWeight(6);
+	selectedSolid.display();
 }
 
 
@@ -54,7 +65,7 @@ function draw() {
    └──────────────────────────────────────────────────┘ */
 
 function clearCanvas() {
-	background(12);//-------------------------[Variable, realcio]
+	background(12);
 }
 
 function selectSolid(ev) {
@@ -84,6 +95,8 @@ function arrengeInterface() {
 
 	selectedSolid.setSize(viewW * 0.65);
 	selectedSolid.setPosition(viewW * 0.5, viewH * 0.55);
+	meta.setSize(viewW * 0.65);
+	meta.setPosition(viewW * 0.5, viewH * 0.55);
 
 	const container = document.getElementById('solidView');
 	container.childNodes[0].innerText = selectedSolid.name;

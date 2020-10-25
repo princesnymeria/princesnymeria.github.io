@@ -56,11 +56,10 @@ class Solid {
 		if (this.color[1] >= 100 || this.color[1] <= 100-this.cg) this.cd *= -1;
 	}
 
-	display(selected) {
+	display() {
 		angleMode(RADIANS);
 		colorMode(HSL);
 		noFill();
-		if (selected && displayMetatron) this.displayMetatrons();
 		stroke(this.color[0], this.color[1], this.color[2]);
 		if (MODE_DEBUG) {stroke("#ff00ff40"); strokeWeight(4);}
 		if (MODE_DEBUG) ellipse(this.posX, this.posY, this.size, this.size);
@@ -108,57 +107,6 @@ class Solid {
 			const p1 = points[i];
 			const p2 = i == 5 ? points[0] : points[i+1];
 			line( p1['x'], p1['y'], p2['x'], p2['y'] );
-		}
-	}
-
-
-
-/*  ┌──────────────────────────────────────────────────┐
-	│            Mostrar el Cub de Metatron            │
-	└──────────────────────────────────────────────────┘ */
-
-	displayMetatrons() {
-		var centers = this.findPoints();
-		strokeWeight(0.5);
-		stroke(this.color[0], 20, this.color[2]);
-		this.displayCircles(centers);
-		this.displayLines(centers);
-		strokeWeight(6);
-	}
-
-	findPoints() {
-		var points = [];
-		points.push({'x':this.posX,'y':this.posY});
-		angleMode(RADIANS);
-		var r = this.size / 5;
-		for (let j = 0; j < 3; j++) {
-			let n = j < 2 ? 6 * j : 6;
-			for (let i = 0; i < n; i++) {
-				var a = TAU / n * i + HALF_PI;
-				var point = {};
-				point['x'] = r * cos(a) * j + this.posX;
-				point['y'] = r * sin(a) * j + this.posY;
-				points.push(point);
-			}
-		}
-		return points;
-	}
-
-	displayCircles(circlesCenters) {
-		var r = this.size / 5;
-		for (let i = 0; i < circlesCenters.length; i++) {
-			const c = circlesCenters[i];
-			ellipse(c['x'], c['y'], r, r);
-		}
-	}
-
-	displayLines(extremPoints) {
-		for (let i = 0; i < extremPoints.length; i++) {
-			const p1 = extremPoints[i];
-			for (let j = 0; j < extremPoints.length; j++) {
-				const p2 = extremPoints[j];
-				line(p1['x'], p1['y'], p2['x'], p2['y']); 
-			}
 		}
 	}
 
