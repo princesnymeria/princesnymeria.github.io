@@ -53,7 +53,7 @@ function draw() {
 		s.display(false);
 	});
 	strokeWeight(0.5);
-	if (displayMetatron) meta.display(false);
+	if (displayMetatron) meta.display();
 	strokeWeight(6);
 	selectedSolid.display();
 }
