@@ -3,9 +3,9 @@ let userLayers = [];
 
 let documentStyle = {
 	background: 12,
-	foreground: 248,
-	selected: '#f0f',
-	strokeWeight: 2
+	foreground: [0, 80, 70],
+	selected: '#FF00FF',
+	strokeWeight: 4
 };
 
 function setup() {
@@ -18,6 +18,7 @@ function setup() {
 }
 
 function draw() {
+	documentStyle['foreground'][0] = 0;
 	loadStyles();
 	drawMandala();
 	//...
@@ -30,7 +31,7 @@ function loadStyles() {
 	colorMode(HSL);
 	rectMode(CENTER);
 	background(documentStyle['background']);
-	stroke(248);
+	stroke(documentStyle['foreground']);
 	strokeWeight(documentStyle['strokeWeight']);
 	fill(documentStyle['background']);
 	translate(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5);
@@ -38,7 +39,14 @@ function loadStyles() {
 
 function drawMandala() {
 	userLayers.forEach(c => {
-		//c.update();
+		updateColor(25);
+		c.update();
 		c.display();
 	});
+}
+
+function updateColor(step) {
+	documentStyle['foreground'][0] += step;
+	if (documentStyle['foreground'][0] > 360) documentStyle['foreground'][0] = 0;
+		stroke(documentStyle['foreground']);
 }

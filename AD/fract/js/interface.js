@@ -1,15 +1,16 @@
 var selectedComponentIndex = -1;
 let LONG_SIDE_SCREEN;
-var componentsInfo = ["Umbrella", "Circles", "Raids", "Bezier", /*"Fishes", "IceCreams", "Arcs",*/ "Diamond", "Line", "Star"];
+var componentsInfo = ["Umbrella", "Circles", "Raids", "Bezier", "Fishes", "IceCreams", "Arcs", "Diamond", "Line", "Star"];
 
 window.onload = function() {
 	loadComponentsScript();
+	setTimeout(function(){importCreation('[["Ice Creams",{"radi":350,"numNodes":8,"desplacamentNode":0.39269908169872414},{"radi":115,"ple":false}],["Fishes",{"radi":300,"numNodes":8,"desplacamentNode":0},{"radi":115,"ple":true,"numPisos":3}],["Bezier",{"radi":250,"numNodes":8,"desplacamentNode":0.39269908169872414},{"height":180,"width":120,"ple":false}],["Bezier",{"radi":250,"numNodes":8,"desplacamentNode":0.39269908169872414},{"height":120,"width":80,"ple":false}],["Raids",{"radi":160,"numNodes":8,"desplacamentNode":0.39269908169872414},{"radi":35,"numRaids":2}],["Circles",{"radi":200,"numNodes":8,"desplacamentNode":0},{"radi":50,"ple":false}],["Circles",{"radi":200,"numNodes":8,"desplacamentNode":0.39269908169872414},{"radi":45,"ple":false}],["Circles",{"radi":160,"numNodes":8,"desplacamentNode":0.39269908169872414},{"radi":35,"ple":false}],["Circles",{"radi":160,"numNodes":8,"desplacamentNode":0},{"radi":35,"ple":false}],["Circles",{"radi":149,"numNodes":16,"desplacamentNode":0},{"radi":19,"ple":true}],["Circles",{"radi":0,"numNodes":1,"desplacamentNode":0},{"radi":147,"ple":false}],["Umbrella",{"radi":0,"numNodes":1,"desplacamentNode":0},{"radi":143,"numRaids":24}],["Circles",{"radi":0,"numNodes":1,"desplacamentNode":0},{"radi":120,"ple":false}],["Circles",{"radi":0,"numNodes":1,"desplacamentNode":0},{"radi":81,"ple":false}],["Umbrella",{"radi":0,"numNodes":1,"desplacamentNode":0},{"radi":77,"numRaids":24}],["Circles",{"radi":0,"numNodes":1,"desplacamentNode":0},{"radi":54,"ple":false}]]');}, 500);
 	//importCreation('[["Ice Creams",{"radi":350,"numNodes":8,"desplacamentNode":0.39269908169872414},{"radi":115,"ple":false}],["Fishes",{"radi":300,"numNodes":8,"desplacamentNode":0},{"radi":115,"ple":true,"numPisos":3}],["Bezier",{"radi":250,"numNodes":8,"desplacamentNode":0.39269908169872414},{"height":180,"width":120}],["Bezier",{"radi":250,"numNodes":8,"desplacamentNode":0.39269908169872414},{"height":120,"width":80}],["Raids",{"radi":160,"numNodes":8,"desplacamentNode":0.39269908169872414},{"radi":35,"numRaids":2}],["Circles",{"radi":200,"numNodes":8,"desplacamentNode":0},{"radi":50,"ple":false}],["Circles",{"radi":200,"numNodes":8,"desplacamentNode":0.39269908169872414},{"radi":45,"ple":false}],["Circles",{"radi":160,"numNodes":8,"desplacamentNode":0.39269908169872414},{"radi":35,"ple":false}],["Circles",{"radi":160,"numNodes":8,"desplacamentNode":0},{"radi":35,"ple":false}],["Circles",{"radi":145,"numNodes":16,"desplacamentNode":0},{"radi":15,"ple":true}],["Umbrella",{"radi":0,"numNodes":1,"desplacamentNode":0},{"radi":140,"numRaids":24}],["Circles",{"radi":0,"numNodes":1,"desplacamentNode":0},{"radi":120,"ple":false}],["Umbrella",{"radi":0,"numNodes":1,"desplacamentNode":0},{"radi":80,"numRaids":24}],["Circles",{"radi":0,"numNodes":1,"desplacamentNode":0},{"radi":50,"ple":false}]]');
 };
 
 function loadComponentsScript() {
 	componentsInfo.forEach(component => {
-		addScript2DOM('js/componentsMandala/'+component+'.js');
+		addScript2DOM( 'js/componentsMandala/' + component + '.js' );
 	});
 }
 
@@ -17,7 +18,8 @@ function addScript2DOM(path) {
 	var s = document.createElement('script');
 	s.type = 'text/javascript';
 	s.src = path;
-	document.head.appendChild(s);
+	const b = document.querySelector('script:last-child');
+	document.head.insertBefore(s, b);
 }
 
 function loadProperties(componentId) {

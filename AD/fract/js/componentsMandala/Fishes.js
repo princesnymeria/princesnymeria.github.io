@@ -24,7 +24,7 @@ class Fishes extends Component {
 		let r = this.nodeProperties["radi"].v;
 		let n = this.nodeProperties["numPisos"].v;
 		circle(R, R, r);
-		strokeWeight(documentStyle['strokeWeight'] * 3);
+		strokeWeight(documentStyle['strokeWeight'] * 2);
 		for (let i = n; i > 0; i--)
 			this.drawPis(i);
 		strokeWeight(documentStyle['strokeWeight']);
