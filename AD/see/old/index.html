@@ -15,7 +15,6 @@
 		margin: 0;
 		overflow: hidden;
 	}
-
 	#img {
 		width: 100vw;
 		height: 100vh;
@@ -26,9 +25,12 @@
 
 <script>
 	window.onload = function() {
-		var element = document.getElementById('img').contentDocument.documentElement;
-		var ar = getGradientAnimationInfo(element);
-		setInterval(function(){updateColors(ar)}, 100);
+		loadImage();
+		setTimeout(function() {
+			var element = document.getElementById('img').contentDocument.documentElement;
+			var ar = getGradientAnimationInfo(element);
+			setInterval(function(){updateColors(ar)}, 100);
+		}, 500);
 	};
 
 	function getGradientAnimationInfo (doc) {
@@ -57,6 +59,16 @@
 		return res;
 	};
 
+	function loadImage() {
+		const imgs = ["desert_amb_temple", "mar_amb_far"];
+		const i = Math.floor(Math.random() * imgs.length);
+		const o = document.createElement('OBJECT');
+		o.id = "img";
+		o.data = 'imgs/' + imgs[i] + '.svg';
+		o.type = "image/svg+xml";
+		document.body.appendChild(o);
+	};
+
 	function updateColors (animationInfo) {
 		animationInfo.forEach(gradient => {
 			gradient.stops.forEach(stop => {
@@ -71,9 +83,6 @@
 </script>
 
 
-<body>
-	<object id="img" data="imgs/desert.svg" type="image/svg+xml"></object>      
-</body>
-
+<body></body>
 
 </html>
