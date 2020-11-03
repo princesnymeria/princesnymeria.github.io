@@ -1,5 +1,5 @@
 const MODE = 'web';
-const MODE_DEBUG = false;
+const MODE_DEBUG = true;
 
 var dataGetter;
 var animations = [];
@@ -26,7 +26,7 @@ function setup() {
 	animations.push(new RecursiveTree(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));		// 11
 	animations.push(new SierpinskiCurve(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));		// 12
 
-	dataGetter = new WebDataGetter(animations, 1);
+	dataGetter = new WebDataGetter(animations, 11);
 	color = new StyleNColor(12, 6, 80, 70, 1);
 }
 
