@@ -28,7 +28,7 @@ class SierpinskiCurve extends Figure {
 			v: 0,
 			default: 3,
 			min: 3,
-			max: 6,
+			max: 8,
 			integer: true
 		}
 		this.colorHue = 0;
@@ -43,56 +43,28 @@ class SierpinskiCurve extends Figure {
 		const y = this.posY;
 		if (MODE_DEBUG) { stroke('#00FFFF50'); circle(x, y, d); };
 		this.displayRecursivePolygon(s, x, y, d * 0.5);
-		if (MODE_DEBUG) console.log("Número de polígons:", Math.pow(s, (this.vars['iteracions'].v - 1)) );
+		if (MODE_DEBUG) this.numPologons = Math.pow(s, (this.vars['iteracions'].v - 1));
+		if (MODE_DEBUG) console.log("Número de polígons:", this.numPologons);
 	}
 
 	displayRecursivePolygon(sides, centerX, centerY, diameter) {
-
+		if (MODE_DEBUG) {
+			stroke('#FF000050');
+			circle(centerX, centerY, diameter);
+			stroke('#0000FF50');
+			this.displayPolygonInCircle(centerX, centerY, diameter, sides);
+		}
 		const a = TAU / sides;
-		const d = diameter * 0.5;
-		let v1 = p5.Vector.fromAngle(a, d);
-
 		for (var i = 0; i < sides; i++) {
 			push();
-			translate(centerX, centerY);
-			rotate(a * i);
-
-			var x1 = diameter * 0.5;
-			var y1 = 0;
-
-
-
-			if (MODE_DEBUG) stroke('#FF00FF50');
-
-			var x2 = v1.x;
-			var y2 = v1.y;
-
-			const d = dist(x1, y1, x2, y2);
-
-			var a0 = createVector(x1, y1).angleBetween(createVector(x2, y2));
-			a0 += PI * this.getTheMagicNumber(sides);
-	
-			for (var j = 0; j < sides; j++) {
-	
-				let v2 = p5.Vector.fromAngle(a0, d);
-				
-				//if (d > 100) this.displayRecursivePolygon(sides, centerX, centerY, dim);
-				//else line(x1, y1, x2, y2);
-				line(x1, y1, x2, y2);
-	
-				x1 = x2;
-				y1 = y2;
-				x2 = x1 + v2.x;
-				y2 = y1 + v2.y;
-				a0 += a;
-			}
-
-
-
+			translate(centerX, centerY)
+			rotate(a * (i + 0.5));
+			const x = diameter * 0.5;
+			const y = 0;
+			if (MODE_DEBUG) { stroke('#FFFF0050'); circle(x, y, diameter); }
+			this.displayPolygonInCircle(x, y, diameter, sides);
 			pop();
 		}
 	}
-
-	getTheMagicNumber (sides) { return { 3: 0.5, 4: 0.25, 5: 0.1, 6: 0 }[sides] }
 
 }

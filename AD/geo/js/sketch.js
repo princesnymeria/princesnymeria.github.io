@@ -1,5 +1,5 @@
 const MODE = 'web';
-const MODE_DEBUG = true;
+const MODE_DEBUG = false;
 
 var dataGetter;
 var animations = [];
@@ -17,16 +17,15 @@ function setup() {
 	animations.push(new GoldenSpiral(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));			// 2
 	animations.push(new Lauburo(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));				// 3
 	animations.push(new FlowerLife(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));			// 4
-	//animations.push(new MetatronsCube(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));		// 5
-	animations.push(new Moon(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));					// 6
-	animations.push(new Ones(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));					// 7
-	animations.push(new PolygonalSpiral(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));		// 8
-	animations.push(new YingYang(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));				// 9
-	animations.push(new Snowflake(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));			// 10
-	animations.push(new RecursiveTree(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));		// 11
-	animations.push(new SierpinskiCurve(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));		// 12
+	animations.push(new Moon(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));					// 5
+	animations.push(new Ones(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));					// 6
+	animations.push(new PolygonalSpiral(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));		// 7
+	animations.push(new YingYang(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));				// 8
+	animations.push(new Snowflake(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));			// 9
+	animations.push(new RecursiveTree(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));		// 10
+	//animations.push(new SierpinskiCurve(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));		// 11
 
-	dataGetter = new WebDataGetter(animations, 11);
+	dataGetter = new WebDataGetter(animations, 1);
 	color = new StyleNColor(12, 6, 80, 70, 1);
 }
 

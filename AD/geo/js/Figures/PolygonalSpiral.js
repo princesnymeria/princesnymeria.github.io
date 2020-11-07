@@ -57,29 +57,6 @@ class PolygonalSpiral extends Figure {
 		}
 	}
 
-	displayPolygonInCircle(centerX, centerY, dim, sides) {
-		var points = [];
-		for (let i = 0; i < sides; i++) {
-			var a = TAU/sides * i;
-			var p = {};
-			p['x'] = centerX + cos(a) * dim * 0.5;
-			p['y'] = centerY + sin(a) * dim * 0.5;
-			points.push(p);
-		}
-		this.displayPolygonWithPoints(points, sides);
-		return points;
-	}
-
-	displayPolygonWithPoints(points, sides) {
-		if (MODE_DEBUG)points.forEach(p => {stroke('#ffff00'); strokeWeight(10); point(p['x'], p['y']); strokeWeight(4);});
-		if (MODE_DEBUG) stroke('#ff00ff50');
-		for (let i = 0; i < sides; i++) {
-			const p1 = points[i];
-			const p2 = i < points.length-1 ? points[i+1] : points[0];
-			line(p1['x'], p1['y'], p2['x'], p2['y']);
-		};
-	}
-
 	findPoligonChild(points, t) {
 		var newPoints = [];
 		for (let i = 0; i < points.length; i++) {
