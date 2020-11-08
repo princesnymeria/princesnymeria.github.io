@@ -41,7 +41,7 @@ class Ones extends Figure {
 		const chi = this.vars['childs'].v;
 
 		angleMode(RADIANS);
-		if (MODE_DEBUG) stroke('#00ffff50');
+		if (MODE_DEBUG) stroke('#00FFFF50');
 		ellipse(this.posX, this.posY, dim, dim);
 
 		var d, x, y;
@@ -54,7 +54,7 @@ class Ones extends Figure {
 			for (var j = 0; j < this.curl; j++) {
 				push();
 				rotate(TAU/this.curl * j);
-				if (MODE_DEBUG) { stroke('#ff00ff30'); ellipse(x, y, d, d); stroke('#ff00ffAA') };
+				if (MODE_DEBUG) { stroke('#FF00FF30'); ellipse(x, y, d, d); stroke('#FF00FFAA') };
 				arc(x, y, d, d, PI, 0);
 				pop();
 			}

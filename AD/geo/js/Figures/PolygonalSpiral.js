@@ -46,7 +46,7 @@ class PolygonalSpiral extends Figure {
 		const sides = this.vars['sides'].v;
 		const t = this.vars['t'].v;
 
-		if (MODE_DEBUG) stroke('#00ffff50');
+		if (MODE_DEBUG) stroke('#00FFFF50');
 		if (MODE_DEBUG) ellipse(this.posX, this.posY, d, d);
 		var c = this.displayPolygonInCircle(this.posX, this.posY, d, sides);
 
@@ -66,7 +66,7 @@ class PolygonalSpiral extends Figure {
 				x: p['x'] + (p2['x']-p['x']) * t,
 				y: p['y'] + (p2['y']-p['y']) * t
 			};
-			if (MODE_DEBUG) { stroke('#ffff00');strokeWeight(10);point(P['x'], P['y']);strokeWeight(4) };
+			if (MODE_DEBUG) { stroke('#FFFF00');strokeWeight(10);point(P['x'], P['y']);strokeWeight(4) };
 			newPoints.push(P);
 		};
 		return newPoints;

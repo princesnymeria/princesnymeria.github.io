@@ -38,10 +38,10 @@ class Torus extends Figure {
 	}
 
 	displayInfo() {
-	   stroke('#00ffff88');
-	   ellipse(this.posX, this.posY, this.vars['radius'].v, this.vars['radius'].v);
-	   ellipse(this.posX, this.posY, this.vars['radius'].v * 2, this.vars['radius'].v * 2);
-	   stroke('#ff00ff88');
+		stroke('#00ffff88');
+		ellipse(this.posX, this.posY, this.vars['radius'].v, this.vars['radius'].v);
+		ellipse(this.posX, this.posY, this.vars['radius'].v * 2, this.vars['radius'].v * 2);
+		stroke('#ff00ff88');
 	}
 
 }

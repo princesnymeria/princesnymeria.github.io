@@ -22,6 +22,8 @@ class Figure {
 
 		this.posX = pX;
 		this.posY = pY;
+		
+		if (MODE_DEBUG) console.log ('Carregada la  figura' + this.name);
 	}
 
 

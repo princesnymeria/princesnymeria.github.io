@@ -192,6 +192,8 @@ Especificacions:
 
 #### Arreglar
 
+* [ ] Localitzar comentaris de l'estil `[Aconseguir algorismicament]` i solventar
+* [ ] Hi ha figures amb codis molt complexes com `Moon`, `Lauburo`, `Sierpinski`...
 * [ ] Aconseguir fer que el *Lauburo* sigui recursiu
 * [ ] Arreglar bugs a *Moon*
 * [ ] Afegir interaccions al *Ones* i buscar un nom més místic

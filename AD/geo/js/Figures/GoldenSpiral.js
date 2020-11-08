@@ -75,6 +75,7 @@ class GoldenSpiral extends Figure {
 		if (MODE_DEBUG) console.log(res);
 		return res;
 	}
+	
 	calcGoldenNumber() {
 		const values = this.calcFibonacciSeq(10);
 		const res = values[values.length-1] / values[values.length-2];

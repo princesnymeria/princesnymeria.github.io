@@ -68,11 +68,11 @@ class SierpinskiCurve extends Figure {
 				v = p5.Vector.fromAngle(a, costat);
 
 				const iteracio = log( ( this.vars['dim'].v/dim ) ) / log(2);
-				if (iteracio < this.vars['iteracions'].v) this.displayRecursivePolygon (
+				if (iteracio < this.vars['iteracions'].v) this.displayRecursivePolygon(
 					sides,
-					cos( A * ( i + .5 ) ) * dim * ( this.getThePosRatio(sides) ),
-					sin( A * ( i + .5 ) ) * dim * ( this.getThePosRatio(sides) ),
-					dim * this.getTheRezigeRatio(sides)
+					cos( A * ( i + 0.5 ) ) * dim * .5,
+					sin( A * ( i + 0.5 ) ) * dim * .5,
+					dim*0.5
 				);
 				else line(x1, y1, x2, y2);
 
@@ -84,7 +84,13 @@ class SierpinskiCurve extends Figure {
 
 	getTheMagicNumber  (sides) { return { 3: 0.5, 4: 0.25, 5: 0.1, 6: 0 } [sides] }
 
-	getTheRezigeRatio  (sides) { return { 3: 0.5, 4: 0.333333, 5: 0.375, 6: 0.333333 }[sides] }
-	getThePosRatio  (sides) { return {  3: 0.5, 4: 0.7, 5: 0.8, 6: 0.875 } [sides] }
+	getTheRezigeRatio  (sides) {
+		return { 
+			3: 0.5,
+			4: 0.333333,
+			5: 0.333333,
+			6: 0.333333
+		}[sides]
+	}
 
 }
