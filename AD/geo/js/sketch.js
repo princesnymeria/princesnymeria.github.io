@@ -1,5 +1,5 @@
 const MODE = 'web';
-const MODE_DEBUG = true;
+const MODE_DEBUG = false;
 
 var dataGetter;
 var animations = [];
@@ -10,7 +10,7 @@ function setup() {
 	CANVAS_HEIGHT = window.innerHeight;
 	
 	createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
-	frameRate(12);
+	frameRate(MODE_DEBUG ? 1 : 12);
 
 	animations.push(new Torus(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));				// 0
 	animations.push(new Star(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));					// 1
@@ -23,9 +23,9 @@ function setup() {
 	animations.push(new YingYang(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));				// 8
 	animations.push(new Snowflake(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));			// 9
 	animations.push(new RecursiveTree(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));		// 10
-	animations.push(new SierpinskiCurve(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));		// 11
+	animations.push(new SierpinskiCarpet(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));		// 11
 
-	dataGetter = new WebDataGetter(animations, 11);
+	dataGetter = new WebDataGetter(animations, 1);
 	color = new StyleNColor(12, 6, 80, 70, 1);
 }
 

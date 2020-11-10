@@ -1,4 +1,4 @@
-class SierpinskiCurve extends Figure {
+class SierpinskiCarpet extends Figure {
 
 	//https://en.wikipedia.org/wiki/Sierpi%C5%84ski_curve
 	//https://stackoverflow.com/questions/59703729/making-the-sierpi%c5%84ski-arrowhead-curve-with-p5-js
@@ -6,7 +6,7 @@ class SierpinskiCurve extends Figure {
 	constructor(pX, pY) {
 		super(pX, pY);
 
-		this.name = "Sierpiński curve";
+		this.name = "Sierpiński Carpet";
 
 		const c = pX > pY ? pX : pY; 
 		this.vars = { }
@@ -20,7 +20,7 @@ class SierpinskiCurve extends Figure {
 		this.vars['iteracions'] = {
 			v: 0,
 			default: 3,
-			min: 2,
+			min: 1,
 			max: 6,
 			integer: true
 		}
@@ -48,6 +48,7 @@ class SierpinskiCurve extends Figure {
 	displayRecursivePolygon(sides, centerX, centerY, dim) {
 
 		const A = TAU / sides;
+		const iteracio = log( ( this.vars['dim'].v/dim ) ) / log(2);
 
 		for (var i = 0; i < sides; i++) {
 
@@ -55,7 +56,7 @@ class SierpinskiCurve extends Figure {
 			translate(centerX, centerY);
 			rotate(A * i);
 
-			if (MODE_DEBUG) stroke('#FF00FF10');
+			if (MODE_DEBUG) stroke('#FF00FF50');
 
 			var v = p5.Vector.fromAngle(A, dim * .5);
 			var x1 = dim * .5, y1 = 0, x2 = v.x, y2 = v.y;
@@ -63,28 +64,27 @@ class SierpinskiCurve extends Figure {
 			a += PI * this.getTheMagicNumber(sides);
 			var costat = dist(x1, y1, x2, y2);
 
-			for (var j = 0; j < sides; j++) {
-
-				v = p5.Vector.fromAngle(a, costat);
-
-				const iteracio = log( ( this.vars['dim'].v/dim ) ) / log(2);
-				if (iteracio < this.vars['iteracions'].v) this.displayRecursivePolygon (
+			if (iteracio < this.vars['iteracions'].v)
+				this.displayRecursivePolygon (
 					sides,
-					cos( A * ( i + .5 ) ) * dim * ( this.getThePosRatio(sides) ),
-					sin( A * ( i + .5 ) ) * dim * ( this.getThePosRatio(sides) ),
+					cos( A * 1.5 ) * dim * this.getThePosRatio(sides),
+					sin( A * 1.5 ) * dim * this.getThePosRatio(sides),
 					dim * this.getTheRezigeRatio(sides)
 				);
-				else line(x1, y1, x2, y2);
+			else
+				for (var j = 0; j < sides; j++) {
+					v = p5.Vector.fromAngle(a, costat);
+					line(x1, y1, x2, y2);
+					x1 = x2, y1 = y2, x2 += v.x, y2 += v.y, a += A;
+				}
 
-				x1 = x2, y1 = y2, x2 += v.x, y2 += v.y, a += A;
-			}
 			pop();
 		}
 	}
 
 	getTheMagicNumber  (sides) { return { 3: 0.5, 4: 0.25, 5: 0.1, 6: 0 } [sides] }
 
-	getTheRezigeRatio  (sides) { return { 3: 0.5, 4: 0.333333, 5: 0.375, 6: 0.333333 }[sides] }
-	getThePosRatio  (sides) { return {  3: 0.5, 4: 0.7, 5: 0.8, 6: 0.875 } [sides] }
+	getTheRezigeRatio  (sides) { return { 3: 0.5, 4: 0.333333, 5: 0.375, 6: 0.333333 }[sides] } //Xapusa número 01
+	getThePosRatio  (sides) { return {  3: 0.5, 4: 0.7, 5: 0.8, 6: 0.875 } [sides] } //Xapusa número 02
 
 }
