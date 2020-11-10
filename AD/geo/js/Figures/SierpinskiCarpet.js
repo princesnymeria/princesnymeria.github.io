@@ -1,8 +1,5 @@
 class SierpinskiCarpet extends Figure {
 
-	//https://en.wikipedia.org/wiki/Sierpi%C5%84ski_curve
-	//https://stackoverflow.com/questions/59703729/making-the-sierpi%c5%84ski-arrowhead-curve-with-p5-js
-
 	constructor(pX, pY) {
 		super(pX, pY);
 

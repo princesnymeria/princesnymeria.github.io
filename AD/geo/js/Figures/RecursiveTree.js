@@ -40,6 +40,7 @@ class RecursiveTree extends Figure {
 		line(0,0,0,-s);
 		translate(0,-s);
 		this.displayBranch(s);
+		if (MODE_DEBUG) this.printInfo();
 	}
 
 	displayBranch(h) {
@@ -63,5 +64,14 @@ class RecursiveTree extends Figure {
 			this.displayBranch(h);
 			pop();
 		}
+	}
+
+	printInfo() {
+		const s = this.vars['size'].v;
+		const n = 1 / this.vars['childRatius'].v;
+		const numIteracions = floor(log(s/2)/log(n));
+		const numBranques = 2 ** numIteracions * 2 - 1;
+		console.log("Número d'Iteracions:", numIteracions );
+		console.log("Número de branques:", numBranques);
 	}
 }

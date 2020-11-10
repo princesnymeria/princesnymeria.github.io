@@ -31,9 +31,6 @@ class GoldenSpiral extends Figure {
 	}
 
 	display() {
-
-		if (MODE_DEBUG) stroke('#ff00ff50');
-		
 		angleMode(RADIANS);
 
 		const d = this.vars['dim'].v;
@@ -42,29 +39,10 @@ class GoldenSpiral extends Figure {
 		var xp = this.posX;
 		var yp = this.posY;
 
-		ellipse(this.posX, this.posY, d, d);
-
-		for (let i = 1; i < I; i++) {
-
-			var r = d / (this.fi * i);
-
-			var dx = (rp + r) * -0.5 + r;
-			var dy = dx;
-
-			dx *= cos(HALF_PI * (i+1) - HALF_PI);
-			dy *= cos(HALF_PI * i - HALF_PI);
-
-			var x = xp + dx;
-			var y = yp + dy;
-
-			ellipse(x, y, r, r);
-			
-			rp = r;
-			xp = x;
-			yp = y;
-		}
-
-		this.displaySpiral();
+		if (MODE_DEBUG) stroke('#FF00FF');
+		this.displaySpiral(false);
+		if (MODE_DEBUG) stroke('#00FFFF50'); else stroke('#FFFFFF40');
+		this.displaySpiral(true);
 	}
 
 	calcFibonacciSeq(iterations) {
@@ -83,7 +61,7 @@ class GoldenSpiral extends Figure {
 		return res;
 	}
 
-	displaySpiral() {
+	displaySpiral(withCircles) {
 		angleMode(RADIANS);
 
 		const d = this.vars['dim'].v;
@@ -92,11 +70,11 @@ class GoldenSpiral extends Figure {
 		var xp = this.posX;
 		var yp = this.posY;
 
-		stroke('#eeeeeeaa');
-		if (MODE_DEBUG) stroke('#ff00ffAA');
-
 		var f = PI;
-		arc(this.posX, this.posY, d, d, f, f+HALF_PI, OPEN)
+
+		if (withCircles) circle(this.posX, this.posY, d);
+		else arc(this.posX, this.posY, d, d, f, f + HALF_PI, OPEN);
+
 		f += HALF_PI;
 
 		for (let i = 1; i < I; i++) {
@@ -112,7 +90,8 @@ class GoldenSpiral extends Figure {
 			var x = xp + dx;
 			var y = yp + dy;
 
-			arc(x, y, r, r, f, f+HALF_PI, OPEN)
+			if (withCircles) circle(x, y, r);
+			else arc(x, y, r, r, f, f + HALF_PI, OPEN);
 			f += HALF_PI;
 			
 			rp = r;

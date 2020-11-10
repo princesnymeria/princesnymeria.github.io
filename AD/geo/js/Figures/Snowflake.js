@@ -38,7 +38,7 @@ class Snowflake extends Figure {
 		const b = this.vars['branches'].v;
 
 		if (MODE_DEBUG) stroke('#ff00ff40');
-
+		
 		translate(this.posX, this.posY);
 		for (var i = 0; i < b*2; i++) {
 			push();
@@ -46,6 +46,7 @@ class Snowflake extends Figure {
 			this.displayBranch(l, b);
 			pop();
 		}
+		if (MODE_DEBUG) console.log('Número de branques:', b*2 + b*2*b +               b*2*b * (b-2)               );//Calcul erroni
 	}
 
 	displayBranch(l, branches) {
