@@ -22,7 +22,7 @@ class GoldenSpiral extends Figure {
 				v: 0,
 				default: 4,
 				min: 1,
-				max: 8,
+				max: 12,
 				integer: true
 			}
 		}

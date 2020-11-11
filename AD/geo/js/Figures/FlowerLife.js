@@ -14,36 +14,23 @@ class FlowerLife extends Figure {
 				max: c * 1.5,
 				integer: false
 			},
-			'petals': {
-				v: 0,
-				default: 6,
-				min: 2,
-				max: 12,
-				integer: true
-			},
-			'dimRatio': {
-				v: 0,
-				default: 4,
+			'iteracions': {
+				v: 3,
+				default: 3,
 				min: 1,
-				max: 6,
+				max: 5,
 				integer: true
 			}
 		}
-
-		this.randomVar1 = 2;
-		this.randomVar2 = 0.5;
-		this.randomVar3 = 1;
 	}
 
 	display() {
 		angleMode(RADIANS);
-		if (MODE_DEBUG) stroke('#00ffff50');
-		const d = this.vars['dim'].v;
-		const dr = this.vars['dimRatio'].v;
-		ellipse(this.posX, this.posY, d, d);
-		if (MODE_DEBUG) stroke('#ff00ff50');
-		this.drawTourus6(d/dr, this.posX, this.posY, dr+1);
-		this.mask(d, this.posX, this.posY);
+		if (MODE_DEBUG) stroke('#00FFFF50');
+		circle(this.posX, this.posY, this.vars['dim'].v);
+		if (MODE_DEBUG) stroke('#FF00FF50');
+		this.drawFlower(this.posX, this.posY, this.vars['iteracions'].v);
+		this.mask(this.posX, this.posY);
 	}
 
 
@@ -51,32 +38,30 @@ class FlowerLife extends Figure {
 	   │        Mètodes pròpis        │
 	   └──────────────────────────────┘ */
 
-	drawTourus6(rad, posX, posY, n) {
-		if ( n > 0 ) {
-			ellipse(posX, posY, rad, rad);
-			const p = this.vars['petals'].v;
-			for (let i = 0; i < p; i++) {
-				var a = this.randomVar1 * PI / p * i + HALF_PI;
-				var x = rad * cos(a) * this.randomVar2 + posX;
-				var y = rad * sin(a) * this.randomVar2 + posY;
-				var r = rad / this.randomVar3;
-				this.drawTourus6(r, x, y, n-1);
+	drawFlower(posX, posY, iteracio) {
+		const a = TAU / 6;
+		const d = this.vars['dim'].v / this.vars['iteracions'].v;
+		if ( iteracio > 0 )
+			for (let i = 0; i < 6; i++) {
+				const x = posX + cos(a*i) * d * .5;
+				const y = posY + sin(a*i) * d * .5;
+				this.drawFlower(x, y, iteracio-1);
 			}
-		}
+		else circle(posX, posY, d);
 	}
 
-	mask(r, x, y) {
-		const bgColor = 12;//------------------------------------------[Aconseguir algorismicament]
-		const strkWeight = 6;//----------------------------------------[Aconseguir algorismicament]
-		
+	mask(x, y) {
+		const bgColor    = 12;//----------------------------------------[Aconseguir algorismicament]
+		const strkWeight =  6;//----------------------------------------[Aconseguir algorismicament]
+
 		const d = this.vars['dim'].v;
-		const dr = this.vars['dimRatio'].v;
+		const r = d / this.vars['iteracions'].v;
 		
-		var s = d / (2 * dr ) + strkWeight + 1;
+		var s = r * .5 + strkWeight + 1;
 		stroke(bgColor);
-		if (MODE_DEBUG) stroke('#ffff0030');
-		strokeWeight(s-strkWeight);
-		ellipse(x, y, r+s, r+s);
+		if (MODE_DEBUG) stroke('#FFFF0030');
+		strokeWeight(s - strkWeight);
+		circle(x, y, d+s);
 	}
 
 }
