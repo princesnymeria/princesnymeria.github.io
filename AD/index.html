@@ -13,10 +13,19 @@
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
 		body {
-			background-color: #1f1f1f;
+			background-color: #1F1F1F;
 			height: 100vh;
 			width: 100vw;
 			overflow: hidden;
+		}
+		h1, h2, h3, p, li {
+			color: #F8F8F8;
+			font-family: 'Raleway', 'Segoe UI Light', 'Segoe UI', Arial, Helvetica, sans-serif;
+			font-size: 22pt;
+		}
+		#container {
+			animation-name: animText;
+			animation-duration: 5s;
 		}
 		ul {
 			text-align: center;
@@ -28,12 +37,18 @@
 		}
 		ul>li>a {
 			color: #F8F8F8;
-			font-family: 'Raleway', 'Segoe UI Light', 'Segoe UI', Arial, Helvetica, sans-serif;
-			font-size: 22pt;
 			text-decoration: none;
+			position: relative;
 		}
-		ul>li>a:hover {
-			text-decoration: underline;
+		ul>li>a:hover::after {
+			content: ' ';
+			width: 100%;
+			display: inline-block;
+			border-bottom: 1px solid #F8F8F8;
+			position: absolute;
+			bottom: 0; left: 0;
+			animation-name: animLine;
+			animation-duration: 2s;
 		}
 		.centered {
 			position: fixed;
@@ -45,6 +60,29 @@
 			fill: none;
 			stroke: #F8F8F8;
 			stroke-weight: 5px;
+			animation-name: animFrame;
+			animation-duration: 5s;
+		}
+
+		@keyframes animText {
+			from { letter-spacing: 0.4em; }
+			to   { letter-spacing: 0;     }
+		}
+
+		@keyframes animLine {
+			from { width:  10%; left: 45%; }
+			to   { width: 100%; left: 0;   }
+		}
+
+		@keyframes animFrame {
+			from {
+				clip-path: polygon( 99% 0,   100% 0%,   1% 100%,   0% 100% );
+				width: 1000px;
+			}
+			to {
+				clip-path: polygon( 0% 0%,   100% 0%,   100% 100%,   0% 100% );
+				width: auto;
+			}
 		}
 
 		@media only screen and (max-width: 650px) {
@@ -62,29 +100,29 @@
 
 	<body>
 
-		<svg id="marc" class="centered" xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 25 800 800" >
+		<svg id="marc" class="centered" xmlns="http://www.w3.org/2000/svg" width="600" height="825" viewBox="0 25 800 1000" >
 
 			<!-- Diamants (superior i inferior) -->
-			<path d="  m  375 25       l  25  -25     l  25   25      l -25  25    l -25 -25                                                           " />
-			<path d="  m  375 825      l  25  -25     l  25   25      l -25  25    l -25 -25                                                           " />
+			<path d="  m  375 25       l  25  -25     l  25   25      l -25  25    l -25 -25                                                             " />
+			<path d="  m  375 1025     l  25  -25     l  25   25      l -25  25    l -25 -25                                                             " />
 
 			<!-- sldfjslkdfjslkdflskdfj -->
-			<path d="  m  350 25       l  50   50     l  50  -50                                                                                       " />
-			<path d="  m  350 825      l  50  -50     l  50   50                                                                                       " />
-			<path d="  m  300 75       l  50   50     l  50  -50      l  50 50     l  50 -50                                                           " />
-			<path d="  m  300 775      l  50  -50     l  50   50      l  50 -50    l  50  50                                                           " />
+			<path d="  m  350 25       l  50   50     l  50  -50                                                                                         " />
+			<path d="  m  350 1025     l  50  -50     l  50   50                                                                                         " />
+			<path d="  m  300 75       l  50   50     l  50  -50      l  50 50     l  50 -50                                                             " />
+			<path d="  m  300 975      l  50  -50     l  50   50      l  50 -50    l  50  50                                                             " />
 
 			<!-- Marcs (rectangles discontinus) -->
-			<path d="  m  0   25       l  350  0      m  100  0       l  350 0     l  0   800     l  -350 0     m  -100 0     l  -350 0     l  0 -800  " />
-			<path d="  m  50  50       l  275  0      m  150  0       l  275 0     l  0   750     l  -275 0     m  -150 0     l  -275 0     l  0 -750  " />
-			<path d="  m  25  75       l  275  0      m  200  0       l  275 0     l  0   700     l  -275 0     m  -200 0     l  -275 0     l  0 -700  " />
-			<path d="  m  100 125      l  175  0      m  250  0       l  175 0     l  0   600     l  -175 0     m  -250 0     l  -175 0     l  0 -600  " />
+			<path d="  m  0   25       l  350  0      m  100  0       l  350 0     l  0   1000     l  -350 0     m  -100 0     l  -350 0     l  0 -1000  " />
+			<path d="  m  50  50       l  275  0      m  150  0       l  275 0     l  0    950     l  -275 0     m  -150 0     l  -275 0     l  0  -950  " />
+			<path d="  m  25  75       l  275  0      m  200  0       l  275 0     l  0    900     l  -275 0     m  -200 0     l  -275 0     l  0  -900  " />
+			<path d="  m  100 125      l  175  0      m  250  0       l  175 0     l  0    800     l  -175 0     m  -250 0     l  -175 0     l  0  -800  " />
 
 			<!-- Rectangles del marc interior -->
 			<rect x="75"      y="100"     width="25"     height="25" />
 			<rect x="700"     y="100"     width="25"     height="25" />
-			<rect x="75"      y="725"     width="25"     height="25" />
-			<rect x="700"     y="725"     width="25"     height="25" />
+			<rect x="75"      y="925"     width="25"     height="25" />
+			<rect x="700"     y="925"     width="25"     height="25" />
 		</svg>
 
 		<div id="container" class="centered">
