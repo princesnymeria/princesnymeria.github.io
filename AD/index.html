@@ -12,20 +12,16 @@
 
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+		
 		body {
 			background-color: #1F1F1F;
-			height: 100vh;
-			width: 100vw;
+			height: 100vh; width: 100vw;
 			overflow: hidden;
 		}
-		h1, h2, h3, p, li {
+		h1, h2, h3, p, li, a {
 			color: #F8F8F8;
 			font-family: 'Raleway', 'Segoe UI Light', 'Segoe UI', Arial, Helvetica, sans-serif;
 			font-size: 22pt;
-		}
-		#container {
-			animation-name: animText;
-			animation-duration: 5s;
 		}
 		ul {
 			text-align: center;
@@ -36,64 +32,64 @@
 			margin-top: 20px;
 		}
 		ul>li>a {
-			color: #F8F8F8;
 			text-decoration: none;
+		}
+		.centered {
+			position: fixed;
+			left: 50%; top: 50%;
+			transform: translate(-50%, -50%);
+		}
+		#marc>path, #marc>rect {
+			fill: none;
+			stroke: #F8F8F8;
+			stroke-weight: 5px;
+		}
+
+		@media only screen and (max-width: 650px) {
+			#marc { width: 90vw; }
+			#container { width: 90%; }
+			ul>li>a { font-size: 18pt; }
+		}
+	</style>
+	
+	<style>
+		#marc>path, #marc>rect {
+			animation-name: animFrame;
+			animation-duration: 5s;
+		}
+		#container {
+			animation-name: animText;
+			animation-duration: 5s;
+		}
+		ul>li>a {
 			position: relative;
 		}
 		ul>li>a:hover::after {
-			content: ' ';
+			content: '';
 			width: 100%;
 			display: inline-block;
 			border-bottom: 1px solid #F8F8F8;
 			position: absolute;
 			bottom: 0; left: 0;
-			animation-name: animLine;
+			animation-name: animTextHover;
 			animation-duration: 2s;
 		}
-		.centered {
-			position: fixed;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-		}
-		#marc path, #marc rect {
-			fill: none;
-			stroke: #F8F8F8;
-			stroke-weight: 5px;
-			animation-name: animFrame;
-			animation-duration: 5s;
-		}
-
 		@keyframes animText {
 			from { letter-spacing: 0.4em; }
 			to   { letter-spacing: 0;     }
 		}
-
-		@keyframes animLine {
+		@keyframes animTextHover {
 			from { width:  10%; left: 45%; }
 			to   { width: 100%; left: 0;   }
 		}
-
 		@keyframes animFrame {
 			from {
-				clip-path: polygon( 99% 0,   100% 0%,   1% 100%,   0% 100% );
+				clip-path: circle(29.3% at 50% 50%);
 				width: 1000px;
 			}
 			to {
-				clip-path: polygon( 0% 0%,   100% 0%,   100% 100%,   0% 100% );
+				clip-path: circle(70.7% at 50% 50%);
 				width: auto;
-			}
-		}
-
-		@media only screen and (max-width: 650px) {
-			#marc {
-				width: 90vw;
-			}
-			ul>li>a {
-				font-size: 18pt;
-			}
-			#container {
-				width: 90%;
 			}
 		}
 	</style>
