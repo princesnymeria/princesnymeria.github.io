@@ -17,6 +17,7 @@ class Fishes extends Component {
 			"max": 12,
 			"step": 1
 		};
+		this.incr = 0.005;
 	}
 	
 	drawComponent(index) {
@@ -40,7 +41,7 @@ class Fishes extends Component {
 		let r = rn / N;
 		let R = 0.5 * rn / N * capa -r/2;
 		for (let i = 0; i < n; i++) {
-			let a = A * i - (QUARTER_PI);
+			let a = A * i - (QUARTER_PI) + this.fase;
 			let x = cos(a) * R + RA;
 			let y = sin(a) * R + RA;
 			ellipse(x, y, r, r);

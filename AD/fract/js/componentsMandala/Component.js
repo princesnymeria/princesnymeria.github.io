@@ -44,6 +44,9 @@ class Component {
 			}
 		}
 		this.fase = 0;
+		this.incr = 0.01;
+		this.min = 0;
+		this.max = TAU;
 	}
 
 
@@ -131,8 +134,8 @@ class Component {
 	   └──────────────────────────────┘ */
 
 	update() {
-		const incr = 0.01;
-		this.fase = (this.fase + incr) % TAU;
+		this.fase = this.fase + this.incr;
+		if (this.fase >= this.max || this.fase <= this.min) this.incr *= -1;
 	}
 
 	display() {

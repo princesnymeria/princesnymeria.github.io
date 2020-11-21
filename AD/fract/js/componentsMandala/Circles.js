@@ -9,6 +9,10 @@ class Circles extends Component {
 			"default": false,
 			"type": "bool"
 		};
+		this.incr = 0.0025;
+		this.fase = 1;
+		this.min = 0.95;
+		this.max = 1.05;
 	}
 
 	display() {
@@ -22,7 +26,8 @@ class Circles extends Component {
 	
 	drawComponent(index) {
 		let R = this.ringProperties["radi"].v * 0.34;
-		let r = this.nodeProperties["radi"].v;
+		var r = this.nodeProperties["radi"].v;
+		r *= this.fase;
 		circle(R, R, r);
 	}
 

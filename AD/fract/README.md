@@ -70,13 +70,6 @@ L'sketch principal no fa gaire feina. L'estructura és la següent:
 
 ## <n>To Do</n>
 
-* [/] Dibuixar una mandala amb formes bàsica
-* [/] Converir els components de la mandala en classes de JavaScript
-* [ ] Animar la mandala
-* [ ] Repetir el procés amb més mandales
-* [/] Preparar una interfície gràfica per crear mandales
-
-
 ### Interficie
 
 * [ ] ARREGKAR ELS BUGS A L'HORA DE MOURE LES CAPES AMUNT I AVALL

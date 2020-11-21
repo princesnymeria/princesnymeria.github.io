@@ -17,7 +17,6 @@ class Umbrella extends Component {
 		let R = this.ringProperties["radi"].v * 0.34;
 		let r = this.nodeProperties["radi"].v;
 		let n = this.nodeProperties["numRaids"].v;
-		//circle(R, R, r);
 		for (let i = 0; i < n; i++) {
 			let a = TAU / n * i + this.fase;
 			var posX = R + r * cos(a) * 0.5;

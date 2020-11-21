@@ -1,5 +1,5 @@
 var CANVAS_WIDTH, CANVAS_HEIGHT;
-var iptSym, iptAlfa;
+var iptSym, iptAlfa, iptSize;
 var fillColor = [0, 80, 70];
 
 function setup() {
@@ -26,17 +26,18 @@ function updateColor() {
 
 	fillColor[0]++;
 	if (fillColor[0] > 360) fillColor[0] = 0;
-	fill(fillColor[0], fillColor[1], fillColor[2]);
+	stroke(fillColor[0], fillColor[1], fillColor[2]);
 }
 
 function drawSymmetrically() {
 	translate(width/2, height/2);
 	var x = mouseX - CANVAS_WIDTH * 0.5;
 	var y = mouseY - CANVAS_HEIGHT * 0.5;
+	strokeWeight(iptSize.value);
 	for (var i = 0; i < iptSym.value; i++) {
 		push();
 		rotate(TWO_PI * i / iptSym.value);
-		ellipse(x, y, 10, 10);
+		point(x, y);
 		pop();
 	}
 }
@@ -45,11 +46,11 @@ function clearCanvas() {
 	angleMode(RADIANS);
 	background(12);
 	colorMode(HSL);
-	noStroke();
 }
 
 function setEvents() {
 	document.getElementById('btnRefresh').addEventListener('click', clearCanvas);
 	iptSym = document.getElementById('inpSymmetries');
 	iptAlfa = document.getElementById('inpAlfa');
+	iptSize = document.getElementById('inSize');
 }
