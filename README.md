@@ -16,4 +16,4 @@ PrincesNymeria testing things...
 	| Basic...            | `/basic`     |                                                                            |   5 %   |
 	| Moving Fractals     | `/fract`     | Same as `/draw`, but better                                                |  95 %   |
 	| Mouse               | `/mouse`     |                                                                            |   1 %   |
-* `/see` → Comming soon
+	| Mouse               | `/orbit`     | A love story between two circular orbits and milions of high transparency lines |  10 %   |

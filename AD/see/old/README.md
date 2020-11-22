@@ -8,7 +8,7 @@ On hi ha moviment, hi ha vida...
 
 ## Descripció
 
-La finalitat és crear imatges relaxants mostrant dibuixos animats en SVG. Per fer-ho, es canviaràn els valors dels artibuts del document SVG des d'un script JS.
+La finalitat és crear imatges relaxants mostrant **dibuixos animats** en SVG. Per fer-ho, es canviaràn els valors dels artibuts del document SVG des d'un script JS.
 
 ## Detalls tècnics
 
