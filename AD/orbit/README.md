@@ -37,9 +37,29 @@ orbit
 
 <n>...</n>
 
+## <n>Estudis</n>
+
+<n>Depenent de la relació entre les variables poden apareixer diferents formes. Les Combinacions més probanles són</n>
+
+<table>
+	<tr>
+		<th></th>
+		<th>r1&gt;r2</th>
+		<th>r1&lt;r2</th>
+	</tr>
+	<tr>
+		<th>v1&gt;v2</th>
+		<td>1</td>
+		<td>2</td>
+	</tr>
+	<tr>
+		<th>v1&lt;v2</th>
+		<td>3</td>
+		<td>4</td>
+	</tr>
+</table>
+
 ## <n>To Do</n>
 
-* [ ] AFEGIR BARRES DE CONTROL A L'HTML ¿?
-	* [ ] AFEGIR OPCIÓ PER AFEGIR ORBITES ¿?
 * [ ] TEMA COLOR I ESTÈTICA
 * [ ] DOCUMENTAR

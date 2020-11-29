@@ -1,6 +1,6 @@
-var MODE_DEBUG = false;
+var showHelper = false;
 var CANVAS_WIDTH, CANVAS_HEIGHT;
-const colorHSLa = [44, 80, 70, .8];
+const lineColor = { 'H':44, 'S':80 , 'L': 70, 'a': .1 };
 var p1, p2;
 
 
@@ -9,16 +9,16 @@ function setup() {
 	CANVAS_HEIGHT = window.innerHeight;
 	
 	createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
-	frameRate( MODE_DEBUG ? 12 : 48 );
+	frameRate( showHelper ? 12 : 48 );
 
 	clearCanvas();
 	angleMode(RADIANS);
 	noFill();
 	colorMode(HSL);
 
-	loadInterface(['r1', 'r2', 'v1', 'v2']);
-
+	loadInterface(['r1', 'r2', 'v1', 'v2', 'c']);
 	document.getElementById('btnRefresh').addEventListener('click', clearCanvas);
+	document.getElementById('btnHelper').addEventListener('click', toggleshowHelper);
 
 	p1 = new Planet(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5, 500, .01);
 	p2 = new Planet(0, 0, 250, .05);
@@ -26,20 +26,22 @@ function setup() {
 
 
 function draw() {
-	if ( MODE_DEBUG ) clearCanvas();
+	if ( showHelper ) clearCanvas();
 	
 	p2.setOrbitCenter(p1.position());
 
 	p1.update();
 	p2.update();
 	
-	if ( MODE_DEBUG ) {
+	if ( showHelper ) {
 		p1.displayHelper('#00FFFF');
 		p2.displayHelper('#FFFF00');
 	}
 	
-	if ( MODE_DEBUG ) { strokeWeight(4); stroke( '#FF00FFA0' ); }
-	else { strokeWeight(1); stroke( '#FF00FF10' ); }//  color(colorHSLa[0], colorHSLa[1], colorHSLa[2]).setAlpha(colorHSLa[3])
+	const c = color(lineColor['H'], lineColor['S'], lineColor['L']);
+	c.setAlpha( lineColor['a'] );
+	strokeWeight( showHelper ? 4 : 1 );
+	stroke( showHelper ? '#FF00FFA0' : c );
 	
 	const a = p1.position();
 	const b = p2.position();
@@ -48,7 +50,12 @@ function draw() {
 
 
 function clearCanvas() {
-	background(12);
+	background(8);
+}
+
+function toggleshowHelper() {
+	showHelper = !showHelper;
+	clearCanvas();
 }
 
 
@@ -89,7 +96,7 @@ class Planet {
 
 
 function loadInterface(slides) {
-	const defecte = [64, 32, 2, 10 ];
+	const defecte = [64, 32, 2, 10, 10 ];//const defecte = [40, 25, 20, 50, 10 ];//
 	const cont = document.getElementById('sliderContainer');
 	for (let i = 0; i < slides.length; i++) {
 		const inp = document.createElement('INPUT');
@@ -111,12 +118,6 @@ function updateVars (ev) {
 		case 'v2':  p2.setSpeed ( map( v, 0, 127, 0, .5   ) );  break;
 		case 'r1':  p1.setRadius( map( v, 0, 127, 0, 1000 ) );  break;
 		case 'r2':  p2.setRadius( map( v, 0, 127, 0, 1000 ) );  break;
-	}
-}
-
-function keyPressed() {
-	if (keyCode === 32) {
-		MODE_DEBUG = !MODE_DEBUG;
-		clearCanvas();
+		case 'c' :  lineColor['H'] = map( v, 0, 127, 0, 360 );  break;
 	}
 }
