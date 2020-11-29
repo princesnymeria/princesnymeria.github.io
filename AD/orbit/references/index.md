@@ -1,5 +1,7 @@
 # References
 
+<style>img{width:500px}</style>
+
 ## Orbits in orbits
 
 ![](ejgen-orbits_in_orbits.png)
