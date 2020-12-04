@@ -1,9 +1,9 @@
-class Torus extends Figure {
+class TorusFlower extends Figure {
 
 	constructor(pX, pY) {
 		super(pX, pY);
 
-		this.name = "Torus";
+		this.name = "Torus Flower";
 
 		this.vars['numChildren'] = {
 			v: 8,

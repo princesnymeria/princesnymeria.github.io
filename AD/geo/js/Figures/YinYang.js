@@ -1,9 +1,9 @@
-class YingYang extends Figure {
+class YinYang extends Figure {
 
 	constructor(pX, pY) {
 		super(pX, pY);
 
-		this.name = "Ying Yang";
+		this.name = "yīnyáng";
 
 		const c = pX > pY ? pX : pY; 
 		this.vars = {

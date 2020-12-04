@@ -23,7 +23,7 @@ Quan algú llanci quelcom a les escombreries, l'arbre reaccionarà depenent de l
 | Paparera |     Reacció de l'arbre    |
 |----------|---------------------------|
 | Orgànic  | <n>li surten branques</n> |
-| Plàstic  | <n>colors???? </n>        | 
+| Plàstic  | <n>colors???? </n>        |
 | Paper    | <n>L'arbre creix </n>     |
 
 ### Estètica
