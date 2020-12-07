@@ -4,19 +4,32 @@
 
 <small>Visit: http://mariaguell.cat/AD/orbit/</small>
 
-A love story between two circular orbits and milions of high transparency lines
+>A love story between two circular orbits and milions of high transparency lines
 
 ## Descripció
 
 L'objectiu és copiar a [r/ejgen](https://www.reddit.com/r/generative/comments/jqiv25/orbits_in_orbits/) per practicar p5js.
 
+La idea bàsica on gira l'algorisme és crear orbites circulars amb diferents velocitats i dibuixar una línia entre els dos "planetes".
+
 ## Estètica
 
-<n>...</n>
+Les regles d'estètica general:
+
+* Fons: `8`
+* Linies de les figures:
+	* **Color**:
+		* To: canvia depenent del planeta
+		* Saturació: `80%`
+		* Brillentor: `70%`
+		* Transparència: `0.5/1`
+	* **Gruix**: `1` pt
 
 ## Detalls tècnics
 
-<n>...</n>
+Per poder gestionar els planetes, s'ha creat la classe `Planet`.
+
+Aquesta classe conté l'atribut `Planet.satellites` que permet que cada planeta tingui diferents *llunes*. Cada lluna és un objecte *Planet* que s'allotjen al Planeta pare de manera recursiva.
 
 ### Estructura de fitxers:
 
@@ -24,42 +37,27 @@ L'objectiu és copiar a [r/ejgen](https://www.reddit.com/r/generative/comments/j
 orbit
 ├── js
 │   └── p5js
+├── results
+│   ├── index.md
+│   └── ...
+├── references
+│   ├── index.md
+│   └── ...
 ├── index.html
-├── sketch.md
-└── README.MD
+├── estils.css
+├── sketch.js
+├── Planet.js
+└── docs.md
 ```
-
-### Interfícies
-
-<n>...</n>
 
 ### Programa principal
 
 <n>...</n>
 
-## <n>Estudis</n>
+### Classe `Planet`
 
-<n>Depenent de la relació entre les variables poden apareixer diferents formes. Les Combinacions més probanles són</n>
-
-<table>
-	<tr>
-		<th></th>
-		<th>r1&gt;r2</th>
-		<th>r1&lt;r2</th>
-	</tr>
-	<tr>
-		<th>v1&gt;v2</th>
-		<td>1</td>
-		<td>2</td>
-	</tr>
-	<tr>
-		<th>v1&lt;v2</th>
-		<td>3</td>
-		<td>4</td>
-	</tr>
-</table>
+<n>...</n>
 
 ## <n>To Do</n>
 
-* [ ] CAL ARREGLAR EL CODI PER PERMETRE QUE CADA PLANETA TINGUI DIFERENTS SATELITS. TAL COM ESTÀ  IMPLMENTAT A L'sketch2. SEGURAMENT CAL REPLANTEJAR L'ESTRUCTURA DE DADES PER TAL DE QUADRAR ELS SATELITS DINS DE CADA PLANETA
-* [ ] DOCUMENTAR
+* [ ] Fer un sistema de importació via consola per poder carregar les figures descobertes anteriorment.
