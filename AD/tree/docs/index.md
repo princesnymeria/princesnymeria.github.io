@@ -1,20 +1,18 @@
-# Arbre Interactiu amb LeapMotion
+# Arbre Interactiu amb Arduino
 
 <style>n{color:#0080ff;font-family:"Segoe Print"}</style>
 
-## Membres de l'equip
-
-* Maria Güell
-* Xavier Moll
-* Biel Romaní
+Projecte desenvolupat per l'assignatura **Entorns Interactius** del grau en **Multimèdia** de la UVic per: Maria Güell, Xavier Moll i Biel Romaní.
 
 ## Idea
+
+Es vol crear un arbre que es desenvolupi cada vegada que algú llenci quelcom a les escombraries.
 
 ### Projecció
 
 Es projectarà un arbre a una paret blanca davant de les papereres de reciclatge de la universitat. L'arbre patirà lleugeres transformacions cada vegada que es llanci quelcom a les escompraries.
 
-![Cubells on es projectarà l'arbre](/entrega/lloc_projecci0.jpg)
+![Esquema](esquema.png)
 
 ### Interacció
 
@@ -34,12 +32,10 @@ Quan algú llanci quelcom a les escombreries, l'arbre reaccionarà depenent de l
 
 La música serà més/menys hostil depenent de la salut de l'arbre:
 
-- **So vent**: https://www.youtube.com/watch?v=zB-Y5OswETY
-- **So ocells cantant**: https://www.youtube.com/watch?v=bKRsCZYZAdc
+* **So vent**: https://www.youtube.com/watch?v=zB-Y5OswETY
+* **So ocells cantant**: https://www.youtube.com/watch?v=bKRsCZYZAdc
 
-* <n>ARBRE PETIT -> SO HOSTIL</n>
-* <n>ARBRE GRAN -> SO AGRADABLE.</n>
-* <n>EL VOLUM DEL SO HOSRTIL ES INVERSAMENT PROPORCIONAL A LA MIDA DE L'ARBRE. EL VOLUM DEL SO AGRADABLE HA DE SER PROPORCIONAL A LA MIDA DE L'ARBRE</n>
+El volum del so del vent es inversament proporcional a la mida de l'arbre. El volum del so dels ocells ha de ser proporcional a la mida de l'arbre. D'aquesta manera, a mesura que l'arbre es fa gran, el so es va fent agradable.
 
 ## Detalls tècnics
 
@@ -79,23 +75,75 @@ Es redibuixa a través del mètode `Tree.drawTree()` que dibuixa una un tronc i 
   * **display()**: <n>...</n>
   * **drawTree()**: <n>...</n>
 
-### Circuit
+### Circuit (Arduino)
 
-<n>Circuit</n>
+Per poder intereccionar amb l'Arbre des de les escombraries cal sensoritzar els cubells d'escombraries:
 
-<n>dlkfgjldkfg</n>
+#### Circuit
 
-#### Components
+![Esquema](circuit.png)
 
-| Num | Quantitat      |
-|-----|----------------|
-| 1   | Arduino Uno R3 |
-| 3   | 10 kΩ Resistor |
-| 3   | Photoresistor  |
+##### Llista de components
 
-<n>codi</n>
+| Quantitat |    Component    |
+|-----------|-----------------|
+|         1 | Arduino Uno R3  |
+|         3 | 10 kΩ Resistor  |
+|         3 | Photoresistor   |
 
-<n>...</n>
+#### Codi
+
+```cs
+//#include <NewPing.h>
+
+//NewPing sensor(11, 12, 200);
+int midaContenidor = 20;
+int objectNear = -1;
+int marge;
+int lastDistance;
+
+int readDistance(){
+	int echoTime = /*sensor.ping()*/2000;
+	int d = /*sensor.convert_cm(echoTime)*/40;
+	return d;
+}
+
+void checkState() {
+	int d = readDistance();
+	if(d>0 && d<midaContenidor*3){
+		if(d<midaContenidor){
+			didObjectPass(0,true);
+		} else if(d<midaContenidor*2){
+			didObjectPass(1,true);
+		} else{
+			didObjectPass(2,true);
+		}
+	} else{
+		didObjectPass(-1,false);
+	}
+}
+
+void didObjectPass(int c, bool movimentDetectat){
+	if(movimentDetectat){
+		if(objectNear==-1){
+			objectNear = c;
+		}
+	} else if(objectNear>-1){
+		Serial.write(char(objectNear));
+		objectNear = -1;
+	}
+}
+ 
+void setup() {
+	Serial.begin(9600);
+	int d = readDistance();
+}
+
+void loop() {
+	checkState();
+	delay(150);
+}
+```
 
 ### Comunicacio Serie
 
@@ -103,4 +151,4 @@ Es redibuixa a través del mètode `Tree.drawTree()` que dibuixa una un tronc i 
 
 ## Referències
 
-- [Idea de l'arbre](https://editor.p5js.org/Lukalot/sketches/H1iMK5tum)
+* [Idea de l'arbre](https://editor.p5js.org/Lukalot/sketches/H1iMK5tum)
