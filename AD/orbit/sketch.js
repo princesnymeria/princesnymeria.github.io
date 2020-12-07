@@ -1,7 +1,13 @@
-var showHelper = true;
+var showHelper = false;
 var CANVAS_WIDTH, CANVAS_HEIGHT;
-const lineColor = { 'H':0, 'S':80 , 'L': 70, 'a': .05 };
-const planets = [];
+var sun;
+const unions = [];
+
+
+window.onload = function() {
+	document.getElementById('btnRefresh').addEventListener('click', clearCanvas);
+	document.getElementById('btnHelper').addEventListener('click', toggleshowHelper);
+}
 
 
 function setup() {
@@ -16,38 +22,40 @@ function setup() {
 	noFill();
 	colorMode(HSL);
 
-	document.getElementById('btnRefresh').addEventListener('click', clearCanvas);
-	document.getElementById('btnHelper').addEventListener('click', toggleshowHelper);
-	const cont = document.getElementById('sliderContainer');
+	loadPlanets();
+}
 
-	planets.push( new Planet(cont, 500, .01, '#00FFFF') );
-	planets.push( new Planet(cont, 350, .04, '#FFFF00') );
-	planets[0].setOrbitCenter(createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
+
+function loadPlanets() {
+	const cont = document.getElementById('sliderContainer');
+	sun = new Planet(cont, 1, 0, 60);
+	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
+
+	var earth, moon;
+
+	earth = new Planet(cont, 500, .01, 120);
+	moon = new Planet(cont, 350, .04, 180);
+	earth.addSatellite( moon );
+	sun.addSatellite( earth );
+	unions.push([earth, moon]);
 }
 
 
 function draw() {
 	if ( showHelper ) clearCanvas();
 
-	const n = planets.length - 1;
+	sun.update();
+	if ( showHelper ) sun.displayHelper();
 
-	for (let p = 0; p <= n; p++) {
-		if ( p > 0 ) planets[p].setOrbitCenter(planets[p-1].position());
-		planets[p].update();
-		if ( showHelper ) planets[p].displayHelper();
-	}
-
-	const c = color(lineColor['H'], lineColor['S'], lineColor['L']);
-	c.setAlpha( lineColor['a'] );
-	strokeWeight( showHelper ? 4 : 1 );
-	stroke( showHelper ? '#FF0000A0' : c );
-	
-
-	const a = planets[n-1].position();
-	const b = planets[n].position();
-	line(a.x, a.y, b.x, b.y);
-
-	//lineColor['H'] = ( lineColor['H'] + 1 ) % 360;
+	unions.forEach(union => {
+		const a = union[0].getPosition();
+		const b = union[1].getPosition();
+		const c = union[1].getColor();
+		strokeWeight( showHelper ? 8 : 1 );
+		if ( showHelper ) c.setAlpha(0.6);
+		stroke( c );
+		line(a.x, a.y, b.x, b.y);
+	});
 }
 
 

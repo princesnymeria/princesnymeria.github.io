@@ -1,12 +1,17 @@
 class Planet {
-	constructor (controllerContainer, orbitRadius, speed, color) {
+	constructor (controllerContainer, orbitRadius, speed, colorHue) {
 		this.orbitCenter = createVector(0, 0);
 		this.orbitRadius = orbitRadius;
 		this.speed = speed;
 		this.fase = 0;
-		this.color = color;
+		this.color = { 'H':colorHue, 'S':80 , 'L': 70, 'a': .05 };
+		this.satellites = [];
 		this.loadControlers(controllerContainer, speed*254, this.updateSpeed);
 		this.loadControlers(controllerContainer, orbitRadius*0.127, this.updateRadius);
+	}
+
+	addSatellite (planet) {
+		this.satellites.push(planet);
 	}
 
 	setOrbitCenter (pos) { this.orbitCenter = pos; }
@@ -36,7 +41,13 @@ class Planet {
 		container.appendChild(inp);
 	}
 
-	position () {
+	getColor () {
+		const c = color(this.color['H'], this.color['S'], this.color['L']);
+		c.setAlpha( this.color['a'] );
+		return c;
+	}
+
+	getPosition () {
 		const x = this.orbitCenter.x + cos( this.fase ) * this.orbitRadius * 0.5;
 		const y = this.orbitCenter.y + sin( this.fase ) * this.orbitRadius * 0.5;
 		return createVector(x, y);
@@ -45,16 +56,25 @@ class Planet {
 	update () {
 		this.fase += this.speed;
 		if (this.fase >= TAU) this.fase = 0;
+		const p = this.getPosition();
+		this.satellites.forEach(satellite => {
+			satellite.setOrbitCenter(p);
+			satellite.update();
+		});
 	}
 
 	displayHelper () {
-		const p = this.position();
-		strokeWeight(30); stroke( this.color + '20' );
+		const p = this.getPosition();
+		const c = color(this.color['H'], this.color['S'], this.color['L']);
+		c.setAlpha( 0.2 ); strokeWeight(30); stroke( c );
 		point(this.orbitCenter.x, this.orbitCenter.y);
-		stroke( this.color + '60' );
+		c.setAlpha( 0.25 ); stroke( c );
 		point(p.x, p.y);
-		strokeWeight(4); stroke( this.color + '80' );
+		c.setAlpha( 0.4 ); strokeWeight(4); stroke( c );
 		circle(this.orbitCenter.x, this.orbitCenter.y, this.orbitRadius);
+		this.satellites.forEach(satellite => {
+			satellite.displayHelper(p);
+		});
 	}
 
 }
