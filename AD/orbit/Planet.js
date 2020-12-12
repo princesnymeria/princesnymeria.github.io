@@ -4,7 +4,7 @@ class Planet {
 		this.orbitRadius = orbitRadius;
 		this.speed = speed;
 		this.fase = 0;
-		this.color = { 'H':colorHue, 'S':80 , 'L': 70, 'a': .05 };
+		this.color = { 'H':colorHue, 'S':80 , 'L': 70, 'a': .025 };
 		this.satellites = [];
 		this.loadControlers(controllerContainer, speed*254, this.updateSpeed);
 		this.loadControlers(controllerContainer, orbitRadius*0.127, this.updateRadius);
