@@ -15,7 +15,7 @@ function setup() {
 	CANVAS_HEIGHT = window.innerHeight;
 	
 	createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
-	frameRate(48);//frameRate( MODE_DEBUG ? 12 : 48 );
+	frameRate(96);//frameRate( MODE_DEBUG ? 12 : 48 );
 
 	clearCanvas();
 	angleMode(RADIANS);
