@@ -1,8 +1,8 @@
 # Figures descobertes
 
-Resum de les formes més maques descobertes juntament amb el que cal afegir a la funció `loadPlanets()` per aconseguir-les:
+Resum de les formes més maques descobertes juntament amb el codi que cal executar a la consola del navegador per aconseguir-les:
 
-<style>img{ width: 750px; display: block; margin: 0 auto; }</style>
+<style> img, iframe { width: 750px; display: block; margin: 0 auto; } </style>
 
 ## Basic
 
@@ -12,10 +12,11 @@ Aquest és el model per defecte del programa.
 
 
 ```js
-function loadPlanets() {
+{
 	const cont = document.getElementById('sliderContainer');
 	sun = new Planet(cont, 1, 0, 60);
 	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
+	unions = [];
 
 	var earth, moon;
 
@@ -24,6 +25,8 @@ function loadPlanets() {
 	earth.addSatellite( moon );
 	sun.addSatellite( earth );
 	unions.push([earth, moon]);
+
+	clearCanvas();
 }
 ```
 
@@ -32,10 +35,11 @@ function loadPlanets() {
 ![](CMY_Eye.png)
 
 ```js
-function loadPlanets() {
+{
 	const cont = document.getElementById('sliderContainer');
 	sun = new Planet(cont, 1, 0, 60);
 	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
+	unions = [];
 
 	var earth, moon;
 
@@ -58,6 +62,8 @@ function loadPlanets() {
 	earth.addSatellite( moon );
 	sun.addSatellite( earth );
 	unions.push([earth, moon]);
+
+	clearCanvas();
 }
 ```
 
@@ -66,10 +72,11 @@ function loadPlanets() {
 ![](Trisquel.png)
 
 ```js
-function loadPlanets() {
+{
 	const cont = document.getElementById('sliderContainer');
 	sun = new Planet(cont, 0, 0, 0);
 	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
+	unions = [];
 
 	var earth, moon, submoon;
 
@@ -105,6 +112,8 @@ function loadPlanets() {
 	submoon.setFase(TAU/3);
 	moon.addSatellite( submoon );
 	unions.push([moon, submoon]);
+
+	clearCanvas();
 }
 ```
 
@@ -113,10 +122,11 @@ function loadPlanets() {
 ![](Trinquete_Cloud.png)
 
 ```js
-function loadPlanets() {
+{
 	const cont = document.getElementById('sliderContainer');
 	sun = new Planet(cont, 0, 0, 0);
 	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
+	unions = [];
 
 	var earth, moon, submoon;
 
@@ -152,6 +162,8 @@ function loadPlanets() {
 	submoon.setFase(TAU/3);
 	moon.addSatellite( submoon );
 	unions.push([moon, submoon]);
+
+	clearCanvas();
 }
 ```
 
@@ -160,7 +172,7 @@ function loadPlanets() {
 ![](TriCloud.png)
 
 ```js
-function loadPlanets() {
+{
 
 	const COLOR1 = 180 ; // cyan
 	const COLOR2 = 60  ; // yellow
@@ -173,6 +185,7 @@ function loadPlanets() {
 	const cont = document.getElementById('sliderContainer');
 	sun = new Planet(cont, 0, 0, 0);
 	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
+	unions = [];
 
 	var earth, moon, submoon;
 
@@ -208,6 +221,8 @@ function loadPlanets() {
 	submoon.setFase(TAU/3);
 	moon.addSatellite( submoon );
 	unions.push([moon, submoon]);
+
+	clearCanvas();
 }
 ```
 
@@ -216,7 +231,7 @@ function loadPlanets() {
 ![](Trinity.png)
 
 ```js
-function loadPlanets() {
+{
 
 	const COLOR1 = 180 ; //cyan
 	const COLOR2 = 60  ; //yellow
@@ -229,6 +244,7 @@ function loadPlanets() {
 	const cont = document.getElementById('sliderContainer');
 	sun = new Planet(cont, 0, 0, 0);
 	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
+	unions = [];
 
 	var earth, moon, submoon;
 
@@ -264,19 +280,24 @@ function loadPlanets() {
 	submoon.setFase(TAU/3);
 	moon.addSatellite( submoon );
 	unions.push([moon, submoon]);
+
+	clearCanvas();
 }
 ```
 
 ## Octinity
 
-![](Octinity.png)
+<!-- ![](Octinity.png) -->
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/V44QqkWBY2s?controls=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ```js
-function loadPlanets() {
+{
 
 	const cont = document.getElementById('sliderContainer');
 	sun = new Planet(cont, 0, 0, 0);
 	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
+  unions = [];
 
 	const n = 8;
 
@@ -289,26 +310,28 @@ function loadPlanets() {
 
 	var earth, moon, submoon;
 	var angle = 0;
-	var color = 0;
+	var colorHue = 0;
 
 	for (let i = 0; i < n; i++) {
 		earth = new Planet(cont, EARTH_RADIUS, EARTH_SPEED, 120);
 		earth.setFase(angle);
 		sun.addSatellite( earth );
 
-		moon = new Planet(cont, MOON_RADIUS, MOON_SPEED, color-30);
+		moon = new Planet(cont, MOON_RADIUS, MOON_SPEED, colorHue);
 		moon.setFase(angle);
 		earth.addSatellite( moon );
 
-		submoon = new Planet(cont, SUBMOON_RADIUS, SUBMOON_SPEED, color);
+		submoon = new Planet(cont, SUBMOON_RADIUS, SUBMOON_SPEED, colorHue);
 		submoon.setFase(angle);
 		moon.addSatellite( submoon );
 
 		unions.push([moon, submoon]);
 
 		angle += INCR_ANGLE;
-		color += INCR_COLOR;
+		colorHue += INCR_COLOR;
 	}
+  
+  clearCanvas();
 }
 ```
 
@@ -319,16 +342,19 @@ function loadPlanets() {
 ![](xxx.png)
 
 ```js
-function loadPlanets() {
+{
 	const cont = document.getElementById('sliderContainer');
 	sun = new Planet(cont, 0, 0, 0);
 	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
+	unions = [];
 
 	var earth, moon, submoon;
 
 	//...
 	
 	//showHelper = true;
+
+	clearCanvas();
 }
 ```
 

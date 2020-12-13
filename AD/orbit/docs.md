@@ -46,19 +46,17 @@ orbit
 ├── p5js.js
 ├── sketch.js
 ├── Planet.js
-├── playground.js
 └── docs.md
 ```
 
 <n>Què són a quests fitxers?</n>
 
 * `/references`: aquesta carpeta conté un recull d'imatges d'altres projectes que he rescatat d'internet i que han servit d'inspiració i aprenentatge amb per desenvolupar aquesta eina.
-* `/results`: aquesta carpeta conté un recull d'imatges aconseguides amb aquesta eina i el codi que cal enganxar al document `playground.js` per replicar-la.
+* `/results`: aquesta carpeta conté un recull d'imatges aconseguides amb aquesta eina i el codi que cal enganxar a la consola del navegador per replicar-les.
 * `index.html` i `estils.css`: <n>...</n>
 * `p5js.js`: <n>La llibreria</n>
 * `sketch.js`: <n>El programa principal</n>
 * `Planet.js`: <n>La classe `Planet` ^^</n>
-* `playground.js`: <n>Per poder remenar i crear figures sense perill de carregar-se el codi principal, he mogut la funció de càrrega dels planetes a un altre doc. Aquest fitxer, en realitat forma part de `sketch.js`.</n>
 * `docs.md`: <n>Què creus que estàs llegint? ;)</n>
 
 ### Programa principal
