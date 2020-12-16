@@ -46,16 +46,39 @@ function draw() {
 
 function loadPlanets() {
 	const cont = document.getElementById('sliderContainer');
-	sun = new Planet(cont, 1, 0, 60);
+	sun = new Planet(cont, 0, 0, 0);
 	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
 
-	var earth, moon;
+	const n = 8;
+	const EARTH_RADIUS   =   350 ;	const EARTH_SPEED    =  .001 ;
+	const MOON_RADIUS    =   400 ;	const MOON_SPEED     =  .002 ;
+	const SUBMOON_RADIUS =   300 ;	const SUBMOON_SPEED  =  .008 ;
 
-	earth = new Planet(cont, 500, .001, 120);
-	moon = new Planet(cont, 350, .004, 180);
-	earth.addSatellite( moon );
-	sun.addSatellite( earth );
-	unions.push([earth, moon]);
+	const INCR_ANGLE = TAU/n;
+	const INCR_COLOR = 360/n;
+
+	var earth, moon, submoon;
+	var angle = 0;
+	var colorHue = 0;
+
+	for (let i = 0; i < n; i++) {
+		earth = new Planet(cont, EARTH_RADIUS, EARTH_SPEED, 120);
+		earth.setFase(angle);
+		sun.addSatellite( earth );
+
+		moon = new Planet(cont, MOON_RADIUS, MOON_SPEED, colorHue);
+		moon.setFase(angle);
+		earth.addSatellite( moon );
+
+		submoon = new Planet(cont, SUBMOON_RADIUS, SUBMOON_SPEED, colorHue);
+		submoon.setFase(angle);
+		moon.addSatellite( submoon );
+
+		unions.push([moon, submoon]);
+
+		angle += INCR_ANGLE;
+		colorHue += INCR_COLOR;
+	}
 }
 
 

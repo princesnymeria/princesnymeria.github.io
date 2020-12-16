@@ -70,3 +70,4 @@ orbit
 ## <n>To Do</n>
 
 * [ ] Fer un sistema d'importació via consola per poder carregar les figures descobertes anteriorment.
+* [ ] Documentar la classe `Planet`
