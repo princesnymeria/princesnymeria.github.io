@@ -381,6 +381,138 @@ Aquest és el model per defecte del programa.
 }
 ```
 
+## U&Me
+
+![](U&Me.png)
+
+```js
+{
+	const cont = document.getElementById('sliderContainer');
+	sun = new Planet(cont, 0, 0, 0);
+	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
+	unions = [];
+
+	const n = 2;
+
+	const EARTH_RADIUS   =   350 ;	const EARTH_SPEED    =  .001 ;
+	const MOON_RADIUS    =   400 ;	const MOON_SPEED     =  .005 ;
+	const SUBMOON_RADIUS =   300 ;	const SUBMOON_SPEED  =  .010 ;
+
+	const INCR_ANGLE = TAU/n;
+	const INCR_COLOR = 360/n;
+
+	var earth, moon, submoon;
+	var angle = 0;
+	var colorHue = 0;
+
+	for (let i = 0; i < n; i++) {
+		earth = new Planet(cont, EARTH_RADIUS, EARTH_SPEED, 120);
+		earth.setFase(angle);
+		sun.addSatellite( earth );
+
+		moon = new Planet(cont, MOON_RADIUS, MOON_SPEED, colorHue);
+		moon.setFase(angle);
+		earth.addSatellite( moon );
+
+		submoon = new Planet(cont, SUBMOON_RADIUS, SUBMOON_SPEED, colorHue);
+		submoon.setFase(angle);
+		moon.addSatellite( submoon );
+
+		unions.push([moon, submoon]);
+
+		angle += INCR_ANGLE;
+		colorHue += INCR_COLOR;
+	}
+  
+  clearCanvas();
+}
+```
+
+## Me&Me
+
+![](Me&Me.png)
+
+```js
+{
+	const cont = document.getElementById('sliderContainer');
+	sun = new Planet(cont, 0, 0, 0);
+	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
+	unions = [];
+
+	const EARTH_RADIUS   =   350 ;	const EARTH_SPEED    =  .001 ;
+	const MOON_RADIUS    =   400 ;	const MOON_SPEED     =  .005 ;
+	const SUBMOON_RADIUS =   500 ;	const SUBMOON_SPEED  =  .008 ;
+
+	var colorHues = [180, 300];
+  
+	var earth, moon, submoon;
+	var angle = 0;
+	const INCR_ANGLE = TAU/colorHues.length;
+
+	for (let i = 0; i < colorHues.length; i++) {
+		earth = new Planet(cont, EARTH_RADIUS, EARTH_SPEED, 120);
+		earth.setFase(angle);
+		sun.addSatellite( earth );
+
+		moon = new Planet(cont, MOON_RADIUS, MOON_SPEED, colorHues[i]);
+		moon.setFase(angle);
+		earth.addSatellite( moon );
+
+		submoon = new Planet(cont, SUBMOON_RADIUS, SUBMOON_SPEED, colorHues[i]);
+		submoon.setFase(angle);
+		moon.addSatellite( submoon );
+
+		unions.push([moon, submoon]);
+
+		angle += INCR_ANGLE;
+	}
+  
+  clearCanvas();
+}
+```
+
+## Mar
+
+![](Mar.png)
+
+```js
+{
+	const cont = document.getElementById('sliderContainer');
+	sun = new Planet(cont, 0, 0, 0);
+	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
+	unions = [];
+
+	const EARTH_RADIUS   =   100 ;	const EARTH_SPEED    =  .002 ;
+	const MOON_RADIUS    =   400 ;	const MOON_SPEED     =  .004 ;
+	const SUBMOON_RADIUS =   460 ;	const SUBMOON_SPEED  =  .008 ;
+
+	var colorHues = [180, 300, 240];
+  
+	var earth, moon, submoon;
+	var angle = 0;
+	const INCR_ANGLE = TAU/colorHues.length;
+
+	for (let i = 0; i < colorHues.length; i++) {
+		earth = new Planet(cont, EARTH_RADIUS, EARTH_SPEED, 120);
+		earth.setFase(angle);
+		sun.addSatellite( earth );
+
+		moon = new Planet(cont, MOON_RADIUS, MOON_SPEED, colorHues[i]);
+		moon.setFase(angle);
+		earth.addSatellite( moon );
+
+		submoon = new Planet(cont, SUBMOON_RADIUS, SUBMOON_SPEED, colorHues[i]);
+		submoon.setFase(angle);
+		moon.addSatellite( submoon );
+
+		unions.push([moon, submoon]);
+
+		angle += INCR_ANGLE;
+	}
+  
+  clearCanvas();
+}
+```
 <!--
 
 ## xxx
