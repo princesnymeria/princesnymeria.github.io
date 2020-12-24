@@ -1,6 +1,6 @@
-# Princes Nymeria Lab
+# Mar's Lab
 
-PrincesNymeria testing things...
+Mar Kralovna testing things...
 
 ## Sitemap
 
