@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Maria Guell</title>
+</head>
+
+
+<style>
+	#firma {/* Centrat */
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	#firma {
+		stroke: url(#grad);
+	}
+
+	body {
+		margin: 0;
+		height: 100vh;
+		width: 100vw;
+		overflow: hidden;
+		background: #222222; /* background: #070707; */
+	}
+
+	#firma>path, #firma>line, #firma>circle {
+		fill: none;
+		stroke-width: 40px;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+	}
+
+	@media only screen and (max-width: 1400px) {
+		#firma {
+			width: 90vw;
+		}
+	}
+</style>
+
+
+<script>
+	var element, gradStops;
+
+	window.onload = function() {
+		element = document.getElementById('firma');
+		gradStops = document.getElementById('grad').children;
+		document.body.addEventListener('mousemove', editGradient );
+	};
+
+	function editGradient (ev) {
+		const h1 = ev.pageX / window.innerWidth * 360;
+		const h2 = ev.pageY / window.innerHeight * 360;
+		gradStops[0].style = 'stop-color: hsl(' + h1 + ', 80%, 70%); stop-opacity: 1';
+		gradStops[1].style = 'stop-color: hsl(' + h2 + ', 80%, 70%); stop-opacity: 1';
+	};
+
+	function displayGides () {const numCols = 14;const numRows = 5;const cellSize = 100;for (let c = -1; c < numCols; c++) {const line = document.createElementNS('http://www.w3.org/2000/svg','line');line.setAttribute('x1', c * cellSize);line.setAttribute('x2', c * cellSize);line.setAttribute('y1', -cellSize);line.setAttribute('y2', (numRows - 1) * cellSize);line.setAttribute('style', 'stroke:rgb(255, 0,0 ); stroke-width: 2');element.appendChild(line);}for (let r = -1; r < numRows; r++) {const line = document.createElementNS('http://www.w3.org/2000/svg','line');line.setAttribute('x1', -cellSize);line.setAttribute('x2', (numCols - 1) * cellSize);line.setAttribute('y1', r * cellSize);line.setAttribute('y2', r * cellSize);line.setAttribute('style', 'stroke:rgb(255, 0,0 ); stroke-width: 2');element.appendChild(line);}};
+</script>
+
+
+<body onclick=" location.href = 'https:\/\/markralovna.github.io/AD/' ">
+	<svg id="firma" xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="-50 -250 1300 750" ><!--  width="1200" height="250"  -->
+
+		<defs>
+			<linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%" >
+				<stop offset="0%"   style="stop-color: hsl(180, 80%, 70%); stop-opacity: 1" />
+				<stop offset="100%" style="stop-color: hsl(300, 80%, 70%); stop-opacity: 1" />
+			</linearGradient>
+		</defs>
+
+		<!--  ID                   Posició         Arc                        Pal de tornada...        -->
+		<path id="A2"         d="  m  1000 100     a  100 100 0 0 1 200 0     l  0 150     l  -200 0  " />
+		<path id="I-cos"      d="  m  800  100     a  100 100 0 0 1 200 0     l  0 375                " />
+		<path id="R"          d="  m  600  100     a  100 100 0 0 1 200 0     a  100 100 0 0 0 0 150  " />
+		<path id="A1"         d="  m  400  100     a  100 100 0 0 1 200 0     l  0 150     l  -200 0  " />
+		<path id="M-arc2"     d="  m  200  100     a  100 100 0 0 1 200 0     l  0 150                " />
+		<path id="M-arc1"     d="  m  00   100     a  100 100 0 0 1 200 0     l  0 150                " />
+
+		<line   id="M-pal"      x1="0"       y1="0"        x2="0.0001"    y2="250" />
+		<circle id="I-punt"     cx="900"     cy="-150"     r="75" />
+	</svg>
+</body>
+
+</html>

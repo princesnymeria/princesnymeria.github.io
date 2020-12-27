@@ -1,25 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!--
+╔══════════════════════════════════════════════════╗
+║                                                  ║
+║                 DOM amb la firma                 ║
+║                                                  ║
+╚══════════════════════════════════════════════════╝
+-->
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>PrincesNymeria</title>
+	<title>mmm...</title>
+	<script src="recursos/llibreries/p5js/p5.js"></script>
 </head>
 
 
+<body onclick=" location.href = 'AD' ">
+	<h1 id="firma" style="background: rgb(215, 215, 215); background-clip: border-box; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Mar Kralovna</h1>
+	<!-- <svg id="firma" xmlns="http://www.w3.org/2000/svg" width="200" height="50" viewBox="0 0 200 50" >
+		<path d="m 5 30 c 9.399125,-6.5285 17.975035,-39.00331 36.247916,-0.52918 8.853811,-22.61962 16.665742,-30.35328 29.368751,0.26459 6.357494,-6.36196 9.93712,-14.32798 26.458328,-21.9604 -22.066002,9.31525 2.30361,46.89162 17.4625,12.96457 l 5.55625,-12.43541 c 5.23342,9.83884 10.42433,17.85984 19.31458,21.69582 12.18808,5.25894 9.63263,-46.17915 39.80635,-1.14278 3.68999,5.1926 11.52282,1.40737 11.52282,1.40737" />
+	</svg> -->
+</body>
+
+
+
+
+
+<!--
+╔══════════════════════════════════════════════════╗
+║                                                  ║
+║                      ESTILS                      ║
+║                                                  ║
+╚══════════════════════════════════════════════════╝
+-->
+
+
 <style>
-	#firma {/* Centrat */
+	@font-face {
+		font-family: font;
+		src: url(./recursos/fonts/Poiret_One/PoiretOne-Regular.ttf);
+	}
+
+	#firma {
 		position: absolute;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
+		/*height: 100px;*/
+		width:  100%;
+		text-align: center;
 	}
 
 	#firma {
-		stroke: url(#grad);
+		font-family: font;
+		font-size: 48pt;
+		/*text-transform: uppercase;*/
 	}
 
 	body {
@@ -27,66 +65,81 @@
 		height: 100vh;
 		width: 100vw;
 		overflow: hidden;
-		background: #222222; /* background: #070707; */
+		background: #222222;
 	}
 
-	#firma>path, #firma>line, #firma>circle {
-		fill: none;
-		stroke-width: 40px;
-		stroke-linecap: round;
-		stroke-linejoin: round;
-	}
-
-	@media only screen and (max-width: 1400px) {
-		#firma {
-			width: 90vw;
-		}
-	}
+	@media only screen and (max-width: 500px) { #firma { font-size: 32pt; } }
+	@media only screen and (max-width: 250px) { #firma { font-size: 24pt; } }
 </style>
 
 
+
+
+
+<!--
+╔══════════════════════════════════════════════════╗
+║                                                  ║
+║          lÒGICA de la geomatria de fons          ║
+║                                                  ║
+╚══════════════════════════════════════════════════╝
+-->
+
+
 <script>
-	var element, gradStops;
+	const posX = window.innerWidth * 0.5;
+	const posY = window.innerHeight * 0.5;
+	const size = ( posX > posY ? posX : posY ) * 1.5;
 
-	window.onload = function() {
-		element = document.getElementById('firma');
-		gradStops = document.getElementById('grad').children;
-		document.body.addEventListener('mousemove', editGradient );
-	};
+	function setup() {
+		createCanvas(window.innerWidth, window.innerHeight);
+		frameRate(12);
 
-	function editGradient (ev) {
-		const h1 = ev.pageX / window.innerWidth * 360;
-		const h2 = ev.pageY / window.innerHeight * 360;
-		gradStops[0].style = 'stop-color: hsl(' + h1 + ', 80%, 70%); stop-opacity: 1';
-		gradStops[1].style = 'stop-color: hsl(' + h2 + ', 80%, 70%); stop-opacity: 1';
-	};
+		angleMode(RADIANS);
 
-	function displayGides () {const numCols = 14;const numRows = 5;const cellSize = 100;for (let c = -1; c < numCols; c++) {const line = document.createElementNS('http://www.w3.org/2000/svg','line');line.setAttribute('x1', c * cellSize);line.setAttribute('x2', c * cellSize);line.setAttribute('y1', -cellSize);line.setAttribute('y2', (numRows - 1) * cellSize);line.setAttribute('style', 'stroke:rgb(255, 0,0 ); stroke-width: 2');element.appendChild(line);}for (let r = -1; r < numRows; r++) {const line = document.createElementNS('http://www.w3.org/2000/svg','line');line.setAttribute('x1', -cellSize);line.setAttribute('x2', (numCols - 1) * cellSize);line.setAttribute('y1', r * cellSize);line.setAttribute('y2', r * cellSize);line.setAttribute('style', 'stroke:rgb(255, 0,0 ); stroke-width: 2');element.appendChild(line);}};
+		noFill();
+		stroke(60);
+		strokeWeight(2);
+
+	}
+
+	function draw() {
+		background(34);
+
+		const numNodesOfStar = parseInt( map( mouseX, 0, posX * 2, 3, 30) );
+		const disitanceBetweenNodesOfStar = parseInt( map( mouseY, 0, posY * 2, 1, numNodesOfStar * 0.5) );
+		const angleOfMoon = map( mouseX, 0, posX * 2, 0, TAU ); //angle = atan2( mouseY - posY, mouseX - posX );
+		const dimRatioOfMoon = map( mouseY, 0, posY * 2, 0, 1   );
+
+		drawStar(posX, posY, size, numNodesOfStar, disitanceBetweenNodesOfStar);
+		//drawMoon(posX, posY, size, angleOfMoon, dimRatioOfMoon);
+	}
+
+	function drawStar(pX, pY, dim, numNodes, disitanceBetweenNodes) {
+		for (let i = 0; i < numNodes; i++) {
+			const a1 = HALF_PI - TAU / numNodes * i;
+			const p1x = pX + cos(a1) * dim * 0.5;
+			const p1y = pY + sin(a1) * dim * 0.5;
+			const a2 = HALF_PI - TAU / numNodes * (i + disitanceBetweenNodes);
+			const p2x = pX + cos(a2) * dim * 0.5;
+			const p2y = pY + sin(a2) * dim * 0.5;
+			line(p1x, p1y, p2x, p2y);
+		}
+	}
+
+	function drawMoon(pX, pY, dim, angle, dimRatio) {
+		push();
+		translate(pX, pY);
+		circle(0, 0, dim);
+		rotate(angle);
+		const p = dim * ( .5 + dimRatio * - .5 );
+		circle( p, 0, dim * dimRatio);
+		pop();
+	}
+
+	document.body.addEventListener('mousemove', function( event ) {
+		const a = map( mouseX, 0, posX * 2, 90, 270 );
+		firma.style.backgroundImage = 'linear-gradient( ' + a + 'deg, rgba( 215, 215, 215, 1 ) 0%, rgba( 94, 94, 94, 1 ) 47%, rgba( 215, 215, 215, 1 ) 100% )';
+	} );
 </script>
-
-
-<body onclick=" location.href = 'AD' "><!--   https:\/\/markralovna.github.io/AD/   -->
-	<svg id="firma" xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="-50 -250 1300 750" ><!--  width="1200" height="250"  -->
-
-		<defs>
-			<linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%" >
-				<stop offset="0%"   style="stop-color: hsl(180, 80%, 70%); stop-opacity: 1" />
-				<stop offset="100%" style="stop-color: hsl(300, 80%, 70%); stop-opacity: 1" />
-			</linearGradient>
-		</defs>
-
-		<!--  ID                   Posició         Arc                        Pal de tornada...        -->
-		
-		<!-- <path id="A2"         d="  m  1000 100     a  100 100 0 0 1 200 0     l  0 150     l  -200 0  " /> -->
-		<!-- <path id="I-cos"      d="  m  800  100     a  100 100 0 0 1 200 0     l  0 375                " /> -->
-		<path id="R"          d="  m  600  100     a  100 100 0 0 1 200 0     a  100 100 0 0 0 0 150  " />
-		<path id="A1"         d="  m  400  100     a  100 100 0 0 1 200 0     l  0 150     l  -200 0  " />
-		<path id="M-arc2"     d="  m  200  100     a  100 100 0 0 1 200 0     l  0 150                " />
-		<path id="M-arc1"     d="  m  00   100     a  100 100 0 0 1 200 0     l  0 150                " />
-
-		<line   id="M-pal"      x1="0"       y1="0"        x2="0.0001"    y2="250" />
-		<!-- <circle id="I-punt"     cx="900"     cy="-150"     r="75" /> -->
-	</svg>
-</body>
 
 </html>
