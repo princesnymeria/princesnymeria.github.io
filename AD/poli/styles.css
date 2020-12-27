@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+@font-face {
+	font-family: Raleway;
+	src: url(../../recursos/fonts/Raleway/Raleway-Regular.ttf);
+}
 
 body, button {
 	font-size: 14pt;
