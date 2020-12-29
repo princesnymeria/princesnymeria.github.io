@@ -19,7 +19,9 @@
 
 
 <body onclick=" location.href = 'AD' ">
-	<h1 id="firma" style="background: rgb(215, 215, 215); background-clip: border-box; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Mar Kralovna</h1>
+	<div class="centered">
+		<h1 id="firma">Mar<br>Kralovna</h1>
+	</div>
 	<!-- <svg id="firma" xmlns="http://www.w3.org/2000/svg" width="200" height="50" viewBox="0 0 200 50" >
 		<path d="m 5 30 c 9.399125,-6.5285 17.975035,-39.00331 36.247916,-0.52918 8.853811,-22.61962 16.665742,-30.35328 29.368751,0.26459 6.357494,-6.36196 9.93712,-14.32798 26.458328,-21.9604 -22.066002,9.31525 2.30361,46.89162 17.4625,12.96457 l 5.55625,-12.43541 c 5.23342,9.83884 10.42433,17.85984 19.31458,21.69582 12.18808,5.25894 9.63263,-46.17915 39.80635,-1.14278 3.68999,5.1926 11.52282,1.40737 11.52282,1.40737" />
 	</svg> -->
@@ -44,19 +46,23 @@
 		src: url(./recursos/fonts/Poiret_One/PoiretOne-Regular.ttf);
 	}
 
-	#firma {
+	.centered {
 		position: absolute;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
 		/*height: 100px;*/
-		width:  100%;
+		width: max-content;
 		text-align: center;
 	}
 
 	#firma {
 		font-family: font;
 		font-size: 48pt;
+		background: hsl(240, 60%, 70%);
+		background-clip: border-box;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
 		/*text-transform: uppercase;*/
 	}
 
@@ -65,7 +71,7 @@
 		height: 100vh;
 		width: 100vw;
 		overflow: hidden;
-		background: #222222;
+		background: hsl(0, 0%, 13%);
 	}
 
 	@media only screen and (max-width: 500px) { #firma { font-size: 32pt; } }
@@ -89,6 +95,7 @@
 	const posX = window.innerWidth * 0.5;
 	const posY = window.innerHeight * 0.5;
 	const size = ( posX > posY ? posX : posY ) * 1.5;
+	const color = { 'H': 0, 'S': 60, 'L': 70, 'Hmin': 180, 'Hmax': 300 };
 
 	function setup() {
 		createCanvas(window.innerWidth, window.innerHeight);
@@ -97,25 +104,27 @@
 		angleMode(RADIANS);
 
 		noFill();
-		stroke(60);
+		//stroke(60);
 		strokeWeight(2);
-
+		colorMode(HSL);
 	}
 
 	function draw() {
-		background(34);
-
-		const numNodesOfStar = parseInt( map( mouseX, 0, posX * 2, 3, 30) );
-		const disitanceBetweenNodesOfStar = parseInt( map( mouseY, 0, posY * 2, 1, numNodesOfStar * 0.5) );
-		const angleOfMoon = map( mouseX, 0, posX * 2, 0, TAU ); //angle = atan2( mouseY - posY, mouseX - posX );
-		const dimRatioOfMoon = map( mouseY, 0, posY * 2, 0, 1   );
-
+		background(0, 0, 13);
+		const numNodesOfStar = parseInt( map( mouseX, 0, posX * 2, 3, 64) );
+		const disitanceBetweenNodesOfStar = parseInt( map( mouseY, 0, posY * 2, 1, numNodesOfStar * 0.4) );
+		//const angleOfMoon = map( mouseX, 0, posX * 2, 0, TAU ); //angle = atan2( mouseY - posY, mouseX - posX );
+		//const dimRatioOfMoon = map( mouseY, 0, posY * 2, 0, 1   );
 		drawStar(posX, posY, size, numNodesOfStar, disitanceBetweenNodesOfStar);
 		//drawMoon(posX, posY, size, angleOfMoon, dimRatioOfMoon);
 	}
 
 	function drawStar(pX, pY, dim, numNodes, disitanceBetweenNodes) {
+		var h = color['Hmin'];
+		const COLOR_INCR = (color['Hmax'] - color['Hmin'] ) / numNodes;
 		for (let i = 0; i < numNodes; i++) {
+			stroke( h, color['S'], color['L'] );
+			h += COLOR_INCR;
 			const a1 = HALF_PI - TAU / numNodes * i;
 			const p1x = pX + cos(a1) * dim * 0.5;
 			const p1y = pY + sin(a1) * dim * 0.5;
@@ -137,8 +146,10 @@
 	}
 
 	document.body.addEventListener('mousemove', function( event ) {
-		const a = map( mouseX, 0, posX * 2, 90, 270 );
-		firma.style.backgroundImage = 'linear-gradient( ' + a + 'deg, rgba( 215, 215, 215, 1 ) 0%, rgba( 94, 94, 94, 1 ) 47%, rgba( 215, 215, 215, 1 ) 100% )';
+		const h1 = floor(map( mouseX, 0, posX * 2, color['Hmin'], color['Hmax'] ));
+		const h2 = floor(map( mouseY, 0, posY * 2, color['Hmin'], color['Hmax'] ));
+		const c = 'linear-gradient( 45deg, hsl( ' + h1 + ', ' + color['S'] + '%, ' + color['L'] + '% ) 0%, hsl( ' + h2 + ', ' + color['S'] + '%, ' + color['L'] + '% ) 100% )';
+		firma.style.backgroundImage = c;
 	} );
 </script>
 
