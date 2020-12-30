@@ -104,44 +104,37 @@
 		angleMode(RADIANS);
 
 		noFill();
-		//stroke(60);
 		strokeWeight(2);
 		colorMode(HSL);
 	}
 
 	function draw() {
 		background(0, 0, 13);
-		const numNodesOfStar = parseInt( map( mouseX, 0, posX * 2, 3, 64) );
-		const disitanceBetweenNodesOfStar = parseInt( map( mouseY, 0, posY * 2, 1, numNodesOfStar * 0.4) );
-		//const angleOfMoon = map( mouseX, 0, posX * 2, 0, TAU ); //angle = atan2( mouseY - posY, mouseX - posX );
-		//const dimRatioOfMoon = map( mouseY, 0, posY * 2, 0, 1   );
-		drawStar(posX, posY, size, numNodesOfStar, disitanceBetweenNodesOfStar);
-		//drawMoon(posX, posY, size, angleOfMoon, dimRatioOfMoon);
-	}
+		
+		const numNodes = 32;//const numNodes = parseInt( map( mouseX, 0, posX * 2, 3, 64 ) );
+		const angle = parseInt( map( mouseY, 0, posY * 2, 0, TAU) );
+		const disitanceBetweenNodes = parseInt( map( mouseY, 0, posY * 2, 1, numNodes * 0.4) );
+		const ratioObertura = 0.8;
 
-	function drawStar(pX, pY, dim, numNodes, disitanceBetweenNodes) {
 		var h = color['Hmin'];
+		const n = floor( numNodes * ratioObertura );
 		const COLOR_INCR = (color['Hmax'] - color['Hmin'] ) / numNodes;
-		for (let i = 0; i < numNodes; i++) {
+
+		push();
+		translate(posX, posY);
+		rotate(angle);
+
+		for (let i = 0; i < n; i++) {
 			stroke( h, color['S'], color['L'] );
 			h += COLOR_INCR;
 			const a1 = HALF_PI - TAU / numNodes * i;
-			const p1x = pX + cos(a1) * dim * 0.5;
-			const p1y = pY + sin(a1) * dim * 0.5;
+			const p1x = cos(a1) * size * 0.5;
+			const p1y = sin(a1) * size * 0.5;
 			const a2 = HALF_PI - TAU / numNodes * (i + disitanceBetweenNodes);
-			const p2x = pX + cos(a2) * dim * 0.5;
-			const p2y = pY + sin(a2) * dim * 0.5;
+			const p2x = cos(a2) * size * 0.5;
+			const p2y = sin(a2) * size * 0.5;
 			line(p1x, p1y, p2x, p2y);
 		}
-	}
-
-	function drawMoon(pX, pY, dim, angle, dimRatio) {
-		push();
-		translate(pX, pY);
-		circle(0, 0, dim);
-		rotate(angle);
-		const p = dim * ( .5 + dimRatio * - .5 );
-		circle( p, 0, dim * dimRatio);
 		pop();
 	}
 
