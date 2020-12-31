@@ -94,7 +94,7 @@
 <script>
 	const posX = window.innerWidth * 0.5;
 	const posY = window.innerHeight * 0.5;
-	const size = ( posX > posY ? posX : posY ) * 1.5;
+	const size = ( posX > posY ? posX : posY ) * 1.25;
 	const color = { 'H': 0, 'S': 60, 'L': 70, 'Hmin': 180, 'Hmax': 300 };
 
 	function setup() {
@@ -112,7 +112,7 @@
 		background(0, 0, 13);
 		
 		const numNodes = 32;//const numNodes = parseInt( map( mouseX, 0, posX * 2, 3, 64 ) );
-		const angle = parseInt( map( mouseY, 0, posY * 2, 0, TAU) );
+		const angle = parseInt( map( mouseX, 0, posX * 2, 0, TAU) );
 		const disitanceBetweenNodes = parseInt( map( mouseY, 0, posY * 2, 1, numNodes * 0.4) );
 		const ratioObertura = 0.8;
 
