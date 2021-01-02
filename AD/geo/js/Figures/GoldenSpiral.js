@@ -28,7 +28,7 @@ class GoldenSpiral extends Figure {
 			'numBranches': {
 				v: 4,
 				default: 4,
-				min: 2,
+				min: 1,
 				max: 16,
 				integer: true
 			}
