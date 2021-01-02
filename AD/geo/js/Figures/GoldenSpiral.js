@@ -13,43 +13,49 @@ class GoldenSpiral extends Figure {
 		this.vars = {
 			'dim': {
 				v: 0,
-				default: c * 0.7,
-				min: c * 0.1,
-				max: c * 1.5,
+				default: c * .015,
+				min: c * .01,
+				max: c * .02,
 				integer: false
 			},
 			'iterations': {
 				v: 0,
-				default: 4,
+				default: 18,
 				min: 1,
-				max: 12,
+				max: 32,
+				integer: true
+			},
+			'numBranches': {
+				v: 4,
+				default: 4,
+				min: 2,
+				max: 16,
 				integer: true
 			}
 		}
-
 		this.fi = this.calcGoldenNumber();
 	}
 
 	display() {
+		const r = this.vars['dim'].v;
+		const n = this.vars['numBranches'].v;
+		if (MODE_DEBUG) { stroke('#00FFFF88'); circle(this.posX, this.posY, r); }
 		angleMode(RADIANS);
-
-		const d = this.vars['dim'].v;
-		const I = this.vars['iterations'].v;
-		var rp = d;
-		var xp = this.posX;
-		var yp = this.posY;
-
-		if (MODE_DEBUG) stroke('#FF00FF');
-		this.displaySpiral(false);
-		if (MODE_DEBUG) stroke('#00FFFF50'); else stroke('#FFFFFF40');
-		this.displaySpiral(true);
+		for (let i = 1; i <= n; i++) {
+			const a = TAU / n * i;
+			this.spiral(
+				this.posX + r * cos( a ) * .5, // posX
+				this.posY + r * sin( a ) * .5, // posY
+				r, //diameter
+				( TAU / n ) * i + PI // fase
+			);
+		}
 	}
 
 	calcFibonacciSeq(iterations) {
 		var res = [0, 1];
-		for (let i = 0; i < iterations; i++) {
+		for (let i = 0; i < iterations; i++)
 			res.push(res[i] + res[i+1])
-		}
 		if (MODE_DEBUG) console.log(res);
 		return res;
 	}
@@ -61,43 +67,22 @@ class GoldenSpiral extends Figure {
 		return res;
 	}
 
-	displaySpiral(withCircles) {
-		angleMode(RADIANS);
+	spiral(posX, posY, diameter, fase) {
+		if (MODE_DEBUG) { stroke('#FF00FF20'); circle(posX, posY, diameter); stroke('#FF00FF88'); }
+		arc(posX, posY, diameter, diameter, fase, fase + HALF_PI, OPEN);
 
-		const d = this.vars['dim'].v;
-		const I = this.vars['iterations'].v;
-		var rp = d;
-		var xp = this.posX;
-		var yp = this.posY;
+		const d = .5 / this.fi;
+		const maxDim = this.vars['iterations'].v * this.fi *this.vars['dim'].v;
 
-		var f = PI;
+		if (diameter < maxDim ) this.spiral(
+			posX - cos( HALF_PI + fase ) * diameter * d ,
+			posY - sin( HALF_PI + fase ) * diameter * d ,
+			diameter * this.fi, // diameter
+			fase + HALF_PI // fase
+		);
 
-		if (withCircles) circle(this.posX, this.posY, d);
-		else arc(this.posX, this.posY, d, d, f, f + HALF_PI, OPEN);
 
-		f += HALF_PI;
 
-		for (let i = 1; i < I; i++) {
-
-			var r = d / (this.fi * i);
-
-			var dx = (rp + r) * -0.5 + r;
-			var dy = dx;
-
-			dx *= cos(HALF_PI * (i+1) - HALF_PI);
-			dy *= cos(HALF_PI * i - HALF_PI);
-
-			var x = xp + dx;
-			var y = yp + dy;
-
-			if (withCircles) circle(x, y, r);
-			else arc(x, y, r, r, f, f + HALF_PI, OPEN);
-			f += HALF_PI;
-			
-			rp = r;
-			xp = x;
-			yp = y;
-		}
 	}
 
 }

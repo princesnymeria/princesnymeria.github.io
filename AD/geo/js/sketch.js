@@ -12,7 +12,7 @@ function setup() {
 	createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
 	frameRate(MODE_DEBUG ? 1 : 12);
 
-	animations.push(new TorusFlower(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));				// 0
+	animations.push(new TorusFlower(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));			// 0
 	animations.push(new Star(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));					// 1
 	animations.push(new GoldenSpiral(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));			// 2
 	//animations.push(new Lauburo(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5));			// 3
