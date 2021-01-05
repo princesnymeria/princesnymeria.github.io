@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<title>Symmetrical Drawing</title>
+
+		<!-- Estils bàsics -->
+		<link rel="stylesheet" href="estils.css">
+		
+
+		<!-- Scripts base p5js -->
+		<script src="../../recursos/llibreries/p5js/p5.js"></script>
+		
+		<!-- Scripts base -->
+		<script src="sketch.js"></script>
+
+	</head>
+
+	<body>
+		<div id="controllersContainer">
+			<div id="sliderContainer">
+				<input type="range" id="inpSymmetries" min="1" max="24" step="1" value="8">
+				<input type="range" id="inpAlfa" min="0" max="1" step="0.01" value="0.2">
+				<input type="range" id="inSize" min="5" max="50" step="1" value="10">
+			</div>
+			<div id="buttonContainer">
+				<button id="btnRefresh">Refresh</button id="inpSymmetries">
+			</div>
+		</div>
+	</body>
+
+</html>
