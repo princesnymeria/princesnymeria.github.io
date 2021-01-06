@@ -33,13 +33,19 @@ function draw() {
 	if ( showHelper ) sun.displayHelper();
 
 	unions.forEach(union => {
+		const displayLine = union.length == 2;
+
 		const a = union[0].getPosition();
-		const b = union[1].getPosition();
-		const c = union[1].getColor();
-		strokeWeight( showHelper ? 8 : 1 );
+		const b = displayLine ? union[1].getPosition() : 0;
+		const c = union[0].getColor();
+
+		if (displayLine) strokeWeight( showHelper ? 8 : 1 ); else strokeWeight( 10 );
+		
 		if ( showHelper ) c.setAlpha(0.6);
+
 		stroke( c );
-		line(a.x, a.y, b.x, b.y);
+
+		if (displayLine) line(a.x, a.y, b.x, b.y); else point(a.x, a.y);
 	});
 }
 

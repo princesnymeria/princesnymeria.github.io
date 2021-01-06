@@ -73,3 +73,6 @@ orbit
 
 * [ ] Fer un sistema d'importació via consola per poder carregar les figures descobertes anteriorment.
 * [ ] Documentar la classe `Planet`
+* [ ] <n>sibstituir la interficie gràfica per valors aleatoris????</n>
+* [ ] <n>Potser enlloc d'Orbits s'hauria d'anomenar "Generative Drawing".</n>
+* [ ] <n>Investigar el concepte "Organic Painting"</n>

@@ -10,7 +10,7 @@
 
 >I calculate two circular orbits at different speeds and draw a line with high transparency between the "planets". For extra fun, the inner planet is orbiting around a center that is itself in orbit. in p5.js
 
-<cite>by [r/ejgen](https://www.reddit.com/user/ejgen/) in [Reddit](https://www.reddit.com/r/generative/comments/jqiv25/orbits_in_orbits/?utm_source=share&utm_medium=web2x&context=3)</cite>
+<cite>by [u/ejgen](https://www.reddit.com/user/ejgen/) in [Reddit](https://www.reddit.com/r/generative/comments/jqiv25/orbits_in_orbits/?utm_source=share&utm_medium=web2x&context=3)</cite>
 
 ### Miasma
 
@@ -18,7 +18,7 @@
 
 >As in the previous post, this is from drawing lines of high transparency between two "planets" in different orbits, in p5.js.
 
-<cite>by [r/ejgen](https://www.reddit.com/user/ejgen/) in [Reddit](https://www.reddit.com/r/generative/comments/jqq54t/miasma/)</cite>
+<cite>by [u/ejgen](https://www.reddit.com/user/ejgen/) in [Reddit](https://www.reddit.com/r/generative/comments/jqq54t/miasma/)</cite>
 
 ### All seeing eye
 
@@ -26,7 +26,7 @@
 
 >I continue to draw high-transparency lines between planets orbiting stars that are also in orbit. Here I am using a color map that changes with the distance between the planets. In p5.js
 
-<cite>by [r/ejgen](https://www.reddit.com/user/ejgen/) in [Reddit](https://www.reddit.com/r/generative/comments/jsgdgk/allseeing_eye/)</cite>
+<cite>by [u/ejgen](https://www.reddit.com/user/ejgen/) in [Reddit](https://www.reddit.com/r/generative/comments/jsgdgk/allseeing_eye/)</cite>
 
 ### The past was once the future
 
@@ -34,7 +34,7 @@
 
 >More studies of drawing lines between planets orbiting suns which are themselves in orbit. It is a complex system that sometimes generates vastly different forms with small parameter changes and other times produces small variants over a wide range of parameters. In p5.js
 
-<cite>by [r/ejgen](https://www.reddit.com/user/ejgen/) in [Reddit](https://www.reddit.com/r/generative/comments/jtcm2a/the_past_was_once_the_future/)</cite>
+<cite>by [u/ejgen](https://www.reddit.com/user/ejgen/) in [Reddit](https://www.reddit.com/r/generative/comments/jtcm2a/the_past_was_once_the_future/)</cite>
 
 ### Alien heart
 
@@ -42,7 +42,7 @@
 
 >Drawing high-transparency lines between planets orbiting suns that are themselves in orbit. In this, one of the orbits is a very high radius compared to the others, creating linear forms. IN p5.js
 
-<cite>by [r/ejgen](https://www.reddit.com/user/ejgen/) in [Reddit](https://www.reddit.com/r/generative/comments/ju82m3/alien_heart/)</cite>
+<cite>by [u/ejgen](https://www.reddit.com/user/ejgen/) in [Reddit](https://www.reddit.com/r/generative/comments/ju82m3/alien_heart/)</cite>
 
 ### Needle and the damage done
 
@@ -50,7 +50,7 @@
 
 >More plotting high-transparency lines between orbits. In p5.js.
 
-<cite>by [r/ejgen](https://www.reddit.com/user/ejgen/) in [Reddit](https://www.reddit.com/r/generative/comments/jv0upw/needle_and_the_damage_done/)</cite>
+<cite>by [u/ejgen](https://www.reddit.com/user/ejgen/) in [Reddit](https://www.reddit.com/r/generative/comments/jv0upw/needle_and_the_damage_done/)</cite>
 
 ### Twelve flowers from orbit
 
@@ -60,7 +60,7 @@
 
 >I seem to be stuck in a retro vibe! This https://www.reddit.com/r/generative/comments/j00ovr/soul_mates_2_degenerative_friday/ was compared to a Laser Tag carpet from decades ago.
 
-<cite>by [r/ejgen](https://www.reddit.com/user/ejgen/) in [Reddit](https://www.reddit.com/r/generative/comments/jvzhgw/twelve_flowers_from_orbit/)</cite>
+<cite>by [u/ejgen](https://www.reddit.com/user/ejgen/) in [Reddit](https://www.reddit.com/r/generative/comments/jvzhgw/twelve_flowers_from_orbit/)</cite>
 
 ### Five candles for peace
 
@@ -68,7 +68,7 @@
 
 >I continue to draw high-transparency lines between planets rotating suns that are themselves in orbit. Here I make the amazing conceptual breakthrough that the planets can rotate in opposite directions :-) so some new shapes are available. In p5.js
 
-<cite>by [r/ejgen](https://www.reddit.com/user/ejgen/) in [Reddit](https://www.reddit.com/r/generative/comments/jr7os2/five_candles_for_peace/)</cite>
+<cite>by [u/ejgen](https://www.reddit.com/user/ejgen/) in [Reddit](https://www.reddit.com/r/generative/comments/jr7os2/five_candles_for_peace/)</cite>
 
 ## slkdhfksjdfhksjdf
 
@@ -89,7 +89,7 @@
 >
 >Hope this gives some insights to explore them further 😀
 
-<cite>by [r/shrynx_1](https://www.reddit.com/user/shrynx_/) in [Reddit](https://www.reddit.com/r/generative/comments/kq59t7/rhythm/)</cite>
+<cite>by [u/shrynx_1](https://www.reddit.com/user/shrynx_/) in [Reddit](https://www.reddit.com/r/generative/comments/kq59t7/rhythm/)</cite>
 
 ### 952147
 
@@ -112,7 +112,15 @@
 
 >Of course the lines are a function of the noise via the flow fields and the parameters involved there help give it the balance and harmony. Here's some more examples w other colors: https://twitter.com/dmitricherniak/status/1214888292421951488
 
-<cite>by [r/dmitricherniak](xxx) in [Reddit](https://www.reddit.com/r/generative/comments/hiwf4i/the_only_good_thing_we_got_going/).</cite>
+<cite>by [u/dmitricherniak](xxx) in [Reddit](https://www.reddit.com/r/generative/comments/hiwf4i/the_only_good_thing_we_got_going/).</cite>
+
+### Colours & Lines
+
+![](marcoangel-colours-lines.png)
+
+>JavaScript and canvas API with a Perlin noise library
+
+<cite>by [u/marcoangel](xxx) in [Redit](https://www.reddit.com/r/generative/comments/krl93p/colours_lines/giap3li).</cite>
 
 ### xxx
 

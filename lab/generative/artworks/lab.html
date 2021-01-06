@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<title>GENERATIVE LAB</title>
+		
+		<script src="../p5.js"></script>
+	</head>
+
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			height: 100vh;
+			width: 100vw;
+			border: none;
+			overflow: hidden;
+		}
+	</style>
+
+	<body></body>
+
+	<script>
+		const vars = { };
+
+		function setup() {
+			CANVAS_WIDTH = window.innerWidth;
+			CANVAS_HEIGHT = window.innerHeight;
+			
+			createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
+			frameRate(96);
+
+			colorMode(HSL);
+
+			getRandomVars();
+		}
+
+		function draw() {
+			background(vars['BgC']['H'], vars['BgC']['S'], vars['BgC']['L']);
+		}
+
+		function getRandomVars() {
+			vars['BgC']  = { 'H': 0, 'S': 100, 'L': 90 }; // Background Color
+			vars['BgC']['H'] = floor(random(0, 360));
+			console.log(vars);
+		}
+	</script>
+
+</html>
