@@ -95,7 +95,7 @@
 	const posX = window.innerWidth * 0.5;
 	const posY = window.innerHeight * 0.5;
 	const size = ( posX > posY ? posX : posY ) * 1.25;
-	const color = { 'H': 0, 'S': 60, 'L': 70, 'Hmin': 180, 'Hmax': 300 };
+	const color = { 'H': 180, 'S': 60, 'L': 70, 'range': 60 };
 
 	function setup() {
 		createCanvas(window.innerWidth, window.innerHeight);
@@ -109,24 +109,41 @@
 	}
 
 	function draw() {
+
+		/* ┌──────────────────────────────────────────────────┐
+		   │                  PREPARAR COSES                  │
+		   └──────────────────────────────────────────────────┘ */
+
 		background(0, 0, 13);
+
+		color['H'] = (color['H'] + 1) % 360;
 		
 		const numNodes = 32;//const numNodes = parseInt( map( mouseX, 0, posX * 2, 3, 64 ) );
 		const angle = parseInt( map( mouseX, 0, posX * 2, 0, TAU) );
-		const disitanceBetweenNodes = parseInt( map( mouseY, 0, posY * 2, 1, numNodes * 0.4) );
-		const ratioObertura = 0.8;
+		const disitanceBetweenNodes = parseInt( map( mouseY, 0, posY * 2, 1, numNodes * 0.3) );
+		const ratioObertura = .75;
 
-		var h = color['Hmin'];
+		var h = color['H'];
 		const n = floor( numNodes * ratioObertura );
-		const COLOR_INCR = (color['Hmax'] - color['Hmin'] ) / numNodes;
+		const COLOR_INCR = color['range'] / numNodes;
+
+
+		/* ┌──────────────────────────────────────────────────┐
+		   │                  DIBUIXAR LLUNA                  │
+		   └──────────────────────────────────────────────────┘ */
 
 		push();
 		translate(posX, posY);
 		rotate(angle);
 
+
+		/* ┌──────────────────────────────┐
+		   │      Dibuixar l'entramat     │
+		   └──────────────────────────────┘ */
+
 		for (let i = 0; i < n; i++) {
 			stroke( h, color['S'], color['L'] );
-			h += COLOR_INCR;
+			h = (h + COLOR_INCR) % 360;
 			const a1 = HALF_PI - TAU / numNodes * i;
 			const p1x = cos(a1) * size * 0.5;
 			const p1y = sin(a1) * size * 0.5;
@@ -135,15 +152,43 @@
 			const p2y = sin(a2) * size * 0.5;
 			line(p1x, p1y, p2x, p2y);
 		}
-		pop();
-	}
 
-	document.body.addEventListener('mousemove', function( event ) {
-		const h1 = floor(map( mouseX, 0, posX * 2, color['Hmin'], color['Hmax'] ));
-		const h2 = floor(map( mouseY, 0, posY * 2, color['Hmin'], color['Hmax'] ));
+
+		/* ┌──────────────────────────────┐
+		   │ Dibuixar el polígon que farà de contonr de la lluna │
+		   └──────────────────────────────┘ */
+
+		var h = color['H'];
+		for (let i = 0; i < n+disitanceBetweenNodes-1; i++) {
+			stroke( h, color['S'], color['L'] );
+			h = (h + COLOR_INCR) % 360;
+			const a1 = HALF_PI - TAU / numNodes * i;
+			const p1x = cos(a1) * size * 0.5;
+			const p1y = sin(a1) * size * 0.5;
+			const a2 = HALF_PI - TAU / numNodes * (i + 1);
+			const p2x = cos(a2) * size * 0.5;
+			const p2y = sin(a2) * size * 0.5;
+			line(p1x, p1y, p2x, p2y);
+		}
+
+		pop();
+
+		/* ┌──────────────────────────────────────────────────┐
+		   │          ACTUALITZAR EL DEGREDAT EL NOM          │
+		   └──────────────────────────────────────────────────┘ */
+		
+		const h1 = color['H'];
+		const h2 = color['H'] + color['range'];
 		const c = 'linear-gradient( 45deg, hsl( ' + h1 + ', ' + color['S'] + '%, ' + color['L'] + '% ) 0%, hsl( ' + h2 + ', ' + color['S'] + '%, ' + color['L'] + '% ) 100% )';
 		firma.style.backgroundImage = c;
-	} );
+	}
+
+	/*document.body.addEventListener('mousemove', function( event ) {
+		const h1 = floor(map( mouseX, 0, posX * 2, color['H'], color['H']+color['range'] ));
+		const h2 = floor(map( mouseY, 0, posY * 2, color['H'], color['H']+color['range'] ));
+		const c = 'linear-gradient( 45deg, hsl( ' + h1 + ', ' + color['S'] + '%, ' + color['L'] + '% ) 0%, hsl( ' + h2 + ', ' + color['S'] + '%, ' + color['L'] + '% ) 100% )';
+		firma.style.backgroundImage = c;
+	} );*/
 </script>
 
 </html>
