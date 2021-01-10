@@ -8,22 +8,29 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 		<title>Connected Orbits</title>
-
-		<link rel="stylesheet" href="estils.css">
 		
 		<script src="../../p5.js"></script>
 		<script src="sketch.js"></script>
 		<script src="Planet.js"></script>
 	</head>
 
-	<body>
-		<div id="controllersContainer" style="display: none;">
-			<div id="sliderContainer"></div>
-			<div id="buttonContainer">
-				<button id="btnRefresh">Refresh</button>
-				<button id="btnHelper">Display helper</button>
-			</div>
-		</div>
-	</body>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			height: 100vh;
+			width: 100vw;
+			overflow: hidden;
+			/*cursor:none;*/
+		}
+		#defaultCanvas0 {
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: -1;
+		}
+	</style>
+
+	<body></body>
 
 </html>

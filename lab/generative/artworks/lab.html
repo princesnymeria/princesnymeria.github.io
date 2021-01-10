@@ -26,28 +26,80 @@
 	<body></body>
 
 	<script>
-		const vars = { };
+		const MODE_DEBUG = false;
+		const vars    = { };
+		const figures = [ ];
 
 		function setup() {
 			CANVAS_WIDTH = window.innerWidth;
 			CANVAS_HEIGHT = window.innerHeight;
 			
 			createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
-			frameRate(96);
+			frameRate( MODE_DEBUG ? 6 : 24 );
 
 			colorMode(HSL);
 
 			getRandomVars();
+			
 		}
 
 		function draw() {
-			background(vars['BgC']['H'], vars['BgC']['S'], vars['BgC']['L']);
+			background(vars['BackgroundColor']['H'], vars['BackgroundColor']['S'], vars['BackgroundColor']['L']);
+			if ( MODE_DEBUG ) drawGird();
+			if ( mouseIsPressed ) {
+				const col = floor(map( mouseX, 0, CANVAS_WIDTH,  0, vars['cols'] ));
+				const row = floor(map( mouseY, 0, CANVAS_HEIGHT, 0, vars['rows'] ));
+				figures.push( new Figure( col, row ) );
+			}
+			noStroke();
+			figures.forEach(f => {
+				f.update();
+				f.display();
+			});
 		}
 
 		function getRandomVars() {
-			vars['BgC']  = { 'H': 0, 'S': 100, 'L': 90 }; // Background Color
-			vars['BgC']['H'] = floor(random(0, 360));
-			console.log(vars);
+			vars['color']  = { 'H': 0, 'S': 100, 'L': 80 };
+			vars['BackgroundColor']  = { 'H': 0, 'S': 100, 'L': 90 };
+			vars['BackgroundColor']['H'] = floor(random(0, 360));
+
+			vars['cols'] = floor(random( 8, CANVAS_WIDTH  * .015 ));
+			vars['rows'] = floor(random( 8, CANVAS_HEIGHT * .015 ));
+
+			if ( MODE_DEBUG ) console.log(vars);
+		}
+
+		function drawGird() {
+			noFill();
+			stroke(0, 0, 60);
+			for (let c = 0; c < vars['cols']; c++)
+				for (let r = 0; r < vars['rows']; r++) {
+					const w = CANVAS_WIDTH  / vars['cols'];
+					const h = CANVAS_HEIGHT / vars['rows'];
+					rect( c * w, r * h, w, h );
+				}
+		}
+
+		class Figure {
+			constructor(col, row) {
+				this.col      = col;
+				this.row      = row;
+				this.width    = CANVAS_WIDTH  / vars['cols'];
+				this.height   = CANVAS_HEIGHT / vars['rows'];
+				this.posX     = this.col * this.width;
+				this.posY     = this.row * this.height;
+				this.colorHue = floor(random( 0, 360 ));
+				this.f = 0;
+				this.speed = random( .001, .025 );
+			}
+			update() {
+				if (this.f < 1)
+					this.f += this.speed;
+			}
+			display() {
+				fill(this.colorHue, vars['color']['S'], vars['color']['L']);
+				rect( this.posX, this.posY, this.width * this.f, this.height * this.f );
+			}
 		}
 	</script>
 

@@ -112,7 +112,7 @@
 
 >Of course the lines are a function of the noise via the flow fields and the parameters involved there help give it the balance and harmony. Here's some more examples w other colors: https://twitter.com/dmitricherniak/status/1214888292421951488
 
-<cite>by [u/dmitricherniak](xxx) in [Reddit](https://www.reddit.com/r/generative/comments/hiwf4i/the_only_good_thing_we_got_going/).</cite>
+<cite>by [u/dmitricherniak](https://www.reddit.com/user/dmitricherniak/) in [Reddit](https://www.reddit.com/r/generative/comments/hiwf4i/the_only_good_thing_we_got_going/).</cite>
 
 ### Colours & Lines
 
@@ -120,7 +120,29 @@
 
 >JavaScript and canvas API with a Perlin noise library
 
-<cite>by [u/marcoangel](xxx) in [Redit](https://www.reddit.com/r/generative/comments/krl93p/colours_lines/giap3li).</cite>
+<cite>by [u/marcoangel](https://www.reddit.com/user/marcoangel/) in [Redit](https://www.reddit.com/r/generative/comments/krl93p/colours_lines/giap3li).</cite>
+
+### Flow Field
+
+![](silverfuryK-flow_field.png)
+
+>Recently discovered flow field.. tried to incorporate it over an image along with some noise
+
+>I just superimposed symbols made in Photoshop over the perlin field.. just added the values wherever necessary
+
+>I programmed this on processing IDE
+
+<cite>by [u/silverfuryK](https://www.reddit.com/user/silverfuryK/) in [Reddit](https://www.reddit.com/r/processing/comments/ksh5n1/recently_discovered_flow_field_tried_to/).</cite>
+
+
+
+
+
+
+
+
+
+
 
 ### xxx
 
@@ -136,6 +158,22 @@ https://tylerxhobbs.com/essays/2020/flow-fields
 
 
 https://tylerxhobbs.com/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

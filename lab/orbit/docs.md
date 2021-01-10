@@ -12,7 +12,7 @@ L'objectiu és copiar a [r/ejgen](https://www.reddit.com/r/generative/comments/j
 
 La idea bàsica on gira l'algorisme és crear orbites circulars amb diferents velocitats i dibuixar una línia entre els dos "planetes".
 
-HI HA UNA INTERFICIE GRÀFICA QUE MOSTRA SLIDES PER MODIFICAR CERTS PARAMETRES (que caldria documentar) PERO CASI MILLOR QUE SIGUIN ALEATORIS, NO?????
+<n>Hi ha un document a la carpeta d'artworks generatius amb les referències del projecte.</n>
 
 ## Estètica
 
@@ -32,6 +32,8 @@ Les regles d'estètica general:
 Per poder gestionar els planetes, s'ha creat la classe `Planet`.
 
 Aquesta classe conté l'atribut `Planet.satellites` que permet que cada planeta tingui diferents *llunes*. Cada lluna és un objecte *Planet* que s'allotgen al Planeta pare de manera recursiva.
+
+<n>Quan s'inicialitza un planeta, es creen diferents slides per controlar les variables d'aquest i els seus satèl·lits. Llàstima que no permet gestionar el número de satèl·lits.</n>
 
 ### Estructura de fitxers:
 
@@ -69,10 +71,20 @@ orbit
 
 <n>...</n>
 
+*****
+
+S'ha fet una versió similar del projecte però que enlloc de ser controlada per l'usuari, es genera de manera aleatòria. Aquesta versió està a <n>[afegir link a generative]</n>.
+
+
+
+
+
+*****
+
 ## <n>To Do</n>
 
-* [ ] Fer un sistema d'importació via consola per poder carregar les figures descobertes anteriorment.
 * [ ] Documentar la classe `Planet`
-* [ ] <n>sibstituir la interficie gràfica per valors aleatoris????</n>
-* [ ] <n>Potser enlloc d'Orbits s'hauria d'anomenar "Generative Drawing".</n>
-* [ ] <n>Investigar el concepte "Organic Painting"</n>
+
+<n>¿?  Potser enlloc d'Orbits s'hauria d'anomenar "Generative Drawing".</n>
+
+<n>¿?  Investigar el concepte "Organic Painting"</n>
