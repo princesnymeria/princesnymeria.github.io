@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-		<title>GENERATIVE LAB</title>
+		<title>Grandma</title>
 		
 		<script src="../p5.js"></script>
 	</head>
@@ -88,17 +88,21 @@
 				this.height   = CANVAS_HEIGHT / vars['rows'];
 				this.posX     = this.col * this.width;
 				this.posY     = this.row * this.height;
+				this.sizeX    = floor(random( 1, vars['cols'] * .25 ));
+				this.sizeY    = floor(random( 1, vars['rows'] * .25 ));
 				this.colorHue = floor(random( 0, 360 ));
-				this.f = 0;
-				this.speed = random( .001, .025 );
+				this.fx = 0;
+				this.fy = 0;
+				this.speed = random( -.05, .05 );
 			}
 			update() {
-				if (this.f < 1)
-					this.f += this.speed;
+				if (this.fx < this.sizeX) this.fx += this.speed;
+				if (this.fy < this.sizeY) this.fy += this.speed;
+				//if( this.fx >= this.sizeX && this.fy >= this.sizeY) //eliminar de la llista 'figures'.
 			}
 			display() {
 				fill(this.colorHue, vars['color']['S'], vars['color']['L']);
-				rect( this.posX, this.posY, this.width * this.f, this.height * this.f );
+				rect( this.posX, this.posY, this.width * this.fx, this.height * this.fy );
 			}
 		}
 	</script>

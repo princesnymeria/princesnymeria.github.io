@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<title>Il·lusió</title>
+		
+		<script src="../p5.js"></script>
+	</head>
+
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			height: 100vh;
+			width: 100vw;
+			border: none;
+			overflow: hidden;
+		}
+	</style>
+
+	<body></body>
+
+	<script>
+		const MODE_DEBUG = false;
+		const vars = { };
+		var fi = 0.1;
+
+		function setup() {
+			CANVAS_WIDTH = window.innerWidth;
+			CANVAS_HEIGHT = window.innerHeight;
+			
+			createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
+			frameRate(12);
+			setStyle();
+			getRandomVars();
+		}
+
+		function draw() {
+			background(vars['BgC']['H'], vars['BgC']['S'], vars['BgC']['L']);
+			drawRecursiveCircle(CANVAS_WIDTH *.5, CANVAS_HEIGHT * .5, vars['size'], vars['maxInteracions']);
+			if (fi < vars['maxFi']) fi += 0.005;
+		}
+
+		function drawRecursiveCircle(posX, posY, size, iteracio) {
+			circle(posX, posY, size);
+			if ( iteracio > 0 )
+				for (let i = 0; i < vars['n']; i++) {
+					const a = TAU / vars['n'] * i;
+					const x = posX + cos(a) * size * .5;
+					const y = posY + sin(a) * size * .5;
+					const s = size * fi;
+					drawRecursiveCircle(x, y, s, iteracio-1);
+				}
+		}
+
+		function getRandomVars() {
+			vars['BgC'] = { 'H': 0, 'S': 80, 'L': 70 };
+			vars['BgC']['H'] = floor(random(0, 360));
+			vars['n'] = floor(random(3, 8));
+			vars['size'] = ( CANVAS_WIDTH > CANVAS_HEIGHT ? CANVAS_WIDTH : CANVAS_HEIGHT ) * .35;
+			vars['maxInteracions'] = 3;
+			vars['maxFi'] = 1.5;
+			if ( MODE_DEBUG ) console.log(vars);
+		}
+
+		function setStyle() {
+			colorMode(HSL);
+			noFill();
+			angleMode(RADIANS);
+			strokeWeight(5)
+			stroke( '#FFFFFF80' ); // stroke( (color(0, 0, 100)).setAlpha(0.5) );
+		}
+	</script>
+
+</html>

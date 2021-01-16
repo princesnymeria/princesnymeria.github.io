@@ -12,7 +12,7 @@ function setup() {
 	createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
 	frameRate( MODE_DEBUG ? 12 : 48 );
 
-	background(8);
+	background(24);
 	angleMode(RADIANS);
 	noFill();
 	colorMode(HSL);
@@ -43,12 +43,12 @@ function loadPlanets() {
 	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
 
 	const n = floor(random( 2, 12 ));
-	const EARTH_RADIUS   =   random( 100,    500  ) ;
-	const EARTH_SPEED    =   random( .0005, .005  ) ;
-	const MOON_RADIUS    =   random( 100,    500  ) ;
+	const EARTH_RADIUS   =   random(  50,    250  ) ;
+	const EARTH_SPEED    =   random( .0005, .001  ) ;
+	const MOON_RADIUS    =   random(  100,   400  ) ;
 	const MOON_SPEED     =   random( .0005, .005  ) ;
-	const SUBMOON_RADIUS =   random( 100,    500  ) ;
-	const SUBMOON_SPEED  =   random( .0005, .005  ) ;
+	const SUBMOON_RADIUS =   random(  100,   600  ) ;
+	const SUBMOON_SPEED  =   random( .0005, .010  ) ;
 
 	const INCR_ANGLE = TAU/n;
 	const INCR_COLOR = 360/n;

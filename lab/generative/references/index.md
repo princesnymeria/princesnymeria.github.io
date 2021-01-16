@@ -70,7 +70,7 @@
 
 <cite>by [u/ejgen](https://www.reddit.com/user/ejgen/) in [Reddit](https://www.reddit.com/r/generative/comments/jr7os2/five_candles_for_peace/)</cite>
 
-## slkdhfksjdfhksjdf
+## Organic Painting
 
 ### Rhythm
 
@@ -134,50 +134,20 @@
 
 <cite>by [u/silverfuryK](https://www.reddit.com/user/silverfuryK/) in [Reddit](https://www.reddit.com/r/processing/comments/ksh5n1/recently_discovered_flow_field_tried_to/).</cite>
 
+### Genuary 16 (Circles!): I contain multitudes
 
+![](ejgen-circles.png)
 
+>I draw a circle with 5 small circles around the perimeter, and iterate that 5-deep. The movie is just me increasing the relative size of each level of circles. Most of the action is in the center, where the different circles interact, but there are moments of clarity and almost-clarity in other regions as well. In p5.js.
 
+<cite>by [u/ejgen](https://www.reddit.com/user/ejgen/) in [Reddit](https://www.reddit.com/r/generative/comments/kyb93x/genuary_16_circles_i_contain_multitudes/).</cite>
 
+## Altres
 
-
-
-
-
-
-### xxx
-
-![](xxx.png)
-
->xxx
-
-<cite>by [xxx](xxx) in [xxx](xxx).</cite>
-
-
-
-https://tylerxhobbs.com/essays/2020/flow-fields
-
-
-https://tylerxhobbs.com/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+* [Flow Fields](https://tylerxhobbs.com/essays/2020/flow-fields)
+* [BLOG INTERESSANT](https://tylerxhobbs.com/)
+* [Ego](https://www.reddit.com/r/generative/comments/kvo1h0/ego/)
+* [AgateFlower](https://www.reddit.com/r/creativecoding/comments/kyct2w/processing_agateflower/?utm_medium=android_app&utm_source=share)
 
 <!--
 ### xxx

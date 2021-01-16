@@ -26,6 +26,7 @@
 	<body></body>
 
 	<script>
+		const MODE_DEBUG = false;
 		const vars = { };
 
 		function setup() {
@@ -47,7 +48,7 @@
 		function getRandomVars() {
 			vars['BgC']  = { 'H': 0, 'S': 100, 'L': 90 }; // Background Color
 			vars['BgC']['H'] = floor(random(0, 360));
-			console.log(vars);
+			if ( MODE_DEBUG ) console.log(vars);
 		}
 	</script>
 
