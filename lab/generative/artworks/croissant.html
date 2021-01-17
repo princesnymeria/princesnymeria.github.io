@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<title>Croissant</title>
+		
+		<script src="../p5.js"></script>
+	</head>
+
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			height: 100vh;
+			width: 100vw;
+			border: none;
+			overflow: hidden;
+		}
+	</style>
+
+	<body></body>
+
+	<script>
+		var CANVAS_WIDTH, CANVAS_HEIGHT, C;
+		const MODE_DEBUG = true;
+		const vars    = { };
+		const croissants  = [ ];
+
+		function setup() {
+			CANVAS_WIDTH = window.innerWidth;
+			CANVAS_HEIGHT = window.innerHeight;
+			C = CANVAS_WIDTH > CANVAS_HEIGHT ? CANVAS_WIDTH : CANVAS_HEIGHT;
+			
+			createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
+			frameRate( MODE_DEBUG ? 6 : 24 );
+
+			colorMode(HSL);
+
+			getRandomVars();
+			
+		}
+
+		function draw() {
+			background(vars['BackgroundColor']['H'], vars['BackgroundColor']['S'], vars['BackgroundColor']['L']);
+			if ( mouseIsPressed )
+				croissants.push( new Figure( mouseX, mouseY, random(C * .025, C * .1) ) );
+			croissants.forEach(f => {
+				f.update();
+				f.display();
+			});
+		}
+
+		function getRandomVars() {
+			vars['color']  = { 'H': 0, 'S': 100, 'L': 80 };
+			vars['BackgroundColor']  = { 'H': 0, 'S': 100, 'L': 90 };
+			vars['BackgroundColor']['H'] = floor(random(0, 360));
+
+			if ( MODE_DEBUG ) console.log(vars);
+		}
+
+		class Figure {
+			constructor(posX, posY, size) {
+				const n = random(-1, 1) * C * .01;
+				this.pos = createVector(posX + n, posY + n);
+				this.size = size;
+				this.hue = random(0, 360);
+				this.child = null;
+			}
+			update() {
+				if (this.size > 5)
+					this.child = new Figure( this.pos.x, this.pos.y, this.size-random(1, 10) );
+			}
+			display() {
+				fill(this.hue, vars['color']['S'], vars['color']['L']);
+				circle(this.pos.x, this.pos.y, this.size);
+				if (this.child != null) {
+					this.child.update();
+					this.child.display();
+				}
+			}
+		}
+	</script>
+
+</html>
