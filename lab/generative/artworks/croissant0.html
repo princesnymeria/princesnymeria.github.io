@@ -28,8 +28,8 @@
 	<script>
 		var CANVAS_WIDTH, CANVAS_HEIGHT, C;
 		const MODE_DEBUG = true;
-		const vars = { };
-		const croissants  = [ ];// s'hauria, d'alguna manera, eliminar els nodes que ja han acabat l'animacio
+		const vars    = { };
+		const croissants  = [ ];
 
 		function setup() {
 			CANVAS_WIDTH = window.innerWidth;
@@ -42,16 +42,16 @@
 			colorMode(HSL);
 
 			getRandomVars();
-
-			background(vars['BackgroundColor']['H'], vars['BackgroundColor']['S'], vars['BackgroundColor']['L']);
-			noStroke();
+			
 		}
 
 		function draw() {
+			background(vars['BackgroundColor']['H'], vars['BackgroundColor']['S'], vars['BackgroundColor']['L']);
 			if ( mouseIsPressed )
 				croissants.push( new Figure( mouseX, mouseY, random(C * .025, C * .1), random(0, 360) ) );
 			croissants.forEach(f => {
 				f.update();
+				f.display();
 			});
 		}
 
@@ -72,30 +72,31 @@
 
 		class Figure {
 			constructor(posX, posY, size, hue) {
-				const nx = random(-1, 1) * size * .1;
-				const ny = random(-1, 1) * size * .1;
+				const nx = random(-1, 1) * size * .25;
+				const ny = random(-1, 1) * size * .25;
 				this.pos = createVector(posX + nx, posY + ny);
-				this.size = size - random(1, 5);
-				this.hue = subtractHue(hue, 5);
+				this.size = size;
+				this.hue = hue;
 				this.child = null;
-				this.vida = 0;
-				this.alive = this.size > 5;
-				this.display();
+				this.VIDA = 0;
+				this.ALIVE = this.size > 5;
 			}
 			update() {
-				if (this.alive) {
-					this.vida += 0.1;
-					if (this.vida > 0.5) {
-						this.child = new Figure( this.pos.x, this.pos.y, this.size, this.hue );
-						this.alive = false;
+				if (this.ALIVE) {
+					this.VIDA += 0.1;
+					if (this.VIDA > 0.2) {
+						this.child = new Figure( this.pos.x, this.pos.y, this.size-random(1, 5), subtractHue(this.hue, 10) );
+						this.ALIVE = false;
 					}
 				}
-				if (this.child != null) this.child.update();
 			}
 			display() {
 				fill(this.hue, vars['color']['S'], vars['color']['L']);
 				circle(this.pos.x, this.pos.y, this.size);
-				//if (this.child != null) this.child.display();
+				if (this.child != null) {
+					this.child.update();
+					this.child.display();
+				}
 			}
 		}
 	</script>
