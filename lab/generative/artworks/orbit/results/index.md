@@ -13,7 +13,7 @@ Aquest és el model per defecte del programa.
 
 ```js
 {
-	const cont = document.getElementById('sliderContainer');
+	const cont = null;//const cont = document.getElementById('sliderContainer');
 	sun = new Planet(cont, 1, 0, 60);
 	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
 	unions = [];
@@ -27,6 +27,7 @@ Aquest és el model per defecte del programa.
 	unions.push([earth, moon]);
 
 	clearCanvas();
+	noisyMode = false;
 }
 ```
 
@@ -36,7 +37,7 @@ Aquest és el model per defecte del programa.
 
 ```js
 {
-	const cont = document.getElementById('sliderContainer');
+	const cont = null;//const cont = document.getElementById('sliderContainer');
 	sun = new Planet(cont, 1, 0, 60);
 	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
 	unions = [];
@@ -64,6 +65,7 @@ Aquest és el model per defecte del programa.
 	unions.push([earth, moon]);
 
 	clearCanvas();
+	noisyMode = false;
 }
 ```
 
@@ -73,7 +75,7 @@ Aquest és el model per defecte del programa.
 
 ```js
 {
-	const cont = document.getElementById('sliderContainer');
+	const cont = null;//const cont = document.getElementById('sliderContainer');
 	sun = new Planet(cont, 0, 0, 0);
 	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
 	unions = [];
@@ -114,6 +116,7 @@ Aquest és el model per defecte del programa.
 	unions.push([moon, submoon]);
 
 	clearCanvas();
+	noisyMode = false;
 }
 ```
 
@@ -123,7 +126,7 @@ Aquest és el model per defecte del programa.
 
 ```js
 {
-	const cont = document.getElementById('sliderContainer');
+	const cont = null;//const cont = document.getElementById('sliderContainer');
 	sun = new Planet(cont, 0, 0, 0);
 	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
 	unions = [];
@@ -164,6 +167,7 @@ Aquest és el model per defecte del programa.
 	unions.push([moon, submoon]);
 
 	clearCanvas();
+	noisyMode = false;
 }
 ```
 
@@ -182,7 +186,7 @@ Aquest és el model per defecte del programa.
 	const MOON_RADIUS    =   250 ;	const MOON_SPEED     =  .004 ;
 	const SUBMOON_RADIUS =   150 ;	const SUBMOON_SPEED  =  .008 ;
 
-	const cont = document.getElementById('sliderContainer');
+	const cont = null;//const cont = document.getElementById('sliderContainer');
 	sun = new Planet(cont, 0, 0, 0);
 	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
 	unions = [];
@@ -223,6 +227,7 @@ Aquest és el model per defecte del programa.
 	unions.push([moon, submoon]);
 
 	clearCanvas();
+	noisyMode = false;
 }
 ```
 
@@ -241,7 +246,7 @@ Aquest és el model per defecte del programa.
 	const MOON_RADIUS    =   400 ;	const MOON_SPEED     =  .002 ;
 	const SUBMOON_RADIUS =   300 ;	const SUBMOON_SPEED  =  .008 ;
 
-	const cont = document.getElementById('sliderContainer');
+	const cont = null;//const cont = document.getElementById('sliderContainer');
 	sun = new Planet(cont, 0, 0, 0);
 	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
 	unions = [];
@@ -282,6 +287,7 @@ Aquest és el model per defecte del programa.
 	unions.push([moon, submoon]);
 
 	clearCanvas();
+	noisyMode = false;
 }
 ```
 
@@ -293,7 +299,7 @@ Aquest és el model per defecte del programa.
 
 ```js
 {
-	const cont = document.getElementById('sliderContainer');
+	const cont = null;//const cont = document.getElementById('sliderContainer');
 	sun = new Planet(cont, 0, 0, 0);
 	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
 	unions = [];
@@ -330,7 +336,8 @@ Aquest és el model per defecte del programa.
 		colorHue += INCR_COLOR;
 	}
   
-  clearCanvas();
+	clearCanvas();
+	noisyMode = false;
 }
 ```
 
@@ -340,7 +347,7 @@ Aquest és el model per defecte del programa.
 
 ```js
 {
-	const cont = document.getElementById('sliderContainer');
+	const cont = null;//const cont = document.getElementById('sliderContainer');
 	sun = new Planet(cont, 0, 0, 0);
 	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
 	unions = [];
@@ -376,8 +383,9 @@ Aquest és el model per defecte del programa.
 		angle += INCR_ANGLE;
 		colorHue += INCR_COLOR;
 	}
-  
-  clearCanvas();
+
+	clearCanvas();
+	noisyMode = false;
 }
 ```
 
@@ -387,7 +395,7 @@ Aquest és el model per defecte del programa.
 
 ```js
 {
-	const cont = document.getElementById('sliderContainer');
+	const cont = null;//const cont = document.getElementById('sliderContainer');
 	sun = new Planet(cont, 0, 0, 0);
 	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
 	unions = [];
@@ -423,8 +431,9 @@ Aquest és el model per defecte del programa.
 		angle += INCR_ANGLE;
 		colorHue += INCR_COLOR;
 	}
-  
-  clearCanvas();
+
+	clearCanvas();
+	noisyMode = false;
 }
 ```
 
@@ -434,7 +443,7 @@ Aquest és el model per defecte del programa.
 
 ```js
 {
-	const cont = document.getElementById('sliderContainer');
+	const cont = null;//const cont = document.getElementById('sliderContainer');
 	sun = new Planet(cont, 0, 0, 0);
 	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
 	unions = [];
@@ -466,8 +475,9 @@ Aquest és el model per defecte del programa.
 
 		angle += INCR_ANGLE;
 	}
-  
-  clearCanvas();
+
+	clearCanvas();
+	noisyMode = false;
 }
 ```
 
@@ -477,7 +487,7 @@ Aquest és el model per defecte del programa.
 
 ```js
 {
-	const cont = document.getElementById('sliderContainer');
+	const cont = null;//const cont = document.getElementById('sliderContainer');
 	sun = new Planet(cont, 0, 0, 0);
 	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
 	unions = [];
@@ -509,8 +519,9 @@ Aquest és el model per defecte del programa.
 
 		angle += INCR_ANGLE;
 	}
-  
-  clearCanvas();
+
+	clearCanvas();
+	noisyMode = false;
 }
 ```
 
@@ -520,7 +531,7 @@ Aquest és el model per defecte del programa.
 
 ```js
 {
-	const cont = document.getElementById('sliderContainer');
+	const cont = null;//const cont = document.getElementById('sliderContainer');
 	sun = new Planet(cont, 0, 0, 0);
 	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
 	unions = [];
@@ -552,8 +563,9 @@ Aquest és el model per defecte del programa.
 		angle += INCR_ANGLE;
 		colorHue += INCR_COLOR;
 	}
-  
-  clearCanvas();
+
+	clearCanvas();
+	noisyMode = false;
 }
 ```
 
@@ -565,7 +577,7 @@ Aquest és el model per defecte del programa.
 
 ```js
 {
-	const cont = document.getElementById('sliderContainer');
+	const cont = null;//const cont = document.getElementById('sliderContainer');
 	sun = new Planet(cont, 0, 0, 0);
 	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
 	unions = [];

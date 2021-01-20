@@ -1,11 +1,15 @@
 class Planet {
-	constructor (orbitRadius, speed, colorHue) {
+	constructor (controllerContainer, orbitRadius, speed, colorHue) {
 		this.orbitCenter = createVector(0, 0);
 		this.orbitRadius = orbitRadius;
 		this.speed = speed;
 		this.fase = 0;
-		this.color = { 'H':colorHue, 'S':80 , 'L': 70, 'a': .04 };
+		this.color = { 'H':colorHue, 'S':80 , 'L': 70, 'a': .025 };
 		this.satellites = [];
+		if ( controllerContainer !== null ) {
+			this.loadControlers(controllerContainer, speed*254, this.updateSpeed);
+			this.loadControlers(controllerContainer, orbitRadius*0.127, this.updateRadius);
+		}
 	}
 
 	addSatellite (planet) {
@@ -25,6 +29,18 @@ class Planet {
 		const v = ev.target.value;
 		const that = ev.target.master;
 		that.orbitRadius = map( v, 0, 127, 0, 1000 );
+	}
+
+	loadControlers (container, initValue, callback) {
+		const inp = document.createElement('INPUT');
+		inp.type = 'range';
+		inp.min = 0;
+		inp.max = 127;
+		inp.step = 1;
+		inp.value = initValue;
+		inp.master = this;
+		inp.addEventListener('change', callback);
+		container.appendChild(inp);
 	}
 
 	getColor () {

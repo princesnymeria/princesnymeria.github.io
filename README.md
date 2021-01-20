@@ -19,7 +19,6 @@ Some "projects" I did for fun during the last year of university
 | Basic...            | [/basic](/lab/basic)             |                                                                                  |     5 % |
 | Moving Fractals     | [/fract](/lab/fract)             | Same as [/draw](/lab/draw), but better                                           |    95 % |
 | Mouse               | [/mouse](/lab/mouse)             |                                                                                  |     1 % |
-| Connected Orbits    | [/orbit](/lab/orbit)             | A love story between two circular orbits and milions of high transparency lines  |   100 % |
 
 \* Every project contains a file called `docs.md` in the root folder containing the information for understanging the project.
 
@@ -29,7 +28,7 @@ Generative art and Organic Paintings
 
 |        Title        |               Path               |                                     Subtitle                                     | Estatus |
 |---------------------|----------------------------------|----------------------------------------------------------------------------------|---------|
-| Connected Orbits    | [/orbit](/lab/generative/orbit)  |                                                                                  |   100 % |
+| Connected Orbits    | [/orbit](/lab/generative/orbit)  | A love story between two circular orbits and milions of high transparency line   |   100 % |
 
 ## Sitemap
 

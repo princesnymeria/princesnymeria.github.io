@@ -67,17 +67,20 @@ orbit
 
 <n>...</n>
 
+<n>A la llista unions està composta de subllistes que contenen satèl·lits dels quals s'hauria de dibuixar una línia que els uneixi. Si aquestes llistes només contenen un element, es dibuixa un punt.</n>
+
 ### Classe `Planet`
 
 <n>...</n>
 
-*****
+## Versions
 
-S'ha fet una versió similar del projecte però que enlloc de ser controlada per l'usuari, es genera de manera aleatòria. Aquesta versió està a <n>[afegir link a generative]</n>.
+No tinc clar quina és la direcció que he de donar a aquest algoritme, així que de moment hi ha diferents versions del projecte amb diferents enfocaments.
 
-
-
-
+* **v1** (controlable) Lab: la pantalla té diferents *slides* que permeten que l'usuari controli les variables de *radi* i *velocitat* de cada una de les òrbites, però no permet crear noves òrbites ni modificar la jerarquia d'aquestes.
+	* ***v1.5***: Com que no resultava gens pràctic, he creat un document amb diferents figures i les comandes js per inicialitzar els planetes amb les seves respectives variables per poder fer *copy&paste* des de la consola i carregar la figura.
+* **v2** (random) Generativa: en lloc de ser controlada per l'usuari, es genera de manera aleatòria.
+* **v3** LAB: ...
 
 *****
 

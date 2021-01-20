@@ -1,18 +1,24 @@
-const MODE_DEBUG = false;
-var CANVAS_WIDTH, CANVAS_HEIGHT, C;
+var showHelper = false;
+var noisyMode = false;
+var CANVAS_WIDTH, CANVAS_HEIGHT;
 var sun;
 var unions = [];
+
+
+window.onload = function() {
+	document.getElementById('btnRefresh').addEventListener('click', clearCanvas);
+	document.getElementById('btnHelper').addEventListener('click', toggleshowHelper);
+}
 
 
 function setup() {
 	CANVAS_WIDTH = window.innerWidth;
 	CANVAS_HEIGHT = window.innerHeight;
-	C = CANVAS_WIDTH > CANVAS_HEIGHT ? CANVAS_WIDTH : CANVAS_HEIGHT;
 	
 	createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
-	frameRate( MODE_DEBUG ? 12 : 48 );
+	frameRate(96);//frameRate( MODE_DEBUG ? 12 : 48 );
 
-	background(24);
+	clearCanvas();
 	angleMode(RADIANS);
 	noFill();
 	colorMode(HSL);
@@ -22,24 +28,31 @@ function setup() {
 
 
 function draw() {
+	if ( showHelper ) clearCanvas();
+
 	sun.update();
+	if ( showHelper ) sun.displayHelper();
+
 	unions.forEach(union => {
 		const displayLine = union.length == 2;
 
 		const a = union[0].getPosition();
 		const b = displayLine ? union[1].getPosition() : 0;
-		const c = union[0].getColor();
 
-		strokeWeight( displayLine ? 1 : 10 );
+		if (displayLine) strokeWeight( showHelper ? 8 : 1 ); else strokeWeight( 10 );
+
+		const c = union[0].getColor();
+		if ( showHelper ) c.setAlpha(0.6);
 		stroke( c );
-		const n = noise(a.x, a.y) * CANVAS_WIDTH * .01;
+
+		const n = noisyMode ? noise(a.x, a.y) * CANVAS_WIDTH * .01 : 0;
 		if (displayLine) line(a.x, a.y, b.x, b.y); else point(a.x + n, a.y + n);
 	});
 }
 
 
 function loadPlanets() {
-	sun = new Planet(0, 0, 0);
+	sun = new Planet(null, 0, 0, 0);
 	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
 
 	const n = floor(random( 2, 12 ));
@@ -58,15 +71,15 @@ function loadPlanets() {
 	var colorHue = 0;
 
 	for (let i = 0; i < n; i++) {
-		earth = new Planet(EARTH_RADIUS, EARTH_SPEED, 120);
+		earth = new Planet(null, EARTH_RADIUS, EARTH_SPEED, 120);
 		earth.setFase(angle);
 		sun.addSatellite( earth );
 
-		moon = new Planet(MOON_RADIUS, MOON_SPEED, colorHue);
+		moon = new Planet(null, MOON_RADIUS, MOON_SPEED, colorHue);
 		moon.setFase(angle);
 		earth.addSatellite( moon );
 
-		submoon = new Planet(SUBMOON_RADIUS, SUBMOON_SPEED, colorHue);
+		submoon = new Planet(null, SUBMOON_RADIUS, SUBMOON_SPEED, colorHue);
 		submoon.setFase(angle);
 		moon.addSatellite( submoon );
 
@@ -75,4 +88,22 @@ function loadPlanets() {
 		angle += INCR_ANGLE;
 		colorHue += INCR_COLOR;
 	}
+	noisyMode = true;
 }
+
+
+function clearCanvas() {
+	background(8);
+}
+
+function toggleshowHelper() {
+	showHelper = !showHelper;
+	clearCanvas();
+}
+
+function keyPressed() { // Mostrar i amagar la interficie gràfica
+	if (keyCode === 32) {
+		const c = document.getElementById('controllersContainer');
+		c.style.display = c.style.display == 'flex' ? 'none' : 'flex';
+	}
+} 
