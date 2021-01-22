@@ -4,7 +4,7 @@ Mar Kralovna testing things...
 
 ## Projects
 
-### Random ([./lab](/lab))
+### Lab ([./lab](/lab))
 
 Some "projects" I did for fun during the last year of university
 
@@ -22,13 +22,23 @@ Some "projects" I did for fun during the last year of university
 
 \* Every project contains a file called `docs.md` in the root folder containing the information for understanging the project.
 
+### Comunity ([./com](/com))
+
+This is where I save the projects where I save the atworks I made for contest or challenges.
+
+|        Title        |               Path               |                                     Subtitle                                     | Estatus |
+|---------------------|----------------------------------|----------------------------------------------------------------------------------|---------|
+| Recycle             | [/tree](/lab/tree)               | Recycle to make nature beutiful again                                            |    85 % |
+
+\* Every project contains a file called `index.md` in the root folder containing the information related to the challenge.
+
 ### Generative ([./lab/generative](/lab/generative))
 
 Generative art and Organic Paintings
 
 |        Title        |               Path               |                                     Subtitle                                     | Estatus |
 |---------------------|----------------------------------|----------------------------------------------------------------------------------|---------|
-| Connected Orbits    | [/orbit](/lab/generative/orbit)  | A love story between two circular orbits and milions of high transparency line   |   100 % |
+| Genuary21           | [/Genuary21](/com/Genuary21)     | A love story between two circular orbits and milions of high transparency line   |         |
 
 ## Sitemap
 

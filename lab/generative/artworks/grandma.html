@@ -82,6 +82,7 @@
 		}
 
 		class Figure {
+
 			constructor(col, row) {
 				this.col      = col;
 				this.row      = row;
@@ -96,15 +97,18 @@
 				this.fy = 0;
 				this.speed = random( -.05, .05 );
 			}
+
 			update() {
 				if (this.fx < this.sizeX) this.fx += this.speed;
 				if (this.fy < this.sizeY) this.fy += this.speed;
 				//if( this.fx >= this.sizeX && this.fy >= this.sizeY) //eliminar de la llista 'figures'.
 			}
+
 			display() {
 				fill(this.colorHue, vars['color']['S'], vars['color']['L']);
 				rect( this.posX, this.posY, this.width * this.fx, this.height * this.fy );
 			}
+
 		}
 	</script>
 

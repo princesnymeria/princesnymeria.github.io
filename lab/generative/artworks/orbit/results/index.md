@@ -24,7 +24,7 @@ Aquest és el model per defecte del programa.
 	moon = new Planet(cont, 350, .004, 180);
 	earth.addSatellite( moon );
 	sun.addSatellite( earth );
-	unions.push([earth, moon]);
+	unions.push([moon, earth]);
 
 	clearCanvas();
 	noisyMode = false;
@@ -48,21 +48,21 @@ Aquest és el model per defecte del programa.
 	moon = new Planet(cont, 350, .004, 180);//cyan
 	earth.addSatellite( moon );
 	sun.addSatellite( earth );
-	unions.push([earth, moon]);
+	unions.push([moon, earth]);
 
 	earth = new Planet(cont, 500, .001, 120);
 	earth.setFase(TAU/1.5);
 	moon = new Planet(cont, 350, .004, 60);//yellow
 	earth.addSatellite( moon );
 	sun.addSatellite( earth );
-	unions.push([earth, moon]);
+	unions.push([moon, earth]);
 
 	earth = new Planet(cont, 500, .001, 120);
 	earth.setFase(TAU/3);
 	moon = new Planet(cont, 350, .004, 300);//magenta
 	earth.addSatellite( moon );
 	sun.addSatellite( earth );
-	unions.push([earth, moon]);
+	unions.push([moon, earth]);
 
 	clearCanvas();
 	noisyMode = false;
@@ -91,7 +91,7 @@ Aquest és el model per defecte del programa.
 	submoon = new Planet(cont, 150, .002, 210);
 	submoon.setFase(0);
 	moon.addSatellite( submoon );
-	unions.push([moon, submoon]);
+	unions.push([submoon, moon]);
 
 	earth = new Planet(cont, 500, .001, 120);
 	earth.setFase(TAU/1.5);
@@ -102,7 +102,7 @@ Aquest és el model per defecte del programa.
 	submoon = new Planet(cont, 150, .002, 90);
 	submoon.setFase(TAU/1.5);
 	moon.addSatellite( submoon );
-	unions.push([moon, submoon]);
+	unions.push([submoon, moon]);
 
 	earth = new Planet(cont, 500, .001, 120);
 	earth.setFase(TAU/3);
@@ -113,7 +113,7 @@ Aquest és el model per defecte del programa.
 	submoon = new Planet(cont, 150, .002, 330);
 	submoon.setFase(TAU/3);
 	moon.addSatellite( submoon );
-	unions.push([moon, submoon]);
+	unions.push([submoon, moon]);
 
 	clearCanvas();
 	noisyMode = false;
@@ -142,7 +142,7 @@ Aquest és el model per defecte del programa.
 	submoon = new Planet(cont, 350, .002, 210);
 	submoon.setFase(0);
 	moon.addSatellite( submoon );
-	unions.push([moon, submoon]);
+	unions.push([submoon, moon]);
 
 	earth = new Planet(cont, 500, .001, 120);
 	earth.setFase(TAU/1.5);
@@ -153,7 +153,7 @@ Aquest és el model per defecte del programa.
 	submoon = new Planet(cont, 350, .002, 90);
 	submoon.setFase(TAU/1.5);
 	moon.addSatellite( submoon );
-	unions.push([moon, submoon]);
+	unions.push([submoon, moon]);
 
 	earth = new Planet(cont, 500, .001, 120);
 	earth.setFase(TAU/3);
@@ -164,7 +164,7 @@ Aquest és el model per defecte del programa.
 	submoon = new Planet(cont, 350, .002, 330);
 	submoon.setFase(TAU/3);
 	moon.addSatellite( submoon );
-	unions.push([moon, submoon]);
+	unions.push([submoon, moon]);
 
 	clearCanvas();
 	noisyMode = false;
@@ -202,7 +202,7 @@ Aquest és el model per defecte del programa.
 	submoon = new Planet(cont, SUBMOON_RADIUS, SUBMOON_SPEED, 210);
 	submoon.setFase(0);
 	moon.addSatellite( submoon );
-	unions.push([moon, submoon]);
+	unions.push([submoon, moon]);
 
 	earth = new Planet(cont, EARTH_RADIUS, EARTH_SPEED, 120);
 	earth.setFase(TAU/1.5);
@@ -213,7 +213,7 @@ Aquest és el model per defecte del programa.
 	submoon = new Planet(cont, SUBMOON_RADIUS, SUBMOON_SPEED, 90);
 	submoon.setFase(TAU/1.5);
 	moon.addSatellite( submoon );
-	unions.push([moon, submoon]);
+	unions.push([submoon, moon]);
 
 	earth = new Planet(cont, EARTH_RADIUS, EARTH_SPEED, 120);
 	earth.setFase(TAU/3);
@@ -224,7 +224,7 @@ Aquest és el model per defecte del programa.
 	submoon = new Planet(cont, SUBMOON_RADIUS, SUBMOON_SPEED, 330);
 	submoon.setFase(TAU/3);
 	moon.addSatellite( submoon );
-	unions.push([moon, submoon]);
+	unions.push([submoon, moon]);
 
 	clearCanvas();
 	noisyMode = false;
@@ -262,7 +262,7 @@ Aquest és el model per defecte del programa.
 	submoon = new Planet(cont, SUBMOON_RADIUS, SUBMOON_SPEED, 210);
 	submoon.setFase(0);
 	moon.addSatellite( submoon );
-	unions.push([moon, submoon]);
+	unions.push([submoon, moon]);
 
 	earth = new Planet(cont, EARTH_RADIUS, EARTH_SPEED, 120);
 	earth.setFase(TAU/1.5);
@@ -273,7 +273,7 @@ Aquest és el model per defecte del programa.
 	submoon = new Planet(cont, SUBMOON_RADIUS, SUBMOON_SPEED, 90);
 	submoon.setFase(TAU/1.5);
 	moon.addSatellite( submoon );
-	unions.push([moon, submoon]);
+	unions.push([submoon, moon]);
 
 	earth = new Planet(cont, EARTH_RADIUS, EARTH_SPEED, 120);
 	earth.setFase(TAU/3);
@@ -284,7 +284,7 @@ Aquest és el model per defecte del programa.
 	submoon = new Planet(cont, SUBMOON_RADIUS, SUBMOON_SPEED, 330);
 	submoon.setFase(TAU/3);
 	moon.addSatellite( submoon );
-	unions.push([moon, submoon]);
+	unions.push([submoon, moon]);
 
 	clearCanvas();
 	noisyMode = false;
@@ -330,7 +330,7 @@ Aquest és el model per defecte del programa.
 		submoon.setFase(angle);
 		moon.addSatellite( submoon );
 
-		unions.push([moon, submoon]);
+		unions.push([submoon, moon]);
 
 		angle += INCR_ANGLE;
 		colorHue += INCR_COLOR;
@@ -378,7 +378,7 @@ Aquest és el model per defecte del programa.
 		submoon.setFase(angle);
 		moon.addSatellite( submoon );
 
-		unions.push([moon, submoon]);
+		unions.push([submoon, moon]);
 
 		angle += INCR_ANGLE;
 		colorHue += INCR_COLOR;
@@ -426,7 +426,7 @@ Aquest és el model per defecte del programa.
 		submoon.setFase(angle);
 		moon.addSatellite( submoon );
 
-		unions.push([moon, submoon]);
+		unions.push([submoon, moon]);
 
 		angle += INCR_ANGLE;
 		colorHue += INCR_COLOR;
@@ -471,7 +471,7 @@ Aquest és el model per defecte del programa.
 		submoon.setFase(angle);
 		moon.addSatellite( submoon );
 
-		unions.push([moon, submoon]);
+		unions.push([submoon, moon]);
 
 		angle += INCR_ANGLE;
 	}
@@ -515,7 +515,7 @@ Aquest és el model per defecte del programa.
 		submoon.setFase(angle);
 		moon.addSatellite( submoon );
 
-		unions.push([moon, submoon]);
+		unions.push([submoon, moon]);
 
 		angle += INCR_ANGLE;
 	}
@@ -563,6 +563,40 @@ Aquest és el model per defecte del programa.
 		angle += INCR_ANGLE;
 		colorHue += INCR_COLOR;
 	}
+
+	clearCanvas();
+	noisyMode = false;
+}
+```
+
+## ·3 Moons
+
+![](3mons.png)
+
+```js
+{
+	sun = new Planet(null, 1, 0, 60);
+	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
+	unions = [];
+
+	var earth, moon1, moon2, moon3;
+
+	earth = new Planet(null, 500, .001, 120);
+	sun.addSatellite( earth );
+
+	moon1 = new Planet(null, 350, .004, 60);
+	earth.addSatellite( moon1 );
+	unions.push([moon1, earth]);
+
+	moon2 = new Planet(null, 350, .004, 180);
+	moon2.setFase(TAU/3);
+	earth.addSatellite( moon2 );
+	unions.push([moon2, earth]);
+
+	moon3 = new Planet(null, 350, .004, 300);
+	moon3.setFase(TAU/3*2);
+	earth.addSatellite( moon3 );
+	unions.push([moon3, earth]);
 
 	clearCanvas();
 	noisyMode = false;

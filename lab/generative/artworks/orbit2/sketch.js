@@ -56,19 +56,24 @@ function loadPlanets() {
 	sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
 	unions = [];
 
-	var earth, moon, moon2;
+	var earth, moon1, moon2, moon3;
 
 	earth = new Planet(null, 500, .001, 120);
 	sun.addSatellite( earth );
 
-	moon = new Planet(null, 350, .004, 180);
-	earth.addSatellite( moon );
-	unions.push([moon, earth]);
+	moon1 = new Planet(null, 350, .004, 60);
+	earth.addSatellite( moon1 );
+	unions.push([moon1, earth]);
 
-	moon2 = new Planet(null, 350, .004, 210);
-	moon2.setFase(PI);
+	moon2 = new Planet(null, 350, .004, 180);
+	moon2.setFase(TAU/3);
 	earth.addSatellite( moon2 );
 	unions.push([moon2, earth]);
+
+	moon3 = new Planet(null, 350, .004, 300);
+	moon3.setFase(TAU/3*2);
+	earth.addSatellite( moon3 );
+	unions.push([moon3, earth]);
 
 	clearCanvas();
 	noisyMode = false;

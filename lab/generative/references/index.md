@@ -142,6 +142,14 @@
 
 <cite>by [u/ejgen](https://www.reddit.com/user/ejgen/) in [Reddit](https://www.reddit.com/r/generative/comments/kyb93x/genuary_16_circles_i_contain_multitudes/).</cite>
 
+### Accretion
+
+![](ejgen-accretion.png)
+
+>I draw circles in a circle, and increase the size over time with a little "breathing". In p5.js.
+
+<cite>by [u/ejgen](https://www.reddit.com/user/ejgen/) in [Reddit](https://www.reddit.com/r/generative/comments/l144wu/accretion/).</cite>
+
 ## Altres
 
 * [Flow Fields](https://tylerxhobbs.com/essays/2020/flow-fields)
