@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-		<title>Genuary21 | 23 - xxx | Circus</title>
+		<title>Genuary21 | 23 - #264653, #2a9d8f, #e9c46a, #f4a261, #e76f51 | Lollipop</title>
 		
 		<script src="../p5.js"></script>
 	</head>
@@ -31,7 +31,7 @@
 
 		var CANVAS_WIDTH, CANVAS_HEIGHT;
 		var sun;
-		var unions = [];
+		var drawablePoints = [];
 
 		function setup() {
 			CANVAS_WIDTH = window.innerWidth;
@@ -46,9 +46,9 @@
 
 		function draw() {
 			sun.update();
-			unions.forEach(union => {
-				const pos = union[0].getPosition();
-				stroke( union[0].getColor() );
+			drawablePoints.forEach(union => {
+				const pos = union.getPosition();
+				stroke( union.getColor() );
 				point(pos.x, pos.y);
 			});
 		}
@@ -57,13 +57,12 @@
 		function loadPlanets() {
 			sun = new Planet(1, 0, 60);
 			sun.setOrbitCenter( createVector(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5 ));
-			unions = [];
+			drawablePoints = [];
 
 			const n = colors.length;
 
-			const EARTH_RADIUS   =   350 ;	const EARTH_SPEED    =  .01 ;
-			const MOON_RADIUS    =   400 ;	const MOON_SPEED     =  .02 ;
-			const SUBMOON_RADIUS =   300 ;	const SUBMOON_SPEED  =  .04 ;
+			const EARTH_RADIUS   =   200 ;	const EARTH_SPEED    =  .010 ;
+			const MOON_RADIUS    =   400 ;	const MOON_SPEED     =  .015 ;
 
 			const INCR_ANGLE = TAU/n;
 			const INCR_COLOR = 360/n;
@@ -72,7 +71,7 @@
 			var angle = 0;
 
 			for (let i = 0; i < n; i++) {
-				earth = new Planet(EARTH_RADIUS, EARTH_SPEED, '#FFFFFF');
+				earth = new Planet(EARTH_RADIUS, EARTH_SPEED, colors[i]);
 				earth.setFase(angle);
 				sun.addSatellite( earth );
 
@@ -80,19 +79,14 @@
 				moon.setFase(angle);
 				earth.addSatellite( moon );
 
-				submoon = new Planet(SUBMOON_RADIUS, SUBMOON_SPEED, colors[i]);
-				submoon.setFase(angle);
-				moon.addSatellite( submoon );
-
-				unions.push([moon, submoon]);
+				drawablePoints.push( moon );
 
 				angle += INCR_ANGLE;
 			}
 		}
 
 		function loadStyle() {
-			strokeWeight(50); // Maria: Constant?
-			angleMode(RADIANS);
+			strokeWeight(50);
 			strokeJoin(MITER);
 			strokeCap(ROUND);
 			background(bgColor);

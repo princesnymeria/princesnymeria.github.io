@@ -57,12 +57,12 @@ El subreddit [r/generative](https://www.reddit.com/r/generative), ha creat un se
 |  20 | No loops.                                                                                                                           | [](  .html)        |                     |
 |  21 | function f(x) { <br>    DRAW(x);    f(1 * x / 4); <br>    f(2 * x / 4);                                                             | [](  .html)        | Just avui m'assabento que existeix aquesta iniciativa i em platejo participar. Més val tard que mai |
 |  22 | Draw a line. Wrong answers only.                                                                                                    | [](  .html)        |                     |
-|  23 | `#264653`, `#2a9d8f`, `#e9c46a`, `#f4a261`, `#e76f51`, no gradients. Optionally, you can use a black or white background.           | [Circus](a/23.html) | Espiral orbites en orbites |
+|  23 | `#264653`, `#2a9d8f`, `#e9c46a`, `#f4a261`, `#e76f51`, no gradients. Optionally, you can use a black or white background.           | [Lollipop](a/23.html) | Idea: Espiral orbites en orbites en forma de piruleta |
 |  24 | 500 lines.                                                                                                                          | [](  .html)        |                     |
 |  25 | Make a grid of permutations of something.                                                                                           | [](  .html)        |                     |
 |  26 | 2D Perspective.                                                                                                                     | [](  .html)        |                     |
 |  27 | Gradients without lines.                                                                                                            | [](  .html)        | Idea: GRADIENT AMB CERCLES???? CROSSANTS??? |
 |  28 | Use sound.                                                                                                                          | [](  .html)        |                     |
-|  29 | Any shape, none can touch.                                                                                                          | [](  .html)        | Idea: PATRO MARIA AMIC INVISIBLE 2n ESO |
+|  29 | Any shape, none can touch.                                                                                                          | [Equilibri](a/29.html) | Idea: PATRO MARIA AMIC INVISIBLE 2n ESO |
 |  30 | Replicate a natural concept (e.g. gravity, flocking, path following).                                                               | [](  .html)        |                     |
 |  31 | 10 SEARCH FOR "ENO'S OBLIQUE STRATEGIES"<br>20 OBTAIN ONE<br>30 THAT IS YOUR PROMPT FOR TODAY                                       | [](  .html)        |                     |

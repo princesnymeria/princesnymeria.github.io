@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<title>Genuary21 | 29 - Any shape, none can touch | Equilibri</title>
+		
+		<script src="../p5.js"></script>
+	</head>
+
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			height: 100vh;
+			width: 100vw;
+			border: none;
+			overflow: hidden;
+		}
+	</style>
+
+	<body></body>
+
+	<script>
+		const MODE_DEBUG = false;
+		const numBombolles = MODE_DEBUG ? 1 : 48;
+		var cursorBombolla;
+		const bombolles = [];
+		const bgColor = 12;
+		var CANVAS_WIDTH, CANVAS_HEIGHT, C;
+
+		function setup() {
+			CANVAS_WIDTH = window.innerWidth;
+			CANVAS_HEIGHT = window.innerHeight;
+			C = ( CANVAS_WIDTH > CANVAS_HEIGHT ? CANVAS_WIDTH : CANVAS_HEIGHT ) * .025;
+			
+			createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
+			frameRate(24);
+
+			loadStyle();
+
+			for (let i = 0; i < numBombolles; i++) bombolles.push( new Bombolla() );
+			if (MODE_DEBUG) cursorBombolla = new Bombolla();
+		}
+
+		function draw() {
+			clearCanvas();
+			bombolles.forEach(bombolla => {
+				bombolla.update();
+				bombolla.display();
+			});
+			if (MODE_DEBUG) { cursorBombolla.setPos(mouseX, mouseY); cursorBombolla.display(); }
+			// QUAN ACABI EL PROCES I TOT QUEDI EN EQUILIBRI PRINTAR EL TEMS QUE HA TARDAT A EQUILIBRARSE, I UN MISSATGE TIPUS "Amb temps infinit, per moltes variables que hi hagi, tot queda equilibrat"
+		}
+
+		function loadStyle() {
+			colorMode(HSL);
+			angleMode(RADIANS);
+			stroke(bgColor);
+			strokeWeight(5);
+			clearCanvas();
+		}
+
+		function clearCanvas() {
+			background(bgColor);
+		}
+
+		class Bombolla {
+			constructor () {
+				this.size = random( 1, 5 ) * C;
+				this.pos = createVector(
+					random( this.size, CANVAS_WIDTH  - this.size ),
+					random( this.size, CANVAS_HEIGHT - this.size )
+				);
+				this.colorHue = floor(random( 0, 360 ));
+			}
+			isInsideCollider (that) {
+				const d = dist(this.pos.x, this.pos.y, that.pos.x, that.pos.y);
+				const D = ( this.size + that.size ) * .5;
+				return d < D && d > 0;
+			}
+			setPos (posX, posY) {
+				this.pos = createVector( posX, posY );
+			}
+			moveAwayFrom (that) {
+				const dx = this.pos.x - that.pos.x;
+				const dy = this.pos.y - that.pos.y;
+				const v = this.pos.x > that.pos.x ? 0 : PI;
+				const  a = atan( dy/dx ) + v;
+				this.pos.x = this.pos.x + cos(a) * this.size *.1;
+				this.pos.y = this.pos.y + sin(a) * this.size *.1;
+				this.keepInsideScreen();
+			}
+			keepInsideScreen () {
+				if (this.pos.x < 0) this.pos.x = 0;
+				if (this.pos.x > CANVAS_WIDTH) this.pos.x = CANVAS_WIDTH;
+				if (this.pos.y < 0) this.pos.y = 0;
+				if (this.pos.y > CANVAS_HEIGHT) this.pos.y = CANVAS_HEIGHT;
+			}
+			update () {
+				for (let i = 0; i < bombolles.length; i++) {
+					const bombolla = bombolles[i];
+					if ( this.isInsideCollider(bombolla)  )
+						this.moveAwayFrom(bombolla);
+				}
+				if (MODE_DEBUG) { if ( this.isInsideCollider(cursorBombolla)) this.moveAwayFrom(cursorBombolla); }
+			}
+			display () {
+				fill( this.colorHue, 60, 60 );
+				circle( this.pos.x, this.pos.y, this.size );
+			}
+		}
+	</script>
+
+</html>
