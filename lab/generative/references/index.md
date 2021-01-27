@@ -150,6 +150,20 @@
 
 <cite>by [u/ejgen](https://www.reddit.com/user/ejgen/) in [Reddit](https://www.reddit.com/r/generative/comments/l144wu/accretion/).</cite>
 
+### A binary search tree
+
+![](fixheft-a_binary_search_tree.mp4)
+
+[no tinc clar que sigui original, però mola]
+
+<cite>by [u/gifsthatendtoosoon](https://www.reddit.com/user/FixHeft/) in [Reddit](https://www.reddit.com/r/gifsthatendtoosoon/).</cite>
+
+### Genuary 23 - when stars collide
+
+![](jakkodejong-genuary_23_when_stars_collide.png)
+
+<cite>by [u/jakkodejong](https://www.reddit.com/user/jakkodejong/) in [Reddit](https://www.reddit.com/r/generative/comments/l3id2d/genuary_23_when_stars_collide/).</cite>
+
 ## Altres
 
 * [Flow Fields](https://tylerxhobbs.com/essays/2020/flow-fields)

@@ -31,12 +31,13 @@
 		var cursorBombolla;
 		const bombolles = [];
 		const bgColor = 12;
-		var CANVAS_WIDTH, CANVAS_HEIGHT, C;
+		var CANVAS_WIDTH, CANVAS_HEIGHT, AREA;
+		var temps, finsish;
 
 		function setup() {
 			CANVAS_WIDTH = window.innerWidth;
 			CANVAS_HEIGHT = window.innerHeight;
-			C = ( CANVAS_WIDTH > CANVAS_HEIGHT ? CANVAS_WIDTH : CANVAS_HEIGHT ) * .025;
+			AREA = sqrt( CANVAS_WIDTH * CANVAS_HEIGHT / ( numBombolles * PI ));
 			
 			createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
 			frameRate(24);
@@ -45,16 +46,31 @@
 
 			for (let i = 0; i < numBombolles; i++) bombolles.push( new Bombolla() );
 			if (MODE_DEBUG) cursorBombolla = new Bombolla();
+
+			temps = 0;
+			finsish = false;
+			setInterval( function() { temps++; }, 1000);
 		}
 
 		function draw() {
-			clearCanvas();
-			bombolles.forEach(bombolla => {
-				bombolla.update();
-				bombolla.display();
-			});
-			if (MODE_DEBUG) { cursorBombolla.setPos(mouseX, mouseY); cursorBombolla.display(); }
-			// QUAN ACABI EL PROCES I TOT QUEDI EN EQUILIBRI PRINTAR EL TEMS QUE HA TARDAT A EQUILIBRARSE, I UN MISSATGE TIPUS "Amb temps infinit, per moltes variables que hi hagi, tot queda equilibrat"
+			if (!finsish) {
+				var allBombollesPlaced = true;
+				clearCanvas();
+				bombolles.forEach(bombolla => {
+					bombolla.update();
+					bombolla.display();
+					if ( !bombolla.getIsPlaced() ) allBombollesPlaced = false;
+				});
+				if (MODE_DEBUG) { cursorBombolla.setPos(mouseX, mouseY); cursorBombolla.display(); }
+				
+				if ( allBombollesPlaced ) finsishProgram();
+			}
+		}
+
+		function finsishProgram() {
+			const M = ["Tot ha quedat en equilibri després de ", " segons!"];
+			console.log( M[0], temps, M[1] );
+			finsish = true;
 		}
 
 		function loadStyle() {
@@ -71,28 +87,32 @@
 
 		class Bombolla {
 			constructor () {
-				this.size = random( 1, 5 ) * C;
+				this.size = random( .5, 3 ) * AREA;
 				this.pos = createVector(
 					random( this.size, CANVAS_WIDTH  - this.size ),
 					random( this.size, CANVAS_HEIGHT - this.size )
 				);
 				this.colorHue = floor(random( 0, 360 ));
+				this.isPlaced = false;
+			}
+			getIsPlaced () {
+				return this.isPlaced;
+			}
+			setPos (posX, posY) {
+				this.pos = createVector( posX, posY );
 			}
 			isInsideCollider (that) {
 				const d = dist(this.pos.x, this.pos.y, that.pos.x, that.pos.y);
 				const D = ( this.size + that.size ) * .5;
 				return d < D && d > 0;
 			}
-			setPos (posX, posY) {
-				this.pos = createVector( posX, posY );
-			}
 			moveAwayFrom (that) {
 				const dx = this.pos.x - that.pos.x;
 				const dy = this.pos.y - that.pos.y;
 				const v = this.pos.x > that.pos.x ? 0 : PI;
 				const  a = atan( dy/dx ) + v;
-				this.pos.x = this.pos.x + cos(a) * this.size *.1;
-				this.pos.y = this.pos.y + sin(a) * this.size *.1;
+				this.pos.x = this.pos.x + cos(a) * this.size * random(.1, .25);
+				this.pos.y = this.pos.y + sin(a) * this.size * random(.1, .25);
 				this.keepInsideScreen();
 			}
 			keepInsideScreen () {
@@ -102,10 +122,13 @@
 				if (this.pos.y > CANVAS_HEIGHT) this.pos.y = CANVAS_HEIGHT;
 			}
 			update () {
+				this.isPlaced = true;
 				for (let i = 0; i < bombolles.length; i++) {
 					const bombolla = bombolles[i];
-					if ( this.isInsideCollider(bombolla)  )
+					if ( this.isInsideCollider(bombolla) ) {
 						this.moveAwayFrom(bombolla);
+						this.isPlaced = false;
+					}
 				}
 				if (MODE_DEBUG) { if ( this.isInsideCollider(cursorBombolla)) this.moveAwayFrom(cursorBombolla); }
 			}
