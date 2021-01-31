@@ -164,6 +164,44 @@
 
 <cite>by [u/jakkodejong](https://www.reddit.com/user/jakkodejong/) in [Reddit](https://www.reddit.com/r/generative/comments/l3id2d/genuary_23_when_stars_collide/).</cite>
 
+
+### PrologueHaze
+
+![](lucidquiet-prologuehaze.png)
+
+>I'm using a Go lib called gg. But mainly a lot of opacity and many layers.
+
+https://www.reddit.com/r/generative/comments/l7m3i1/prologuehaze/?utm_medium=android_app&utm_source=share
+
+<cite>by [u/lucid-quiet](https://www.reddit.com/user/lucid-quiet/) in [Reddit](https://www.reddit.com/r/generative/comments/l7m3i1/prologuehaze).</cite>
+
+### Any shape, none can touch (Genuary 2021, day 29 @h.scheidl)
+
+![](engineeringdesign-genuary2129.png)
+
+<cite>by [u/Engineering-Design](https://www.reddit.com/user/Engineering-Design/) in [Reddit](https://www.reddit.com/r/generative/comments/l89ej4/any_shape_none_can_touch_genuary_2021_day_29/).</cite>
+
+### One before last, Genuary 2021 day 30!
+
+![](engineeringdesign-genuary2130.png)
+
+<cite>by [u/Engineering-Design](https://www.reddit.com/user/Engineering-Design/) in [Reddit](https://www.reddit.com/r/generative/comments/l8xfze/one_before_last_genuary_2021_day_30/).</cite>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Altres
 
 * [Flow Fields](https://tylerxhobbs.com/essays/2020/flow-fields)

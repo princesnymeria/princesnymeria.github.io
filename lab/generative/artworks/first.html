@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<title>My First Attempt</title>
+		<meta name="description" content="I tried to copy an atwork I saw but I dont remember the credits. Results are horrible">
+		
+		<script src="../p5.js"></script>
+	</head>
+
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			height: 100vh;
+			width: 100vw;
+			border: none;
+			overflow: hidden;
+		}
+	</style>
+
+	<body></body>
+
+	<script>
+		var colors = [];
+		var branques = [];
+
+		function setup() {
+			createCanvas(800, 600);
+			frameRate(30);
+			colors = [color(13, 130, 255), color(13, 194, 255), color(0, 255, 251), color(13, 255, 182), color(13, 255, 113)];
+		}
+
+		function draw() {
+			if (mouseIsPressed)
+				branques.push(new Branca(mouseX, mouseY, random(colors)));
+			branques.forEach(b => {
+				b.update();
+				b.display();
+			});
+			if (keyCode === 67)
+				background('white');
+		}
+
+		class Branca {
+			constructor(posX, posY, color) {
+				this.initialRad = 40;
+
+				this.initialPosX = posX;
+				this.initialPosY = posY;
+				this.color = color;
+
+				this.currentRad = this.initialRad;
+				this.currentPosX = this.initialPosX;
+				this.currentPosY = this.initialPosY;
+
+				this.display();
+			}
+			update() {
+				this.currentRad-=random(1, this.currentRad/50);
+				this.currentPosX+=random(this.currentRad/4*-1, this.currentRad/4);
+				this.currentPosY-=random(this.currentRad/4*-1, this.currentRad/4);
+				if (this.currentRad <= 10)
+					this.stop();
+			}
+			display() {
+				fill(this.color);
+				ellipse(this.currentPosX, this.currentPosY, this.currentRad, this.currentRad);			
+			}
+			stop() {
+				//eliminar branca de la llista
+			}
+		}
+	</script>
+
+</html>

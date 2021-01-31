@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<title>Genuary21 | 29 - Any shape, none can touch | Ovul</title>
+		
+		<script src="../p5.js"></script>
+	</head>
+
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			height: 100vh;
+			width: 100vw;
+			border: none;
+			overflow: hidden;
+		}
+	</style>
+
+	<body></body>
+
+	<script>
+		const MODE_DEBUG = true;
+		var pare;
+		const bgColor = 12;
+		var CANVAS_WIDTH, CANVAS_HEIGHT, C;
+
+		function setup() {
+			CANVAS_WIDTH = window.innerWidth;
+			CANVAS_HEIGHT = window.innerHeight;
+			C = ( CANVAS_WIDTH > CANVAS_HEIGHT ? CANVAS_WIDTH : CANVAS_HEIGHT ) * .5;
+			
+			createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
+			frameRate(24);
+
+			loadStyle();
+
+			pare = new Ovul(CANVAS_WIDTH * .5, CANVAS_HEIGHT * .5, C*.01, floor(random( 0, 360 )), 3, 0);
+		}
+
+		function draw() {
+			clearCanvas();
+			pare.update();
+			pare.display();
+		}
+
+		function loadStyle() {
+			colorMode(HSL);
+			angleMode(RADIANS);
+			//stroke(bgColor);
+			//strokeWeight(5);
+			noStroke();
+			clearCanvas();
+		}
+
+		function clearCanvas() {
+			background(bgColor);
+		}
+
+		class Ovul {
+			constructor (pX, pY, radius, hue, gens, a) {
+				this.radius = radius;
+				this.pos = createVector(pX, pY);
+				this.color = { 'H': hue, 'S': 60, 'L': 60, 'inc': -1 };
+				this.childs = [];
+				this.subdivided = gens <= 0;                                                          //CONSTANTS
+				this.gens = gens;
+				this.f = 0;
+				this.a = a;
+			}
+			update () {
+				this.color['S'] += this.color['inc'];
+				if (this.color['S'] > 80 || this.color['S'] < 60) this.color['inc'] *= -1;            //CONSTANTS
+
+				if ( !this.subdivided ) {
+					this.radius += .5;                                                                //CONSTANTS
+					this.f += .01;                                                                    //CONSTANTS
+					if (this.f > 1 ) {                                                                //CONSTANTS
+						this.subdivide();
+						this.subdivided = true;
+					}
+					this.pos.x += cos(this.a) * this.radius * .02;
+					this.pos.y += sin(this.a) * this.radius * .02;
+				}
+				else
+					this.childs.forEach(child => { child.update(); });
+			}
+			display () {
+				if ( this.childs.length > 0 )
+					this.childs.forEach(child => { child.display(); });
+				else {
+					fill( this.color['H'], this.color['S'], this.color['L'] );
+					circle( this.pos.x, this.pos.y, this.radius );
+				}
+			}
+			subdivide () {
+				if (MODE_DEBUG) console.log('Subdividint ---------- Radi: ', this.radius);
+				var h = this.color['H'];
+				for (let i = 0; i < 4; i++) {
+					const a = HALF_PI * i;
+					this.childs.push( new Ovul(this.pos.x, this.pos.y, this.radius, h, this.gens-1, a) );
+					h = ( h + 10 ) % 360;
+				}
+			}
+		}
+	</script>
+
+</html>

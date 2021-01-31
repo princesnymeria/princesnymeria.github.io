@@ -6,7 +6,7 @@ Mar Kralovna testing things...
 
 ### Lab ([./lab](/lab))
 
-Some "projects" I did for fun during the last year of university
+~~Some "projects" I did for fun during the last year of university~~ *Mar's shitty Lab*
 
 |        Title        |               Path               |                                     Subtitle                                     | Estatus |
 |---------------------|----------------------------------|----------------------------------------------------------------------------------|---------|
@@ -24,7 +24,7 @@ Some "projects" I did for fun during the last year of university
 
 ### Comunity ([./com](/com))
 
-This is where I save the projects where I save the atworks I made for contest or challenges.
+~~This is where I save the projects where I save the atworks I made for contest or challenges.~~ *Mar trying to do cool things*
 
 |        Title        |               Path               |                                     Subtitle                                     | Estatus |
 |---------------------|----------------------------------|----------------------------------------------------------------------------------|---------|
