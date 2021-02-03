@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<title>GENERATIVE LAB</title>
+		
+		<script src="../p5.js"></script>
+	</head>
+
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			height: 100vh;
+			width: 100vw;
+			border: none;
+			overflow: hidden;
+		}
+	</style>
+
+	<body></body>
+
+	<script>
+		const MODE_DEBUG = false;
+		const bales = [];
+
+		function setup() {
+			CANVAS_WIDTH = window.innerWidth;
+			CANVAS_HEIGHT = window.innerHeight;
+			
+			createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
+			frameRate(24);
+
+			colorMode(HSL);
+			angleMode(RADIANS);
+
+			bales[0] = new Bala(500, 500);
+		}
+
+		function draw() {
+			clearCanvas();
+			bales[0].update();
+			bales[0].display();
+			if (mouseIsPressed) {
+				bales[0].setPos(mouseX, mouseY)
+			}
+		}
+		
+		function setStrokeStyle(type, color) {
+			if ( type == 'line' ) {
+				strokeWeight(1);
+				stroke(0, 0, 50);
+			}
+			else if ( type == 'point' ) {
+				strokeWeight(10);
+				stroke(color, 60, 60);
+			}
+		}
+		
+		function clearCanvas() {
+			background(12);
+		}
+
+		class Bala {
+			constructor (pX, pY) {
+				this.hue = 0;
+				this.pos0 = createVector(pX, pY);
+				this.pos1 = createVector(pX, pY);
+				this.a = 0;
+				this.v = 0;
+				this.k = .003; //---------------------------------------------------------------------CONSTANT
+			}
+			update () {
+				if ( this.a > 0 ) {
+					var a = atan( ( this.pos1.y - this.pos0.y) / (this.pos1.x -this.pos0.x) );
+					if (this.pos1.x > this.pos0.x) a += PI
+					this.v += this.a;
+					this.pos1.x += cos(a) * this.v;
+					this.pos1.y += sin(a) * this.v;
+				}
+				if ( dist(this.pos0.x, this.pos0.y, this.pos1.x, this.pos1.y) < 50 ) { this.v = 0; this.a = 0; } //-----------ARREGLAR
+			}
+			display () {
+				setStrokeStyle('line', 0)
+				line(this.pos0.x, this.pos0.y, this.pos1.x, this.pos1.y);
+				setStrokeStyle('point', this.hue)
+				point(this.pos1.x, this.pos1.y);
+			}
+			setPos (pX, pY) {
+				this.pos1 = createVector(pX, pY);
+				const d = dist(this.pos0.x, this.pos0.y, pX, pY);
+				this.v = 0;
+				this.a = this.k * d;
+			}
+		}
+	</script>
+
+</html>

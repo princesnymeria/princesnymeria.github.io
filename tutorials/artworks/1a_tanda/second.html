@@ -8,7 +8,6 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 		<title>My Second Attempt</title>
-		<meta name="description" content="That's long. As university homework I had to replicate a poster in a generative way and I chosed https://www.pinterest.es/pin/448319337905993970/ (Classic Design by Walter Ballmer). Then I changed the colors on my own and finaly ended up getting inspired by https://www.reddit.com/r/generative/comments/l89ej4/any_shape_none_can_touch_genuary_2021_day_29/">
 		
 		<script src="../p5.js"></script>
 	</head>
@@ -59,12 +58,13 @@
 		}
 
 		function newRandomFigure( col, row ) {
-			const f = floor(random(0, 3));
+			const f = floor(random(0, 4));
 			var figure;
 			switch (f) {
 				case 0:  figure = new RectFigure( col, row );     break;
 				case 1:  figure = new ArcFigure( col, row );      break;
 				case 2:  figure = new TriangleFigure( col, row ); break;
+				case 3:  figure = new RectFigure( col, row );     break;
 				default: figure = new Figure( col, row );         break;
 			}
 			return figure

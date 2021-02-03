@@ -187,20 +187,35 @@ https://www.reddit.com/r/generative/comments/l7m3i1/prologuehaze/?utm_medium=and
 
 <cite>by [u/Engineering-Design](https://www.reddit.com/user/Engineering-Design/) in [Reddit](https://www.reddit.com/r/generative/comments/l8xfze/one_before_last_genuary_2021_day_30/).</cite>
 
+### Zoomed region of Buddhabrot with high iteration count
 
+![](sallysouls-zoomed_region_of_buddhabrot_with_high_iteration_count.png)
 
+>I used this tool I've been working on: https://github.com/SallySoul/escape
 
+<cite>by [u/SallySouls](https://www.reddit.com/user/SallySouls/) in [Reddit](https://www.reddit.com/r/generative/comments/lanw4d/zoomed_region_of_buddhabrot_with_high_iteration/).</cite>
 
+### [OC] Jellytwist
 
+![](enslavedinthescrolls-jellytwist.mp4)
 
+>xxx
 
+<cite>by [u/EnslavedInTheScrolls](xxx) in [Reddit](https://www.reddit.com/r/loadingicon/comments/l9n5dl/oc_jellytwist/).</cite>
 
+### bouncing to the beat
 
+https://www.reddit.com/r/generative/comments/la4rtu/bouncing_to_the_beat/
 
+>made with blender and python scripting. music is "Lone Wolf" by CloZinger.
 
+<cite>by [u/selonus](https://www.reddit.com/user/selonus/) in [Reddit](https://www.reddit.com/r/generative/comments/la4rtu/bouncing_to_the_beat/).</cite>
 
+### Fractured Cube (Blender + Python)
 
+![](benmash_art-fractured_cube.png)
 
+<cite>by [u/benmash_art](https://www.reddit.com/user/benmash_art/) in [Reddit](https://www.reddit.com/r/generative/comments/lapmtx/fractured_cube_blender_python/).</cite>
 
 ## Altres
 

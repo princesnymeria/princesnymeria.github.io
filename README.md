@@ -28,17 +28,11 @@ Mar Kralovna testing things...
 
 |        Title        |               Path               |                                     Subtitle                                     | Estatus |
 |---------------------|----------------------------------|----------------------------------------------------------------------------------|---------|
-| Recycle             | [/tree](/lab/tree)               | Recycle to make nature beutiful again                                            |    85 % |
+| Genuary21           | [/Genuary21](/Genuary21)         |                                                                                  |     2 % |
 
-\* Every project contains a file called `index.md` in the root folder containing the information related to the challenge.
+### Tutorials ([./tutorials](/tutorials))
 
-### Generative ([./lab/generative](/lab/generative))
-
-Generative art and Organic Paintings
-
-|        Title        |               Path               |                                     Subtitle                                     | Estatus |
-|---------------------|----------------------------------|----------------------------------------------------------------------------------|---------|
-| Genuary21           | [/Genuary21](/com/Genuary21)     | A love story between two circular orbits and milions of high transparency line   |         |
+...
 
 ## Sitemap
 
