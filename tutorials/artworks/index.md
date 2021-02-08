@@ -8,7 +8,7 @@ Merdes sense rum
 
 * [first](/1a_tanda/first.html): I tried to copy an atwork I saw but I dont remember the credits. Results are horrible
 * [second](/1a_tanda/second.html): That's long. As university homework I had to replicate a poster in a generative way and I chosed https://www.pinterest.es/pin/448319337905993970/ (Classic Design by Walter Ballmer). Then I changed the colors on my own and finaly ended up getting inspired by https://www.reddit.com/r/generative/comments/l89ej4/any_shape_none_can_touch_genuary_2021_day_29/
-* [Orbit](/1a_tanda/Orbit)
+* [Orbit](/1a_tanda/orbit)
 * [Illusio](/1a_tanda/Illusio.html): I coied this: https://www.reddit.com/r/generative/comments/kyb93x/genuary_16_circles_i_contain_multitudes/
 * [subdivision](/1a_tanda/subdivision.html)
 
