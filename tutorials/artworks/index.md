@@ -1,4 +1,4 @@
-# mmm...
+# Copied Artworks
 
 Mar trying to learn how to do cool things by coping cool things done by other people
 
@@ -15,10 +15,10 @@ Merdes sense rum
 ## 2a Tanda
 
 * [Sunflower](/2a_tanda/sunflower.html) inspried by [Repulsion](https://openprocessing.org/sketch/1018746) by [Coolkid](https://openprocessing.org/user/247507?view=sketches)
+* [Rain](/2a_tanda/rain.html) inspried by [音の対流](https://openprocessing.org/sketch/1039447) by Yuki
 
 ### Inspirations
 
-* [音の対流](https://openprocessing.org/sketch/1039447) by Yuki
 * [T419057_応用課題 ](https://www.openprocessing.org/sketch/1057412) by [T419057](https://www.openprocessing.org/user/251428?view=sketches)
 * https://openprocessing.org/sketch/1051702
 * https://openprocessing.org/sketch/1026423

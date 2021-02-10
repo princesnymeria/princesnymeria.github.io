@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<title>Rain</title>
+		
+		<script src="../p5.js"></script>
+	</head>
+
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			height: 100vh;
+			width: 100vw;
+			border: none;
+			overflow: hidden;
+		}
+	</style>
+
+	<body></body>
+
+	<script>
+		const MODE_DEBUG = false;
+		var CANVAS_WIDTH, CANVAS_HEIGHT;
+		const drops = [];
+		var umbrella;
+
+		const INITIAL_HUE = 180;
+		const FINAL_HUE = 300;
+
+		function setup() {
+			CANVAS_WIDTH = window.innerWidth;
+			CANVAS_HEIGHT = window.innerHeight;
+			
+			createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
+			frameRate(24);
+
+			setStyle();
+
+			const n = MODE_DEBUG ? 1 : 800;
+			for (let i = 0; i < n; i++) drops.push( new Drop() );
+			umbrella = new Umbrella( CANVAS_HEIGHT * .2 );
+		}
+
+		function draw() {
+			clearCanvas();
+			umbrella.setPosX(mouseX);
+			drops.forEach(d => {
+				d.collide(umbrella.posX, umbrella.posY, umbrella.dim);
+				d.update();
+				d.display();
+			});
+			umbrella.display();
+		}
+		
+		function clearCanvas() {
+			background(12, .2);
+		}
+		
+		function setStyle() {
+			background(12);
+			colorMode(HSL);
+			noFill();
+			stroke(0, 60, 60);
+			strokeWeight(10);
+		}
+
+		class Umbrella {
+			constructor (s) {
+				this.posX = 0;
+				this.posY = s * 3.5;
+				this.dim = s;
+			}
+			setPosX (posX) {
+				this.posX = posX;
+			}
+			display () {
+				stroke(60);
+				arc(this.posX, this.posY, this.dim, this.dim, PI, 0, OPEN);
+				this.displayPal();
+			}
+			displayPal () {
+				const h = this.dim * .5;
+				const h2 = this.dim * .1;
+				line( this.posX, this.posY + h, this.posX, this.posY );
+				line( this.posX, this.posY - h, this.posX, this.posY - h - h2 );
+				line( this.posX - h, this.posY, this.posX + h, this.posY );
+				arc(this.posX- h/2, this.posY + h, h, h, 0, PI, OPEN);
+			}
+
+		}
+		class Drop {
+			constructor () {
+				this.hue = 0;
+				this.posX = random(0, CANVAS_WIDTH);
+				this.posY = random(-CANVAS_HEIGHT, 0);
+				this.speed = 1;
+				this.a = random(1, 5) * CANVAS_HEIGHT * .000005;
+			}
+			update () {
+				this.speed += this.a;
+				this.posY += this.speed;
+				if (this.posY > CANVAS_HEIGHT) this.reinitialize();
+				this.hue = map(this.posY, 0, CANVAS_HEIGHT, INITIAL_HUE, FINAL_HUE);
+			}
+			display () {
+				if (MODE_DEBUG) this.displayHelpers();
+				stroke(this.hue, 60, 60);
+				point(this.posX, this.posY);
+			}
+			collide (otherX, otherY, otherDim) {
+				if ( this.isColliding(otherX, otherY, otherDim) )
+					this.moveAwayFrom(otherX, otherY, otherDim)
+			}
+			moveAwayFrom (otherX, otherY, otherDim) {
+				this.posY -= this.speed * 1.1;
+				this.speed -= this.a;
+			}
+			isColliding (otherX, otherY, otherDim) {
+				const d = dist(this.posX, this.posY, otherX, otherY);
+				const a = otherDim * .5 + 5;
+				const res = (d < a) && (d > a - 10) && this.posY < otherY;
+				return res;
+			}
+			reinitialize () {
+				this.posY = -25;
+				this.speed = 0;
+				this.posX = random(0, CANVAS_WIDTH);
+			}
+			displayHelpers () {
+				//...
+			}
+		}
+	</script>
+
+</html>

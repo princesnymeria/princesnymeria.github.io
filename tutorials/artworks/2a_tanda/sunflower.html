@@ -27,14 +27,14 @@
 
 	<script>
 		const MODE_DEBUG = false;
-		const bales = [];
+		const seeds = [];
 		var controller;
 		var CANVAS_WIDTH, CANVAS_HEIGHT;
 
 		const COLOR_HUE_0 = 180;
 		const COLOR_HUE_1 = 240; // const COLOR_HUE_1 = 300;
-		const BALES_COUNT = MODE_DEBUG ? 15 : 800;
-		const BALES_SPACE = MODE_DEBUG ? 50 : 8;
+		const SEEDS_COUNT = MODE_DEBUG ? 15 : 600;
+		const SEEDS_SPACE = MODE_DEBUG ? 50 : 8;
 
 		function setup() {
 			CANVAS_WIDTH = window.innerWidth;
@@ -46,13 +46,13 @@
 			colorMode(HSL);
 			angleMode(RADIANS);
 
-			controller = new Controller( (CANVAS_WIDTH > CANVAS_HEIGHT ? CANVAS_WIDTH : CANVAS_HEIGHT) * .15 );
-			const l = setParticlesPosition(BALES_COUNT, BALES_SPACE);
+			controller = new Controller( (CANVAS_WIDTH > CANVAS_HEIGHT ? CANVAS_WIDTH : CANVAS_HEIGHT) * .1 );
+			const l = setParticlesPosition(SEEDS_COUNT, SEEDS_SPACE);
 
 			var colorHue = COLOR_HUE_0;
 			const colorIncr = (COLOR_HUE_1 - COLOR_HUE_0) / l.length;
 			l.forEach(pos => {
-				bales.push(new Bala(pos, colorHue));
+				seeds.push(new Seed(pos, colorHue));
 				colorHue += colorIncr;
 			});
 		}
@@ -60,7 +60,7 @@
 		function draw() {
 			clearCanvas();
 			controller.setPos(mouseX, mouseY);
-			bales.forEach(bala => {
+			seeds.forEach(bala => {
 				bala.collide(controller);
 				bala.update();
 				bala.display();
@@ -90,12 +90,11 @@
 			return positions;
 		}
 
-		class Bala {
+		class Seed {
 			constructor (positionVector, colorHue) {
 				this.hue = colorHue;
 				this.pos0 = positionVector;
 				this.pos1 = positionVector;
-
 				this.acc = 0;
 				this.angle = 0;
 				this.v = 0;

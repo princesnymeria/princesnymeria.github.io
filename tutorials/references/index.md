@@ -171,7 +171,7 @@
 
 >I'm using a Go lib called gg. But mainly a lot of opacity and many layers.
 
-https://www.reddit.com/r/generative/comments/l7m3i1/prologuehaze/?utm_medium=android_app&utm_source=share
+https://www.reddit.com/r/generative/comments/l7m3i1/prologuehaze/
 
 <cite>by [u/lucid-quiet](https://www.reddit.com/user/lucid-quiet/) in [Reddit](https://www.reddit.com/r/generative/comments/l7m3i1/prologuehaze).</cite>
 
@@ -222,7 +222,10 @@ https://www.reddit.com/r/generative/comments/la4rtu/bouncing_to_the_beat/
 * [Flow Fields](https://tylerxhobbs.com/essays/2020/flow-fields)
 * [BLOG INTERESSANT](https://tylerxhobbs.com/)
 * [Ego](https://www.reddit.com/r/generative/comments/kvo1h0/ego/)
-* [AgateFlower](https://www.reddit.com/r/creativecoding/comments/kyct2w/processing_agateflower/?utm_medium=android_app&utm_source=share)
+* [AgateFlower](https://www.reddit.com/r/creativecoding/comments/kyct2w/processing_agateflower/)
+* [jan.24 - GENUARY 2021 - Inspired by Daniel Rozin's "Angles Mirror" - Higher resolution example on the webpage. - https://emericw.github.io/genuary2021/prompts/jan.24/dist/](https://www.reddit.com/r/generative/comments/l3z8yt/jan24_genuary_2021_inspired_by_daniel_rozins/)
+* [Genuary 24 - Subdivision of a rectangle using 500 lines](https://www.reddit.com/r/processing/comments/l44yrd/genuary_24_subdivision_of_a_rectangle_using_500/)
+* []()
 
 <!--
 ### xxx

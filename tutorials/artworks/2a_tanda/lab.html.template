@@ -27,6 +27,7 @@
 
 	<script>
 		const MODE_DEBUG = false;
+		var CANVAS_WIDTH, CANVAS_HEIGHT;
 		const vars = { };
 
 		function setup() {
