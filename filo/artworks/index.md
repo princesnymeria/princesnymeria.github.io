@@ -27,13 +27,13 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 	<tbody>
 		<tr>
 			<td></td>
-			<td><a href="/0-set19/first.html">First</a></td>
+			<td><a href="0-set19/first.html">First</a></td>
 			<td>I dont remember the credits</td>
 			<td>I tried to copy an atwork I saw but. Results are horrible</td>
 		</tr>
 		<tr>
 			<td></td>
-			<td><a href="/0-set19/second.html">Second</a></td>
+			<td><a href="0-set19/second.html">Second</a></td>
 			<td>
 				<ul>
 					<li><a href="https://www.pinterest.es/pin/448319337905993970/">Classic Design by Walter Ballmer</a></li>
@@ -44,7 +44,7 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 		</tr>
 		<tr>
 			<td></td>
-			<td><a href="/0-set19/orbit/">Orbit</a></td>
+			<td><a href="0-set19/orbit/">Orbit</a></td>
 			<td>
 				<ul>
 					<li><a href="https://www.reddit.com/r/generative/comments/jqiv25/orbits_in_orbits/">Orbits in orbits</a></li>
@@ -54,7 +54,7 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 		</tr>
 		<tr>
 			<td></td>
-			<td><a href="/0-set19/Illusio.html">Illusio</a></td>
+			<td><a href="0-set19/Illusio.html">Illusio</a></td>
 			<td>
 				<ul>
 					<li><a href="https://www.reddit.com/r/generative/comments/kyb93x/genuary_16_circles_i_contain_multitudes/">I contain multitudes</a></li>
@@ -64,7 +64,7 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 		</tr>
 		<tr>
 			<td></td>
-			<td><a href="/0-set19/subdivision.html">Subdivision</a></td>
+			<td><a href="0-set19/subdivision.html">Subdivision</a></td>
 			<td>Volia fer un òvul xD</td>
 			<td></td>
 		</tr>
@@ -116,7 +116,7 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 			</td>
 			<td>
 				<ul>
-					<li><a href="/1-feb21/rain.html">Rain</a></li>
+					<li><a href="1-feb21/rain.html">Rain</a></li>
 				</ul>
 			</td>
 			<td></td>
