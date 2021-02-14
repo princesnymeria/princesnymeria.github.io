@@ -30,9 +30,13 @@ Mar Kralovna testing things...
 |---------------------|----------------------------------|----------------------------------------------------------------------------------|---------|
 | Genuary21           | [/Genuary21](/com/Genuary21)     |                                                                                  |     2 % |
 
-### Tutorials ([./tutorials](/tutorials/artworks))
+### Tutorials ([./filo](/filo/artworks))
 
-...
+~~Here there's the material I use for learning~~ *The Cemetery where my failed artworks rest*
+
+* [Failed artworks](/filo/artworks)
+* [Articles and tutorials](/filo/recursos)
+* [Inspirations](/filo/references)
 
 ## Sitemap
 
@@ -50,7 +54,7 @@ Root
 │   └── mouse
 ├── com
 │   └── Genuary21
-├── tutorials
+├── filo
 │   ├── artworks
 │   ├── recursos
 │   │   └── ...
