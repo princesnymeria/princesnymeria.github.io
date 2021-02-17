@@ -65,7 +65,7 @@
 </script>
 
 
-<body onclick=" location.href = 'https:\/\/markralovna.github.io/lab/' ">
+<body onclick=" location.href = 'https:\/\/markralovna.github.io/gallery/' ">
 	<svg id="firma" xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="-50 -250 1300 750" ><!--  width="1200" height="250"  -->
 
 		<defs>

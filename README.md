@@ -4,21 +4,21 @@ Mar Kralovna testing things...
 
 ## Projects
 
-### Lab ([./lab](/lab))
+### Lab ([./gallery](/gallery))
 
 ~~Some "projects" I did for fun during the last year of university~~ *My shitty Lab*
 
 |        Title        |               Path               |                                     Subtitle                                     | Estatus |
 |---------------------|----------------------------------|----------------------------------------------------------------------------------|---------|
-| Recycle             | [/tree](/lab/tree)               | Recycle to make nature beutiful again                                            |    85 % |
-| Recursive Geometry  | [/geo](/lab/geo)                 | Sacred geometry grinds on its own, but if it is recursive, it grinds more        |   100 % |
-| Metatron's Cube     | [/metatron](/lab/metatron)       | Meta                                                                             |   100 % |
-| Symmetrical Drawing | [/draw](/lab/draw)               | A tool to draw relaxing mandalas                                                 |   100 % |
-| Platonic solids     | [/poli](/lab/poli)               |                                                                                  |    60 % |
-| See                 | [/see](/lab/see)                 |                                                                                  |     0 % |
-| Basic...            | [/basic](/lab/basic)             |                                                                                  |     5 % |
-| Moving Fractals     | [/fract](/lab/fract)             | Same as [/draw](/lab/draw), but better                                           |    95 % |
-| Mouse               | [/mouse](/lab/mouse)             |                                                                                  |     1 % |
+| Recycle             | [/tree](/gallery/tree)           | Recycle to make nature beutiful again                                            |    85 % |
+| Recursive Geometry  | [/geo](/gallery/geo)             | Sacred geometry grinds on its own, but if it is recursive, it grinds more        |   100 % |
+| Metatron's Cube     | [/metatron](/gallery/metatron)   | Meta                                                                             |   100 % |
+| Symmetrical Drawing | [/draw](/gallery/draw)           | A tool to draw relaxing mandalas                                                 |   100 % |
+| Platonic solids     | [/poli](/gallery/poli)           |                                                                                  |    60 % |
+| See                 | [/see](/gallery/see)             |                                                                                  |     0 % |
+| Basic...            | [/basic](/gallery/basic)         |                                                                                  |     5 % |
+| Moving Fractals     | [/fract](/gallery/fract)         | Same as [/draw](/gallery/draw), but better                                       |    95 % |
+| Mouse               | [/mouse](/gallery/mouse)         |                                                                                  |     1 % |
 
 \* Every project contains a file called `docs.md` in the root folder containing the information for understanging the project.
 
@@ -30,35 +30,37 @@ Mar Kralovna testing things...
 |---------------------|----------------------------------|----------------------------------------------------------------------------------|---------|
 | Genuary21           | [/Genuary21](/com/Genuary21)     |                                                                                  |     2 % |
 
-### Tutorials ([./filo](/filo/artworks))
+### Tutorials ([./lab](/lab/artworks))
 
 ~~Here there's the material I use for learning~~ *The Cemetery where my failed artworks rest*
 
-* [Failed artworks](/filo/artworks)
-* [Articles and tutorials](/filo/recursos)
-* [Inspirations](/filo/references)
+* [Failed artworks](/lab/artworks)
+* [Articles and tutorials](/lab/recursos)
+* [Inspirations](/lab/references)
 
 ## Sitemap
 
 ```css
 Root
-├── lab
-│   ├── tree
-│   ├── draw
-│   ├── geo
-│   ├── metatron
-│   ├── poli
-│   ├── see
-│   ├── basic
-│   ├── fract
-│   └── mouse
+├── gallery *
+│   ├── tree *
+│   ├── draw *
+│   ├── geo *
+│   ├── metatron *
+│   ├── poli *
+│   ├── see *
+│   ├── basic *
+│   ├── fract *
+│   └── mouse *
 ├── com
-│   └── Genuary21
-├── filo
-│   ├── artworks
+│   └── Genuary21 *
+├── lab
+│   ├── artworks *
 │   ├── recursos
 │   │   └── ...
 │   └── references
 └── recursos
     └── ...
 ```
+
+* Interhome and index
