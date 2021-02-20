@@ -1,5 +1,7 @@
 # Copied Artworks
 
+<style> n { color: #0080ff; font-family: "Segoe Print" } </style>
+
 Mar trying to learn how to do cool things by coping cool things done by other people
 
 ## Artworks
@@ -7,13 +9,6 @@ Mar trying to learn how to do cool things by coping cool things done by other pe
 ### Setembre19 - Febrer21
 
 Experiments que vaig fer abans de planificar-me l'aprenentatge.
-
-
-
-
-
-
-
 
 <table>
 	<thead>
@@ -26,13 +21,13 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 	</thead>
 	<tbody>
 		<tr>
-			<td></td>
+			<td>Setembre 19</td>
 			<td><a href="0-set19/first.html">First</a></td>
 			<td>I dont remember the credits</td>
 			<td>I tried to copy an atwork I saw but. Results are horrible</td>
 		</tr>
 		<tr>
-			<td></td>
+			<td>Octubre 19</td>
 			<td><a href="0-set19/second.html">Second</a></td>
 			<td>
 				<ul>
@@ -40,10 +35,10 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 					<li><a href="https://www.reddit.com/r/generative/comments/l89ej4/any_shape_none_can_touch_genuary_2021_day_29/">Genuary21: 29</a></li>
 				</ul>
 			</td>
-			<td>That's long. As university homework I had to replicate a poster in a generative way. Then I changed the colors on my own.</td>
+			<td>That's long. As university homework I had to replicate a poster in a generative way and choosed the one by Walter Ballme. A year after, I added shapes getting inspired on one Genuary21 artwork and changed the colors on my own.</td>
 		</tr>
 		<tr>
-			<td></td>
+			<td>Novembre 20</td>
 			<td><a href="0-set19/orbit/">Orbit</a></td>
 			<td>
 				<ul>
@@ -53,7 +48,7 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 			<td>He vist la llum</td>
 		</tr>
 		<tr>
-			<td></td>
+			<td>Gener 21</td>
 			<td><a href="0-set19/Illusio.html">Illusio</a></td>
 			<td>
 				<ul>
@@ -63,9 +58,9 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 			<td></td>
 		</tr>
 		<tr>
-			<td></td>
+			<td>Gener 21</td>
 			<td><a href="0-set19/subdivision.html">Subdivision</a></td>
-			<td>Volia fer un òvul xD</td>
+			<td><n>Volia fer un òvul xD</n></td>
 			<td></td>
 		</tr>
 	</tbody>
@@ -90,7 +85,11 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 			<td>01</td>
 			<td>03/02/2021</td>
 			<td>Energia mecànica</td>
-			<td></td>
+			<td>
+				<ul>
+					<li><input type="checkbox" checked> Fer un artwork d'un rebot realista</li>
+				</ul>
+			</td>
 			<td>
 				<ul>
 					<li><a href="https://openprocessing.org/sketch/1018746">Repulsion</a> by <a href="https://openprocessing.org/user/247507?view=sketches">Coolkid</a></li>
@@ -102,13 +101,17 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 					<li><a href="1-feb21/pilota.html">Pilota</a></li>
 				</ul>
 			</td>
-			<td></td>
+			<td>La pilota Ok, la floreta no ha quedat com volia ni de broma...</td>
 		</tr>
 		<tr>
 			<td>02</td>
 			<td>10/02/2021</td>
 			<td>Gravetat</td>
-			<td></td>
+			<td>
+				<ul>
+					<li><input type="checkbox" checked> Fer un artwork bonic</li>
+				</ul>
+			</td>
 			<td>
 				<ul>
 					<li><a href="https://openprocessing.org/sketch/1039447">音の対流</a> by Yuki</li>
@@ -116,7 +119,7 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 			</td>
 			<td>
 				<ul>
-					<li><a href="1-feb21/rain.html">Rain</a></li>
+					<li><a href="1-feb21/rain.html">Purple Rain</a></li>
 				</ul>
 			</td>
 			<td></td>
@@ -127,37 +130,53 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 			<td>Perlin Noise</td>
 			<td>
 				<ul>
-					<li>Buscar informació i entendre-la</li>
-					<li>Fer apunts de <em>Perlin Noise</em></li>
-					<li>Fer un <em>artwork</em></li>
+					<li><input type="checkbox" checked> Buscar informació i entendre-la</li>
+					<li><input type="checkbox" checked> Fer apunts de <em>Perlin Noise</em></li>
+					<li><input type="checkbox" checked> Fer un <em>artwork</em></li>
 				</ul>
 			</td>
 			<td>
 				<ul>
 					<li><a href="https://openprocessing.org/sketch/494102">perlin noise</a> by <a href="https://openprocessing.org/user/111178?view=sketches">yasai</a></li>
+					<li><a href="https://openprocessing.org/sketch/1073722">Spinning wheels </a> by <a href="https://openprocessing.org/user/118807?view=sketches">garabatospr</a></li>
+					<li><a href="https://openprocessing.org/sketch/566877">perlin noise redux </a> by <a href="https://openprocessing.org/user/77286?view=sketches">Tony</a></li>
 				</ul>
 			</td>
 			<td>
 				<ul>
-					<li><a href=""></a></li>
+					<li><a href="1-feb21/perlinolor.html">Perlinolor</a></li>
 				</ul>
 			</td>
-			<td></td>
+			<td>Li he copiat la idea a la Yasai però amb el meu estil i alguna aportació menor, clar que fet i fet, el pes de l'artwork recau en l'algorisme de Perlin i clar...</td>
 		</tr>
 		<tr>
 			<td>04</td>
 			<td>24/02/2021</td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td><n>...</n></td>
+			<td>
+				<ul>
+					<li><input type="checkbox"> <n>...</n></li>
+				</ul>
+			</td>
+			<td>
+				<ul>
+					<li><a href=""><n>...</n></a></li>
+				</ul>
+			</td>
+			<td>
+				<ul>
+					<li><a href=""><n>...</n></a></li>
+				</ul>
+			</td>
 			<td></td>
 		</tr>
 	</tbody>
 </table>
 
-## Inspirations
+## <n>Inspirations</n>
 
 * [T419057_応用課題 ](https://www.openprocessing.org/sketch/1057412) by [T419057](https://www.openprocessing.org/user/251428?view=sketches)
-* https://openprocessing.org/sketch/1051702
-* https://openprocessing.org/sketch/1026423
+* [Strange Vibrations ](https://openprocessing.org/sketch/1051702) by [Roni Kaufman](https://openprocessing.org/user/184331?view=sketches)
+* [201125](https://openprocessing.org/sketch/1026423) by [Sayama](https://openprocessing.org/user/159668?view=sketches)
+* [Waltz of the Circles](https://openprocessing.org/sketch/748916) by [MiniPear](https://openprocessing.org/user/144707?view=sketches)
+* [Caleidoscopio](https://openprocessing.org/sketch/940954) by [garabatospr](https://openprocessing.org/user/118807?view=sketches)
