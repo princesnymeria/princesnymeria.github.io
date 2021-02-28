@@ -38,7 +38,7 @@
 			frameRate(24);
 
 			setStyle();
-			loadBrushes(200);
+			loadBrushes(floor(CANVAS_WIDTH * .5));
 		}
 
 		function draw() {
@@ -62,7 +62,7 @@
 			const colorHue = random(0, 360);
 			for (let i = 0; i < count; i++) {
 				const c = color(colorHue, random(10, 90), random(10, 90));
-				brushes.push(new Brush(2, c));
+				brushes.push(new Brush(4, c));
 			}
 		}
 
@@ -73,7 +73,7 @@
 				this.size = size;
 			}
 			update () {
-				const s = 800;
+				const s = 600;
 				const v = .4;
 				const a = noise(this.pos.x/s, this.pos.y/s) * TAU * s;
 				this.pos.x += cos(a) * v;

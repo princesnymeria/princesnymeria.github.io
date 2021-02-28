@@ -66,7 +66,7 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 	</tbody>
 </table>
 
-### Febrer21
+### Febrer21: The Begining + Perlin
 
 <table>
 	<thead>
@@ -127,22 +127,34 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 		<tr>
 			<td>03</td>
 			<td>17/02/2021</td>
-			<td>Perlin Noise</td>
-			<td>
+			<td rowspan=2>Perlin Noise</td>
+			<td rowspan=2>
 				<ul>
-					<li><input type="checkbox" checked> Buscar informació i entendre-la</li>
-					<li><input type="checkbox" checked> Fer apunts de <em>Perlin Noise</em></li>
-					<li><input type="checkbox" checked> Fer un <em>artwork</em></li>
+					<li>Aprendre sobre <em>Perlin Noise</em>
+						<ul>
+							<li><input type="checkbox" checked> Buscar informació i entendre-la</li>
+							<li><input type="checkbox"> Fer apunts de <em>Perlin Noise</em></li>
+							<li><input type="checkbox"> Fer la meva pròpia implementació</li>
+							<li><input type="checkbox"> Fer la el meu pròpi algorisme?</li>
+						</ul>
+					</li>
+					<li>Fer un <em>artwork</em>
+						<ul>
+							<li><input type="checkbox" checked> Entendre l'<em>artwork</em> de Yasay</li>
+							<li><input type="checkbox"> Fer que el color, stroke o transparència depèngui del valor del noise. A veure si es desmarca del de la Yasai.</li>
+							<li><input type="checkbox"> Provar el codi de la Yasai agafant una matriu d'una imatge en blanc i negre.</li>
+						</ul>
+					</li>
 				</ul>
 			</td>
-			<td>
+			<td rowspan=2>
 				<ul>
 					<li><a href="https://openprocessing.org/sketch/494102">perlin noise</a> by <a href="https://openprocessing.org/user/111178?view=sketches">yasai</a></li>
 					<li><a href="https://openprocessing.org/sketch/1073722">Spinning wheels </a> by <a href="https://openprocessing.org/user/118807?view=sketches">garabatospr</a></li>
 					<li><a href="https://openprocessing.org/sketch/566877">perlin noise redux </a> by <a href="https://openprocessing.org/user/77286?view=sketches">Tony</a></li>
 				</ul>
 			</td>
-			<td>
+			<td rowspan=2>
 				<ul>
 					<li><a href="1-feb21/perlinolor.html">Perlinolor</a></li>
 				</ul>
@@ -152,23 +164,129 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 		<tr>
 			<td>04</td>
 			<td>24/02/2021</td>
-			<td><n>...</n></td>
-			<td>
-				<ul>
-					<li><input type="checkbox"> <n>...</n></li>
-				</ul>
-			</td>
-			<td>
-				<ul>
-					<li><a href=""><n>...</n></a></li>
-				</ul>
-			</td>
-			<td>
-				<ul>
-					<li><a href=""><n>...</n></a></li>
-				</ul>
-			</td>
+		</tr>
+	</tbody>
+</table>
+
+### Març21: Música
+
+<table>
+	<thead>
+		<tr>
+			<th>Setmana</th>
+			<th>Data</th>
+			<th>Tasca</th>
+			<th>Subasques</th>
+			<th>Inspiracions</th>
+			<th>Resultat</th>
+			<th>Comentaris</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>01</td>
+			<td>03/03/2021</td>
 			<td></td>
+			<td>
+				<ul>
+					<li><input type="checkbox"> <mark>...</mark></li>
+				</ul>
+			</td>
+			<td>
+				<ul>
+					<li><a href="#"><mark>...</mark></a></li>
+				</ul>
+			</td>
+			<td>
+				<ul>
+					<li><a href="#"><mark>...</mark></a></li>
+				</ul>
+			</td>
+			<td><mark>...</mark></td>
+		</tr>
+		<tr>
+			<td>02</td>
+			<td>10/03/2021</td>
+			<td></td>
+			<td>
+				<ul>
+					<li><input type="checkbox"> <mark>...</mark></li>
+				</ul>
+			</td>
+			<td>
+				<ul>
+					<li><a href="#"><mark>...</mark></a></li>
+				</ul>
+			</td>
+			<td>
+				<ul>
+					<li><a href="#"><mark>...</mark></a></li>
+				</ul>
+			</td>
+			<td><mark>...</mark></td>
+		</tr>
+		<tr>
+			<td>03</td>
+			<td>17/03/2021</td>
+			<td></td>
+			<td>
+				<ul>
+					<li><input type="checkbox"> <mark>...</mark></li>
+				</ul>
+			</td>
+			<td>
+				<ul>
+					<li><a href="#"><mark>...</mark></a></li>
+				</ul>
+			</td>
+			<td>
+				<ul>
+					<li><a href="#"><mark>...</mark></a></li>
+				</ul>
+			</td>
+			<td><mark>...</mark></td>
+		</tr>
+		<tr>
+			<td>04</td>
+			<td>24/03/2021</td>
+			<td></td>
+			<td>
+				<ul>
+					<li><input type="checkbox"> <mark>...</mark></li>
+				</ul>
+			</td>
+			<td>
+				<ul>
+					<li><a href="#"><mark>...</mark></a></li>
+				</ul>
+			</td>
+			<td>
+				<ul>
+					<li><a href="#"><mark>...</mark></a></li>
+				</ul>
+			</td>
+			<td><mark>...</mark></td>
+		</tr>
+		<tr>
+			<td>05</td>
+			<td>31/03/2021</td>
+			<td></td>
+			<td>
+				<ul>
+					<li><input type="checkbox"> <mark>...</mark></li>
+				</ul>
+			</td>
+			<td>
+				<ul>
+					<li><a href="#"><mark>...</mark></a></li>
+				</ul>
+			</td>
+			<td>
+				<ul>
+					<li><a href="#"><mark>...</mark></a></li>
+				</ul>
+			</td>
+			<td><mark>...</mark></td>
 		</tr>
 	</tbody>
 </table>

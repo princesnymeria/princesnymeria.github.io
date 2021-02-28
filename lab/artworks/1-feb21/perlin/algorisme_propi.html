@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<title>GENERATIVE LAB</title>
+		
+		<script src="../p5.js"></script>
+	</head>
+
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			height: 100vh;
+			width: 100vw;
+			border: none;
+			overflow: hidden;
+		}
+	</style>
+
+	<body></body>
+
+	<script>
+		const MODE_DEBUG = false;
+		var CANVAS_WIDTH, CANVAS_HEIGHT;
+		var p;
+
+		function setup() {
+			CANVAS_WIDTH = window.innerWidth;
+			CANVAS_HEIGHT = window.innerHeight;
+			if (MODE_DEBUG) createCanvas(100, 200);
+			else createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
+
+			frameRate(1);
+			colorMode(RGB);
+			angleMode(RADIANS);
+
+			background(255);
+			p = new Perlin();
+		}
+
+		function draw() {
+			//...
+		}
+
+		function drawArrow(base, vec) {
+			push();
+			strokeWeight(3);
+			translate(base.x, base.y);
+			line(0, 0, vec.x, vec.y);
+			rotate(vec.heading());
+			let arrowSize = 7;
+			translate(vec.mag() - arrowSize, 0);
+			triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);
+			pop();
+		}
+
+		class Perlin {
+			constructor () {
+				this.gird = this.gridDefinition(10);
+				this.values = this.calcValues();
+				this.displayNoise();
+				this.displayGrid(this.gird);
+			}
+			gridDefinition (size) {
+				const s = width / size * .5;
+				const gird = [];
+				for (let r = 0; r < size; r++) {
+					const row = [];
+					for (let c = 0; c < size; c++) {
+						const v = p5.Vector.fromAngle(random(0, TAU), s);
+						row.push(v);
+					}
+					gird.push(row);
+				}
+				return gird
+			}
+			calcValues () {
+				const grid = [];
+				for (let x = 0; x < width; x++) {
+					const row = [];
+					for (let y = 0; y < height; y++) {
+						const c = this.dotProduct(x, y);
+						row.push(c);
+					}
+					grid.push(row);
+				}
+				return grid;
+			}
+			dotProduct (x, y) {
+				const c = round(map(x, 0, width, 0, this.gird[0].length));
+				const r = round(map(y, 0, height, 0, this.gird.length));
+				var v = createVector(0, 0);
+				if(c < this.gird[0].length && r < this.gird.length) v = this.gird[r][c];
+
+				const p = createVector(x, y);
+				const center = createVector(
+					(c + .5) * ( width  / this.gird[0].length ), 
+					(r + .5) * ( height / this.gird.length ),
+				)
+				const line2 = center.copy().add(v);
+
+				const d1 = p5.Vector.sub(line2, center);
+				const d2 = p5.Vector.sub(p, center);
+				const l1 = d1.mag();
+				const dotp = constrain(d2.dot(d1.normalize()), 0, l1);
+				const op = p5.Vector.add(center, d1.mult(dotp))
+
+				return p5.Vector.dist(p, op);
+			}
+			noiseValue (x, y) {
+				return this.values[x][y];
+			}
+			displayNoise (x, y) {
+				for (let x = 0; x < width; x++) {
+					for (let y = 0; y < height; y++) {
+						const c = this.noiseValue(x, y);
+						stroke(c, c, c);
+						point(x,y);
+					}
+				}
+			}
+			displayGrid (gird) {
+				strokeWeight(2);
+				const w = width / gird.length;
+				const h = height / gird[0].length;
+				const pos = createVector(0, 0);
+				for (let r = 0; r < gird.length; r++) {
+					const y = h * r;
+					stroke(0, 0, 255);
+					line(0, y, width, y);
+				}
+				for (let c = 0; c < gird[0].length; c++) {
+					pos.x = w * c;
+					stroke(0, 0, 255);
+					line(pos.x, 0, pos.x, height);
+					for (let r = 0; r < gird.length; r++) {
+						pos.y = h * r;
+						const v = gird[r][c];
+						stroke(255, 0, 0);
+						drawArrow(pos, v,);
+					}
+				}
+			}
+			/*dotProduct () {
+				for (let r = 0; r < this.gird.length; r++) {
+					for (let c = 0; c < this.gird[0].length; c++) {
+						const v = this.gird[r][c];
+						const w = width / this.gird[0].length;
+						const h = height / this.gird.length;
+						const x = c * w - w * .5;
+						const y = r * h - h * .5;
+						this.displaygradientRect(x, y, w, h, v);
+					}
+				}
+			}*/
+			/*displaygradientRect (posX, posY, wid, hei, vector) {
+				const v = vector.copy().rotate(PI);
+				const c1 = color(204, 102, 0);
+				const c2 = color(0, 102, 153);
+				const s = width / this.gird[0].length * .5;
+
+				var x1 = posX + wid * .5;
+				var y1 = posY + hei * .5 ;
+				var x2 = x1 + v.x;
+				var y2 = y1 + v.y;
+				var x3 = x1 - v.x;
+				var y3 = y1 - v.y;
+
+				const v2 = v.copy().rotate(HALF_PI);
+				for (let i = 0; i < s; i++) {
+					const step = map(i, 0, s, 0, 1)
+					var x = lerp(x1, x2, step)
+					var y = lerp(y1, y2, step)
+					stroke(lerpColor(c1, c2, step))
+					line(x-v2.x, y-v2.y, x+v2.x, y+v2.y)
+					x = lerp(x1, x3, step)
+					y = lerp(y1, y3, step)
+					stroke(lerpColor(c1, c2, step))
+					line(x-v2.x, y-v2.y, x+v2.x, y+v2.y)
+				}
+			}*/
+		}
+	</script>
+
+</html>
