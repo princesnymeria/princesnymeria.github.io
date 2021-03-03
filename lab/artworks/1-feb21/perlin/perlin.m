@@ -1,6 +1,6 @@
 pkg load geometry;
 
-n = 100;
+n = 50;
 s = 10;
 
 figure(1)
@@ -70,11 +70,12 @@ end
 dotProduct = zeros(n, n);
 
 for x = 1:n
-    i = uint8(round(x/s));
+    i = uint8(round(x/w));
     for y = 1:n
-        j = uint8(round(y/s));
-        if j == 0; j = 1; end; if i == 0; i = 1; end
-        v = pol2cart(vectorsGrid(i, j), s * .5);
+        j = uint8(round(y/h));
+        if j == 0;  j = 1; end; if i == 0; i = 1; end
+        a = vectorsGrid(i, j);
+        v = pol2cart(a, s * .5);
         gx = i * w;
         gy = j * h;
         dx = double(x - gx);
@@ -110,18 +111,20 @@ a = a * .5 + .5;
 # ...
 # ------------------------------
 
-F=1/9*ones(n);
-interpolation=filter2(a,F);
+b = 5;
+interpolation = interp2(a,b);
+#interpolation = imresize(interpolation, 0.2)
+
+figure(1)
+subplot(2, 2, 3);
+title('...');
+imshow(a);
 
 
 
 # ...
 # ------------------------------
 
-figure(1)
-subplot(2, 2, 3);
-title('...');
-imshow(a);
 
 subplot(2, 2, 4);
 title('Interpolation');
