@@ -22,13 +22,13 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 	<tbody>
 		<tr>
 			<td>Setembre 19</td>
-			<td><a href="0-set19/first.html">First</a></td>
+			<td><a href="1909/first.html">First</a></td>
 			<td>I dont remember the credits</td>
 			<td>I tried to copy an atwork I saw but. Results are horrible</td>
 		</tr>
 		<tr>
 			<td>Octubre 19</td>
-			<td><a href="0-set19/second.html">Second</a></td>
+			<td><a href="1909/second.html">Second</a></td>
 			<td>
 				<ul>
 					<li><a href="https://www.pinterest.es/pin/448319337905993970/">Classic Design by Walter Ballmer</a></li>
@@ -39,7 +39,7 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 		</tr>
 		<tr>
 			<td>Novembre 20</td>
-			<td><a href="0-set19/orbit/">Orbit</a></td>
+			<td><a href="1909/orbit/">Orbit</a></td>
 			<td>
 				<ul>
 					<li><a href="https://www.reddit.com/r/generative/comments/jqiv25/orbits_in_orbits/">Orbits in orbits</a></li>
@@ -49,7 +49,7 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 		</tr>
 		<tr>
 			<td>Gener 21</td>
-			<td><a href="0-set19/Illusio.html">Illusio</a></td>
+			<td><a href="1909/Illusio.html">Illusio</a></td>
 			<td>
 				<ul>
 					<li><a href="https://www.reddit.com/r/generative/comments/kyb93x/genuary_16_circles_i_contain_multitudes/">I contain multitudes</a></li>
@@ -59,7 +59,7 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 		</tr>
 		<tr>
 			<td>Gener 21</td>
-			<td><a href="0-set19/subdivision.html">Subdivision</a></td>
+			<td><a href="1909/subdivision.html">Subdivision</a></td>
 			<td><n>Volia fer un òvul xD</n></td>
 			<td></td>
 		</tr>
@@ -97,8 +97,8 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 			</td>
 			<td>
 				<ul>
-					<li><a href="1-feb21/waterflower.html">Waterflower</a></li>
-					<li><a href="1-feb21/pilota.html">Pilota</a></li>
+					<li><a href="2102/waterflower.html">Waterflower</a></li>
+					<li><a href="2102/pilota.html">Pilota</a></li>
 				</ul>
 			</td>
 			<td>La pilota Ok, la floreta no ha quedat com volia ni de broma...</td>
@@ -119,7 +119,7 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 			</td>
 			<td>
 				<ul>
-					<li><a href="1-feb21/rain.html">Purple Rain</a></li>
+					<li><a href="2102/rain.html">Purple Rain</a></li>
 				</ul>
 			</td>
 			<td></td>
@@ -133,16 +133,15 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 					<li>Aprendre sobre <em>Perlin Noise</em>
 						<ul>
 							<li><input type="checkbox" checked> Buscar informació i entendre-la</li>
-							<li><input type="checkbox"> Fer apunts de <em>Perlin Noise</em></li>
+							<li><input type="checkbox" checked> Fer apunts de <em>Perlin Noise</em></li>
 							<li><input type="checkbox"> Fer la meva pròpia implementació</li>
-							<li><input type="checkbox"> Fer la el meu pròpi algorisme?</li>
 						</ul>
 					</li>
 					<li>Fer un <em>artwork</em>
 						<ul>
 							<li><input type="checkbox" checked> Entendre l'<em>artwork</em> de Yasay</li>
-							<li><input type="checkbox"> Fer que el color, stroke o transparència depèngui del valor del noise. A veure si es desmarca del de la Yasai.</li>
-							<li><input type="checkbox"> Provar el codi de la Yasai agafant una matriu d'una imatge en blanc i negre.</li>
+							<li><input type="checkbox" checked> ~~Fer que el color, stroke o transparència depèngui del valor del noise. A veure si es desmarca del de la Yasai~~</li>
+							<li><input type="checkbox" checked> Provar el codi de la Yasai agafant una matriu d'una imatge en blanc i negre</li>
 						</ul>
 					</li>
 				</ul>
@@ -156,7 +155,7 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 			</td>
 			<td rowspan=2>
 				<ul>
-					<li><a href="1-feb21/perlinolor.html">Perlinolor</a></li>
+					<li><a href="2102/perlinolor.html">Perlinolor</a></li>
 				</ul>
 			</td>
 			<td>Li he copiat la idea a la Yasai però amb el meu estil i alguna aportació menor, clar que fet i fet, el pes de l'artwork recau en l'algorisme de Perlin i clar...</td>

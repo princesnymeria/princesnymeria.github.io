@@ -1,7 +1,7 @@
 pkg load geometry;
 
-n = 50;
-s = 10;
+n = 20;
+s = 4;
 
 figure(1)
 
@@ -19,8 +19,8 @@ figure(1)
 
 vectorsGrid = zeros(s, s);
 
-for i = 1:s
-    for j = 1:s
+for i = 1:s+2
+    for j = 1:s+2
         a = rand() * pi * 2;
         vectorsGrid(i, j)=a;
     end
@@ -52,7 +52,7 @@ for i = 1:s
     x = w * i;
     for j = 1:s
         y = h * j;
-        v = pol2cart(vectorsGrid(i, j), s * .5);
+        v = pol2cart(vectorsGrid(i, j), w);
         line([ x, x + v(1)], [y, y + v(2)], 'Color', 'red');
         hold on
     end
@@ -70,16 +70,15 @@ end
 dotProduct = zeros(n, n);
 
 for x = 1:n
-    i = uint8(round(x/w));
+    i = uint8(round(x/w))+1;
     for y = 1:n
-        j = uint8(round(y/h));
-        if j == 0;  j = 1; end; if i == 0; i = 1; end
+        j = uint8(round(y/h)+1);
         a = vectorsGrid(i, j);
-        v = pol2cart(a, s * .5);
+        v = pol2cart(a, s);
         gx = i * w;
         gy = j * h;
-        dx = double(x - gx);
-        dy = double(y - gy);
+        dx = double(gx - x);
+        dy = double(gy - y);
         p = [dx dy];
         dotProduct(x, y) = dot(p,v);
     end
@@ -111,7 +110,7 @@ a = a * .5 + .5;
 # ...
 # ------------------------------
 
-b = 5;
+b = 6;
 interpolation = interp2(a,b);
 #interpolation = imresize(interpolation, 0.2)
 

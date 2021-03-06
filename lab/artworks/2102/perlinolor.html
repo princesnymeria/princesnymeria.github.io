@@ -59,10 +59,14 @@
 		}
 
 		function loadBrushes(count) {
+			const randomColorMode = random(0,1) > .7 ? 'randomHue' : 'knowonHue';
 			const colorHue = random(0, 360);
 			for (let i = 0; i < count; i++) {
-				const c = color(colorHue, random(10, 90), random(10, 90));
-				brushes.push(new Brush(4, c));
+				var c;
+				if (randomColorMode == 'randomHue') c = color(random(0, 360), 60, 60);
+				else c = color(colorHue, random(10, 90), random(10, 90));
+				const s = random(2, 6);
+				brushes.push(new Brush(s, c));
 			}
 		}
 
