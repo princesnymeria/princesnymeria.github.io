@@ -92,103 +92,106 @@
 
 
 <script>
-	const posX = window.innerWidth * 0.5;
-	const posY = window.innerHeight * 0.5;
-	const size = ( posX > posY ? posX : posY ) * 1.25;
-	const color = { 'H': 180, 'S': 60, 'L': 70, 'range': 60 };
+	const MODE_DEBUG = false;
+	const planets = [];
 
 	function setup() {
 		createCanvas(window.innerWidth, window.innerHeight);
-		frameRate(12);
+
+		frameRate(48);
 
 		angleMode(RADIANS);
-
 		noFill();
-		strokeWeight(2);
 		colorMode(HSL);
+
+		loadPlanets();
+		clearCanvas();
+	}
+
+	function loadPlanets() {
+		const pos = createVector(width * .5, height * .5);
+		const R = width * random(.2, .4);//const R = width * .35;
+		const r = width * random(.1, .2);//const r = width * .15;
+		const S = random(.001, .005);//const S = .005;
+		const s = random(.005, .010);//const s = .01;
+		const a = TAU/3;//const a = TAU/3;
+		planets.push(new Planet(pos, R, S, 180, a*1));
+		planets.push(new Planet(pos, R, S, 240, a*2));
+		planets.push(new Planet(pos, R, S, 300, a*3));
+		planets[0].addSatellite(new Planet(pos, r, s, 180, a*1));
+		planets[1].addSatellite(new Planet(pos, r, s, 240, a*2));
+		planets[2].addSatellite(new Planet(pos, r, s, 300, a*3));
 	}
 
 	function draw() {
-
-		/* ┌──────────────────────────────────────────────────┐
-		   │                  PREPARAR COSES                  │
-		   └──────────────────────────────────────────────────┘ */
-
-		background(0, 0, 13);
-
-		color['H'] = (color['H'] + 1) % 360;
-		
-		const numNodes = 32;//const numNodes = parseInt( map( mouseX, 0, posX * 2, 3, 64 ) );
-		const angle = parseInt( map( mouseX, 0, posX * 2, 0, TAU) );
-		const disitanceBetweenNodes = parseInt( map( mouseY, 0, posY * 2, 1, numNodes * 0.3) );
-		const ratioObertura = .75;
-
-		var h = color['H'];
-		const n = floor( numNodes * ratioObertura );
-		const COLOR_INCR = color['range'] / numNodes;
-
-
-		/* ┌──────────────────────────────────────────────────┐
-		   │                  DIBUIXAR LLUNA                  │
-		   └──────────────────────────────────────────────────┘ */
-
-		push();
-		translate(posX, posY);
-		rotate(angle);
-
-
-		/* ┌──────────────────────────────┐
-		   │      Dibuixar l'entramat     │
-		   └──────────────────────────────┘ */
-
-		for (let i = 0; i < n; i++) {
-			stroke( h, color['S'], color['L'] );
-			h = (h + COLOR_INCR) % 360;
-			const a1 = HALF_PI - TAU / numNodes * i;
-			const p1x = cos(a1) * size * 0.5;
-			const p1y = sin(a1) * size * 0.5;
-			const a2 = HALF_PI - TAU / numNodes * (i + disitanceBetweenNodes);
-			const p2x = cos(a2) * size * 0.5;
-			const p2y = sin(a2) * size * 0.5;
-			line(p1x, p1y, p2x, p2y);
-		}
-
-
-		/* ┌──────────────────────────────┐
-		   │ Dibuixar el polígon que farà de contonr de la lluna │
-		   └──────────────────────────────┘ */
-
-		var h = color['H'];
-		for (let i = 0; i < n+disitanceBetweenNodes-1; i++) {
-			stroke( h, color['S'], color['L'] );
-			h = (h + COLOR_INCR) % 360;
-			const a1 = HALF_PI - TAU / numNodes * i;
-			const p1x = cos(a1) * size * 0.5;
-			const p1y = sin(a1) * size * 0.5;
-			const a2 = HALF_PI - TAU / numNodes * (i + 1);
-			const p2x = cos(a2) * size * 0.5;
-			const p2y = sin(a2) * size * 0.5;
-			line(p1x, p1y, p2x, p2y);
-		}
-
-		pop();
-
-		/* ┌──────────────────────────────────────────────────┐
-		   │          ACTUALITZAR EL DEGREDAT EL NOM          │
-		   └──────────────────────────────────────────────────┘ */
-		
-		const h1 = color['H'];
-		const h2 = color['H'] + color['range'];
-		const c = 'linear-gradient( 45deg, hsl( ' + h1 + ', ' + color['S'] + '%, ' + color['L'] + '% ) 0%, hsl( ' + h2 + ', ' + color['S'] + '%, ' + color['L'] + '% ) 100% )';
-		firma.style.backgroundImage = c;
+		if (MODE_DEBUG) clearCanvas();
+		planets.forEach(p => {
+			p.update();
+			if (MODE_DEBUG) p.displayHelper();
+			else p.display();
+		});
 	}
 
-	/*document.body.addEventListener('mousemove', function( event ) {
-		const h1 = floor(map( mouseX, 0, posX * 2, color['H'], color['H']+color['range'] ));
-		const h2 = floor(map( mouseY, 0, posY * 2, color['H'], color['H']+color['range'] ));
-		const c = 'linear-gradient( 45deg, hsl( ' + h1 + ', ' + color['S'] + '%, ' + color['L'] + '% ) 0%, hsl( ' + h2 + ', ' + color['S'] + '%, ' + color['L'] + '% ) 100% )';
-		firma.style.backgroundImage = c;
-	} );*/
+	function clearCanvas() {
+		background(8);
+	}
+
+	class Planet {
+		constructor (position, orbitRadius, speed, colorHue, initialFase) {
+			this.orbitCenter = position;
+			this.orbitRadius = orbitRadius;
+			this.speed = speed;
+			this.fase = initialFase;
+			this.color = { 'H':colorHue, 'S':80 , 'L': 70, 'a': .025 };
+			this.satellites = [];
+		}
+		addSatellite (planet) {
+			this.satellites.push(planet);
+		}
+		setOrbitCenter (pos) {
+			this.orbitCenter = pos;
+		}
+		getPosition () {
+			const x = this.orbitCenter.x + cos( this.fase ) * this.orbitRadius * 0.5 ;
+			const y = this.orbitCenter.y + sin( this.fase ) * this.orbitRadius * 0.5 ;
+			return createVector(x, y);
+		}
+		update () {
+			this.fase += this.speed;
+			if (this.fase >= TAU) this.fase = 0;
+			this.satellites.forEach(satellite => {
+				satellite.setOrbitCenter(this.getPosition());
+				satellite.update();
+			});
+		}
+		display () {
+			if (this.satellites.length > 0)
+				this.satellites.forEach(sat => {
+					const c = color(this.color['H'], this.color['S'], this.color['L']);
+					c.setAlpha( 0.1 );
+					strokeWeight(10);
+					stroke( c );
+					sat.display();
+				});
+			else {
+				const p = this.getPosition();
+				point(p.x + random(-1, 1), p.y + random(-.5, .5));//line(this.orbitCenter.x, this.orbitCenter.y, p.x, p.y);
+			}
+		}
+		displayHelper () {
+			const p = this.getPosition();
+			const c = color(this.color['H'], this.color['S'], this.color['L']);
+			c.setAlpha( 0.2 ); strokeWeight(30); 
+			point(this.orbitCenter.x, this.orbitCenter.y);
+			c.setAlpha( 0.25 ); stroke( c );
+			point(p.x, p.y);
+			c.setAlpha( 0.4 ); strokeWeight(4); stroke( c );
+			circle(this.orbitCenter.x, this.orbitCenter.y, this.orbitRadius);
+			this.satellites.forEach(satellite => {
+				satellite.displayHelper();
+			});
+		}
+	}
 </script>
 
 </html>
