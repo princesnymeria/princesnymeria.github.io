@@ -1,6 +1,6 @@
 pkg load geometry;
 
-n = 20;
+n = 60;
 s = 4;
 
 figure(1)
@@ -19,8 +19,8 @@ figure(1)
 
 vectorsGrid = zeros(s, s);
 
-for i = 1:s+2
-    for j = 1:s+2
+for i = 1:s+1
+    for j = 1:s+1
         a = rand() * pi * 2;
         vectorsGrid(i, j)=a;
     end
@@ -68,26 +68,31 @@ end
 
 
 dotProduct = zeros(n, n);
+r = n/s * 10;
 
 for x = 1:n
-    i = uint8(round(x/w))+1;
     for y = 1:n
-        j = uint8(round(y/h)+1);
+        i = uint8(round(x/w));
+        gx = double(i * w);
+        if i == 0; i = s+1; end;
+        j = uint8(round(y/h));
+        gy = double(j * h);
+        if j == 0; j = s+1; end;
         a = vectorsGrid(i, j);
         v = pol2cart(a, s);
-        gx = i * w;
-        gy = j * h;
-        dx = double(gx - x);
-        dy = double(gy - y);
+        dx = double(x - gx);
+        dy = double(y - gy);
         p = [dx dy];
-        dotProduct(x, y) = dot(p,v);
+        dotProduct(x,y) = dot(v,p);#dotProduct(x,y) = (dx^2+dy^2)^.5;#
     end
 end
 
 figure(1)
 subplot(2, 2, 2);
 title('Dot product');
-pcolor(dotProduct);
+imagesc(dotProduct);
+hold on
+for i = 1:s; x = w * i; line([x,x], [0,n], 'Color', 'magenta', 'LineWidth', 2); hold on; end;  for j = 1:s; y = h * j; line([0,n], [y,y], 'Color', 'magenta', 'LineWidth', 2); hold on; end; for i = 1:s; x = w * i; for j = 1:s; y = h * j; v = pol2cart(vectorsGrid(i, j), w); line([ x, x + v(1)], [y, y + v(2)], 'Color', 'red', 'LineWidth', 2); hold on; end; end
 
 
 
@@ -103,7 +108,8 @@ pcolor(dotProduct);
 
 M = max(max(dotProduct));
 a = dotProduct / M;
-a = a * .5 + .5;
+a = abs(a);
+a = 1 - a;
 
 
 
@@ -125,6 +131,6 @@ imshow(a);
 # ------------------------------
 
 
-subplot(2, 2, 4);
-title('Interpolation');
-imshow(interpolation);
+#subplot(2, 2, 4);
+#title('Interpolation');
+#imshow(interpolation);
