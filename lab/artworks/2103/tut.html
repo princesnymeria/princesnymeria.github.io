@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<title>GENERATIVE LAB</title>
+		
+		<script src="\recursos\llibreries\p5js\p5.js"></script>
+		<script src="\recursos\llibreries\p5js\p5.midi.js"></script>
+		<script src="\recursos\llibreries\p5js\p5.sound.js"></script>
+	</head>
+
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			height: 100vh;
+			width: 100vw;
+			border: none;
+			overflow: hidden;
+		}
+	</style>
+
+	<body></body>
+
+	<script>
+		//https://www.generativehut.com/post/using-processing-for-music-visualization
+		const audioFileName = "kingfisher.mp3";
+		const fps = 30;
+		const smoothingFactor = 0.25;
+
+		let track;
+		let fft;
+		let minim;
+
+		let bands = 256;
+		let spectrum = [];
+		let sum = [];
+
+		let unit;
+		let groundLineY;
+		let center;
+
+
+
+
+		function setup() {
+			createCanvas(window.innerWidth, window.innerHeight);
+			smooth(8);
+			frameRate(fps);
+
+			unit = height / 100;
+			strokeWeight(unit / 10.24);
+			groundLineY = height * 3/4;
+			center = createVector(width / 2, height * 3/4);
+
+			minim = new Minim();
+			track = minim.loadFile(audioFileName, 2048);
+			
+			track.loop();
+			
+			fft = new FFT( track.bufferSize(), track.sampleRate() );
+			
+			fft.linAverages(bands);
+
+		}
+
+		function draw() {
+			//...
+		}
+	</script>
+
+</html>

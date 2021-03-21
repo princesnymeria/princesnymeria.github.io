@@ -199,8 +199,6 @@ https://www.reddit.com/r/generative/comments/l7m3i1/prologuehaze/
 
 ![](enslavedinthescrolls-jellytwist.mp4)
 
->xxx
-
 <cite>by [u/EnslavedInTheScrolls](xxx) in [Reddit](https://www.reddit.com/r/loadingicon/comments/l9n5dl/oc_jellytwist/).</cite>
 
 ### bouncing to the beat
@@ -216,6 +214,76 @@ https://www.reddit.com/r/generative/comments/la4rtu/bouncing_to_the_beat/
 ![](benmash_art-fractured_cube.png)
 
 <cite>by [u/benmash_art](https://www.reddit.com/user/benmash_art/) in [Reddit](https://www.reddit.com/r/generative/comments/lapmtx/fractured_cube_blender_python/).</cite>
+
+### medley
+
+![](degenerativecode-medley.webp)
+
+>I make a custom field of vectors (because I was fed up of using perlin) represented by a 2D array. Then I place a particle in it and make it step forward by a length of its diameter in the direction of the field 'cell' it is in. This makes a strip of particles that just touch each other.
+>
+>Repeat this process, adding a function that checks for collisions before adding a new particle to the list.
+>
+>Repeat until canvas is filled.
+>
+>Colours are controlled with a hard coded colour scheme that I generated. I use a process that decides where the main blocks of colour should be with a %chance to pick a random colour from the scheme.
+>
+>That's the main gist of the algorithm.
+
+<cite>by [u/DeGenerativeCode](https://www.reddit.com/user/DeGenerativeCode/) in [Reddit](https://www.reddit.com/r/generative/comments/ljysrl/medley/).</cite>
+
+### P5JS Multiplication Circles
+
+![](rhagaer_za-multiplicationcircles.png)
+
+>Link to the video explaining how to make it -> https://www.youtube.com/playlist?list=PLyhIajiyZLlOyAoOV_5SkAM8xSlr2PTvt
+
+<cite>by [u/Rhagaer_Za](https://www.reddit.com/user/Rhagaer_Za/) in [Reddit](https://www.reddit.com/r/generative/comments/m8dpgm/p5js_multiplication_circles/).</cite>
+
+### Still playing with trig & log function
+
+![](alex_kircher-trig_log_function.webp)
+
+<cite>by [u/alex_kircher](https://www.reddit.com/user/alex_kircher/) in [Reddit](https://www.reddit.com/r/generative/comments/m8cruw/still_playing_with_trig_log_function/).</cite>
+
+### Dividing-Aggregating Walkers - A new technique to generate natural-looking patterns using random walkers
+
+![](cipheredxyz-dividing_aggregating_walkers.webp)
+
+>Really nice ! Yes this is almost the same, at least the core principles are the same ! I think the main difference is on the walking step, in your example, the angle is applied at each iteration to the direction, am I guessing correctly ?
+>
+>I think my solution tends to produce more "natural-looking" patterns precisely due to the higher potentiel in diversity coming from the way the walking step in handled (the paths tend to look more random-ish).
+>
+>Nonetheless these are very close ideas, I will link your project at the end of my article since this is a very similar idea, are you okay with that ? It's nice to see that someone has already thought of this technique, as I found it to be quite elegant :)
+
+<cite>by [u/cipheredxyz](https://www.reddit.com/user/cipheredxyz/) in [Reddit](https://www.reddit.com/r/generative/comments/m7cwfx/dividingaggregating_walkers_a_new_technique_to/).</cite>
+
+### Play with Cubes
+
+![](raccoonranger73-play_with_cubes.png)
+
+<cite>by [u/raccoonranger73](https://www.reddit.com/user/raccoonranger73/) in [Reddit](https://www.reddit.com/r/generative/comments/lyzw0v/play_with_cubes/).</cite>
+
+### Phoenix
+
+![](ejgen-phoenix.mp4)
+
+>We are all made from what came before. I use a combination of logical AND with a very slow tan function. In p5.js
+
+<cite>by [u/ejgen](https://www.reddit.com/user/ejgen/) in [Reddit](https://www.reddit.com/r/generative/comments/lyp1q3/phoenix/).</cite>
+
+### turning inward
+
+![](2315184-turning_inward.png)
+
+<cite>by [y/2315184](https://www.reddit.com/user/2315184/) in [Reddit](https://www.reddit.com/r/generative/comments/lr8srf/turning_inward/).</cite>
+
+### Orbit trapping the julia set of z = z^2 + c
+
+![](ikosit-orbit_trapping1.png)
+
+>I'm using guile scheme with chickadee and GLSL. So I guess I'm quite the exotic one :D
+
+<cite>by [u/Ikosit](https://www.reddit.com/user/Ikosit/) in [Reddit](https://www.reddit.com/r/generative/comments/lrdqge/orbit_trapping_the_julia_set_of_z_z2_c/).</cite>
 
 ## Altres
 
@@ -233,7 +301,7 @@ https://www.reddit.com/r/generative/comments/la4rtu/bouncing_to_the_beat/
 * [Grooves](https://www.reddit.com/r/generative/comments/lnk558/grooves/)
 * [Clouds](https://www.reddit.com/r/generative/comments/lkui7g/clouds/)
 * [[OC] Splotchy Sampling](https://www.reddit.com/r/generative/comments/lkio3x/oc_splotchy_sampling/)
-* [medley](https://www.reddit.com/r/generative/comments/ljysrl/medley/)
+* [15.3.21 - what is modular synthesis if not fart noises persevering](https://www.reddit.com/r/generative/comments/m68cm5/15321_what_is_modular_synthesis_if_not_fart/)
 * []()
 
 <!--

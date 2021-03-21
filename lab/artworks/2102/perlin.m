@@ -83,7 +83,7 @@ for x = 1:n
         dx = double(x - gx);
         dy = double(y - gy);
         p = [dx dy];
-        dotProduct(x,y) = dot(v,p);#dotProduct(x,y) = (dx^2+dy^2)^.5;#
+        dotProduct(x,y) = dot(v,p);
     end
 end
 
@@ -116,9 +116,12 @@ a = 1 - a;
 # ...
 # ------------------------------
 
-b = 6;
-interpolation = interp2(a,b);
-#interpolation = imresize(interpolation, 0.2)
+#b = ones(n)/n^2;interpolation = conv2(a, b, 'same');
+h = fspecial('motion', 50, 45);
+imfilter(a, h);
+
+
+
 
 figure(1)
 subplot(2, 2, 3);

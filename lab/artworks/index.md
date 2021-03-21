@@ -140,7 +140,7 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 					<li>Fer un <em>artwork</em>
 						<ul>
 							<li><input type="checkbox" checked> Entendre l'<em>artwork</em> de Yasay</li>
-							<li><input type="checkbox" checked> ~~Fer que el color, stroke o transparència depèngui del valor del noise. A veure si es desmarca del de la Yasai~~</li>
+							<li><s>Fer que el color, stroke o transparència depèngui del valor del noise. A veure si es desmarca del de la Yasai</s></li>
 							<li><input type="checkbox" checked> Provar el codi de la Yasai agafant una matriu d'una imatge en blanc i negre</li>
 						</ul>
 					</li>
@@ -167,7 +167,7 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 	</tbody>
 </table>
 
-### Març21: Música
+### Març21: Sinestèsia
 
 <table>
 	<thead>
@@ -185,36 +185,32 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 		<tr>
 			<td>01</td>
 			<td>03/03/2021</td>
+			<td>Intro</td>
+			<td>
+				<ul>
+					<li>Proves variades LMMS</li>
+				</ul>
+			</td>
+			<td>
+				<ul>
+					<li>Entendre com funcionen les fistes de la música electrònica</li>
+				</ul>
+			</td>
+			<td>Les pròpies demos del programa</td>
 			<td></td>
-			<td>
-				<ul>
-					<li><input type="checkbox"> <mark>...</mark></li>
-				</ul>
-			</td>
-			<td>
-				<ul>
-					<li><a href="#"><mark>...</mark></a></li>
-				</ul>
-			</td>
-			<td>
-				<ul>
-					<li><a href="#"><mark>...</mark></a></li>
-				</ul>
-			</td>
-			<td><mark>...</mark></td>
 		</tr>
 		<tr>
 			<td>02</td>
 			<td>10/03/2021</td>
-			<td></td>
+			<td>Tutorial</td>
 			<td>
 				<ul>
-					<li><input type="checkbox"> <mark>...</mark></li>
+					<li><input type="checkbox"> Fer un tutorial de visualització músical</li>
 				</ul>
 			</td>
 			<td>
 				<ul>
-					<li><a href="#"><mark>...</mark></a></li>
+					<li><a href="https://www.generativehut.com/post/using-processing-for-music-visualization">Generative Hut - Using Processing for Music Visualization</a></li>
 				</ul>
 			</td>
 			<td>
