@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<title>Synesthesia</title>
+		
+		<script src="\recursos\llibreries\p5js\p5.js"></script>
+		<script src="\recursos\llibreries\p5js\p5.midi.js"></script>
+		<script src="\recursos\llibreries\p5js\p5.sound.js"></script>
+	</head>
+
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			height: 100vh;
+			width: 100vw;
+			border: none;
+			overflow: hidden;
+		}
+	</style>
+
+	<body></body>
+
+	<script>//https://github.com/therewasaguy/p5-music-viz
+		let mic, soundFile, amplitude;
+		const mapMax = 1.0;
+
+		function setup() {
+			c = createCanvas(window.innerWidth, window.innerHeight);
+
+			mic = new p5.AudioIn();
+			mic.start();
+
+			amplitude = new p5.Amplitude();
+			amplitude.setInput(mic);
+		}
+
+		function draw() {
+			clearCanvas();
+
+			const level = amplitude.getLevel();
+
+			const ellipseHeight = map(level, 0, mapMax, height, 0);
+			circle(width * .5, ellipseHeight, 100);
+		}
+
+		function clearCanvas() {
+			background(12);
+		}
+
+		function setStyle() {
+			clearCanvas();
+			fill(248);
+			noStroke();
+		}
+	</script>
+
+</html>
