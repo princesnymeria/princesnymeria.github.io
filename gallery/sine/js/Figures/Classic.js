@@ -3,12 +3,13 @@ class Classic extends SineAnim {
 	constructor() {
 		super();
 		this.name = "Classic";
+		// Inspirat en https://therewasaguy.github.io/p5-music-viz/demos/01b_amplitude_time/
 		this.historial = [];
 		this.colorHue = 0;
 	}
 
-	input2parms(values) {
-		this.historial.push( values['amplitude'] * height * .01 );
+	input2parms(amplitude) {
+		this.historial.push( amplitude * 127 * height * .01 );
 	}
 
 	display() {

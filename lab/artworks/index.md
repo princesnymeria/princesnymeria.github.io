@@ -202,86 +202,37 @@ Experiments que vaig fer abans de planificar-me l'aprenentatge.
 		<tr>
 			<td>02</td>
 			<td>10/03/2021</td>
-			<td>Tutorial</td>
-			<td>
+			<td rowspan=4>Tutorials i aprenentatge</td>
+			<td rowspan=4 colspan=2>
+				<p>Adaptar els artworks de <a href="https://github.com/therewasaguy/p5-music-viz">Jason Sigal - Visualizing Music with p5.js</a></p>
 				<ul>
-					<li><input type="checkbox"> Fer un tutorial de visualització músical</li>
+					<li><input type="checkbox checked"> 01_hello_amplitude</li>
+					<li><input type="checkbox checked"> 01b_amplitude_time</li>
+					<li><input type="checkbox checked"> 01c_amplitude_threshold</li>
+					<li><input type="checkbox"> 01d_beat_detect_amplitude</li>
+					<li><input type="checkbox"> 02_draw_peaks_and_playhead</li>
+					<li><input type="checkbox"> 03_time_domain_oscilloscope</li>
+					<li><input type="checkbox"> <mark>...</mark></li>
 				</ul>
 			</td>
-			<td>
-				<ul>
-					<li><a href="https://www.generativehut.com/post/using-processing-for-music-visualization">Generative Hut - Using Processing for Music Visualization</a></li>
-				</ul>
-			</td>
-			<td>
+			<td rowspan=4>
 				<ul>
 					<li><a href="#"><mark>...</mark></a></li>
 				</ul>
 			</td>
-			<td><mark>...</mark></td>
+			<td rowspan=4><mark>...</mark></td>
 		</tr>
 		<tr>
 			<td>03</td>
 			<td>17/03/2021</td>
-			<td></td>
-			<td>
-				<ul>
-					<li><input type="checkbox"> <mark>...</mark></li>
-				</ul>
-			</td>
-			<td>
-				<ul>
-					<li><a href="#"><mark>...</mark></a></li>
-				</ul>
-			</td>
-			<td>
-				<ul>
-					<li><a href="#"><mark>...</mark></a></li>
-				</ul>
-			</td>
-			<td><mark>...</mark></td>
 		</tr>
 		<tr>
 			<td>04</td>
 			<td>24/03/2021</td>
-			<td></td>
-			<td>
-				<ul>
-					<li><input type="checkbox"> <mark>...</mark></li>
-				</ul>
-			</td>
-			<td>
-				<ul>
-					<li><a href="#"><mark>...</mark></a></li>
-				</ul>
-			</td>
-			<td>
-				<ul>
-					<li><a href="#"><mark>...</mark></a></li>
-				</ul>
-			</td>
-			<td><mark>...</mark></td>
 		</tr>
 		<tr>
 			<td>05</td>
 			<td>31/03/2021</td>
-			<td></td>
-			<td>
-				<ul>
-					<li><input type="checkbox"> <mark>...</mark></li>
-				</ul>
-			</td>
-			<td>
-				<ul>
-					<li><a href="#"><mark>...</mark></a></li>
-				</ul>
-			</td>
-			<td>
-				<ul>
-					<li><a href="#"><mark>...</mark></a></li>
-				</ul>
-			</td>
-			<td><mark>...</mark></td>
 		</tr>
 	</tbody>
 </table>

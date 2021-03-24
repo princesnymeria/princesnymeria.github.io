@@ -6,6 +6,7 @@ class SineAnim {
 
 	constructor() {
 		this.name = "Sine";
+		// Inspirat en https://therewasaguy.github.io/p5-music-viz/demos/01_hello_amplitude/
 		this.pos = createVector(width * .5, height * .5);
 
 		this.radius = 0;
@@ -21,8 +22,8 @@ class SineAnim {
 		return this.name;
 	}
 
-	input2parms(values) {
-		this.radius = map(values['amplitude'], 0, 127, 50, 500);
+	input2parms(amplitude) {
+		this.radius = map(amplitude, 0, 1, 50, 500);
 	}
 
 
