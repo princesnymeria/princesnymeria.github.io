@@ -1,4 +1,4 @@
-class Ex01b extends SineAnim {
+class Ex01b extends Exercice {
 
 	constructor() {
 		super();
@@ -8,7 +8,7 @@ class Ex01b extends SineAnim {
 		this.colorHue = 0;
 	}
 
-	setParmsFromAmplitude(amplitude) {
+	amplitude2paarms(amplitude) {
 		this.historial.push( amplitude * 127 * height * .01 );
 	}
 

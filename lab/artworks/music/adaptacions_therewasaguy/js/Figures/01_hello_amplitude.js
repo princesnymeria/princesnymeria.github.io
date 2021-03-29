@@ -1,4 +1,4 @@
-class Ex01 extends SineAnim {
+class Ex01 extends Exercice {
 
 	constructor() {
 		super();
@@ -12,7 +12,7 @@ class Ex01 extends SineAnim {
 		this.posY = 0;
 	}
 
-	setParmsFromAmplitude(amplitude) {
+	amplitude2paarms(amplitude) {
 		this.posY = map(amplitude, 0, this.maxAmp, height, 0);
 	}
 

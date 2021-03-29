@@ -1,4 +1,4 @@
-class SineAnim {
+class Exercice {
 	
 	/* ┌──────────────────────────────┐
 	   │          Constructor         │
@@ -6,9 +6,9 @@ class SineAnim {
 
 	constructor() {
 		this.name = "Sine";
-		// Inspirat en https://therewasaguy.github.io/p5-music-viz/demos/01_hello_amplitude/
-		this.pos = createVector(width * .5, height * .5);
+		this.inspiration = "https://therewasaguy.github.io/p5-music-viz/demos/01_hello_amplitude/";
 
+		this.pos = createVector(width * .5, height * .5);
 		this.radius = 0;
 	}
 

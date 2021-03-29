@@ -29,12 +29,12 @@ function setup() {
 	if ( AUDIO_SOURCE == 'file' ) input.loop();
 	//if ( MODE_DEBUG ) input.volume(.2);
 
-	anim.loadStyle();
+	anim.setup();
 }
 
 function draw() {
-	const v = inpAmp.getLevel();
-	if ( MODE_DEBUG ) console.log(v);
-	anim.input2parms(v);
-	anim.display();
+	const a = inpAmp.getLevel();
+	if ( MODE_DEBUG ) console.log('Amplitude: ' + a);
+	anim.input2parms(a, 0, 0, 0);
+	anim.draw();
 }
