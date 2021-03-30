@@ -1,9 +1,13 @@
 class Ex01d extends Exercice {
 
-	constructor() {
-		super();
+	constructor(soundFile) {
+		super(soundFile);
 		this.name = "Ex01c: Simple Beat Detection";
 		this.inspiration = "https://therewasaguy.github.io/p5-music-viz/demos/01d_beat_detect_amplitude/";
+
+		this.inpAmp = new p5.Amplitude();
+		this.inpAmp.setInput(input);
+		this.inpAmp.smooth(.9);
 
 		this.threshold = 0;
 		this.decayRate = .85;
@@ -16,15 +20,12 @@ class Ex01d extends Exercice {
 		this.backgroundColorHue = 0;
 	}
 
-	amplitude2paarms(amplitude) {
-		this.amplitude = amplitude;
-	}
-
 	draw() {
+		const amplitude = this.inpAmp.getLevel();
 		background(this.backgroundColorHue, 60, 60);
-		//if (this.amplitude > this.threshold) {
-			this.threshold = this.amplitude;
-			this.display();
+		//if (amplitude > this.threshold) {
+			this.threshold = amplitude;
+			this.display(amplitude);
 			if (this.frames > this.holdFrames) {
 				this.backgroundColorHue = random(0, 360);
 				this.frames = 0;
@@ -41,9 +42,9 @@ class Ex01d extends Exercice {
 		colorMode(HSL);
 	}
 
-	display() {
+	display(a) {
 		translate(width * .5, height * .5); 
-		const s = this.amplitude * this.size * 5;
+		const s = a * this.size * 5;
 		circle(this.posX, 0, this.size + s);//rect(0, 0, 100, 20);//
 	}
 

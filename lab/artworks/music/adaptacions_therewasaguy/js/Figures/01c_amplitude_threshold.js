@@ -1,9 +1,13 @@
 class Ex01c extends Exercice {
 
-	constructor() {
-		super();
+	constructor(soundFile) {
+		super(soundFile);
 		this.name = "Ex01c: Amplitude Threshold";
 		this.inspiration = "https://therewasaguy.github.io/p5-music-viz/demos/01c_amplitude_threshold/";
+
+		this.inpAmp = new p5.Amplitude();
+		this.inpAmp.setInput(input);
+		this.inpAmp.smooth(0.9);
 
 		this.graphWidth = 60;
 		this.graphBG = 12;
@@ -17,18 +21,15 @@ class Ex01c extends Exercice {
 		this.graphHeight = 0;
 	}
 
-	amplitude2paarms(amplitude) {
-		this.amplitude = amplitude;
-		this.graphHeight = map(amplitude, 0, this.maxAmp, height, 0);
-	}
-
 	draw() {
 		this.drawGraph();
-		if (this.amplitude > this.threshold) {
-			const s = width * this.amplitude * .25;
+		const amplitude = this.inpAmp.getLevel();
+		this.graphHeight = map(amplitude, 0, this.maxAmp, height, 0);
+		if (amplitude > this.threshold) {
+			const s = width * amplitude * .25;
 			fill(random(0, 360), 60, 60);
 			rect(random(this.graphWidth, width), random(0, height), s, s);
-			this.threshold = this.amplitude;
+			this.threshold = amplitude;
 		}
 		if (this.threshold > this.thresholdMin) this.threshold *= this.decayRate;
 	}
