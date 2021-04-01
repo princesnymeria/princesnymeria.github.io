@@ -4,10 +4,10 @@ const MODE_DEBUG = true;
 
 const anims = [];
 
-let input, anim, C;
+let canvas, input, anim, C;
 
 var selectedAnim = 0;
-var audioSource = AUDIO_SOURCE_OSC;
+var audioSource = AUDIO_SOURCE_MIC;
 
 
 function preload() {
@@ -15,7 +15,7 @@ function preload() {
 }
 
 function setup() {
-	createCanvas(window.innerWidth, window.innerHeight);
+	canvas = createCanvas(window.innerWidth, window.innerHeight);
 	C = Math.max(window.innerWidth, window.innerHeight) * .2;
 	frameRate(MODE_DEBUG ? 4 : 24);
 
@@ -30,13 +30,15 @@ function draw() {
 }
 
 function loadAnims() {
-	selectedAnim = 5;
+	selectedAnim = 7;
 	anims.push( new  Ex01(input) );   // 0
 	anims.push( new Ex01b(input) );   // 1
 	anims.push( new Ex01c(input) );   // 2
 	anims.push( new Ex01d(input) );   // 3
 	anims.push( new  Ex02(input) );   // 4
 	anims.push( new  Ex03(input) );   // 5
+	anims.push( new  Ex04(input) );   // 6
+	anims.push( new Ex04b(input) );   // 7
 }
 
 function keyPressed() {
