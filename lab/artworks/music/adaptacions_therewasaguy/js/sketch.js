@@ -17,7 +17,7 @@ function preload() {
 function setup() {
 	canvas = createCanvas(window.innerWidth, window.innerHeight);
 	C = Math.max(window.innerWidth, window.innerHeight) * .2;
-	frameRate(MODE_DEBUG ? 4 : 24);
+	frameRate(MODE_DEBUG ? 24 : 24);
 
 	loadAnims();
 	if ( audioSource == AUDIO_SOURCE_FILE ) input.loop();
@@ -30,15 +30,20 @@ function draw() {
 }
 
 function loadAnims() {
-	selectedAnim = 7;
-	anims.push( new  Ex01(input) );   // 0
-	anims.push( new Ex01b(input) );   // 1
-	anims.push( new Ex01c(input) );   // 2
-	anims.push( new Ex01d(input) );   // 3
-	anims.push( new  Ex02(input) );   // 4
-	anims.push( new  Ex03(input) );   // 5
-	anims.push( new  Ex04(input) );   // 6
-	anims.push( new Ex04b(input) );   // 7
+	selectedAnim = 12;
+	anims.push( new   Ex01(input) );   // 0
+	anims.push( new  Ex01b(input) );   // 1
+	anims.push( new  Ex01c(input) );   // 2
+	anims.push( new  Ex01d(input) );   // 3
+	anims.push( new   Ex02(input) );   // 4
+	anims.push( new   Ex03(input) );   // 5
+	anims.push( new   Ex04(input) );   // 6
+	anims.push( new  Ex04b(input) );   // 7
+	anims.push( new   Ex05(input) );   // 8
+	anims.push( new  Ex052(input) );   // 9
+	anims.push( new  Ex053(input) );   // 10
+	anims.push( new  Ex05a(input) );   // 11
+	anims.push( new Ex05a2(input) );   // 12
 }
 
 function keyPressed() {
