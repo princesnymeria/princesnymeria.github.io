@@ -31,14 +31,6 @@ Mar Kralovna testing things...
 |---------------------|----------------------------------|----------------------------------------------------------------------------------|---------|
 | Genuary21           | [/Genuary21](/com/Genuary21)     |                                                                                  |     2 % |
 
-### Tutorials ([./lab](/lab/artworks))
-
-~~Here there's the material I use for learning~~ *The Cemetery where my failed artworks rest*
-
-* [Failed artworks](/lab/artworks)
-* [Articles and tutorials](/lab/recursos)
-* [Inspirations](/lab/references)
-
 ## Sitemap
 
 ```css
@@ -55,11 +47,6 @@ Root
 │   └── mouse *
 ├── com
 │   └── Genuary21 *
-├── lab
-│   ├── artworks *
-│   ├── recursos
-│   │   └── ...
-│   └── references
 └── recursos
     └── ...
 ```
