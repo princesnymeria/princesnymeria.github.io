@@ -1,6 +1,6 @@
-# Mar's Lab
+# Mar Kralovna
 
-Mar Kralovna testing things...
+I was born, I went to school, some years later I graduated from university and I lost myself. Now, I'm just trying to create new things.
 
 ## Projects
 
