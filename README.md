@@ -19,7 +19,7 @@ Mar Kralovna testing things...
 | Basic...            | [/basic](/gallery/basic)         |                                                                                  |     5 % |
 | Moving Fractals     | [/fract](/gallery/fract)         | Same as [/draw](/gallery/draw), but better                                       |    95 % |
 | Mouse               | [/mouse](/gallery/mouse)         |                                                                                  |     1 % |
-| Synesthesia         | [/sine](/gallery/sine)           |                                                                                  |     1 % |
+| Synesthesia         | [/sine](/gallery/sine)           |                                                                                  |     2 % |
 
 \* Every project contains a file called `docs.md` in the root folder containing the information for understanging the project.
 
