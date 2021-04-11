@@ -20,7 +20,7 @@ class SineAnim {
 		return this.name;
 	}
 
-	input2parms(amplitude, waveform, levels, beat) {
+	input2parms(amplitude, spectrum, waveform, x) {
 		this.radius = map(amplitude, 0, 1, 50, 500);
 	}
 
