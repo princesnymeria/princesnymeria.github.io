@@ -3,17 +3,25 @@ const AUDIO_SOURCE_MIC = 1024; const AUDIO_SOURCE_FILE = 1025; const AUDIO_SOURC
 const MODE_DEBUG = false;
 
 const anims = [];
+const music = [];
 
 let anim, C, input;
 let inpAmp, inpFFT;
 
 var selectedAnim = 0;
+var musicIndex = 0;
+var audioPaused = false;
 var audioSource = AUDIO_SOURCE_FILE;
 
 
+
+
+
 function preload() {
-	setAudioInput(audioSource);
+	music.push( loadSound('music/lsd-genius.m4a') );
+	music.push( loadSound('music/farbro-tectonic.wav') );
 }
+
 
 function setup() {
 	createCanvas(window.innerWidth, window.innerHeight);
@@ -21,18 +29,12 @@ function setup() {
 	frameRate(MODE_DEBUG ? 1 : 24);
 
 	loadAnims();
-	if ( audioSource == AUDIO_SOURCE_FILE ) input.loop();
-
 	anims[selectedAnim].setup();
 
-	const binCount = 32;
-	const smoothing = .6;
-	inpAmp = new p5.Amplitude();
-	inpAmp.setInput(input);
-	inpAmp.smooth(smoothing);
-	inpFFT = new p5.FFT(smoothing, binCount);
-	inpFFT.setInput(input);
+	setAudioInput(audioSource);
+	loadXXX();
 }
+
 
 function draw() {
 	const a = inpAmp.getLevel();
@@ -43,6 +45,10 @@ function draw() {
 	anims[selectedAnim].draw();
 }
 
+
+
+
+
 function loadAnims() {
 	anims.push( new Xavi() );
 	anims.push( new XaRia() );
@@ -50,21 +56,30 @@ function loadAnims() {
 	selectedAnim = anims.length - 1;
 }
 
-/*function keyPressed() {
-	if (key == 'T')
-		toggleInput();
-}*/
+function loadXXX() {
+	const binCount = 32;
+	const smoothing = .6;
+	inpAmp = new p5.Amplitude();
+	inpAmp.setInput(input);
+	inpAmp.smooth(smoothing);
+	inpFFT = new p5.FFT(smoothing, binCount);
+	inpFFT.setInput(input);
+}
 
-/*function toggleInput() {
-	audioSource++;
-	if (audioSource > AUDIO_SOURCE_OSC) audioSource = AUDIO_SOURCE_MIC;
-	setAudioInput(audioSource);
-}*/
+function keyPressed() {
+	switch (keyCode) {
+		case 84:	toggleInput();		break;	// Letter T
+		case 32:	pauseAudio();		break;	// Space
+		case 77:	toggleMusic();		break;	// Letter M
+		case 65:	toggleAnimation();	break;	// Letter A
+	}
+}
 
 function setAudioInput(source) {
 	switch (source) {
 		case AUDIO_SOURCE_FILE:
-			input = loadSound('music/lsd-genius.m4a');//input = loadSound('music/farbro-tectonic.wav');
+			input = music[musicIndex];
+			input.loop();
 			break;
 		case AUDIO_SOURCE_MIC:
 			input = new p5.AudioIn();
@@ -78,4 +93,40 @@ function setAudioInput(source) {
 			input.freq(10);
 			break;
 	}
+}
+
+
+
+
+
+function toggleInput() {
+	audioSource++;
+	input.stop();
+	if (audioSource > AUDIO_SOURCE_OSC) audioSource = AUDIO_SOURCE_MIC;
+	setAudioInput(audioSource);
+	loadXXX();
+}
+
+function pauseAudio() {
+	if (audioSource == AUDIO_SOURCE_FILE) {
+		if (audioPaused) input.play();
+		else input.pause();
+		audioPaused = !audioPaused;
+	}
+}
+
+function toggleMusic() {
+	if (audioSource == AUDIO_SOURCE_FILE) {
+		input.stop();
+		musicIndex = (musicIndex + 1) % music.length;
+		input = music[musicIndex];
+		input.loop();
+		loadXXX();
+	}
+}
+
+function toggleAnimation() {
+	selectedAnim++;
+	if (selectedAnim >= anims.length) selectedAnim = 0;
+	anims[selectedAnim].setup();
 }

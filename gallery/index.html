@@ -58,7 +58,7 @@
 	<style>
 		#marc>path, #marc>rect {
 			animation-name: animFrame;
-			animation-duration: 5s;
+			animation-duration: 3s;
 		}
 		#container {
 			animation-name: animText;
@@ -86,14 +86,8 @@
 			to   { width: 100%; left: 0;   }
 		}
 		@keyframes animFrame {
-			from {
-				clip-path: circle(29.3% at 50% 50%);
-				width: 1000px;
-			}
-			to {
-				clip-path: circle(70.7% at 50% 50%);
-				width: auto;
-			}
+			from { clip-path: circle(29.3% at 50% 50%); }
+			to { clip-path: circle(70.7% at 50% 50%); }
 		}
 	</style>
 

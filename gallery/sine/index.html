@@ -8,16 +8,7 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 		<title>Synesthesia</title>
-
-		<style>
-			body {
-				padding: 0;
-				margin: 0;
-				height: 100vh;
-				width: 100vw;
-				overflow: hidden;
-			}
-		</style>
+		<link rel="stylesheet" href="estils.css">
 
 		<!-- Scripts base p5js -->
 		<script src="js/p5js/p5.js"></script>
@@ -33,6 +24,13 @@
 		<script src="js/Figures/Wheel.js"></script>
 	</head>
 
-	<body></body>
+	<body>
+		<div id="controlsContainer">
+			<button onclick="pauseAudio()">Play/Pause</button>
+			<button onclick="toggleInput()">Toogle Input type</button>
+			<button onclick="toggleMusic()">Toggle music</button>
+			<button onclick="toggleAnimation()">Toggle Anim</button>
+		</div>
+	</body>
 
 </html>

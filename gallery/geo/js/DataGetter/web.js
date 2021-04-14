@@ -78,10 +78,12 @@ class WebDataGetter {
 		var sheet = document.styleSheets[0];
 		sheet.insertRule("@media (max-width: 600px) { #buttonContainer .art-deco-button { margin: 15px; } }");
 		sheet.insertRule("#buttonContainer .art-deco-button:hover, #buttonContainer .art-deco-button.selected, #buttonContainer .art-deco-button:hover:before, #buttonContainer .art-deco-button.selected:before, #buttonContainer .art-deco-button:hover:after, #buttonContainer .art-deco-button.selected:after { border-color: #f8f8f8; background: #0000; }");
+		sheet.insertRule("#buttonContainer .art-deco-button:hover:before, #buttonContainer .art-deco-button:hover:after { animation-name: animFrame; animation-duration: 3s; }");
 		sheet.insertRule("#buttonContainer .art-deco-button:before { content: ''; position: absolute; top: 4px; left: -4px; right: -4px; bottom: 4px; border: 1px solid #f8f8f820; z-index: -1; }");
 		sheet.insertRule("#buttonContainer .art-deco-button:after { content: ''; position: absolute; top: -4px; left: 4px; right: 4px; bottom: -4px; border: 1px solid #f8f8f835; z-index: -1; }");
 		sheet.insertRule("#buttonContainer .art-deco-button { border: 1px solid #f8f8f870; color: #f8f8f8; font-size: 14px; background: #0000; border-radius: 0; }");
 		sheet.insertRule("#buttonContainer .art-deco-button { position: relative; margin: 25px; padding: 10px 30px; width: 150px }");
+		sheet.insertRule("@keyframes animFrame { from { clip-path: polygon(100% 0, 100% 0, 100% 0, 0 100%, 0 100%, 0 100%); } to   { clip-path: polygon(0 0, 100% 0, 100% 50%, 100% 100%, 0 100%, 0% 50%); } }");
 		//sheet.insertRule("#buttonContainer .art-deco-button { font-family: 'Poiret One' }");
 		//sheet.insertRule("@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');");
 	}
