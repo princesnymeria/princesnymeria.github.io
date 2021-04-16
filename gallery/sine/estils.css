@@ -8,6 +8,7 @@ body {
 	margin: 0;
 	height: 100vh; width: 100vw;
 	overflow: hidden;
+	background-color: #121212;
 }
 
 canvas {
@@ -21,40 +22,47 @@ canvas {
 	width: max-content;
 }
 
-#controlsContainer button {
+
+
+
+
+
+
+
+#controlsContainer>button {
 	position: relative;
-	margin: 0 10px;
-	padding: 15px 30px;
-	color: #F8F8F8;
-	background-color: #00000000;
-	border: 1px solid #F8F8F870;
+	width: 150px; height: 150px;
+	margin: 0 50px;
+	z-index: 2;
+
 	font-size: 14pt;
 	font-family: 'PoiretOne', 'Segoe UI Light', 'Segoe UI', Arial, Helvetica, sans-serif;
-	z-index: 2;
+
+	color: #F8F8F8;
+	border: none;
+	outline: none;
 }
 
-#controlsContainer button:hover, #controlsContainer button.selected, #controlsContainer button:hover:before, #controlsContainer button.selected:before, #controlsContainer button:hover:after, #controlsContainer button.selected:after {
-	background: #0000;
-	border-color: #FFFFFF;
-	animation-name: animFrame;
-}
-#controlsContainer button:before, #controlsContainer button:after {
-	content: '';
-	position: absolute;
-	border: 1px solid #000000;
-	z-index: 0;
-	animation-duration: 3s;
-}
-#controlsContainer button:before {
-	top: 4px; left: -4px; right: -4px; bottom: 4px;
-	border-color: #F8F8F820;
-}
-#controlsContainer button:after {
-	top: -4px; left: 4px; right: 4px; bottom: -4px;
-	border-color: #F8F8F835;
+#controlsContainer>button {
+	background: linear-gradient(45deg, hsla(180, 70%, 45%, 30%) 0%, hsla(30, 70%, 45%, 30%) 100%);
 }
 
-@keyframes animFrame {
-	from { clip-path: polygon(100% 0, 100% 0, 100% 0,   0    100%, 0 100%, 0  100% ); }
-	to   { clip-path: polygon(0    0, 100% 0, 100% 50%, 100% 100%, 0 100%, 0% 50%  ); }
+#controlsContainer>button:hover, #controlsContainer>button.selected, #controlsContainer>button:hover:before, #controlsContainer>button.selected:before, #controlsContainer>button:hover:after, #controlsContainer>button.selected:after {
+	animation-name: colorize;
+}
+
+#controlsContainer>button:before, #controlsContainer>button:after {
+	/* ... */
+}
+
+#controlsContainer>button:before {
+	/* ... */
+}
+#controlsContainer>button:after {
+	/* ... */
+}
+
+@keyframes colorize {
+	0% { /* ... */ }
+  100% { /* ... */ }
 }
