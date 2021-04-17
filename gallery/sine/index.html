@@ -9,13 +9,14 @@
 
 		<title>Synesthesia</title>
 		<link rel="stylesheet" href="estils.css">
+		<script src="buttons/logic.js"></script>
 
 		<!-- Scripts base p5js -->
 		<script src="js/p5js/p5.js"></script>
 		<script src="js/p5js/p5.sound.js"></script>
 		
 		<!-- Scripts base -->
-		<!--                       <script src="js/sketch.js"></script>
+		<script src="js/sketch.js"></script>
 		
 		<!-- Scripts animacions -->
 		<script src="js/Figures/SineAnim.js"></script>
@@ -26,7 +27,7 @@
 
 	<body>
 		<div id="controlsContainer">
-			<button onclick="pauseAudio()">Play/Pause</button>
+			<button id="pauseBtn" onclick="pauseAudio()">Pause</button>
 			<button onclick="toggleInput()">Toogle Input type</button>
 			<button onclick="toggleMusic()">Toggle music</button>
 			<button onclick="toggleAnimation()">Toggle Anim</button>

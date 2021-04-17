@@ -32,7 +32,7 @@ function setup() {
 	anims[selectedAnim].setup();
 
 	setAudioInput(audioSource);
-	loadXXX();
+	loadAnalysers();
 }
 
 
@@ -56,7 +56,7 @@ function loadAnims() {
 	selectedAnim = anims.length - 1;
 }
 
-function loadXXX() {
+function loadAnalysers() {
 	const binCount = 32;
 	const smoothing = .6;
 	inpAmp = new p5.Amplitude();
@@ -104,7 +104,7 @@ function toggleInput() {
 	input.stop();
 	if (audioSource > AUDIO_SOURCE_OSC) audioSource = AUDIO_SOURCE_MIC;
 	setAudioInput(audioSource);
-	loadXXX();
+	loadAnalysers();
 }
 
 function pauseAudio() {
@@ -112,6 +112,7 @@ function pauseAudio() {
 		if (audioPaused) input.play();
 		else input.pause();
 		audioPaused = !audioPaused;
+		document.getElementById('pauseBtn').innerText = audioPaused ? 'Play' : 'Pause';
 	}
 }
 
@@ -121,7 +122,7 @@ function toggleMusic() {
 		musicIndex = (musicIndex + 1) % music.length;
 		input = music[musicIndex];
 		input.loop();
-		loadXXX();
+		loadAnalysers();
 	}
 }
 
