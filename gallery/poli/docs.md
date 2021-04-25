@@ -1,6 +1,6 @@
 # Solids Platonics
 
-<small>Visit: http://mariaguell.cat/ad/poli/</small>
+<small>Visit: https://markralovna.github.io/gallery/poli/</small>
 
 Entendre els solids platònics és entendre el món.
 

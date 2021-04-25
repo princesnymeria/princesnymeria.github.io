@@ -123,6 +123,7 @@ function toggleMusic() {
 		input = music[musicIndex];
 		input.loop();
 		loadAnalysers();
+		if (audioPaused) input.pause();
 	}
 }
 

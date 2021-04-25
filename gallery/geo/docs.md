@@ -2,7 +2,7 @@
 
 <style>n{color:#0080ff;font-family:"Segoe Print"}</style>
 
-<small>Visit: http://mariaguell.cat/AD/geo/</small>
+<small>Visit: https://markralovna.github.io/gallery/geo/</small>
 
 La geometria sacra mola per si sola, però si és recursiva, mola més.
 
@@ -52,6 +52,8 @@ geo
 
 Per aconseguir que el programa carregui diferents animacions amb dades de diferents entrades, es treballa amb interfícies. L'estructura de classes és la següent:
 
+<n>↓↓↓ Repassar ↓↓↓</n>
+
 ```mermaid
 	classDiagram
 		DataGetter <|-- MiDiDataGetter
@@ -64,9 +66,9 @@ Per aconseguir que el programa carregui diferents animacions amb dades de difere
 		}
 		class Geometry {
 			+String name
-        	+Int numVars
-        	-Int posX
-        	-Int posY
+			+Int numVars
+			-Int posX
+			-Int posY
 			+constructor()
 			+setValues()
 			+update()
@@ -92,7 +94,6 @@ L'sketch principal no fa gaire feina. L'estructura és la següent:
 * Declaració de constants i variables.
 * `setup()`
 	* Inicialització de les variables per les dimensions del canvas.
-	* Inicialització de les variables per les dimencions del canvas.
 	* Creació del canvas.
 	* Configuració del *framerate*.
 	* Inicialització de les figures.
@@ -110,6 +111,10 @@ L'sketch principal no fa gaire feina. L'estructura és la següent:
 L'estètica de les figures està vinculada al color i el gruix (`strokeWeight`). Per això s'ha creat la classe `StyleNColor` que controla els estils generals per mantenir l'estètica general.
 
 Per altra banda, el color de les figures canvia gradualment a cada frame. Aquest canvi el controla la mateixa `StyleNColor`.
+
+#### Interfície `Figure`
+
+<n>explicar la classe</n>
 
 ## Figures
 

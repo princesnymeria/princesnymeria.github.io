@@ -19,6 +19,7 @@ I was born, I went to school, some years later I graduated from university and I
 | Basic...            | [/basic](/gallery/basic)         |                                                                                  |     5 % |
 | Moving Fractals     | [/fract](/gallery/fract)         | Same as [/draw](/gallery/draw), but better                                       |    95 % |
 | Mouse               | [/mouse](/gallery/mouse)         |                                                                                  |     1 % |
+| Orbit               | [/orbit](/gallery/orbit)         | A love story between two circular orbits and millions of high transparency lines |    98 % |
 | Synesthesia         | [/sine](/gallery/sine)           |                                                                                  |     2 % |
 
 \* Every project contains a file called `docs.md` in the root folder containing the information for understanging the project.

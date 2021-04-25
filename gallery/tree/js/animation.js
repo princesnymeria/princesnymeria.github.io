@@ -19,9 +19,6 @@ class Tree {
 	}
 
 
-
-
-
 	doGrow() {
 		this.lenght += this.maxHeight/(this.steps+2);
 		if(this.lenght > this.maxHeight) this.lenght = this.maxHeight;
@@ -44,9 +41,6 @@ class Tree {
 	}
 
 
-
-
-
 	update() {
 		this.color[0] += this.vel;
 		if (this.color[0] > 360) this.color[0] = 0;
@@ -61,9 +55,6 @@ class Tree {
 
 		this.drawTree(this.lenght, this.color[0], this.numBranches);
 	}
-
-
-
 
 
 	drawTree(l, hue, branches) {

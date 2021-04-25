@@ -2,7 +2,7 @@
 
 <style>n{color:#0080ff;font-family:"Segoe Print"}</style>
 
-<small>Visit: http://mariaguell.cat/AD/fract/</small>
+<small>Visit: https://markralovna.github.io/gallery/fract/</small>
 
 ## Descripció
 
