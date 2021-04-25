@@ -1,5 +1,5 @@
 var showHelper = false;
-const sun;
+var sun;
 
 
 window.onload = function() {
