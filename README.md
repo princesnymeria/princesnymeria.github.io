@@ -21,6 +21,7 @@ I was born, I went to school, some years later I graduated from university and I
 | Mouse               | [/mouse](/gallery/mouse)         |                                                                                  |     1 % |
 | Orbit               | [/orbit](/gallery/orbit)         | A love story between two circular orbits and millions of high transparency lines |    98 % |
 | Synesthesia         | [/sine](/gallery/sine)           |                                                                                  |     2 % |
+| The Magic School    | [/school](/gallery/school)       | I'm unable to understand an algorithm until I try to implement it by myself      |     2 % |
 
 \* Every project contains a file called `docs.md` in the root folder containing the information for understanging the project.
 

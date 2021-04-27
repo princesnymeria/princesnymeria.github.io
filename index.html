@@ -80,7 +80,6 @@
 
 	function setup() {
 		createCanvas(window.innerWidth, window.innerHeight);
-
 		frameRate(48);
 
 		angleMode(RADIANS);
@@ -88,6 +87,7 @@
 
 		loadPlanets();
 		clearCanvas();
+		xxx();
 		strokeWeight(5);
 	}
 
@@ -116,6 +116,41 @@
 
 	function clearCanvas() {
 		background(8);
+	}
+
+	function xxx() {
+		strokeWeight(1);
+		const center = createVector(width * .5, height * .5);
+		const c = width < height ? width : height;
+		stroke(300, 80, 60, .15);	drawStar(c * .6, center, 24, 10 );
+		stroke(180, 80, 60, .15);	drawStar(c * .6, center, 48, 23 );
+		stroke(240, 80, 60, .20);	drawStar(c * .4, center, 12, 02 );
+	}
+
+	function drawStar(radius, position, numberNodes, seperationBetweenUnitedNodes) {
+		const ANGLE_INCR = TAU / numberNodes;
+		var a1 = 0;
+		var a2 = ANGLE_INCR * seperationBetweenUnitedNodes;
+		for (let i = 0; i < numberNodes * seperationBetweenUnitedNodes; i += seperationBetweenUnitedNodes) {
+			const p1 = createVector(cos(a1), sin(a1)).mult(radius).add(position);
+			const p2 = createVector(cos(a2), sin(a2)).mult(radius).add(position);
+			//this.colorHue = floor(map(noise(index * .01), 0, 1, colorHueMin, colorHueMax));
+			line(p1.x, p1.y, p2.x, p2.y);
+			a1 += ANGLE_INCR;
+			a2 += ANGLE_INCR;
+		}
+	}
+
+	class Star {
+		constructor (position, orbitRadius, speed, initialFase, hue) {
+			this.orbitCenter = position;
+			this.orbitRadius = orbitRadius;
+			this.speed = speed;
+			this.fase = initialFase;
+			this.color = [hue, 80 , 70, .005];
+			this.satellites = [];
+		}
+		
 	}
 
 	class Planet {
