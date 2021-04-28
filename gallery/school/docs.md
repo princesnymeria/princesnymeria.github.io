@@ -44,6 +44,7 @@ orbit
 
 * [/] Preparar l'algorisme per *Bezier*
 * [ ] Preparar l'arquitectura del web amb objectes
+* [ ] <n>Afegir explicacions interectives</n>
 * [ ] Fer algorisme *Voronoi*
 * [ ] Treallar estètica
 * [ ] Fer altres algorismes
