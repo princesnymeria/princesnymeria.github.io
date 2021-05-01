@@ -1,7 +1,9 @@
 class BezierController extends AlgorithmController {
 	constructor () {
 		super();
-		this.data.name = 'Bezier';
+		this.data.shortName = 'Bezier';
+		this.data.name = 'Bézier curve';
+		this.data.infolink = 'https://en.wikipedia.org/wiki/B%C3%A9zier_curve';
 		this.algorithm = new Bezier([
 			new Point( createVector(width * .20, height * .75) ),
 			new Point( createVector(width * .30, height * .20) ),
@@ -16,6 +18,7 @@ class BezierController extends AlgorithmController {
 class Bezier {
 	constructor (points) {
 		this.points = points;
+		this.resetCurve();
 		this.TPoints = [ ];
 		this.t = .3;
 	}
@@ -46,20 +49,21 @@ class Bezier {
 				else this.TPoints[i].push( this.getTPoint(this.TPoints[i-1][j], this.TPoints[i-1][j+1] ));
 			}
 		}
+		this.curve[this.t * 100] = this.TPoints[this.iterations -1][0];
 	}
 
 	display () {
 		this.displayAnchors();
 		this.displayTPoints();
+		this.drawCurve();
 	}
 
 	displayAnchors () {
-		strokeWeight(5);
 		const n = this.iterations;
-		stroke([60, 100, 50, .4]);
+		setColor(60, .4, STROKE, LINE);
 		this.drawAnchorLine(0, 1);
 		this.drawAnchorLine(n-1, n);
-		stroke([60, 100, 50, .1]);
+		setColor(60, .1, STROKE, LINE);
 		for (let i = 1; i < n-1; i++) this.drawAnchorLine(i, i + 1);
 	}
 
@@ -69,30 +73,33 @@ class Bezier {
 			for (let i = 0; i < points.length - 1; i++) {
 				const p1 = points[i];
 				const p2 = points[i+1];
-				strokeWeight(5);
-				stroke([300, 100, 50, .1]);
+				setColor(300, .1, STROKE, LINE);
 				line(p1.x, p1.y, p2.x, p2.y);
-				strokeWeight(10);
-				stroke([300, 100, 50, .5]);
+				setColor(300, .5, STROKE, POINT);
 				point(p1.x, p1.y);
 				point(p2.x, p2.y);
 			}
 		});
 		const n = this.TPoints.length - 1;
-		stroke([0, 100, 60, .3]);
+		setColor(0, .5, STROKE, POINT);
 		point(this.TPoints[n][0].x, this.TPoints[n][0].y);
 	}
 
-	/*drawCurve () {
-		const n = 100;
-		for (let t = 0; t < n; t++)
-			for (let i = 0; i < points.length - 1; i++) {
-
-			}
-	}*/
-
 	drawAnchorLine (index1, index2) {
 		line( this.points[index1].position.x, this.points[index1].position.y, this.points[index2].position.x, this.points[index2].position.y );
+	}
+
+	drawCurve () {
+		setColor(0, .4, STROKE, LINE);
+		beginShape();
+		for (let i = 0; i < this.curve.length; i++)
+			if (this.curve[i])
+				vertex(this.curve[i].x, this.curve[i].y)
+		endShape();
+	}
+
+	resetCurve () {
+		this.curve = new Array(100);
 	}
 
 	getTPoint (point1, point2) {
@@ -119,14 +126,15 @@ class Point {
 	}
 
 	display () {
-		strokeWeight(this.size);
 		if (this.hover) {
-			stroke([this.colorHue, 100, 50, .4]);
+			setColor(this.colorHue, .4, STROKE, POINT);
+			strokeWeight(this.size);
 		}
 		else {
-			stroke([this.colorHue, 100, 50, .15]);
+			setColor(this.colorHue, .15, STROKE, POINT);
+			strokeWeight(this.size);
 			point(this.position.x, this.position.y);
-			stroke([this.colorHue, 100, 50, .30]);
+			setColor(this.colorHue, .3, STROKE, POINT);
 			strokeWeight(this.size * .3);
 		}
 		point(this.position.x, this.position.y);

@@ -62,13 +62,13 @@ class Moon extends Figure {
 		let x1=0; let x2=0; let y1=0; let y2=0; 
 
 		let dx = X - x;
-		let dy = Y - y;	   
+		let dy = Y - y;
 		let d2 = dx*dx + dy*dy;
 		let di = sqrt(d2);
 		let r2 = r * r;
 		let R2 = R * R;
 		
-		if(di < r + R && di > abs(r - R)) {	 
+		if(di < r + R && di > abs(r - R)) {
 			let K = r2-R2+d2; 
 			let K2 = K * K;
 			let h = sqrt(4 * r2 * d2 - K2);

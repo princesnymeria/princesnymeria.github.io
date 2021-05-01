@@ -1,6 +1,10 @@
 class AlgorithmController {
 	constructor () {
-		this.data = {};
+		this.data = {
+			'nom': '',
+			'shortName': '',
+			'infolink': ''
+		};
 	}
 
 	setup () {

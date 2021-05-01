@@ -121,15 +121,15 @@ button {
 	padding: 15px;
 	border-radius: 100px;
 	font-size: 14pt;
-	color: #F8F8F8;
+	color: #F8F8F8AA;
 	background-color: #FFFFFF00;
 	border: 3.5px solid hsla(315, 80%, 60%, .3);
 }
 
-button:nth-child(1) { border-color: hsla(0,   80%, 60%, .3); } button:nth-child(1):hover, button:nth-child(1).active { border-color: hsla(0,   80%, 60%, .6); }
-button:nth-child(2) { border-color: hsla(45,  80%, 60%, .3); } button:nth-child(2):hover, button:nth-child(2).active { border-color: hsla(45,  80%, 60%, .6); }
-button:nth-child(3) { border-color: hsla(90,  80%, 60%, .3); } button:nth-child(3):hover, button:nth-child(3).active { border-color: hsla(90,  80%, 60%, .6); }
-button:nth-child(4) { border-color: hsla(135, 80%, 60%, .3); } button:nth-child(4):hover, button:nth-child(4).active { border-color: hsla(135, 80%, 60%, .6); }
-button:nth-child(5) { border-color: hsla(180, 80%, 60%, .3); } button:nth-child(5):hover, button:nth-child(5).active { border-color: hsla(180, 80%, 60%, .6); }
-button:nth-child(6) { border-color: hsla(225, 80%, 60%, .3); } button:nth-child(6):hover, button:nth-child(6).active { border-color: hsla(225, 80%, 60%, .6); }
-button:nth-child(7) { border-color: hsla(270, 80%, 60%, .3); } button:nth-child(7):hover, button:nth-child(7).active { border-color: hsla(270, 80%, 60%, .6); }
+button:nth-child(1) { border-color: hsla(0,   80%, 60%, .3); } button:nth-child(1):hover, button:nth-child(1).selected { border-color: hsla(0,   80%, 60%, .6); }
+button:nth-child(2) { border-color: hsla(45,  80%, 60%, .3); } button:nth-child(2):hover, button:nth-child(2).selected { border-color: hsla(45,  80%, 60%, .6); }
+button:nth-child(3) { border-color: hsla(90,  80%, 60%, .3); } button:nth-child(3):hover, button:nth-child(3).selected { border-color: hsla(90,  80%, 60%, .6); }
+button:nth-child(4) { border-color: hsla(135, 80%, 60%, .3); } button:nth-child(4):hover, button:nth-child(4).selected { border-color: hsla(135, 80%, 60%, .6); }
+button:nth-child(5) { border-color: hsla(180, 80%, 60%, .3); } button:nth-child(5):hover, button:nth-child(5).selected { border-color: hsla(180, 80%, 60%, .6); }
+button:nth-child(6) { border-color: hsla(225, 80%, 60%, .3); } button:nth-child(6):hover, button:nth-child(6).selected { border-color: hsla(225, 80%, 60%, .6); }
+button:nth-child(7) { border-color: hsla(270, 80%, 60%, .3); } button:nth-child(7):hover, button:nth-child(7).selected { border-color: hsla(270, 80%, 60%, .6); }
