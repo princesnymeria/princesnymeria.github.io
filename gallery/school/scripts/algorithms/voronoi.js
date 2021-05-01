@@ -4,18 +4,47 @@ class VoronoiController extends AlgorithmController {
 		this.data.shortName = 'Voronoi';
 		this.data.name = 'Voronoi Diagram';
 		this.data.infolink = 'https://en.wikipedia.org/wiki/Voronoi_diagram';
-		this.algorithm = new Voronoi( 2 );
+		this.cols = 8;
+		this.rows = 8;
+		this.algorithm = new Voronoi( this.cols, this.rows );
+	}
+
+	draw () {
+		this.drawGird();
+		this.algorithm.draw();
+	}
+
+	drawGird () {
+		setColor(300, .05, STROKE, LINE);
+		const colWidth = width / this.cols;
+		var x = 0;
+		for (var c = 0; c < this.cols; c++) {
+			line(x, 0, x, height);
+			x += colWidth;
+		}
+		const rowHeight = height / this.rows;
+		var y = 0;
+		for (var c = 0; c < this.cols; c++) {
+			line(0, y, width, y);
+			y += rowHeight;
+		}
 	}
 }
 
 
 
 class Voronoi {
-	constructor (count) {
+	constructor ( cols, rows ) {
 		this.cells = [ ];
 		this.t = .3;
-		for (let i = 0; i < count; i++)
-			this.cells.push( new VoronoiCell() );
+		const colWidth = width/cols;
+		const rowHeight = height/rows;
+		for (let c = 0; c < cols; c++)
+			for (let r = 0; r < rows; r++) {
+				const x = (random(0, 1) + c) * colWidth;
+				const y = (random(0, 1) + r) * rowHeight;
+				this.cells.push( new VoronoiCell( createVector( x, y ) ) );
+			}
 	}
 
 	setup () {
@@ -26,7 +55,7 @@ class Voronoi {
 		this.t = this.inputT.value * .01;
 		this.cells.forEach(p => {
 			p.updateRadius(this.t);
-			p.xxx(this.cells);
+			p.drawContactLines(this.cells);
 			p.display();
 		});
 	}
@@ -35,8 +64,8 @@ class Voronoi {
 
 
 class VoronoiCell {
-	constructor () {
-		this.position = createVector(random(width*.5-width*.1, width*.5+width*.1), random(height*.5-height*.1,height*.5+height*.1)); /// this.position = createVector(random(0, width), random(0, height));
+	constructor (position) {
+		this.position = position;
 		this.dim = 1;
 		this.potantialRadius = random(.1, .5) * width;
 	}
@@ -56,17 +85,21 @@ class VoronoiCell {
 		circle(this.position.x, this.position.y, this.dim);
 	}
 
-	xxx (others) {
-		const touchingCells = [];
+	drawContactLines (others) {
+		const contactLines = [];
 		others.forEach(other => {
 			const d = dist(this.position.x, this.position.y, other.position.x, other.position.y);
 			const touching = d < ( this.dim + other.dim ) * .5 && d > 0;
-			if (touching) touchingCells.push(other);
+			if (touching) {
+				const points = this.getIntersectionBetweenCircles(this.position, this.radius, other.position, other.radius);
+				contactLines.push(points);
+			}
 		});
-		touchingCells.forEach(other => {
-			const points = this.getIntersectionBetweenCircles(this.position, this.radius, other.position, other.radius);
+		contactLines.forEach(l => {
 			setColor(120, .4, STROKE, POINT);
-			point(points[0].x, points[0].y); point(points[1].x, points[1].y);
+			point(l[0].x, l[0].y); point(l[1].x, l[1].y);
+			setColor(120, .3, STROKE, LINE);
+			line(l[0].x, l[0].y, l[1].x, l[1].y);
 		});
 	}
 
