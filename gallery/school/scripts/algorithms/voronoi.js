@@ -4,8 +4,8 @@ class VoronoiController extends AlgorithmController {
 		this.data.shortName = 'Voronoi';
 		this.data.name = 'Voronoi Diagram';
 		this.data.infolink = 'https://en.wikipedia.org/wiki/Voronoi_diagram';
-		this.cols = 8;
-		this.rows = 8;
+		this.cols = 4;
+		this.rows = 4;
 		this.algorithm = new Voronoi( this.cols, this.rows );
 	}
 
@@ -67,7 +67,7 @@ class VoronoiCell {
 	constructor (position) {
 		this.position = position;
 		this.dim = 1;
-		this.potantialRadius = random(.1, .5) * width;
+		this.potantialRadius = width * .5;//this.potantialRadius = random(.1, .5) * width;
 	}
 
 	get radius() {
@@ -104,7 +104,7 @@ class VoronoiCell {
 	}
 
 	getIntersectionBetweenCircles ( pos1, radius1, pos2, radius2 ) {
-		const intersections = [ createVector(0, 0), createVector(0, 0)];
+		const intersections = [ createVector(-10, -10), createVector(-10, -10)];
 
 		const dx = pos2.x - pos1.x;
 		const dy = pos2.y - pos1.y;
