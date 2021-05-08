@@ -7,6 +7,18 @@ class VoronoiController extends AlgorithmController {
 		this.cols = 4;
 		this.rows = 4;
 		this.algorithm = new Voronoi( this.cols, this.rows );
+		const that = this;
+		this.inputs = [
+			{
+				minStep: 0,
+				type: 'range',
+				label: 'Radius',
+				initValue: 30,
+				callback: function(ev) { that.algorithm.setRadius(ev.target.value) },
+				min: 0,
+				max: 100
+			}
+		];
 	}
 
 	draw () {
@@ -47,12 +59,13 @@ class Voronoi {
 			}
 	}
 
-	setup () {
-		this.inputT = addVarControllers('INPUT', 't');
+	setRadius (t) {
+		this.t = t * .01;
 	}
 
+	setup () {}
+
 	draw () {
-		this.t = this.inputT.value * .01;
 		this.cells.forEach(p => {
 			p.updateRadius(this.t);
 			p.drawContactLines(this.cells);
@@ -96,9 +109,9 @@ class VoronoiCell {
 			}
 		});
 		contactLines.forEach(l => {
-			setColor(120, .4, STROKE, POINT);
+			setColor(120, .15, STROKE, POINT);
 			point(l[0].x, l[0].y); point(l[1].x, l[1].y);
-			setColor(120, .3, STROKE, LINE);
+			setColor(120, .05, STROKE, LINE);
 			line(l[0].x, l[0].y, l[1].x, l[1].y);
 		});
 	}

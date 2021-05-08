@@ -1,10 +1,21 @@
 class AlgorithmController {
 	constructor () {
 		this.data = {
-			'nom': '',
+			'name': '',
 			'shortName': '',
 			'infolink': ''
 		};
+		this.currentStepIndex = 0;
+		this.steps = [];
+		this.inputs = [];
+	}
+
+	get title () {
+		return this.data.name;
+	}
+
+	setStep (stepIndex) {
+		this.currentStepIndex = stepIndex;
 	}
 
 	setup () {
@@ -12,6 +23,8 @@ class AlgorithmController {
 	}
 
 	draw () {
-		this.algorithm.draw();
+		this.algorithm.update();
+		for (let i = 0; i <= this.currentStepIndex; i++)
+			this.steps[i].displayFunction();
 	}
 }

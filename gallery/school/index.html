@@ -9,19 +9,26 @@
 
 		<title>The Magic School</title>
 
-		<link rel="stylesheet" href="estils.css">
+		<link rel="stylesheet" href="styles/layout.css">
+		<link rel="stylesheet" href="styles/estils.css">
 		
 		<script src="scripts/p5.min.js"></script>
 		<script src="scripts/sketch.js"></script>
+		<script src="scripts/view.js"></script>
+		
 		<script src="scripts/algorithms/algorithm.js"></script>
 		<script src="scripts/algorithms/bezier.js"></script>
 		<script src="scripts/algorithms/voronoi.js"></script>
 	</head>
 
 	<body>
-		<div id="controllersContainer">
-			<div id="varsControllersContainer"></div>
-			<div id="algorithmSelectorsContainer"></div>
+		<div id="app">
+			<h1 id="algorithmTitle"></h1>
+			<div id="algorithmControllers">
+				<div id="stepsSelectors"></div>
+				<div id="algorithmInputs"></div>
+			</div>
+			<div id="algorithmSelectors"></div>
 		</div>
 	</body>
 

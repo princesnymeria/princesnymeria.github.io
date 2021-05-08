@@ -1,0 +1,59 @@
+#app {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-start;
+	width: 100%;
+	height: 100%;
+}
+
+#algorithmControllers, #algorithmSelectors {
+	display: flex;
+	flex-direction: column;
+	width: 250px;
+	height: 100%;
+}
+
+#algorithmControllers>*, #algorithmSelectors>*, #algorithmInputs>* {
+	width: 100%;
+}
+
+#algorithmTitle {
+	order: 2;
+	margin: 0;
+}
+
+#algorithmControllers {
+	order: 1;
+}
+
+#algorithmInputs {
+	margin-top: 40px;
+}
+
+#algorithmSelectors {
+	order: 3;
+}
+
+@media (max-width: 650px) {
+	#app {
+		flex-direction: column;
+	}
+	#algorithmSelectors {
+		flex-direction: row;
+	}
+	#algorithmControllers, #algorithmSelectors {
+		width: 100%;
+		height: max-content;
+	}
+	#algorithmSelectors {
+		overflow-x: scroll;
+	}
+	#algorithmTitle {
+		order: 1;
+		display: none;
+	}
+	#algorithmControllers {
+		order: 2;
+	}
+}
