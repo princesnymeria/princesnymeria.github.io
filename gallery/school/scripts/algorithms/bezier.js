@@ -1,9 +1,9 @@
 class BezierController extends AlgorithmController {
 	constructor () {
 		super();
-		this.data.shortName = 'Bezier';
-		this.data.name = 'Bézier curve';
-		this.data.infolink = 'https://en.wikipedia.org/wiki/B%C3%A9zier_curve';
+		this.info.shortName = 'Bezier';
+		this.info.name = 'Bézier curve';
+		this.info.infolink = 'https://en.wikipedia.org/wiki/B%C3%A9zier_curve';
 		this.algorithm = new Bezier([
 			new Point( createVector(width * .20, height * .80) ),
 			new Point( createVector(width * .30, height * .25) ),
@@ -62,8 +62,9 @@ class BezierController extends AlgorithmController {
 
 
 
-class Bezier {
+class Bezier extends Algorithm {
 	constructor (points) {
+		super();
 		this.points = points;
 		this.resetCurve();
 		this.TPoints = [ ];
@@ -73,8 +74,6 @@ class Bezier {
 	get iterations () {
 		return this.points.length - 1;
 	}
-
-	setup () {}
 
 	draw () {
 		this.update();
@@ -112,10 +111,10 @@ class Bezier {
 
 	displayAnchors () {
 		const n = this.iterations;
-		setColor(60, .4, STROKE, LINE);
+		setColor(45, .4, STROKE, LINE);
 		this.drawAnchorLine(0, 1);
 		this.drawAnchorLine(n-1, n);
-		setColor(60, .1, STROKE, LINE);
+		setColor(45, .1, STROKE, LINE);
 		for (let i = 1; i < n-1; i++) this.drawAnchorLine(i, i + 1);
 	}
 
@@ -125,9 +124,9 @@ class Bezier {
 			for (let i = 0; i < points.length - 1; i++) {
 				const p1 = points[i];
 				const p2 = points[i+1];
-				setColor(300, .1, STROKE, LINE);
+				setColor(315, .1, STROKE, LINE);
 				line(p1.x, p1.y, p2.x, p2.y);
-				setColor(300, .5, STROKE, POINT);
+				setColor(315, .5, STROKE, POINT);
 				point(p1.x, p1.y);
 				point(p2.x, p2.y);
 			}
@@ -166,7 +165,7 @@ class Bezier {
 class Point {
 	constructor (position) {
 		this.position = position;
-		this.colorHue = 180;
+		this.colorHueOct = 180;
 		this.size = 40;
 	}
 
@@ -181,14 +180,14 @@ class Point {
 
 	display () {
 		if (this.hover) {
-			setColor(this.colorHue, .4, STROKE, POINT);
+			setColor(this.colorHueOct, .4, STROKE, POINT);
 			strokeWeight(this.size);
 		}
 		else {
-			setColor(this.colorHue, .15, STROKE, POINT);
+			setColor(this.colorHueOct, .15, STROKE, POINT);
 			strokeWeight(this.size);
 			point(this.position.x, this.position.y);
-			setColor(this.colorHue, .3, STROKE, POINT);
+			setColor(this.colorHueOct, .3, STROKE, POINT);
 			strokeWeight(this.size * .3);
 		}
 		point(this.position.x, this.position.y);

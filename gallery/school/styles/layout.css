@@ -1,3 +1,10 @@
+#defaultCanvas0, body {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
 #app {
 	display: flex;
 	flex-direction: row;

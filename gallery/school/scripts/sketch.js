@@ -9,12 +9,11 @@ function setup() {
 	frameRate( MODE_DEBUG ? 12 : 48 );
 
 	colorMode(HSL);
-	angleMode(RADIANS);
 
 	algorithms.push( new BezierController() );
 	algorithms.push( new VoronoiController() );
 
-	xxxx(0);
+	modifyDOM2SelectedAlgorithm(0);
 	createAlgorithmSelectorButtons();
 }
 

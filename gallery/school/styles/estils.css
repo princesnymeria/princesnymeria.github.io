@@ -7,15 +7,33 @@
 	src: url(../../../recursos/fonts/Raleway/Raleway-Regular.ttf);
 }
 
-#defaultCanvas0, body {
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: -1;
+:root {
+	--primary-color: #F8F8F8AA;
+	--background-color: #141414;
+
+	/* hsla(x, 80%, 60%, .3); */
+	--rainbow-color-1-primary:  hsl(0,   40%, 25%);
+	--rainbow-color-2-primary:  hsl(45,  40%, 25%);
+	--rainbow-color-3-primary:  hsl(90,  40%, 25%);
+	--rainbow-color-4-primary:  hsl(135, 40%, 25%);
+	--rainbow-color-5-primary:  hsl(180, 40%, 25%);
+	--rainbow-color-6-primary:  hsl(225, 40%, 25%);
+	--rainbow-color-7-primary:  hsl(270, 40%, 25%);
+	--rainbow-color-8-primary:  hsl(315, 40%, 25%);
+
+	/* hsla(x, 80%, 60%, .5); */
+	--rainbow-color-1-selected: hsl(0,   50%, 40%);
+	--rainbow-color-2-selected: hsl(45,  50%, 40%);
+	--rainbow-color-3-selected: hsl(90,  50%, 40%);
+	--rainbow-color-4-selected: hsl(135, 50%, 40%);
+	--rainbow-color-5-selected: hsl(180, 50%, 40%);
+	--rainbow-color-6-selected: hsl(225, 50%, 40%);
+	--rainbow-color-7-selected: hsl(270, 50%, 40%);
+	--rainbow-color-8-selected: hsl(315, 50%, 40%);
 }
 
 h1 {
-	color: #F8F8F8AA;
+	color: var(--primary-color);
 	text-align: center;
 	font-size: 24pt;
 	font-weight: 300;
@@ -27,7 +45,7 @@ body {
 	height: calc(100vh - 100px);
 	width: calc(100vw - 100px);
 	overflow: hidden;
-	background-color: #141414;
+	background-color: var(--background-color);
 }
 
 p, button, label, h1, h2, h3 { font-family: 'Raleway', 'Segoe UI Light', 'Segoe UI', Arial, Helvetica, sans-serif; }
@@ -47,59 +65,56 @@ input[type=range] {
 	margin-bottom: 25px;
 	width: 100%;
 	border-radius: 5px;
-	background: hsla(315, 80%, 60%, .3);
+	background: var(--rainbow-color-8-primary);
 }
 
 input[type=range]:focus {
 	outline: none;
 }
 
-input[type=range]::-webkit-slider-runnable-track, input[type=range]::-moz-range-track, input[type=range]::-ms-track, input[type=range]:focus::-webkit-slider-runnable-track {
-	width: 100%;
-	height: 2px;
-	cursor: pointer;
-	border: none;
+input[type=range]::-webkit-slider-runnable-track, input[type=range]::-moz-range-track, /*input[type=range]::-ms-track,*/ input[type=range]:focus::-webkit-slider-runnable-track {
+	display: none;
 }
 
-input[type=range]::-webkit-slider-thumb {
+input[type=range]::-webkit-slider-thumb, input[type=range]::-moz-range-thumb/*, input[type=range]::-ms-thumb*/ {
 	border: none;
 	-webkit-appearance: none;
 	height: 14px;
 	width: 14px;
-	cursor: pointer;
 	margin-top: -5px;
 	border-radius: 50%;
-	background: #141414;
-	border: 3px solid hsla(315, 80%, 60%, .5);
-}
-input[type=range]::-moz-range-thumb {
-	border: none;
-	height: 14px;
-	width: 14px;
-	cursor: pointer;
-	margin-top: -5px;
-	border-radius: 50%;
-	background: #141414;
-	border: 3px solid hsla(315, 80%, 60%, .5);
-}
-input[type=range]::-ms-thumb {
-	border: none;
-	height: 14px;
-	width: 14px;
-	cursor: pointer;
-	margin-top: -5px;
-	border-radius: 50%;
-	background: #141414;
-	border: 3px solid hsla(315, 80%, 60%, .5);
+	background: var(--background-color);
+	border: 3px solid var(--rainbow-color-8-primary);
 }
 
-input[type=range]:nth-child(1) { background: hsla(0,   80%, 60%, .3); } input[type=range]:nth-child(1)::-webkit-slider-thumb { border-color: hsla(0,   80%, 60%, .5); } input[type=range]:nth-child(1)::-moz-range-thumb { border-color: hsla(0,   80%, 60%, .5); } input[type=range]::-ms-thumb { border-color: hsla(0,   80%, 60%, .5); }
-input[type=range]:nth-child(2) { background: hsla(45,  80%, 60%, .3); } input[type=range]:nth-child(2)::-webkit-slider-thumb { border-color: hsla(45,  80%, 60%, .5); } input[type=range]:nth-child(2)::-moz-range-thumb { border-color: hsla(45,  80%, 60%, .5); } input[type=range]::-ms-thumb { border-color: hsla(45,  80%, 60%, .5); }
-input[type=range]:nth-child(3) { background: hsla(90,  80%, 60%, .3); } input[type=range]:nth-child(3)::-webkit-slider-thumb { border-color: hsla(90,  80%, 60%, .5); } input[type=range]:nth-child(3)::-moz-range-thumb { border-color: hsla(90,  80%, 60%, .5); } input[type=range]::-ms-thumb { border-color: hsla(90,  80%, 60%, .5); }
-input[type=range]:nth-child(4) { background: hsla(135, 80%, 60%, .3); } input[type=range]:nth-child(4)::-webkit-slider-thumb { border-color: hsla(135, 80%, 60%, .5); } input[type=range]:nth-child(4)::-moz-range-thumb { border-color: hsla(135, 80%, 60%, .5); } input[type=range]::-ms-thumb { border-color: hsla(135, 80%, 60%, .5); }
-input[type=range]:nth-child(5) { background: hsla(180, 80%, 60%, .3); } input[type=range]:nth-child(5)::-webkit-slider-thumb { border-color: hsla(180, 80%, 60%, .5); } input[type=range]:nth-child(5)::-moz-range-thumb { border-color: hsla(180, 80%, 60%, .5); } input[type=range]::-ms-thumb { border-color: hsla(180, 80%, 60%, .5); }
-input[type=range]:nth-child(6) { background: hsla(225, 80%, 60%, .3); } input[type=range]:nth-child(6)::-webkit-slider-thumb { border-color: hsla(225, 80%, 60%, .5); } input[type=range]:nth-child(6)::-moz-range-thumb { border-color: hsla(225, 80%, 60%, .5); } input[type=range]::-ms-thumb { border-color: hsla(225, 80%, 60%, .5); }
-input[type=range]:nth-child(7) { background: hsla(270, 80%, 60%, .3); } input[type=range]:nth-child(7)::-webkit-slider-thumb { border-color: hsla(270, 80%, 60%, .5); } input[type=range]:nth-child(7)::-moz-range-thumb { border-color: hsla(270, 80%, 60%, .5); } input[type=range]::-ms-thumb { border-color: hsla(270, 80%, 60%, .5); }
+input[type=range]:hover::-webkit-slider-thumb, input[type=range]:hover::-moz-range-thumb/*, input[type=range]:hover::-ms-thumb*/ {
+	cursor: pointer;
+	border-color: var(--rainbow-color-8-selected);
+}
+
+input[type=range]:nth-child(1) { background: var(--rainbow-color-1-primary); }
+input[type=range]:nth-child(2) { background: var(--rainbow-color-2-primary); }
+input[type=range]:nth-child(3) { background: var(--rainbow-color-3-primary); }
+input[type=range]:nth-child(4) { background: var(--rainbow-color-4-primary); }
+input[type=range]:nth-child(5) { background: var(--rainbow-color-5-primary); }
+input[type=range]:nth-child(6) { background: var(--rainbow-color-6-primary); }
+input[type=range]:nth-child(7) { background: var(--rainbow-color-7-primary); }
+
+input[type=range]:nth-child(1)::-webkit-slider-thumb, input[type=range]:nth-child(1)::-moz-range-thumb/*, input[type=range]::-ms-thumb*/ { border-color: var(--rainbow-color-1-primary); }
+input[type=range]:nth-child(2)::-webkit-slider-thumb, input[type=range]:nth-child(2)::-moz-range-thumb/*, input[type=range]::-ms-thumb*/ { border-color: var(--rainbow-color-2-primary); }
+input[type=range]:nth-child(3)::-webkit-slider-thumb, input[type=range]:nth-child(3)::-moz-range-thumb/*, input[type=range]::-ms-thumb*/ { border-color: var(--rainbow-color-3-primary); }
+input[type=range]:nth-child(4)::-webkit-slider-thumb, input[type=range]:nth-child(4)::-moz-range-thumb/*, input[type=range]::-ms-thumb*/ { border-color: var(--rainbow-color-4-primary); }
+input[type=range]:nth-child(5)::-webkit-slider-thumb, input[type=range]:nth-child(5)::-moz-range-thumb/*, input[type=range]::-ms-thumb*/ { border-color: var(--rainbow-color-5-primary); }
+input[type=range]:nth-child(6)::-webkit-slider-thumb, input[type=range]:nth-child(6)::-moz-range-thumb/*, input[type=range]::-ms-thumb*/ { border-color: var(--rainbow-color-6-primary); }
+input[type=range]:nth-child(7)::-webkit-slider-thumb, input[type=range]:nth-child(7)::-moz-range-thumb/*, input[type=range]::-ms-thumb*/ { border-color: var(--rainbow-color-7-primary); }
+
+input[type=range]:nth-child(1):hover::-webkit-slider-thumb, input[type=range]:nth-child(1):hover::-moz-range-thumb/*, input[type=range]:nth-child(1):hover::-ms-thumb*/ { border-color: var(--rainbow-color-1-selected); }
+input[type=range]:nth-child(2):hover::-webkit-slider-thumb, input[type=range]:nth-child(2):hover::-moz-range-thumb/*, input[type=range]:nth-child(2):hover::-ms-thumb*/ { border-color: var(--rainbow-color-2-selected); }
+input[type=range]:nth-child(3):hover::-webkit-slider-thumb, input[type=range]:nth-child(3):hover::-moz-range-thumb/*, input[type=range]:nth-child(3):hover::-ms-thumb*/ { border-color: var(--rainbow-color-3-selected); }
+input[type=range]:nth-child(4):hover::-webkit-slider-thumb, input[type=range]:nth-child(4):hover::-moz-range-thumb/*, input[type=range]:nth-child(4):hover::-ms-thumb*/ { border-color: var(--rainbow-color-4-selected); }
+input[type=range]:nth-child(5):hover::-webkit-slider-thumb, input[type=range]:nth-child(5):hover::-moz-range-thumb/*, input[type=range]:nth-child(5):hover::-ms-thumb*/ { border-color: var(--rainbow-color-5-selected); }
+input[type=range]:nth-child(6):hover::-webkit-slider-thumb, input[type=range]:nth-child(6):hover::-moz-range-thumb/*, input[type=range]:nth-child(6):hover::-ms-thumb*/ { border-color: var(--rainbow-color-6-selected); }
+input[type=range]:nth-child(7):hover::-webkit-slider-thumb, input[type=range]:nth-child(7):hover::-moz-range-thumb/*, input[type=range]:nth-child(7):hover::-ms-thumb*/ { border-color: var(--rainbow-color-7-selected); }
 
 
 
@@ -115,18 +130,30 @@ button {
 	padding: 15px;
 	border-radius: 100px;
 	font-size: 14pt;
-	color: #F8F8F8AA;
+	color: var(--primary-color);
 	background-color: #FFFFFF00;
-	border: 3.5px solid hsla(315, 80%, 60%, .3);
+	border: 3.5px solid var(--rainbow-color-8-primary);
 }
 
-button:nth-child(1) { border-color: hsla(0,   80%, 60%, .3); } button:nth-child(1):hover, button:nth-child(1).selected { border-color: hsla(0,   80%, 60%, .6); }
-button:nth-child(2) { border-color: hsla(45,  80%, 60%, .3); } button:nth-child(2):hover, button:nth-child(2).selected { border-color: hsla(45,  80%, 60%, .6); }
-button:nth-child(3) { border-color: hsla(90,  80%, 60%, .3); } button:nth-child(3):hover, button:nth-child(3).selected { border-color: hsla(90,  80%, 60%, .6); }
-button:nth-child(4) { border-color: hsla(135, 80%, 60%, .3); } button:nth-child(4):hover, button:nth-child(4).selected { border-color: hsla(135, 80%, 60%, .6); }
-button:nth-child(5) { border-color: hsla(180, 80%, 60%, .3); } button:nth-child(5):hover, button:nth-child(5).selected { border-color: hsla(180, 80%, 60%, .6); }
-button:nth-child(6) { border-color: hsla(225, 80%, 60%, .3); } button:nth-child(6):hover, button:nth-child(6).selected { border-color: hsla(225, 80%, 60%, .6); }
-button:nth-child(7) { border-color: hsla(270, 80%, 60%, .3); } button:nth-child(7):hover, button:nth-child(7).selected { border-color: hsla(270, 80%, 60%, .6); }
+button:hover, button.active {
+	border-color:var(--rainbow-color-8-selected);
+}
+
+button:nth-child(1) { border-color: var(--rainbow-color-1-primary); }
+button:nth-child(2) { border-color: var(--rainbow-color-2-primary); }
+button:nth-child(3) { border-color: var(--rainbow-color-3-primary); }
+button:nth-child(4) { border-color: var(--rainbow-color-4-primary); }
+button:nth-child(5) { border-color: var(--rainbow-color-5-primary); }
+button:nth-child(6) { border-color: var(--rainbow-color-6-primary); }
+button:nth-child(7) { border-color: var(--rainbow-color-7-primary); }
+
+button:nth-child(1):hover, button:nth-child(1).active { border-color:var(--rainbow-color-1-selected); }
+button:nth-child(2):hover, button:nth-child(2).active { border-color:var(--rainbow-color-2-selected); }
+button:nth-child(3):hover, button:nth-child(3).active { border-color:var(--rainbow-color-3-selected); }
+button:nth-child(4):hover, button:nth-child(4).active { border-color:var(--rainbow-color-4-selected); }
+button:nth-child(5):hover, button:nth-child(5).active { border-color:var(--rainbow-color-5-selected); }
+button:nth-child(6):hover, button:nth-child(6).active { border-color:var(--rainbow-color-6-selected); }
+button:nth-child(7):hover, button:nth-child(7).active { border-color:var(--rainbow-color-7-selected); }
 
 @media (max-width: 650px) {
 	button {
@@ -161,22 +188,40 @@ button:nth-child(7) { border-color: hsla(270, 80%, 60%, .3); } button:nth-child(
 	height: 4px;
 	position: absolute;
 	top: 45%;
-	background-color: #F8F8F840;
+	background-color: var(--primary-color);
+	opacity: .4;
 }
 
 #stepsSelectors>button {
 	margin: 0;
-	background: #141414;
+	background: var(--background-color);
 	z-index: 0;
 	width: 35px;
 	height: 35px;
 }
 
+#stepsSelectors>button.selected {
+	border-color: var(--rainbow-color-8-selected);
+	background-color: var(--rainbow-color-8-primary);
+}
+#stepsSelectors>button.active {
+	background-color: var(--rainbow-color-8-selected);
+}
 
-#stepsSelectors>button:nth-child(1).selected { background-color: #552323; }
-#stepsSelectors>button:nth-child(2).selected { background-color: #554923; }
-#stepsSelectors>button:nth-child(3).selected { background-color: #3c5523; }
-#stepsSelectors>button:nth-child(4).selected { background-color: #235530; }
-#stepsSelectors>button:nth-child(5).selected { background-color: hsla(180, 80%, 60%, .6); }
-#stepsSelectors>button:nth-child(6).selected { background-color: hsla(225, 80%, 60%, .6); }
-#stepsSelectors>button:nth-child(7).selected { background-color: hsla(270, 80%, 60%, .6); }
+#stepsSelectors>button:nth-child(1).selected { border-color: var(--rainbow-color-1-selected); background-color: var(--rainbow-color-1-primary); }
+#stepsSelectors>button:nth-child(2).selected { border-color: var(--rainbow-color-2-selected); background-color: var(--rainbow-color-2-primary); }
+#stepsSelectors>button:nth-child(3).selected { border-color: var(--rainbow-color-3-selected); background-color: var(--rainbow-color-3-primary); }
+#stepsSelectors>button:nth-child(4).selected { border-color: var(--rainbow-color-4-selected); background-color: var(--rainbow-color-4-primary); }
+#stepsSelectors>button:nth-child(5).selected { border-color: var(--rainbow-color-5-selected); background-color: var(--rainbow-color-5-primary); }
+#stepsSelectors>button:nth-child(6).selected { border-color: var(--rainbow-color-6-selected); background-color: var(--rainbow-color-6-primary); }
+#stepsSelectors>button:nth-child(7).selected { border-color: var(--rainbow-color-7-selected); background-color: var(--rainbow-color-7-primary); }
+
+#stepsSelectors>button:nth-child(1).active { background-color: var(--rainbow-color-1-selected); }
+#stepsSelectors>button:nth-child(2).active { background-color: var(--rainbow-color-2-selected); }
+#stepsSelectors>button:nth-child(3).active { background-color: var(--rainbow-color-3-selected); }
+#stepsSelectors>button:nth-child(4).active { background-color: var(--rainbow-color-4-selected); }
+#stepsSelectors>button:nth-child(5).active { background-color: var(--rainbow-color-5-selected); }
+#stepsSelectors>button:nth-child(6).active { background-color: var(--rainbow-color-6-selected); }
+#stepsSelectors>button:nth-child(7).active { background-color: var(--rainbow-color-7-selected); }
+
+#stepsSelectors>button:hover.selected, #stepsSelectors>button:hover.active { border-color: var(--background-color); }

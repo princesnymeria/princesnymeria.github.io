@@ -1,9 +1,9 @@
 class VoronoiController extends AlgorithmController {
 	constructor () {
 		super();
-		this.data.shortName = 'Voronoi';
-		this.data.name = 'Voronoi Diagram';
-		this.data.infolink = 'https://en.wikipedia.org/wiki/Voronoi_diagram';
+		this.info.shortName = 'Voronoi';
+		this.info.name = 'Voronoi Diagram';
+		this.info.infolink = 'https://en.wikipedia.org/wiki/Voronoi_diagram';
 		this.cols = 4;
 		this.rows = 4;
 		this.algorithm = new Voronoi( this.cols, this.rows );
@@ -27,7 +27,7 @@ class VoronoiController extends AlgorithmController {
 	}
 
 	drawGird () {
-		setColor(300, .05, STROKE, LINE);
+		setColor(315, .05, STROKE, LINE);
 		const colWidth = width / this.cols;
 		var x = 0;
 		for (var c = 0; c < this.cols; c++) {
@@ -45,8 +45,9 @@ class VoronoiController extends AlgorithmController {
 
 
 
-class Voronoi {
+class Voronoi extends Algorithm {
 	constructor ( cols, rows ) {
+		super();
 		this.cells = [ ];
 		this.t = .3;
 		const colWidth = width/cols;
@@ -59,11 +60,13 @@ class Voronoi {
 			}
 	}
 
+	/*setup(){
+		angleMode(RADIANS);
+	}*/
+
 	setRadius (t) {
 		this.t = t * .01;
 	}
-
-	setup () {}
 
 	draw () {
 		this.cells.forEach(p => {
@@ -92,9 +95,9 @@ class VoronoiCell {
 	}
 
 	display () {
-		setColor(180, .3, STROKE, POINT);
+		setColor(45, .3, STROKE, POINT);
 		point(this.position.x, this.position.y);
-		setColor(60, .1, STROKE, LINE);
+		setColor(45, .1, STROKE, LINE);
 		circle(this.position.x, this.position.y, this.dim);
 	}
 
@@ -109,9 +112,9 @@ class VoronoiCell {
 			}
 		});
 		contactLines.forEach(l => {
-			setColor(120, .15, STROKE, POINT);
+			setColor(135, .15, STROKE, POINT);
 			point(l[0].x, l[0].y); point(l[1].x, l[1].y);
-			setColor(120, .05, STROKE, LINE);
+			setColor(135, .05, STROKE, LINE);
 			line(l[0].x, l[0].y, l[1].x, l[1].y);
 		});
 	}

@@ -3,7 +3,7 @@ function createAlgorithmSelectorButtons() {
 	var index = 0;
 	algorithms.forEach(algorithm => {
 		const btn = document.createElement('BUTTON');
-		btn.innerText = algorithm.data.shortName;
+		btn.innerText = algorithm.info.shortName;
 		btn.setAttribute('algorithm-id', index);
 		btn.addEventListener('click', changeSelectedAlgorithm);
 		cont.appendChild(btn);
@@ -13,22 +13,25 @@ function createAlgorithmSelectorButtons() {
 }
 
 function changeSelectedAlgorithm(ev) {
-	focusSelectedmButton('#algorithmSelectors>button.selected', 'selected', ev.target);
+	focusSelectedmButton('#algorithmSelectors>button.active', 'active', [ev.target]);
 	document.getElementById('algorithmInputs').innerHTML = "";
-	xxxx( ev.target.getAttribute('algorithm-id') );
+	modifyDOM2SelectedAlgorithm( ev.target.getAttribute('algorithm-id') );
 }
 
-function xxxx(ind) {
+function modifyDOM2SelectedAlgorithm(ind) {
 	setupSelectedAlgorithm(ind);
 	modifyAppTitle(ind);
 	createStepsSelectorsContainer();
 	createAlgorithmInputs();
 }
 
-function focusSelectedmButton (desselectorQuery, selectedClass, newFosussedElement) {
-	const q = document.querySelector(desselectorQuery);
-	if (q) q.classList.remove(selectedClass);
-	newFosussedElement.classList.add(selectedClass);
+function focusSelectedmButton (desFosusedQuery, focusClass, newFosussedElements) {
+	document.querySelectorAll(desFosusedQuery).forEach(el => {
+		el.classList.remove(focusClass);
+	});
+	newFosussedElements.forEach(el => {
+		el.classList.add(focusClass);
+	});
 }
 
 function setupSelectedAlgorithm(algorithmIndex) {
@@ -44,7 +47,9 @@ function modifyAppTitle() {
 function updateSelectedAlgorithmStep(ev) {
 	const newSelectedStepIndex = ev.target.getAttribute('step-index');
 	selectedAlgorithm.setStep(newSelectedStepIndex);
-	focusSelectedmButton('#stepsSelectors>button.selected', 'selected', ev.target);
+	focusSelectedmButton('#stepsSelectors>button.active', 'active', [ev.target]);
+	const previusStepButtons = Array.prototype.slice.call(document.querySelectorAll('#stepsSelectors>button'), 0).slice(0, newSelectedStepIndex);
+	focusSelectedmButton('#stepsSelectors>button.selected', 'selected', previusStepButtons);
 }
 
 function createAlgorithmInputs() {
@@ -62,7 +67,7 @@ function createStepsSelectorsContainer() {
 	cont.innerHTML = "";
 	for (let i = 0; i < selectedAlgorithm.steps.length; i++) {
 		const button = document.createElement('button');
-		if (i == 0) button.classList.add('selected');
+		if (i == 0) button.classList.add('active');
 		button.setAttribute('step-index', i);
 		button.onclick = updateSelectedAlgorithmStep;
 		cont.appendChild(button);
