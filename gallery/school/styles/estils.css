@@ -39,15 +39,6 @@ h1 {
 	font-weight: 300;
 }
 
-body {
-	padding: 50px;
-	margin: 0;
-	height: calc(100vh - 100px);
-	width: calc(100vw - 100px);
-	overflow: hidden;
-	background-color: var(--background-color);
-}
-
 p, button, label, h1, h2, h3 { font-family: 'Raleway', 'Segoe UI Light', 'Segoe UI', Arial, Helvetica, sans-serif; }
 
 
@@ -131,7 +122,7 @@ button {
 	border-radius: 100px;
 	font-size: 14pt;
 	color: var(--primary-color);
-	background-color: #FFFFFF00;
+	background-color: transparent;
 	border: 3.5px solid var(--rainbow-color-8-primary);
 }
 
