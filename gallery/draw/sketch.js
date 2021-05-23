@@ -5,10 +5,12 @@ var lastPoint = [];
 
 function setup() {
 	createCanvas(window.innerWidth, window.innerHeight);
-	frameRate(24);
+	frameRate(48);
 
 	setEvents();
 	clearCanvas();
+
+	lastPoint = [width * .5, height * .5];
 }
 
 function draw() {
@@ -53,7 +55,12 @@ function clearCanvas() {
 function setEvents() {
 	document.getElementById('btnRefresh').addEventListener('click', clearCanvas);
 	document.getElementById('btnMode').addEventListener('click', function(){ paintMode = !paintMode });
+	document.getElementById('btnReset').addEventListener('click', function(){ 
+		iptSym.value = 8;
+		iptAlfa.value = .1;
+		iptSize.value = 10;
+	 });
 	iptSym = document.getElementById('inpSymmetries');
 	iptAlfa = document.getElementById('inpAlfa');
-	iptSize = document.getElementById('inSize');
+	iptSize = document.getElementById('inpSize');
 }

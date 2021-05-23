@@ -100,9 +100,9 @@ input, button {
 	--primary-color: #F8F8F8AA;
 	--background-color: #1F1F1F;
 
-	--rainbow-color-1:  hsla(45,   80%, 25%, .6);
-	--rainbow-color-2:  hsla(180,  80%, 25%, .6);
-	--rainbow-color-3:  hsla(315,  80%, 25%, .6);
+	--rainbow-color-1:  hsla(45,   80%, 25%, .8);
+	--rainbow-color-2:  hsla(180,  80%, 25%, .8);
+	--rainbow-color-3:  hsla(315,  80%, 25%, .8);
 }
 
 
