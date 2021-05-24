@@ -113,15 +113,14 @@ class VoronoiCell {
 	}
 
 	aaa (others) {
-		this.intersections = [];
+		const newIntersections = [];
 		others.forEach(other => {
-			const d = dist(this.position.x, this.position.y, other.position.x, other.position.y);
-			const touching = d < ( this.dim + other.dim ) * .5 && d > 0;
-			if (touching) {
+			if (this.isTouching(other)) {
 				const points = getIntersectionBetweenCircles(this.position, this.radius, other.position, other.radius);
-				this.intersections.push(points);
+				newIntersections.push(points);
 			}
 		});
+		this.intersections = newIntersections;
 	}
 
 	bbb () {
@@ -138,6 +137,31 @@ class VoronoiCell {
 			vertex(p[1].x, p[1].y);
 		});
 		endShape(CLOSE);
+	}
+
+	isTouching (other) {
+		const d = dist(this.position.x, this.position.y, other.position.x, other.position.y);
+		var res =  d < ( this.dim + other.dim ) * .5 && d > 0;
+		if (res && this.intersections > 0) {
+			// cal extreure de l'area de col·lisió la part intersecada
+			//si la unió entre dos centres passa per una línia d'intercecció...
+			// res = false;
+			this.intersections.forEach(intersection => {
+				if ( intersectionPt(
+					this.position.x,
+					other.position.x,
+					intersection[0].x,
+					intersection[1].x,
+					this.position.y,
+					other.position.y,
+					intersection[0].y,
+					intersection[1].y
+				) ) res = false;
+			});
+			// caldria repetir el bucle per les interseccions de other
+		}
+		//console.log(this.intersections);
+		return res;
 	}
 }
 
@@ -166,12 +190,51 @@ function getIntersectionBetweenCircles ( pos1, radius1, pos2, radius2 ) {
 	return intersections;
 }
 
-/*function getIntersectionBetweenLines (p1, p2, p3, p4) {
-	const ua = ((p4.x - p3.x) * (p1.y - p3.y) - (p4.y - p3.y) * (p1.x - p3.x)) / ((p4.y - p3.y) * (p2.x - p1.x) - (p4.x - p3.x) * (p2.y - p1.y));
-	// const ub = ((p2.x - p1.x) * (p1.y - p3.y) - (p2.y - p1.y) * (p1.x - p3.x)) / ((p4.y - p3.y) * (p2.x - p1.x) - (p4.x - p3.x) * (p2.y - p1.y));
 
-	const x = p1.x + ua * (p2.x - p1.x);
-	const y = p1.y + ua * (p2.y - p1.y);
-	
-	return createVector(x, y);
-}*/
+
+
+
+
+
+
+//Code heavily taken from Example Code and Explanations by Paul Bourke at http://paulbourke.net/geometry/pointlineplane/
+//
+//Function to test for intersections between line segments:
+function intersectionPt(x1,x2,x3,x4,y1,y2,y3,y4){
+  
+	var uA,uB;
+  var den,numA,numB;
+  var intx, inty;
+
+  den  = (y4-y3) * (x2-x1) - (x4-x3) * (y2-y1);
+  numA = (x4-x3) * (y1-y3) - (y4-y3) * (x1-x3);
+  numB = (x2-x1) * (y1-y3) - (y2-y1) * (x1-x3);
+  
+  //Coincident? - If true, displays intersection in center of line segment
+   if (abs(numA) == 0 && abs(numB) == 0 && abs(den) == 0) {
+      intx = (x1 + x2) / 2;
+      inty = (y1 + y2) / 2;
+      return(true);
+   }
+
+   //Parallel? - No intersection
+   if (abs(den) == 0) {
+      intx = 0;
+      inty = 0;
+      return(false);
+   }
+
+   //Intersection?
+   uA = numA / den;
+   uB = numB / den;
+  
+   //If both lie w/in the range of 0 to 1 then the intersection point is within both line segments.
+   if (uA < 0 || uA > 1 || uB < 0 || uB > 1) {
+      intx = 0;
+      inty = 0;
+      return(false);
+   }
+   intx = x1 + uA * (x2 - x1);
+   inty = y1 + uA * (y2 - y1);
+   return(true);
+}
