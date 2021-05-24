@@ -16,13 +16,13 @@ function changeSelectedAlgorithm(ev) {
 	focusSelectedmButton('#algorithmSelectors>button.active', 'active', [ev.target]);
 	document.getElementById('algorithmInputs').innerHTML = "";
 	modifyDOM2SelectedAlgorithm( ev.target.getAttribute('algorithm-id') );
+	createStepInputs(0);
 }
 
 function modifyDOM2SelectedAlgorithm(ind) {
 	setupSelectedAlgorithm(ind);
 	modifyAppTitle(ind);
 	createStepsSelectorsContainer();
-	createAlgorithmInputs();
 }
 
 function focusSelectedmButton (desFosusedQuery, focusClass, newFosussedElements) {
@@ -50,15 +50,19 @@ function updateSelectedAlgorithmStep(ev) {
 	focusSelectedmButton('#stepsSelectors>button.active', 'active', [ev.target]);
 	const previusStepButtons = Array.prototype.slice.call(document.querySelectorAll('#stepsSelectors>button'), 0).slice(0, newSelectedStepIndex);
 	focusSelectedmButton('#stepsSelectors>button.selected', 'selected', previusStepButtons);
+	createStepInputs(newSelectedStepIndex);
 }
 
-function createAlgorithmInputs() {
+function createStepInputs(step) {
 	const cont = document.getElementById('algorithmInputs');
+	cont.innerHTML = '';
 	selectedAlgorithm.inputs.forEach(inputInfo => {
-		const input = document.createElement('INPUT');
-		input.type = inputInfo.type;
-		input.onchange = inputInfo.callback;
-		cont.appendChild(input);
+		if (inputInfo.minStep <= step) {
+			const input = document.createElement('INPUT');
+			input.type = inputInfo.type;
+			input.onchange = inputInfo.callback;
+			cont.appendChild(input);
+		}
 	});
 }
 

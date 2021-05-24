@@ -250,8 +250,8 @@ Hauria de ser fàcil afegir nous algorismes a l'app, per això s'ha modulitzat p
 4. Dibuixar l'algorisme per passos:
 	* [x] Implementar un selector de passos.
 	* [x] Preparar l'arquitectura dels passos per cada algorisme.
-	* [ ] <span class="millorar">Fer que els sliders apareguin al step que els toca</span>
-	* [ ] <span class="millorar">Afegir més passos a les corves de bezier</span>
+	* [x] <span class="millorar">Fer que els sliders apareguin al step que els toca</span>
+	* [x] <span class="millorar">Afegir més passos a les corves de bezier</span>
 5. Documentar
 	* [x] Estructurar la informació
 	* [/] Redactar els punts

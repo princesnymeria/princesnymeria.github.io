@@ -25,18 +25,23 @@ class BezierController extends AlgorithmController {
 			{
 				title: 'Compute T',
 				explanation: '',
-				displayFunction: function() { that.algorithm.displayTPoints(); }
+				displayFunction: function() { that.algorithm.displayTPoints(0); }
 			},
-			/*{
+			{
 				title: 'Join T points',
 				explanation: '',
-				displayFunction: function() { that.algorithm.xxx(); }
+				displayFunction: function() { that.algorithm.displayTPointsLines(0); }
 			},
 			{
 				title: 'Repeat the points',
 				explanation: '',
-				displayFunction: function() { that.algorithm.xxx(); }
-			},*/
+				displayFunction: function() { that.algorithm.displayTPoints(1); that.algorithm.displayTPointsLines(1); }
+			},
+			{
+				title: 'And Repeat',
+				explanation: '',
+				displayFunction: function() { that.algorithm.displayFinalTPoint(); }
+			},
 			{
 				title: 'Draw the curve',
 				explanation: '',
@@ -71,35 +76,48 @@ class Bezier extends Algorithm {
 		this.t = .3;
 	}
 
-	get iterations () {
-		return this.points.length - 1;
-	}
-
 	draw () {
 		this.update();
 		this.display();
+	}
+
+	update () {
+		this.updateTPoints();
+		this.updateDrawedCurve();
+	}
+
+	display () {
+		this.displayAnchors();
+		for (let i = 0; i < this.TPoints.length; i++)
+			this.displayTPoints(i);
+		this.displayCurve();
+		this.displayPoints();
+	}
+
+	get iterations () {
+		return this.points.length - 1;
 	}
 
 	setT(t) {
 		this.t = t * .01;
 	}
 
-	update () {
-		for (let i = 0; i <= this.iterations -1; i++) {
+	updateTPoints () {
+		for (let i = 0; i <= this.iterations - 1; i++) {
 			this.TPoints[i] = [];
 			for (let j = 0; j < this.iterations-i; j++) {
-				if (i == 0) this.TPoints[i].push( this.getTPoint(this.points [j].position, this.points [j+1].position ));
-				else this.TPoints[i].push( this.getTPoint(this.TPoints[i-1][j], this.TPoints[i-1][j+1] ));
+				var point = null;
+				if (i == 0)
+					point =  this.comuteTPoint(this.points[j].position, this.points[j+1].position );
+				else
+					point = this.comuteTPoint(this.TPoints[i-1][j], this.TPoints[i-1][j+1] );
+				this.TPoints[i].push( point );
 			}
 		}
-		this.curve[this.t * 100] = this.TPoints[this.iterations -1][0];
 	}
 
-	display () {
-		this.displayAnchors();
-		this.displayTPoints();
-		this.displayCurve();
-		this.displayPoints();
+	updateDrawedCurve () {
+		this.curve[this.t * 100] = this.TPoints[this.iterations-1][0];
 	}
 
 	displayPoints () {
@@ -118,19 +136,28 @@ class Bezier extends Algorithm {
 		for (let i = 1; i < n-1; i++) this.drawAnchorLine(i, i + 1);
 	}
 
-	displayTPoints () {
-		strokeWeight(5);
-		this.TPoints.forEach(points => {
-			for (let i = 0; i < points.length - 1; i++) {
-				const p1 = points[i];
-				const p2 = points[i+1];
-				setColor(315, .1, STROKE, LINE);
-				line(p1.x, p1.y, p2.x, p2.y);
-				setColor(315, .5, STROKE, POINT);
-				point(p1.x, p1.y);
-				point(p2.x, p2.y);
-			}
-		});
+	displayTPoints (iteration) {
+		const points = this.TPoints[iteration];
+		setColor(315, .5, STROKE, POINT);
+		for (let i = 0; i < points.length - 1; i++) {
+			const p1 = points[i];
+			const p2 = points[i+1];
+			point(p1.x, p1.y);
+			point(p2.x, p2.y);
+		}
+	}
+
+	displayTPointsLines (iteration) {
+		const points = this.TPoints[iteration];
+		setColor(315, .1, STROKE, LINE);
+		for (let i = 0; i < points.length - 1; i++) {
+			const p1 = points[i];
+			const p2 = points[i+1];
+			line(p1.x, p1.y, p2.x, p2.y);
+		}
+	}
+
+	displayFinalTPoint () {
 		const n = this.TPoints.length - 1;
 		setColor(0, .5, STROKE, POINT);
 		point(this.TPoints[n][0].x, this.TPoints[n][0].y);
@@ -153,7 +180,7 @@ class Bezier extends Algorithm {
 		line( this.points[index1].position.x, this.points[index1].position.y, this.points[index2].position.x, this.points[index2].position.y );
 	}
 
-	getTPoint (point1, point2) {
+	comuteTPoint (point1, point2) {
 		return point2.copy().sub(point1).mult(this.t).add(point1);
 	}
 }

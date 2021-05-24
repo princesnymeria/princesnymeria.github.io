@@ -8,6 +8,13 @@ class VoronoiController extends AlgorithmController {
 		this.rows = 4;
 		this.algorithm = new Voronoi( this.cols, this.rows );
 		const that = this;
+		/*this.steps = [
+			{
+				title: '...',
+				explanation: '...',
+				displayFunction: function() { that.algorithm.draw() }
+			}
+		];*/
 		this.inputs = [
 			{
 				minStep: 0,
@@ -58,6 +65,7 @@ class Voronoi extends Algorithm {
 				const y = (random(0, 1) + r) * rowHeight;
 				this.cells.push( new VoronoiCell( createVector( x, y ) ) );
 			}
+		//this.nodes = [];
 	}
 
 	/*setup(){
@@ -71,7 +79,7 @@ class Voronoi extends Algorithm {
 	draw () {
 		this.cells.forEach(p => {
 			p.updateRadius(this.t);
-			p.drawContactLines(this.cells);
+			p.aaa( this.cells );
 			p.display();
 		});
 	}
@@ -84,6 +92,7 @@ class VoronoiCell {
 		this.position = position;
 		this.dim = 1;
 		this.potantialRadius = width * .5;//this.potantialRadius = random(.1, .5) * width;
+		this.intersections = [];
 	}
 
 	get radius() {
@@ -95,50 +104,74 @@ class VoronoiCell {
 	}
 
 	display () {
-		setColor(45, .3, STROKE, POINT);
+		setColor(45, .30, STROKE, POINT);
 		point(this.position.x, this.position.y);
-		setColor(45, .1, STROKE, LINE);
+		setColor(45, .10, STROKE, LINE);
 		circle(this.position.x, this.position.y, this.dim);
+		setColor(180, .40, STROKE, LINE);
+		this.bbb();
 	}
 
-	drawContactLines (others) {
-		const contactLines = [];
+	aaa (others) {
+		this.intersections = [];
 		others.forEach(other => {
 			const d = dist(this.position.x, this.position.y, other.position.x, other.position.y);
 			const touching = d < ( this.dim + other.dim ) * .5 && d > 0;
 			if (touching) {
-				const points = this.getIntersectionBetweenCircles(this.position, this.radius, other.position, other.radius);
-				contactLines.push(points);
+				const points = getIntersectionBetweenCircles(this.position, this.radius, other.position, other.radius);
+				this.intersections.push(points);
 			}
 		});
-		contactLines.forEach(l => {
-			setColor(135, .15, STROKE, POINT);
-			point(l[0].x, l[0].y); point(l[1].x, l[1].y);
-			setColor(135, .05, STROKE, LINE);
-			line(l[0].x, l[0].y, l[1].x, l[1].y);
-		});
 	}
 
-	getIntersectionBetweenCircles ( pos1, radius1, pos2, radius2 ) {
-		const intersections = [ createVector(-10, -10), createVector(-10, -10)];
-
-		const dx = pos2.x - pos1.x;
-		const dy = pos2.y - pos1.y;
-		const d2 = dx * dx + dy * dy;
-		const di = sqrt(d2);
-		const r2 = radius1 * radius1;
-		const R2 = radius2 * radius2;
-		
-		if (di < radius1 + radius2 && di > abs(radius1 - radius2)) {
-			const K = r2 - R2 + d2;
-			const K2 = K * K;
-			const h = sqrt(4 * r2 * d2 - K2);
-			const c = 1 / (2 * d2);
-			intersections[0].x = pos1.x + (dx * K + dy * h) * c;
-			intersections[1].x = pos1.x + (dx * K - dy * h) * c;
-			intersections[0].y = pos1.y + (dy * K - dx * h) * c;
-			intersections[1].y = pos1.y + (dy * K + dx * h) * c;
-		}
-		return intersections
+	bbb () {
+		const n = 20;
+		beginShape();
+		/*for (var i = 0; i < n; i++) {
+			const a = TAU / n * i;
+			const x = this.position.x + cos(a) * this.dim * .5;
+			const y = this.position.y + sin(a) * this.dim * .5;
+			vertex(x, y);
+		}*/
+		this.intersections.forEach(p => {
+			vertex(p[0].x, p[0].y);
+			vertex(p[1].x, p[1].y);
+		});
+		endShape(CLOSE);
 	}
 }
+
+
+
+function getIntersectionBetweenCircles ( pos1, radius1, pos2, radius2 ) {
+	const intersections = [ createVector(-10, -10), createVector(-10, -10)];
+
+	const dx = pos2.x - pos1.x;
+	const dy = pos2.y - pos1.y;
+	const d2 = dx * dx + dy * dy;
+	const di = sqrt(d2);
+	const r2 = radius1 * radius1;
+	const R2 = radius2 * radius2;
+	
+	if (di < radius1 + radius2 && di > abs(radius1 - radius2)) {
+		const K = r2 - R2 + d2;
+		const K2 = K * K;
+		const h = sqrt(4 * r2 * d2 - K2);
+		const c = 1 / (2 * d2);
+		intersections[0].x = pos1.x + (dx * K + dy * h) * c;
+		intersections[1].x = pos1.x + (dx * K - dy * h) * c;
+		intersections[0].y = pos1.y + (dy * K - dx * h) * c;
+		intersections[1].y = pos1.y + (dy * K + dx * h) * c;
+	}
+	return intersections;
+}
+
+/*function getIntersectionBetweenLines (p1, p2, p3, p4) {
+	const ua = ((p4.x - p3.x) * (p1.y - p3.y) - (p4.y - p3.y) * (p1.x - p3.x)) / ((p4.y - p3.y) * (p2.x - p1.x) - (p4.x - p3.x) * (p2.y - p1.y));
+	// const ub = ((p2.x - p1.x) * (p1.y - p3.y) - (p2.y - p1.y) * (p1.x - p3.x)) / ((p4.y - p3.y) * (p2.x - p1.x) - (p4.x - p3.x) * (p2.y - p1.y));
+
+	const x = p1.x + ua * (p2.x - p1.x);
+	const y = p1.y + ua * (p2.y - p1.y);
+	
+	return createVector(x, y);
+}*/
