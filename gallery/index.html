@@ -44,20 +44,23 @@
 			left: 50%; top: 50%;
 			transform: translate(-50%, -50%);
 		}
+		#marc {
+			height: 90vh;
+		}
 		#marc>path, #marc>rect {
 			fill: none;
 			stroke: #F8F8F8;
-			stroke-width: 1px;;
+			stroke-width: 1px;
 		}
 
-		@media only screen and (max-width: 700px) {
+		@media (max-width: 700px) {
 			#marc { width: 90%;}
 			#container { width: 90%; }
 			ul>li>a { font-size: 18pt; }
 			#marc>path, #marc>rect { stroke-width: 2px; }
 		}
 
-		@media only screen and (max-width: 400px) {
+		@media (max-width: 400px) {
 			#marc { display: none;}
 		}
 	</style>
@@ -133,7 +136,6 @@
 				<li><a href="metatron">Metatron's Cube</a></li>
 				<li><a href="fract">Moving Fractals</a></li>
 				<li><a href="poli">Platonic solids</a></li>
-				<li><a href="orbit">Connected Orbits</a></li>
 				<!-- <li><a href="basic">Basic ...</a></li> -->
 				<!-- <li><a href="mouse">Mouse</a></li> -->
 				<!-- <li><a href="see">See</a></li> -->

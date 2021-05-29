@@ -124,14 +124,7 @@ class VoronoiCell {
 	}
 
 	bbb () {
-		const n = 20;
 		beginShape();
-		/*for (var i = 0; i < n; i++) {
-			const a = TAU / n * i;
-			const x = this.position.x + cos(a) * this.dim * .5;
-			const y = this.position.y + sin(a) * this.dim * .5;
-			vertex(x, y);
-		}*/
 		this.intersections.forEach(p => {
 			vertex(p[0].x, p[0].y);
 			vertex(p[1].x, p[1].y);
@@ -141,11 +134,9 @@ class VoronoiCell {
 
 	isTouching (other) {
 		const d = dist(this.position.x, this.position.y, other.position.x, other.position.y);
-		var res =  d < ( this.dim + other.dim ) * .5 && d > 0;
-		if (res && this.intersections > 0) {
-			// cal extreure de l'area de col·lisió la part intersecada
-			//si la unió entre dos centres passa per una línia d'intercecció...
-			// res = false;
+		var res = d < ( this.dim + other.dim ) * .5 && d > 0;
+		var ddd = [];
+		if (res && this.intersections.length > 0) {
 			this.intersections.forEach(intersection => {
 				if ( intersectionPt(
 					this.position.x,
@@ -156,11 +147,26 @@ class VoronoiCell {
 					other.position.y,
 					intersection[0].y,
 					intersection[1].y
-				) ) res = false;
+				) ) {
+					ddd.push(Math.round(intersection[0].x));
+					//console.log(' * 1: ', Math.round(intersection[0].x));
+				}
 			});
-			// caldria repetir el bucle per les interseccions de other
+			other.intersections.forEach(intersection => {
+				if ( intersectionPt(
+					this.position.x,
+					other.position.x,
+					intersection[0].x,
+					intersection[1].x,
+					this.position.y,
+					other.position.y,
+					intersection[0].y,
+					intersection[1].y
+				) ) if ( !ddd.includes(Math.round(intersection[0].x)) && !ddd.includes(Math.round(intersection[1].x)) ) res = false;
+				//console.log(' * 2: ', Math.round(intersection[0].x), Math.round(intersection[1].x));
+			});
 		}
-		//console.log(this.intersections);
+		//console.log('--------------------');
 		return res;
 	}
 }

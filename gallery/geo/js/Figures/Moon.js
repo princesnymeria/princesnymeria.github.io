@@ -59,6 +59,7 @@ class Moon extends Figure {
 	}
 
 	getIntersectionPoints(x, y, r, X, Y, R) {
+		//Function borrowed from https://editor.p5js.org/Sachiko-Nakajima/sketches/ryM2w-E9X
 		let x1=0; let x2=0; let y1=0; let y2=0; 
 
 		let dx = X - x;

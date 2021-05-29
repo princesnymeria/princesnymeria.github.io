@@ -46,4 +46,4 @@ geo
 
 ## <n>To Do</n>
 
-* [ ] <n>...</n>
+* [ ] <n>ACREDITAR MÚSICA I ALGORISMES</n>

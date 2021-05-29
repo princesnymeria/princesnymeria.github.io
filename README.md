@@ -16,7 +16,7 @@ I was born, I went to school, some years later I graduated from university and I
 | Symmetrical Drawing | [/draw](/gallery/draw)           | A tool to draw relaxing mandalas                                                 |   100 % |
 | Platonic solids     | [/poli](/gallery/poli)           |                                                                                  |    60 % |
 | See                 | [/see](/gallery/see)             |                                                                                  |     0 % |
-| Basic...            | [/basic](/gallery/basic)         |                                                                                  |     5 % |
+| Basic...            | [/basic](/gallery/basic)         | An introspective experience with sound and color                                 |     5 % |
 | Moving Fractals     | [/fract](/gallery/fract)         | Same as [/draw](/gallery/draw), but better                                       |    95 % |
 | Mouse               | [/mouse](/gallery/mouse)         |                                                                                  |     1 % |
 | Orbit               | [/orbit](/gallery/orbit)         | A love story between two circular orbits and millions of high transparency lines |    98 % |

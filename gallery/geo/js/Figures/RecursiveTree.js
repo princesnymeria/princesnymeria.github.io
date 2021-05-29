@@ -1,6 +1,6 @@
-class RecursiveTree extends Figure {
+//This sketch borrows heavily from https://p5js.org/examples/simulate-recursive-tree.html
 
-	//Basat en: https://p5js.org/examples/simulate-recursive-tree.html
+class RecursiveTree extends Figure {
 
 	constructor(pX, pY) {
 		super(pX, pY);
