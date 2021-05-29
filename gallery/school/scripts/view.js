@@ -2,13 +2,15 @@ function createAlgorithmSelectorButtons() {
 	const cont = document.getElementById('algorithmSelectors');
 	var index = 0;
 	algorithms.forEach(algorithm => {
-		const btn = document.createElement('BUTTON');
-		btn.innerText = algorithm.info.shortName;
-		btn.setAttribute('algorithm-id', index);
-		btn.addEventListener('click', changeSelectedAlgorithm);
-		cont.appendChild(btn);
-		if (index == selectedAlgorithm) btn.classList.add('selected');
-		index++
+		if (algorithm.info.visible || MODE_DEBUG) {
+			const btn = document.createElement('BUTTON');
+			btn.innerText = algorithm.info.shortName;
+			btn.setAttribute('algorithm-id', index);
+			btn.addEventListener('click', changeSelectedAlgorithm);
+			cont.appendChild(btn);
+			if (index == selectedAlgorithm) btn.classList.add('selected');
+			index++
+		}
 	});
 }
 

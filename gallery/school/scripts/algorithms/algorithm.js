@@ -3,6 +3,7 @@ class AlgorithmController {
 		this.info = {
 			name: '',
 			shortName: '',
+			visible: true,
 			infolink: ''
 		};
 		this.currentStepIndex = 0;

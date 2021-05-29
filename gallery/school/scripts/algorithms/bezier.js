@@ -40,12 +40,12 @@ class BezierController extends AlgorithmController {
 			{
 				title: 'And Repeat',
 				explanation: '',
-				displayFunction: function() { that.algorithm.displayFinalTPoint(); }
+				displayFunction: function() { that.algorithm.displayTPointsAndLinesAll(); that.algorithm.displayFinalTPoint(); }
 			},
 			{
 				title: 'Draw the curve',
 				explanation: '',
-				displayFunction: function() { that.algorithm.displayCurve(); }
+				displayFunction: function() { that.algorithm.drawCurve() }
 			}
 		];
 		this.inputs = [
@@ -71,7 +71,6 @@ class Bezier extends Algorithm {
 	constructor (points) {
 		super();
 		this.points = points;
-		this.resetCurve();
 		this.TPoints = [ ];
 		this.t = .3;
 	}
@@ -83,13 +82,14 @@ class Bezier extends Algorithm {
 
 	update () {
 		this.updateTPoints();
-		this.updateDrawedCurve();
 	}
 
 	display () {
 		this.displayAnchors();
-		for (let i = 0; i < this.TPoints.length; i++)
+		for (let i = 0; i < this.TPoints.length; i++) {
 			this.displayTPoints(i);
+			this.displayTPointsLines(i);
+		}
 		this.displayCurve();
 		this.displayPoints();
 	}
@@ -116,15 +116,13 @@ class Bezier extends Algorithm {
 		}
 	}
 
-	updateDrawedCurve () {
-		this.curve[this.t * 100] = this.TPoints[this.iterations-1][0];
-	}
-
 	displayPoints () {
 		this.points.forEach(point => {
 			point.update();
 			point.display();
 		});
+
+		setColor(0, .9, STROKE, LINE);
 	}
 
 	displayAnchors () {
@@ -134,6 +132,13 @@ class Bezier extends Algorithm {
 		this.drawAnchorLine(n-1, n);
 		setColor(45, .1, STROKE, LINE);
 		for (let i = 1; i < n-1; i++) this.drawAnchorLine(i, i + 1);
+	}
+
+	displayTPointsAndLinesAll () {
+		for (let i = 0; i < this.iterations; i++) {
+			this.displayTPointsLines(i);
+			this.displayTPoints(i);
+		}
 	}
 
 	displayTPoints (iteration) {
@@ -163,19 +168,6 @@ class Bezier extends Algorithm {
 		point(this.TPoints[n][0].x, this.TPoints[n][0].y);
 	}
 
-	displayCurve () {
-		setColor(0, .4, STROKE, LINE);
-		beginShape();
-		for (let i = 0; i < this.curve.length; i++)
-			if (this.curve[i])
-				vertex(this.curve[i].x, this.curve[i].y)
-		endShape();
-	}
-
-	resetCurve () {
-		this.curve = new Array(100);
-	}
-
 	drawAnchorLine (index1, index2) {
 		line( this.points[index1].position.x, this.points[index1].position.y, this.points[index2].position.x, this.points[index2].position.y );
 	}
@@ -183,6 +175,12 @@ class Bezier extends Algorithm {
 	comuteTPoint (point1, point2) {
 		return point2.copy().sub(point1).mult(this.t).add(point1);
 	}
+
+	drawCurve () {
+		setColor(0, .5, STROKE, LINE);
+		drawBezier(this.points, 100);
+	}
+
 }
 
 
@@ -227,4 +225,49 @@ class Point {
 	get hover() {
 		return dist(mouseX, mouseY, this.position.x, this.position.y) < this.size * .5;
 	}
+
+	get x() {
+		return this.position.x;
+	}
+
+	get y() {
+		return this.position.y;
+	}
+}
+
+
+
+function drawBezier (points, resolution) {
+	//Inspirated by: Koogs in https://forum.processing.org/two/discussion/19164/make-a-bezier-curve-with-more-than-2-control-points
+	var resolution = 1 / resolution;
+	var t, x, y;
+	const n = points.length - 1;
+	const pascals = getPascalTrigRow(n+1);
+	beginShape();
+	for (t = 0; t < 1 + resolution; t += resolution) {
+		x = 0;
+		y = 0;
+		for (let i = 0; i < points.length; i++) {
+			const i_ = n - i;
+			x += (pascals[i] * t**i * (1-t)**i_ * points[i].x);
+			y += (pascals[i] * t**i * (1-t)**i_ * points[i].y);
+		}
+		vertex(x, y);
+	}
+	endShape();
+};
+
+function getPascalTrigRow (row) {
+	const PascalsTriangle = [
+		[1],
+		[1, 1],
+		[1, 2, 1],
+		[1, 3, 3, 1],
+		[1, 4, 6, 4, 1],
+		[1, 5, 10, 10, 5, 1],
+		[1, 6, 15, 20, 15, 6, 1],
+		[1, 7, 21, 35, 35, 21, 7, 1],
+		[1, 8, 28, 56, 70, 56, 28, 8, 1 ]
+	];
+	return PascalsTriangle[row - 1];
 }

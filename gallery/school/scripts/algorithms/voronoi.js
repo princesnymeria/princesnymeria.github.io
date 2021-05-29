@@ -1,6 +1,7 @@
 class VoronoiController extends AlgorithmController {
 	constructor () {
 		super();
+		this.info.visible = false;
 		this.info.shortName = 'Voronoi';
 		this.info.name = 'Voronoi Diagram';
 		this.info.infolink = 'https://en.wikipedia.org/wiki/Voronoi_diagram';

@@ -265,3 +265,11 @@ Hauria de ser fàcil afegir nous algorismes a l'app, per això s'ha modulitzat p
 * [ ] *Perlin Noise*
 * [ ] <span class="millorar">Combinatorix</span> <span class="dubte">¿?</span>
 * [ ] *Flow Fields* <span class="dubte">¿?</span>
+
+## Help
+
+* **Bezier curve**:
+	* ...
+* **Voronoi**:
+	* [Building a Voronoi diagram - Khan Academy](https://www.khanacademy.org/computer-programming/building-a-voronoi-diagram/5209320543617024)
+	* [Expanding two points - Khan Academy](https://www.khanacademy.org/computer-programming/expanding-two-points/5633866140614656)
