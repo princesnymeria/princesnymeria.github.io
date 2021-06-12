@@ -5,8 +5,8 @@ class VoronoiController extends AlgorithmController {
 		this.info.shortName = 'Voronoi';
 		this.info.name = 'Voronoi Diagram';
 		this.info.infolink = 'https://en.wikipedia.org/wiki/Voronoi_diagram';
-		this.cols = 4;
-		this.rows = 4;
+		this.cols = 3;//this.cols = 4;
+		this.rows = 1;//this.rows = 4;
 		this.algorithm = new Voronoi( this.cols, this.rows );
 		const that = this;
 		/*this.steps = [
@@ -92,8 +92,8 @@ class VoronoiCell {
 	constructor (position) {
 		this.position = position;
 		this.dim = 1;
-		this.potantialRadius = width * .5;//this.potantialRadius = random(.1, .5) * width;
-		this.intersections = [];
+		this.potantialRadius = width;//this.potantialRadius = width * .5;//this.potantialRadius = random(.1, .5) * width;
+		this.shape = { lines: [], arcs:[] };
 	}
 
 	get radius() {
@@ -110,7 +110,7 @@ class VoronoiCell {
 		setColor(45, .10, STROKE, LINE);
 		circle(this.position.x, this.position.y, this.dim);
 		setColor(180, .40, STROKE, LINE);
-		this.bbb();
+		this.drawBubble();
 	}
 
 	aaa (others) {
@@ -121,56 +121,97 @@ class VoronoiCell {
 				newIntersections.push(points);
 			}
 		});
-		this.intersections = newIntersections;
+		this.shape = this.intersections2Shape(newIntersections);
 	}
 
-	bbb () {
-		beginShape();
-		this.intersections.forEach(p => {
-			vertex(p[0].x, p[0].y);
-			vertex(p[1].x, p[1].y);
+	drawBubble () {
+		const d = 0;
+		this.shape['lines'].forEach(l => {
+			l.display();
 		});
-		endShape(CLOSE);
+		this.shape['arcs'].forEach(a => {
+			arc( this.position.x, this.position.y, this.dim, this.dim, a[0] - d, a[1] - d );
+		});
+	}
+
+	intersections2Shape (intersections) {
+		var res = { lines: [], arcs:[] };
+		intersections.forEach(intersection => {
+			res['lines'].push(new Line(intersection[0], intersection[1]));
+		});
+		for (let i = 0; i < intersections.length; i++) {
+			const j = i == intersections.length-1 ? 0 : i+1;
+
+			const a1 = getAngleFromPoint(this.position, res['lines'][i].end );//res['lines'][i].end 
+			const a2 = getAngleFromPoint(this.position, res['lines'][j].init);//res['lines'][j].init
+
+			res['arcs'].push([a1, a2]);
+		}
+		return res
 	}
 
 	isTouching (other) {
 		const d = dist(this.position.x, this.position.y, other.position.x, other.position.y);
 		var res = d < ( this.dim + other.dim ) * .5 && d > 0;
 		var ddd = [];
-		if (res && this.intersections.length > 0) {
-			this.intersections.forEach(intersection => {
+		if (res && this.shape['lines'].length > 0) {
+			this.shape['lines'].forEach(intersection => {
 				if ( intersectionPt(
 					this.position.x,
 					other.position.x,
-					intersection[0].x,
-					intersection[1].x,
+					intersection.init.x,
+					intersection.end.x,
 					this.position.y,
 					other.position.y,
-					intersection[0].y,
-					intersection[1].y
+					intersection.init.y,
+					intersection.end.y
 				) ) {
-					ddd.push(Math.round(intersection[0].x));
-					//console.log(' * 1: ', Math.round(intersection[0].x));
+					ddd.push(Math.round(intersection.init.x));
+					//console.log(' * 1: ', Math.round(intersection.init.x));
 				}
 			});
-			other.intersections.forEach(intersection => {
+			other.shape['lines'].forEach(intersection => {
 				if ( intersectionPt(
 					this.position.x,
 					other.position.x,
-					intersection[0].x,
-					intersection[1].x,
+					intersection.init.x,
+					intersection.end.x,
 					this.position.y,
 					other.position.y,
-					intersection[0].y,
-					intersection[1].y
-				) ) if ( !ddd.includes(Math.round(intersection[0].x)) && !ddd.includes(Math.round(intersection[1].x)) ) res = false;
-				//console.log(' * 2: ', Math.round(intersection[0].x), Math.round(intersection[1].x));
+					intersection.init.y,
+					intersection.end.y
+				) ) if ( !ddd.includes(Math.round(intersection.init.x)) && !ddd.includes(Math.round(intersection.end.x)) ) res = false;
+				//console.log(' * 2: ', Math.round(intersection.init.x), Math.round(intersection.end.x));
 			});
 		}
 		//console.log('--------------------');
 		return res;
 	}
 }
+
+
+
+class Line {
+	constructor (init, end) {
+		this.init = init;
+		this.end = end;
+	}
+	display () {
+		line(this.init.x, this.init.y, this.end.x, this.end.y);
+	}
+}
+
+class Arc {
+	constructor (init, end) {
+		this.init = init;
+		this.end = end;
+	}
+	display () {
+		line(this.init.x, this.init.y, this.end.x, this.end.y);
+	}
+}
+
+
 
 
 
@@ -197,10 +238,15 @@ function getIntersectionBetweenCircles ( pos1, radius1, pos2, radius2 ) {
 	return intersections;
 }
 
+function getAngleFromPoint(center, point) {
+	const b = center.x - point.x;
+	const h = center.y - point.y;
 
+	var alpha = PI + atan(h/b);
+	if (center.x < point.x) alpha += PI;
 
-
-
+	return alpha;
+}
 
 
 

@@ -207,7 +207,6 @@ Especificacions:
 
 * [ ] Localitzar comentaris de l'estil `[Aconseguir algorismicament]` i solventar
 * [ ] Aconseguir fer que el *Lauburo* sigui recursiu
-* [ ] Arreglar bugs a *Moon*
 * [ ] Afegir interaccions al *Ones* i buscar un nom més místic
 * [ ] Afegir interaccions al *Ying Yang*
 

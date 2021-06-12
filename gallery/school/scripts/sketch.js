@@ -1,4 +1,4 @@
-const MODE_DEBUG = false;
+const MODE_DEBUG = true;
 const STROKE = 1024; const FILL = 1025; const LINE = 1026; const POINT = 1027;
 
 const algorithms = [];
