@@ -39,90 +39,76 @@ class Moon extends Figure {
 	}
 
 	display() {
+		angleMode(RADIANS);
 		const io = this.vars['iniciObertura'].v;
 		const dr = this.vars['desplacamentRatio'].v;
-		let X, Y, D, R;
-			D = this.vars['dim'].v;
-			R = D * 0.5;
-			X = this.posX;
-			Y = this.posY;
-		let x, y, d, r;
-			d = (D * this.vars['dimRatio'].v);
-			r = d * 0.5;
-			x = this.posX + (cos(io) * (R - r)) + (cos(io)) * d * dr;
-			y = this.posY + (sin(io) * (R - r)) + (sin(io)) * d * dr;
-		let I = this.getFaseArcs(x, y, r, X, Y, R);
-		if (MODE_DEBUG) { stroke('#ff00ff50');ellipse(X, Y, D, D);stroke('#ff00ff'); }
-		arc(X, Y, D, D, I['S'], I['E'], OPEN);
-		if (MODE_DEBUG) { stroke('#00ffff50');ellipse(x, y, d, d);stroke('#00ffff'); }
-		arc(x, y, d, d, I['s'], I['e'], OPEN);
+
+		const dim1 = this.vars['dim'].v;
+		const rad1 = dim1 * .5;
+		const dim2 = (dim1 * this.vars['dimRatio'].v);
+		const rad2 = dim2 * .5;
+		const pos1 = createVector(this.posX, this.posY);
+		const pos2 = createVector(
+			this.posX + (cos(io) * (rad1 - rad2)) + (cos(io)) * dim2 * dr,
+			this.posY + (sin(io) * (rad1 - rad2)) + (sin(io)) * dim2 * dr
+		);
+
+		const int = getIntersectionCircles(pos1, rad1, pos2, rad2);
+
+		const alpha1 = getAngleFromPoint( pos1, int[1] );
+		const beta1  = getAngleFromPoint( pos1, int[0] );
+		const alpha2 = getAngleFromPoint( pos2, int[1] );
+		const beta2  = getAngleFromPoint( pos2, int[0] );
+
+		if (MODE_DEBUG) {
+			stroke('#ffff0040');
+			strokeWeight(10);
+			point(pos1.x, pos1.y);
+			stroke('#ffff0020');
+			strokeWeight(4);
+			var v = p5.Vector.fromAngle(alpha1, rad1);
+			line(pos1.x, pos1.y, pos1.x+v.x, pos1.y+v.y);
+		}
+
+		if (MODE_DEBUG) { stroke('#ff00ff40');circle(pos1.x, pos1.y, dim1);stroke('#ff00ff80'); }
+		arc(pos1.x, pos1.y, dim1, dim1, alpha1, beta1, OPEN);
+		if (MODE_DEBUG) { stroke('#00ffff50');circle(pos2.x, pos2.y, dim2);stroke('#00ffff80'); }
+		arc(pos2.x, pos2.y, dim2, dim2, alpha2, beta2, OPEN);
 	}
 
-	getIntersectionPoints(x, y, r, X, Y, R) {
-		//Function borrowed from https://editor.p5js.org/Sachiko-Nakajima/sketches/ryM2w-E9X
-		let x1=0; let x2=0; let y1=0; let y2=0; 
+}
 
-		let dx = X - x;
-		let dy = Y - y;
-		let d2 = dx*dx + dy*dy;
-		let di = sqrt(d2);
-		let r2 = r * r;
-		let R2 = R * R;
-		
-		if(di < r + R && di > abs(r - R)) {
-			let K = r2-R2+d2; 
-			let K2 = K * K;
-			let h = sqrt(4 * r2 * d2 - K2);
-			x1 = x + (dx * K + dy * h)/(2*d2);
-			x2 = x + (dx * K - dy * h)/(2*d2);
-			y1 = y + (dy * K - dx * h)/(2*d2);
-			y2 = y + (dy * K + dx * h)/(2*d2);
-		}
-		if (MODE_DEBUG) { stroke('#ffff00');strokeWeight(10);point(x1, y1);point(x2, y2);strokeWeight(4); }
-		return [x1, x2, y1, y2];
+function getIntersectionCircles(pos1, rad1, pos2, rad2) {
+	//Function borrowed from https://editor.p5js.org/Sachiko-Nakajima/sketches/ryM2w-E9X
+	const p1 = createVector(0, 0);
+	const p2 = createVector(0, 0);
+
+	let dx = pos2.x - pos1.x;
+	let dy = pos2.y - pos1.y;
+	let d2 = dx*dx + dy*dy;
+	let di = sqrt(d2);
+	let r2 = rad1 * rad1;
+	let R2 = rad2 * rad2;
+	
+	if(di < rad1 + rad2 && di > abs(rad1 - rad2)) {
+		let K = r2-R2+d2; 
+		let K2 = K * K;
+		let h = sqrt(4 * r2 * d2 - K2);
+		p1.x = pos1.x + (dx * K + dy * h)/(2*d2);
+		p2.x = pos1.x + (dx * K - dy * h)/(2*d2);
+		p1.y = pos1.y + (dy * K - dx * h)/(2*d2);
+		p2.y = pos1.y + (dy * K + dx * h)/(2*d2);
 	}
+	if (MODE_DEBUG) { stroke('#ffff00');strokeWeight(10);point(p1.x, p1.y);point(p2.x, p2.y);strokeWeight(4); }
+	return [p1, p2];
+}
 
-	getFaseArcs(x, y, r, X, Y, R) {
-		const io = this.vars['iniciObertura'].v;
-		const dr = this.vars['desplacamentRatio'].v;
-		let A = this.getIntersectionPoints(x, y, r, X, Y, R);
-		let x1=A[0]; let x2=A[1]; let y1=A[2]; let y2=A[3];
+function getAngleFromPoint(center, point) {
+	const b = center.x - point.x;
+	const h = center.y - point.y;
 
-		var res = {
-			S: atan((Y-y1)/(X-x1)),
-			E: atan((Y-y2)/(X-x2)),
-			s: atan((y-y1)/(x-x1)),
-			e: atan((y-y2)/(x-x2)),
-		}
-		
-		if (io > HALF_PI && io < HALF_PI + PI) {
-			res['S'] += PI;
-			res['E'] += PI;
-			res['s'] += PI;
-			res['e'] += PI;
-		}
+	var alpha = PI + atan(h/b);
+	if (center.x < point.x) alpha += PI;
 
-		if (((X-x1) < 0) && ((X-x2) > 0))
-			if (y1 > y2)res['E'] += PI;
-			else res['S'] += PI;
-		if (((X-x2) < 0) && ((X-x1) > 0))
-			if (y1 > y2) res['S'] += PI;
-			else res['E'] += PI;
-
-		if (((x-x1) < 0) && ((x-x2) > 0))
-			if (y1 > y2)res['e'] += PI;
-			else res['s'] += PI;
-		if (((x-x2) < 0) && ((x-x1) > 0))
-			if (y1 > y2) res['s'] += PI;
-			else res['e'] += PI;
-		
-		if (MODE_DEBUG) console.log("Desplaçament: "+dr, "\nDim Ratio: "+this.dimRatio, "\nOb: "+io);
-
-		if (atan((y-y1)/(x-x1)) < 0 && atan((y-y2)/(x-x2)) > 0) {
-			res['s'] += PI;
-			res['e'] += PI;
-		}
-
-		return res
-	}
+	return alpha;
 }
