@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>AdM</title>
+	</head>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Beth+Ellen&family=Cinzel+Decorative&family=Fredoka+One&family=Indie+Flower&family=Kodchasan:wght@700&family=Lato:wght@100;400&family=Lemon&family=Major+Mono+Display&family=Modak&family=Monoton&family=Montaga&family=Press+Start+2P&family=Raleway+Dots&family=Reenie+Beanie&family=Syne+Mono&display=swap');
+		body {
+			margin: 0;
+			padding: 50px;
+			position: fixed;
+			top: 0; left: 0; right: 0; bottom: 0;
+			background-color: #1F1F1F;
+			overflow: hidden;
+		}
+		.centered {
+			margin: 0;
+			position: absolute;
+			left: 50%; top: 50%;
+			transform: translate(-50%, -50%);
+		}
+		#app {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: flex-start;
+			width: 100%; height: 100%;
+		}
+		#app > div {
+			height: 100%;
+		}
+		#menu {
+			flex: 1;
+			order: 2;
+			display: block;
+			margin: 0 auto;
+			overflow-y: scroll;
+			overflow-x: hidden;
+		}
+		#selected {
+			flex: 2;
+			order: 1;
+			text-align: center;
+			position: relative;
+		}
+		#selected #nom {
+			font-size: 96pt;
+		}
+		#selected #frase {
+			color: #F8F8F8;
+			font-size: 24pt;
+			font-family: 'Lato';
+		}
+		#menu > div {
+			display: inline-block;
+			width: 150px;
+			padding: 30px 60px;
+			font-size: 32pt;
+			text-align: center;
+			border-radius: 5px;
+			font-family: monospace;
+			color: #F8F8F8;
+		}
+		#menu > div:hover {
+			background-color: #282828;
+		}
+		#menu > div:active, #menu > div:focus {
+			background-color: #3A3A3A;
+		}
+
+		@media (max-width: 600px) {
+			#app {
+				flex-direction: column;
+			}
+			#menu {
+				display: flex;
+				flex: 1;
+				flex-direction: row;
+				width: 100%;
+				overflow-x: scroll;
+				overflow-y: hidden;
+			}
+			#selected {
+				width: 100%;
+				flex: 4;
+			}
+			#selected #nom {
+				font-size: 62pt;
+			}
+			#selected #frase {
+				font-size: 20pt;
+			}
+		}
+	</style>
+	<script src="model.js"></script>
+	<script>
+		var companysCont, selectedNom, selectedFrase;
+
+		window.onload = function() {
+			companysCont = document.getElementById('menu');
+			selectedNom = document.getElementById('nom');
+			selectedFrase = document.getElementById('frase');
+
+			const c = new URL(window.location.href).searchParams.get("c");
+			updateSelectedCompany( c == null ? 0 : c );
+
+			for (let i = 0; i < model.length; i++)
+				createCompanyCard(model[i], i);
+		}
+
+		function createCompanyCard (company, inx) {
+			const el = document.createElement('DIV');
+			loadCompany(el, company);
+			el.addEventListener('click', function() {
+				updateSelectedCompany(inx);
+			});
+			companysCont.appendChild(el);
+		}
+
+		function updateSelectedCompany (companyId) {
+			const company = model[companyId];
+			loadCompany(selectedNom, company);
+			selectedFrase.innerHTML = company.frase;
+		}
+
+		function loadCompany (domElement, companyData) {
+			domElement.innerHTML = companyData.nom;
+			domElement.style = {};
+			companyData.style.forEach(s => {
+				domElement.style[s.key] = s.value;
+			});
+		}
+	</script>
+	<body>
+		<div id="app">
+			<div id="menu"></div>
+			<div id="selected">
+				<div class="centered">
+					<span id="nom"></span>
+					<span id="frase"></span>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
