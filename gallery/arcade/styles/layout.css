@@ -4,6 +4,7 @@ body {
 	height: calc(100vh - 100px);
 	width: calc(100vw - 100px);
 	overflow: hidden;
+	background-color: var(--background-color);
 }
 
 #defaultCanvas0, body {
@@ -22,31 +23,27 @@ body {
 	height: 100%;
 }
 
-#algorithmControllers, #algorithmSelectors {
+#gameControllers, #gameSelector {
 	display: flex;
 	flex-direction: column;
 	width: 300px;
 	height: 100%;
 }
 
-#algorithmControllers>*, #algorithmSelectors>*, #algorithmInputs>* {
+#gameControllers>*, #gameSelector>* {
 	width: 100%;
 }
 
-#algorithmTitle {
+#gameTitle {
 	order: 2;
 	margin: 0;
 }
 
-#algorithmControllers {
+#gameControllers {
 	order: 1;
 }
 
-#algorithmInputs {
-	margin-top: 40px;
-}
-
-#algorithmSelectors {
+#gameSelector {
 	order: 3;
 }
 
@@ -59,19 +56,19 @@ body {
 	#app {
 		flex-direction: column;
 	}
-	#algorithmSelectors {
+	#gameSelector {
 		flex-direction: row;
 		overflow-x: scroll;
 	}
-	#algorithmControllers, #algorithmSelectors {
+	#gameControllers {
+		order: 2;
+	}
+	#gameControllers, #gameSelector {
 		width: 100%;
 		height: max-content;
 	}
-	#algorithmTitle {
+	#gameTitle {
 		order: 1;
 		display: none;
-	}
-	#algorithmControllers {
-		order: 2;
 	}
 }
