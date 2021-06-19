@@ -1,20 +1,24 @@
 const MODE_DEBUG = true;
-const STROKE = 1024; const FILL = 1025; const LINE = 1026; const POINT = 1027;
+
+const colors = { };
 
 const games = [];
 var selectedGame;
 
 function setup() {
 	createCanvas(window.innerWidth, window.innerHeight);
-	frameRate( MODE_DEBUG ? 12 : 48 );
+	frameRate( 24 );
 
 	colorMode(HSL);
 
-	games.push( new Snake() );
-	//games.push( new VoronoiController() );
+	games.push( new SnakeGame() );
 
 	modifyDOM2SelectedGame(0);
 	createGameSelectorButtons();
+
+	colors.y = color(45,  80, 25, .8);
+	colors.c = color(180, 80, 25, .8);
+	colors.m = color(315, 80, 25, .8);
 }
 
 function draw() {
@@ -24,12 +28,4 @@ function draw() {
 
 function clearCanvas() {
 	background(8);
-}
-
-function setColor(hue, aplha, action, type) {
-	const color = [hue, 100, 50, aplha];
-	switch (action) {
-		case STROKE:	stroke(color);	noFill();	strokeWeight( type == LINE ? 5 : 10 );	break;
-		case FILL:		fill(color);	noStroke();											break;
-	}
 }

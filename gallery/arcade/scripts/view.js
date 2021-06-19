@@ -17,13 +17,14 @@ function createGameSelectorButtons() {
 function changeselectedGame(ev) {
 	focusSelectedmButton('#gameSelector>button.active', 'active', [ev.target]);
 	document.getElementById('gameControllers').innerHTML = "";
-	modifyDOM2SelectedGame( ev.target.getAttribute('game-id') );
-	createStepInputs(0);
+	const newSelectedGame = ev.target.getAttribute('game-id');
+	modifyDOM2SelectedGame( newSelectedGame );
 }
 
 function modifyDOM2SelectedGame(ind) {
-	setupselectedGame(ind);
-	modifyAppTitle(ind);
+	setupSelectedGame(ind);
+	modifyAppTitle();
+	loadGameControls();
 }
 
 function focusSelectedmButton (desFosusedQuery, focusClass, newFosussedElements) {
@@ -35,7 +36,7 @@ function focusSelectedmButton (desFosusedQuery, focusClass, newFosussedElements)
 	});
 }
 
-function setupselectedGame(gameIndex) {
+function setupSelectedGame(gameIndex) {
 	selectedGame = games[gameIndex];
 	selectedGame.setup();
 }
@@ -45,15 +46,17 @@ function modifyAppTitle() {
 	document.getElementById('gameTitle').innerText = newTitle;
 }
 
-function createStepInputs(step) {
+function loadGameControls() {
 	const cont = document.getElementById('gameControllers');
-	cont.innerHTML = '';
-	selectedGame.inputs.forEach(inputInfo => {
-		if (inputInfo.minStep <= step) {
-			const input = document.createElement('INPUT');
-			input.type = inputInfo.type;
-			input.onchange = inputInfo.callback;
-			cont.appendChild(input);
-		}
+	//selectedGame.inputs
+	selectedGame.outputs.forEach(output => {
+		const p = document.createElement('P');
+		const l = document.createElement('SPAN');
+		const t = document.createElement('SPAN');
+		l.innerText = output.label + ': ';
+		p.appendChild(l);
+		p.appendChild(t);
+		cont.appendChild(p);
 	});
 }
+

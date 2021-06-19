@@ -4,14 +4,18 @@ class Game {
 			title: '...',
 			shortName: '...'
 		};
-		//this.controls = [];
+		this.inputs = [];
+		this.outputs = [];
+		this.gameController = new GameController();
 	}
-	setup () {}
-	draw () {}
+	setup () { this.gameController.setup() }
+	draw () { this.gameController.draw() }
 }
 
-/*class GameController {
+class GameController {
 	constructor () {
 		// ...
 	}
-}*/
+	setup () { }
+	draw () {}
+}
