@@ -48,7 +48,12 @@ function modifyAppTitle() {
 
 function loadGameControls() {
 	const cont = document.getElementById('gameControllers');
-	//selectedGame.inputs
+	selectedGame.inputs.forEach(input => {
+		const b = document.createElement('BUTTON');
+		b.innerText = input.label;
+		b.addEventListener('click', input.callback);
+		cont.appendChild(b);
+	});
 	selectedGame.outputs.forEach(output => {
 		const p = document.createElement('P');
 		const l = document.createElement('SPAN');

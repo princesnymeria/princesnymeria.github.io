@@ -6,12 +6,16 @@ const games = [];
 var selectedGame;
 
 function setup() {
-	createCanvas(window.innerWidth, window.innerHeight);
+	const p = document.getElementById('gameScreen');
+	const s = ( p.offsetWidth < p.offsetHeight ? p.offsetWidth : p.offsetHeight );
+	createCanvas(s, s).parent('gameScreen');
+
 	frameRate( 24 );
 
 	colorMode(HSL);
 
 	games.push( new SnakeGame() );
+	games.push( new MinesWeeper() );
 
 	modifyDOM2SelectedGame(0);
 	createGameSelectorButtons();
@@ -27,5 +31,5 @@ function draw() {
 }
 
 function clearCanvas() {
-	background(8);
+	background(12);
 }

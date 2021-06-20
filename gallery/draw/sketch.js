@@ -1,5 +1,5 @@
 var iptSym, iptAlfa, iptSize;
-var fillColor = [0, 80, 70];
+var fillColor = [0, 80, 35]; // var fillColor = [0, 80, 25];
 var paintMode = false;
 var lastPoint = [];
 

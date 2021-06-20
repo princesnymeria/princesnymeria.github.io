@@ -8,14 +8,17 @@ class Game {
 		this.outputs = [];
 		this.gameController = new GameController();
 	}
-	setup () { this.gameController.setup() }
 	draw () { this.gameController.draw() }
+	setup () { this.gameController.starGame() }
 }
+
 
 class GameController {
 	constructor () {
 		// ...
 	}
-	setup () { }
-	draw () {}
+	starGame () { }
+	gameOver () { }
+	// pause () { }
+	draw () { }
 }

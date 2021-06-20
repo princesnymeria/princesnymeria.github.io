@@ -7,27 +7,35 @@ body {
 	background-color: var(--background-color);
 }
 
-#defaultCanvas0, body {
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: -1;
-}
-
 #app {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: flex-start;
 	width: 100%;
 	height: 100%;
+	display: grid;
+	grid-template-columns: 200px auto 200px;
+	grid-template-rows: 100px auto;
+	grid-template-areas:
+		"sidebarLeft pageTitle   sidebarRight"
+		"sidebarLeft pageContent sidebarRight"
+	;
+}
+
+#gameControllers {
+	grid-area: sidebarLeft;
+}
+
+#gameSelector {
+	grid-area: sidebarRight;
+}
+#gameScreen {
+	grid-area: pageContent;
+}
+#gameScreen > canvas{
+	margin: 0 auto;
+	display: block;
 }
 
 #gameControllers, #gameSelector {
 	display: flex;
-	flex-direction: column;
-	width: 300px;
-	height: 100%;
 }
 
 #gameControllers>*, #gameSelector>* {
@@ -35,40 +43,56 @@ body {
 }
 
 #gameTitle {
-	order: 2;
 	margin: 0;
+	grid-area: pageTitle;
 }
 
 #gameControllers {
-	order: 1;
+	flex-wrap: wrap;
+	flex-direction: row;
+	align-items: flex-start;
+	align-content: flex-start;
 }
 
 #gameSelector {
-	order: 3;
+	flex-direction: column;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 9600px) {
+	body {
+		padding: 30px;
+	}
+	#app {
+		grid-template-columns: 150px auto 150px;
+	}
+}
+
+@media (max-width: 700px) {
 	body {
 		padding: 30px;
 		height: calc(100vh - 60px);
 		width: calc(100vw - 60px);
 	}
 	#app {
-		flex-direction: column;
+		grid-template-columns: 100%;
+		grid-template-rows: 50px 100px auto 50px;
+		grid-template-areas:
+			"pageTitle"
+			"sidebarLeft"
+			"pageContent"
+			"sidebarRight"
+		;
+		row-gap: 15px;
 	}
-	#gameSelector {
+	#gameSelector, #gameControllers {
 		flex-direction: row;
 		overflow-x: scroll;
+		flex-wrap: nowrap;
 	}
-	#gameControllers {
-		order: 2;
-	}
-	#gameControllers, #gameSelector {
-		width: 100%;
-		height: max-content;
-	}
+	/*#gameScreen {
+		align-self: center;
+	}*/
 	#gameTitle {
-		order: 1;
-		display: none;
+		font-size: 24pt;
 	}
 }
