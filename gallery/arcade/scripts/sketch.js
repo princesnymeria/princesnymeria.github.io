@@ -18,7 +18,7 @@ function setup() {
 
 	colorMode(HSL);
 
-	//games.push( new SnakeGame() );
+	games.push( new SnakeGame() );
 	games.push( new MinesWeeper() );
 
 	modifyDOM2SelectedGame(0);

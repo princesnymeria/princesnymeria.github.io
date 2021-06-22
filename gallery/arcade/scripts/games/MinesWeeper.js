@@ -20,13 +20,13 @@ class MinesWeeper extends Game {
 class MinesWeeperController extends GameController {
 	constructor () {
 		super();
-		this.numCellsRow = 5;
+		this.numCellsRow = 5;//ToDo: poder triar
 		this.numMines = floor( this.numCellsRow * this.numCellsRow * .3 );
 	}
 
 	starGame () {
 		this.reloadCells();
-		this.setMines();
+		this.setMines();//ToDo: cridar després del primer clic
 	}
 
 	draw () {
@@ -34,6 +34,7 @@ class MinesWeeperController extends GameController {
 	}
 
 	drawCells () {
+		noFill();
 		stroke(colors.m);
 		strokeWeight(10);
 		rect(0, 0, width, height);
@@ -69,19 +70,17 @@ class MinesWeeperController extends GameController {
 		});
 	}
 
-	aaa (r, c) {
-		if ( r > 0 ) {
-			if ( c > 0 ) this.cells[r-1][c-1].addNeighbour();
-			if ( c < this.numCellsRow-1 ) this.cells[r-1][c+1].addNeighbour();
-			this.cells[r-1][c].addNeighbour();
-		}
-		else if ( r < this.numCellsRow-1 ) {
-			if ( c > 0 ) this.cells[r+1][c-1].addNeighbour();
-			if ( c < this.numCellsRow-1 ) this.cells[r+1][c-0].addNeighbour();
-			this.cells[r+1][c].addNeighbour();
-		}
-		if ( c > 0 ) this.cells[r-0][c-1].addNeighbour();
-		if ( c < this.numCellsRow-1 ) this.cells[r-0][c+1].addNeighbour();
+	aaa (row, col) {
+		const a = [-1, 0, 1];
+		a.forEach(y => {
+			const r = row + y;
+			if (r >= 0 && r < this.numCellsRow )
+				a.forEach(x => {
+					const c = col + x;
+					if (c >= 0 && c < this.numCellsRow )
+						this.cells[r][c].addNeighbour();
+				});
+		});
 	}
 
 	setMines () {
@@ -146,10 +145,11 @@ class MinesWeeperCell {
 
 	addMine() {
 		this.mine = true;
+		//this.neighbourMines -= 1;
 	}
 
 	addNeighbour() {
-		this.neighbourMines++;
+		this.neighbourMines += 1;
 	}
 
 	addFlag() {
@@ -168,7 +168,12 @@ class MinesWeeperCell {
 	}
 	
 	get hover() {
-		return (mouseX > this.position.x && mouseX < (this.position.x + this.size) && mouseY > this.position.y && mouseY < (this.position.y + this.size));
+		return (
+			( mouseX > this.position.x ) &&
+			( mouseX < (this.position.x + this.size) ) &&
+			( mouseY > this.position.y ) &&
+			( mouseY < (this.position.y + this.size) )
+		);
 	}
 
 	display() {
@@ -180,7 +185,7 @@ class MinesWeeperCell {
 			const x = this.position.x + this.size * .5;
 			const y = this.position.y + this.size * .5;
 			if (this.mine) {
-				strokeWeight(50);
+				strokeWeight(50);//ToDo: responsive
 				stroke( colors.y );
 				point(x, y);
 			}
