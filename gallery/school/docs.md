@@ -66,6 +66,14 @@ Resum de les capes:
 * **Algorisme**: aquesta capa dibuixa l'algorisme seleccionat amb els càlculs i processos que comporta.
 * **p5js**: la *fantabulosa* [llibreria](https://p5js.org/) que fa la màgia.
 
+### <p class="pendent">...</p>
+
+<p class="pendent">ALGORISMICAMENT SEGUIM LA LOGICA. CADA JOC TÉ UN DRAW I UN SETUP.</p>
+
+<p class="pendent">CADA COMPOMEMNT TÉ UN DRAW I UN SETUP. nORMALMENT EL DRAW TÉ UN UPDATE I UN DISPLAY.</p>
+
+<p class="pendent">EL DRAW HA DE GESTIONAR UNA ITERNAIÓ MENTRE QUE EL UPDATE ACTUALITZA COSES I EL DISLAY DIBUIXA</p>
+
 ### Interfície
 
 Aquesta capa està creada per HTML i CSS i no té més complicació. Veure l'[apartat de disseny](#disseny) de l'app.

@@ -21,7 +21,8 @@ I was born, I went to school, some years later I graduated from university and I
 | Mouse               | [/mouse](/gallery/mouse)         |                                                                                  |     1 % |
 | Orbit               | [/orbit](/gallery/orbit)         | A love story between two circular orbits and millions of high transparency lines |    98 % |
 | Synesthesia         | [/sine](/gallery/sine)           |                                                                                  |     2 % |
-| The Magic School    | [/school](/gallery/school)       | I'm unable to understand an algorithm until I try to implement it by myself      |     2 % |
+| The Magic School    | [/school](/gallery/school)       | I'm unable to understand an algorithm until I try to implement it by myself      |    80 % |
+| Retro Game          | [/arcade](/gallery/arcade)       | Who does not like to play?                                                       |    10 % |
 
 \* Every project contains a file called `docs.md` in the root folder containing the information for understanging the project.
 
@@ -54,3 +55,16 @@ Root
 ```
 
 * Interhome and index
+
+## Roadmap
+
+* [ ] A `gallery\arcade`, paremetritzar l'URL.
+* [ ] A `com\AdM`, acabar.
+* [ ] A `gallery\arcade\scripts\games\MinesWeeper.js`, acabar.
+* [ ] A `gallery\arcade`, arreglar <span class="pendent">les etiquetes</span>.
+* [ ] A `gallery\school\scripts\algorithms\voronoi.js`, acabar.
+* [ ] A `gallery\school`, revisar que els draw/display siguin coherents.
+* [ ] A `gallery\arcade\scripts\games\Snake.js`, repassar disseny descendent.
+* [ ] A `gallery\arcade`, documentar.
+* [ ] A `gallery\school`, fer més algorismes.
+* [ ] A `gallery\arcade`, fer més jocs.

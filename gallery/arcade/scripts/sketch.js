@@ -1,6 +1,10 @@
 const MODE_DEBUG = true;
 
-const colors = { };
+const colors = {
+	y: [45,  80, 25, .8],
+	c: [180, 80, 25, .8],
+	m: [315, 80, 25, .8]
+};
 
 const games = [];
 var selectedGame;
@@ -14,15 +18,11 @@ function setup() {
 
 	colorMode(HSL);
 
-	games.push( new SnakeGame() );
+	//games.push( new SnakeGame() );
 	games.push( new MinesWeeper() );
 
 	modifyDOM2SelectedGame(0);
 	createGameSelectorButtons();
-
-	colors.y = color(45,  80, 25, .8);
-	colors.c = color(180, 80, 25, .8);
-	colors.m = color(315, 80, 25, .8);
 }
 
 function draw() {

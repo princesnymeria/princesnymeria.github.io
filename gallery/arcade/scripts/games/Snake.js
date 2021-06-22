@@ -33,10 +33,6 @@ class SnakeGameController extends GameController {
 		this.apple = new SnakeApple( this.pitch );
 		this.points = 0;
 		this.paused = false;
-
-		noFill();
-		strokeJoin(ROUND);
-		strokeCap(ROUND);
 	}
 
 	draw () {
@@ -50,11 +46,6 @@ class SnakeGameController extends GameController {
 		if ( this.character.eats(this.apple) )
 			this.sumPoint();
 		this.apple.display();
-	}
-
-	gameover() {
-		alert('Game Over');
-		this.starGame();
 	}
 
 	sumPoint () {
@@ -191,7 +182,6 @@ class SnakePitch {
 		this.maxX = maxX;
 		this.maxY = maxY;
 		this.numberOfCells = numberOfCells;
-
 		this.size = maxX;
 	}
 
@@ -204,7 +194,7 @@ class SnakePitch {
 
 	displayGrid () {
 		const s = width / this.numberOfCells;
-		stroke('#00FFFF10');// ToDo: Hauria de pillar el valor de la variable `color.c`
+		stroke(colors.m[0], colors.m[1], colors.m[2], .2);
 		strokeCap(SQUARE);
 		strokeWeight(s);
 		for (let i = 1; i < this.numberOfCells; i+=2) {
