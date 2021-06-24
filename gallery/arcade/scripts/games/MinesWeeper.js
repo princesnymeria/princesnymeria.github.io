@@ -6,7 +6,7 @@ class MinesWeeper extends Game {
 		this.gameController = new MinesWeeperController();
 		const that = this;
 		this.inputs = [
-			// { label: 'Play/Pause', callback: function(){ that.gameController.pause() } },
+			{ label: 'Flag', callback: function(){ that.gameController.putFlag() }, pushable: true }
 			// ... 
 		];
 		this.outputs = [
@@ -20,7 +20,7 @@ class MinesWeeper extends Game {
 class MinesWeeperController extends GameController {
 	constructor () {
 		super();
-		this.numCellsRow = 5;//ToDo: poder triar
+		this.numCellsRow = 16;//ToDo: poder triar
 		this.numMines = floor( this.numCellsRow * this.numCellsRow * .3 );
 	}
 
@@ -85,20 +85,32 @@ class MinesWeeperController extends GameController {
 
 	setMines () {
 		for (var i = 0; i < this.numMines; i++) {
-			const r = floor(random(0, this.numCellsRow));
-			const c = floor(random(0, this.numCellsRow));
-			this.cells[r][c].addMine();
-			this.aaa(r, c);
+			var minaPosada = false;
+			while ( !minaPosada ) {
+				const r = floor( random(0, this.numCellsRow) );
+				const c = floor( random(0, this.numCellsRow) );
+				var m = this.cells[r][c];
+				if ( !m.mine ) {
+					m.addMine();
+					this.aaa(r, c);
+					minaPosada = true;
+				}
+			}
 		}
 	}
-	
+
 	setup () {
 		noFill();
-		textSize(64);
+		textSize( width / this.numCellsRow * .6 );
 		textAlign(CENTER, CENTER);
 		strokeJoin(ROUND);
 		strokeCap(ROUND);
+		textStyle(BOLD);
 		//textFont(inconsolata);
+	}
+
+	putFlag () {
+		console.log('Flag');
 	}
 
 }
@@ -145,7 +157,7 @@ class MinesWeeperCell {
 
 	addMine() {
 		this.mine = true;
-		//this.neighbourMines -= 1;
+		this.neighbourMines -= 1;
 	}
 
 	addNeighbour() {
@@ -182,10 +194,11 @@ class MinesWeeperCell {
 		fill( this.state.fillColor );
 		rect(this.position.x, this.position.y, this.size, this.size);
 		if (this.state.id == estatsCella.reveled.id) {
-			const x = this.position.x + this.size * .5;
-			const y = this.position.y + this.size * .5;
+			const s = this.size * .5;
+			const x = this.position.x + s;
+			const y = this.position.y + s;
 			if (this.mine) {
-				strokeWeight(50);//ToDo: responsive
+				strokeWeight( s );
 				stroke( colors.y );
 				point(x, y);
 			}

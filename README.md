@@ -58,8 +58,12 @@ Root
 
 ## Roadmap
 
-* [ ] A `gallery\arcade`, paremetritzar l'URL.
+* POSAR SELECTOR DE DRAWS A DRAW
+* DOCUMENTAR EK CANVI D'IDEEA AMB EL DRAW
+* FER UN ALTRE MÀGIC DRAW
+* [x] A `gallery\arcade`, paremetritzar l'URL.
 * [ ] A `com\AdM`, acabar.
+* [ ] A `gallery\arcade\scripts\games\MinesWeeper.js`, GAME OVER + BANDERA.
 * [ ] A `gallery\arcade\scripts\games\MinesWeeper.js`, repassar.
 * [ ] A `gallery\arcade`, arreglar <span class="pendent">les etiquetes</span>.
 * [ ] A `gallery\school\scripts\algorithms\voronoi.js`, acabar.

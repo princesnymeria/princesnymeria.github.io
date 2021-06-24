@@ -17,6 +17,27 @@ A través de la interfície gràfica, el programa permet:
 * Esborrar el llenç (botó)
 * Seleccionar el nombre de simetries (input, range)
 * Seleccionar quant tarda a esborrar-se la traça (input, range)
+* Modificar el gruix de la traça (input, range)
+* Canviar el mode * (botó)
+* Tornar als valors per defecte dels rangs (botó)
+
+\* El programa funciona de dues maneres:
+
+1. Que a cada iteració del `draw` es dibuixi un punt on hi hagi el cursor.
+2. Que a cada iteració del `draw` es dibuixi una línia al punt on hi hagi el cursor i el punt anteror.
+
+## Estètica
+
+L'estètica de la pantalla passa per:
+
+* **Formes**:
+	* Arrodonides
+* **Colors**: colors brillants sobre fons fosc
+	* **Fons**: `#1F1F1F`
+	* **Text**: `#F8F8F8AA`
+	* **Elements**:
+		* Saturació: 80%, Brillantor: 25%, Transparència: 80%
+		* Tons CMYk → 45, 180, 315
 
 ## Detalls tècnics
 
@@ -62,24 +83,9 @@ A través de la interfície gràfica, el programa permet:
 draw
 ├── js
 │   ├── p5js
-│   │   ├── ...
-│   ├── sketch.js
+│   │   └── ...
+│   └── sketch.js
 ├── index.html
 ├── estils.css
 └── README.MD
 ```
-
-## <n>To do</n>
-
-### Coses per fer
-
-* [ ] Dibuixar ratlla entre punt i punt?
-
-### Idees
-
-* [ ] Afegir sliders per poder canviar:
-	* [ ] Suració i brillentor del color
-	* [ ] To de gris del fons
-	* [ ] Gruix del pinzell
-	* [ ] Framerate???
-	* [ ] fill o stroke?

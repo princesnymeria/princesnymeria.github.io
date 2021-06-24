@@ -6,11 +6,11 @@ class SnakeGame extends Game {
 		this.gameController = new SnakeGameController();
 		const that = this;
 		this.inputs = [
-			{ label: 'Play/Pause', callback: function(){ that.gameController.pause() } },
-			{ label: 'up',    callback: function(){ that.gameController.updateDirection(UP_ARROW)    } },
-			{ label: 'down',  callback: function(){ that.gameController.updateDirection(DOWN_ARROW)  } },
-			{ label: 'left',  callback: function(){ that.gameController.updateDirection(LEFT_ARROW)  } },
-			{ label: 'right', callback: function(){ that.gameController.updateDirection(RIGHT_ARROW) } }
+			{ label: 'Play/Pause', callback: function(){ that.gameController.pause() }, pushable: true },
+			{ label: 'up',    callback: function(){ that.gameController.updateDirection(UP_ARROW)    }, pushable: false },
+			{ label: 'down',  callback: function(){ that.gameController.updateDirection(DOWN_ARROW)  }, pushable: false },
+			{ label: 'left',  callback: function(){ that.gameController.updateDirection(LEFT_ARROW)  }, pushable: false },
+			{ label: 'right', callback: function(){ that.gameController.updateDirection(RIGHT_ARROW) }, pushable: false }
 		];
 		this.outputs = [
 			{ label: 'Points', model: this.gameController.points }
@@ -194,7 +194,7 @@ class SnakePitch {
 
 	displayGrid () {
 		const s = width / this.numberOfCells;
-		stroke(colors.m[0], colors.m[1], colors.m[2], .2);
+		stroke(colors.c[0], colors.c[1], colors.c[2], .2);
 		strokeCap(SQUARE);
 		strokeWeight(s);
 		for (let i = 1; i < this.numberOfCells; i+=2) {
@@ -206,8 +206,8 @@ class SnakePitch {
 	}
 
 	col2pos (col, row) {
-		const c = map(col, 0, this.numberOfCells, this.minX, this.maxX );
-		const r = map(row, 0, this.numberOfCells, this.minY, this.maxY );
+		const c = map( col, 0, this.numberOfCells, this.minX, this.maxX );
+		const r = map( row, 0, this.numberOfCells, this.minY, this.maxY );
 		return createVector(c, r);
 	}
 }

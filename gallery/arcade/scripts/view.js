@@ -1,3 +1,8 @@
+window.onload = function() {
+	const g = new URL(window.location.href).searchParams.get("g");
+	modifyDOM2SelectedGame( g == null ? 0 : g );
+}
+
 function createGameSelectorButtons() {
 	const cont = document.getElementById('gameSelector');
 	var index = 0;
@@ -51,7 +56,10 @@ function loadGameControls() {
 	selectedGame.inputs.forEach(input => {
 		const b = document.createElement('BUTTON');
 		b.innerText = input.label;
-		b.addEventListener('click', input.callback);
+		b.addEventListener('click', function() {
+			if (input.pushable) b.classList.toggle("pushed");
+			input.callback();
+		});
 		cont.appendChild(b);
 	});
 	selectedGame.outputs.forEach(output => {
@@ -64,4 +72,3 @@ function loadGameControls() {
 		cont.appendChild(p);
 	});
 }
-

@@ -5,6 +5,7 @@
 
 :root {
 	--primary-color: #F8F8F8AA;
+	--semi-background-color: #383838;
 	--background-color: #1F1F1F;
 
 	--rainbow-color-1:  hsla(45,   80%, 25%, .8);
@@ -191,3 +192,20 @@ button {
 #gameControllers > button:nth-child(3n-2) { border-color: var(--rainbow-color-1); }
 #gameControllers > button:nth-child(3n-1) { border-color: var(--rainbow-color-3); }
 #gameControllers > button:nth-child(3n-0) { border-color: var(--rainbow-color-2); }
+
+#gameControllers > button:hover:nth-child(3n-2) { background-color: var(--rainbow-color-1); }
+#gameControllers > button:hover:nth-child(3n-1) { background-color: var(--rainbow-color-3); }
+#gameControllers > button:hover:nth-child(3n-0) { background-color: var(--rainbow-color-2); }
+
+#gameControllers > button.pushed:nth-child(3n-2) { background-color: var(--rainbow-color-1); }
+#gameControllers > button.pushed:nth-child(3n-1) { background-color: var(--rainbow-color-3); }
+#gameControllers > button.pushed:nth-child(3n-0) { background-color: var(--rainbow-color-2); }
+
+
+#gameControllers > button.pushed {
+	opacity: .8;
+}
+
+#gameControllers > button:hover {
+	opacity: 1;
+}
