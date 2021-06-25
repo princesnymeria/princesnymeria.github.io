@@ -1,12 +1,28 @@
-# Symmetrical Drawing
+# Magic Drawing
 
-<style>n{color:#0080ff;font-family:"Segoe Print"}</style>
+<style> n { color: #0080ff; font-family: "Segoe Print" } </style>
 
 <small>Visit: https://markralovna.github.io/gallery/draw/</small>
 
-Appweb per dibuixar mandales relaxants.
+Appweb per dibuixar coses relaxants.
 
-## Descripció
+## Estructura de fitxers:
+
+```css
+draw
+├── 1.html
+├── 2.html
+├── 3.html
+├── functions.js
+├── estils.css
+└── docs.md
+```
+
+## <n>Artwork</n>
+
+### Symetrical Drawing (Round) (Mandales)
+
+#### Descripció
 
 La idea és tenir una eina que permeti crear dibuixos atractius sense esforç.
 
@@ -26,7 +42,7 @@ A través de la interfície gràfica, el programa permet:
 1. Que a cada iteració del `draw` es dibuixi un punt on hi hagi el cursor.
 2. Que a cada iteració del `draw` es dibuixi una línia al punt on hi hagi el cursor i el punt anteror.
 
-## Estètica
+#### Estètica
 
 L'estètica de la pantalla passa per:
 
@@ -39,9 +55,9 @@ L'estètica de la pantalla passa per:
 		* Saturació: 80%, Brillantor: 25%, Transparència: 80%
 		* Tons CMYk → 45, 180, 315
 
-## Detalls tècnics
+#### Detalls tècnics
 
-### Programa principal
+##### Programa principal
 
 * Declaració de constants i variables:
 	* `iptSym`, `iptAlfa`
@@ -57,7 +73,7 @@ L'estètica de la pantalla passa per:
 	* Comprobar si el ratolí està pres:
 		* Si ho està, dibuixar a la posició clicada (`drawSymmetrically()`)
 
-### Funcions auxiliars
+##### Funcions auxiliars
 
 * `updateColor()`
 	* Inicialitzar les variables referents al color de fons depenent de la opcitat i el to.
@@ -77,15 +93,10 @@ L'estètica de la pantalla passa per:
 	* Afegir l'event al botó per refrescar.
 	* Guardar la ruta dels objectes *sliders* del DOM.
 
-### Estructura de fitxers:
+### Grid Drawing (Square) (Chess)
 
-```css
-draw
-├── js
-│   ├── p5js
-│   │   └── ...
-│   └── sketch.js
-├── index.html
-├── estils.css
-└── README.MD
-```
+<n>Fer!</n>
+
+### Pyramid Drawing (Triangle) (<n>...</n>)
+
+<n>S'ha de fer tot l'artwork</n>

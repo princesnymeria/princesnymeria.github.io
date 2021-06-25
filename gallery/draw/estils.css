@@ -40,8 +40,23 @@ body {
 	width: 250px; height: 100%;
 }
 
+#varsControllers {
+	order: 1;
+}
+
+#buttonsControllers {
+	order: 3;
+}
+
 #varsControllers>*, #buttonsControllers>* {
 	width: 100%;
+}
+
+#artworkSelector {
+	order: 2;
+	display: flex;
+	align-items: flex-end;
+	height: 100%;
 }
 
 @media (max-width: 650px) {
@@ -60,6 +75,10 @@ body {
 	}
 	#buttonsControllers {
 		overflow-x: scroll;
+	}
+	
+	#artworkSelector {
+		display: none;
 	}
 }
 
@@ -93,7 +112,7 @@ input, button {
 
 @font-face {
 	font-family: Raleway;
-	src: url(../../../recursos/fonts/Raleway/Raleway-Regular.ttf);
+	src: url(../../../../recursos/fonts/Raleway/Raleway-Regular.ttf);
 }
 
 :root {
@@ -105,6 +124,9 @@ input, button {
 	--rainbow-color-3:  hsla(315,  80%, 25%, .8);
 }
 
+p, h1, h2, h3, h4, h5, li, a, button {
+	font-family: 'Raleway', 'Segoe UI Light', 'Segoe UI', Arial, Helvetica, sans-serif;
+}
 
 
 /* ┌──────────────────────────────┐
@@ -202,7 +224,6 @@ button {
 	color: var(--primary-color);
 	background-color: var(--background-color);
 	z-index: 1;
-	font-family: 'Raleway', 'Segoe UI Light', 'Segoe UI', Arial, Helvetica, sans-serif;
 }
 
 button::before, button::after {
@@ -233,7 +254,7 @@ button:nth-child(1)::after { background: linear-gradient(to right, var(--rainbow
 button:nth-child(2)::after { background: linear-gradient(to right, var(--rainbow-color-3), var(--rainbow-color-1)); }
 button:nth-child(3)::after { background: linear-gradient(to right, var(--rainbow-color-1), var(--rainbow-color-2)); }
 
-button:hover::before {
+button:hover::before, button.selected::before {
 	opacity: .2;
 }
 
@@ -243,4 +264,40 @@ button:hover::before {
 		margin: 3px;
 		margin-left: 15px;
 	}
+}
+
+
+
+
+
+/* ┌──────────────────────────────┐
+   │       Buttons amb Forma      │
+   └──────────────────────────────┘ */
+
+#artworkSelector button {
+	width: 30px;
+	height: 30px;
+	margin: 0 10px
+}
+
+button.square, button.square::before, button.square::after {
+	border-radius: 0;
+}
+
+button.circle, button.circle::before, button.circle::after {
+	border-radius: 50%;
+}
+
+button.triangle, button.triangle::before, button.triangle::after {
+	border-radius: 0;
+}
+
+
+button.triangle::after {
+	clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+
+button.triangle::before {
+	clip-path: polygon(50% 10%, 5% 100%, 95% 100%);
 }

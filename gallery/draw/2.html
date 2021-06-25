@@ -10,10 +10,14 @@
 		<title>Grid Drawing</title>
 
 		<link rel="stylesheet" href="estils.css">
+		<script src="funcions.js"></script>
 		<script src="../../../recursos/llibreries/p5js/p5.js"></script>
 
 		<style>
 			button, button::before, button::after {
+				border-radius: 0;
+			}
+			input[type=range] {
 				border-radius: 0;
 			}
 			input[type=range]::-webkit-slider-thumb, input[type=range]::-moz-range-thumb/*, input[type=range]::-ms-thumb*/ {
@@ -29,6 +33,11 @@
 			</div>
 			<div id="buttonsControllers">
 				<button onclick="clearCells()">Clean</button>
+			</div>
+			<div id="artworkSelector">
+				<button onclick="changeArwork(1)" class="circle"></button>
+				<button onclick="changeArwork(2)" class="square selected"></button>
+				<button onclick="changeArwork(3)" class="triangle"></button>
 			</div>
 		</div>
 	</body>

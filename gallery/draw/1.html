@@ -9,7 +9,8 @@
 
 		<title>Symmetrical Drawing</title>
 
-		<link rel="stylesheet" href="estils.css">
+		<link rel="stylesheet" href="estils.css" />
+		<script src="funcions.js"></script>
 		<script src="../../recursos/llibreries/p5js/p5.js"></script>
 	</head>
 
@@ -25,6 +26,11 @@
 				<button id="btnMode">Switch mode</button>
 				<button id="btnReset">Reset slides</button>
 			</div>
+			<div id="artworkSelector">
+				<button onclick="changeArwork(1)" class="circle selected"></button>
+				<button onclick="changeArwork(2)" class="square"></button>
+				<button onclick="changeArwork(3)" class="triangle"></button>
+			</div>
 		</div>
 	</body>
 
@@ -39,6 +45,7 @@
 			frameRate(48);
 
 			setEvents();
+			setStyle();
 			clearCanvas();
 
 			lastPoint = [width * .5, height * .5];
@@ -75,12 +82,6 @@
 				else line(x, y, lx, ly);
 				pop();
 			}
-		}
-
-		function clearCanvas() {
-			colorMode(HSL);
-			angleMode(RADIANS);
-			background(12);
 		}
 
 		function setEvents() {
