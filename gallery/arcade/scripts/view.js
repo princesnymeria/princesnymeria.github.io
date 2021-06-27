@@ -1,6 +1,7 @@
 window.onload = function() {
 	const g = new URL(window.location.href).searchParams.get("g");
 	modifyDOM2SelectedGame( g == null ? 0 : g );
+	setInterval(updateLabels, 1000);
 }
 
 function createGameSelectorButtons() {
@@ -66,9 +67,16 @@ function loadGameControls() {
 		const p = document.createElement('P');
 		const l = document.createElement('SPAN');
 		const t = document.createElement('SPAN');
+		output['element'] = t;
 		l.innerText = output.label + ': ';
 		p.appendChild(l);
 		p.appendChild(t);
 		cont.appendChild(p);
+	});
+}
+
+function updateLabels() {
+	selectedGame.outputs.forEach(output => {
+		output.element.innerText = output.model();
 	});
 }

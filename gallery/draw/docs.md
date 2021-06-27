@@ -4,99 +4,63 @@
 
 <small>Visit: https://markralovna.github.io/gallery/draw/</small>
 
-Appweb per dibuixar coses relaxants.
+Appweb per dibuixar coses relaxants. L'usuari hauria d'obtenir un dibuix "resultón" sense esforç.
 
-## Estructura de fitxers:
+M'agradaria que hi hagués tres llenços i que cada un manipuli el traç de l'usuari de manera diferent. Cada llenç està vinculat a una forma.
 
-```css
-draw
-├── 1.html
-├── 2.html
-├── 3.html
-├── functions.js
-├── estils.css
-└── docs.md
-```
+## Estètica
+
+Els tres llenços tindran la mateixa paleta cromàtica per mantenir una coherència comuna, però les formes seran diferents per a cada un per mantenir la singularitat de cada un.
+
+* **Fons**: `#1F1F1F`
+* **Text**: `#F8F8F8AA`
+* **Elements**:
+	* Saturació: 80%, Brillantor: 25%, Transparència: 80%
+	* Tons CMYk → 45, 180, 315
 
 ## <n>Artwork</n>
 
-### Symetrical Drawing (Round) (Mandales)
-
-#### Descripció
-
-La idea és tenir una eina que permeti crear dibuixos atractius sense esforç.
+### Symetrical Drawing (Round)
 
 El programa dibuixa punts al punt de la pantalla on l'usuari dibuixa i el replica de manera fractal.
 
+Els dibuixos resultats semblen mandales i tendeixen a tenir forma arrodonida.
+
 A través de la interfície gràfica, el programa permet:
 
-* Esborrar el llenç (botó)
-* Seleccionar el nombre de simetries (input, range)
-* Seleccionar quant tarda a esborrar-se la traça (input, range)
-* Modificar el gruix de la traça (input, range)
-* Canviar el mode * (botó)
-* Tornar als valors per defecte dels rangs (botó)
+* Inputs:
+	* Seleccionar el nombre de simetries
+	* Seleccionar quant tarda a esborrar-se la traça
+	* Modificar el gruix de la traça
+* Botons:
+	* Esborrar el llenç
+	* Canviar el mode *
+	* Tornar als valors per defecte dels rangs
 
 \* El programa funciona de dues maneres:
 
 1. Que a cada iteració del `draw` es dibuixi un punt on hi hagi el cursor.
-2. Que a cada iteració del `draw` es dibuixi una línia al punt on hi hagi el cursor i el punt anteror.
+2. Que a cada iteració del `draw` es dibuixi una línia al punt on hi hagi el cursor i el punt anterior.
 
-#### Estètica
+### Grid Drawing (Square)
 
-L'estètica de la pantalla passa per:
+El programa consisteix en una graella on l'usuari pot marcar una casella i aquesta passarà a ser vermella. Per què vermella? No importa, el color anirà canviant.
 
-* **Formes**:
-	* Arrodonides
-* **Colors**: colors brillants sobre fons fosc
-	* **Fons**: `#1F1F1F`
-	* **Text**: `#F8F8F8AA`
-	* **Elements**:
-		* Saturació: 80%, Brillantor: 25%, Transparència: 80%
-		* Tons CMYk → 45, 180, 315
+A través de la interfície gràfica, el programa permet:
 
-#### Detalls tècnics
+* Inputs:
+	* Ajustar la mida de les caselles
+	* <n>...</n>
+	* <n>...</n>
+* Botons:
+	* Netejar el llenç
+	* <n>...</n>
+	* <n>...</n>
 
-##### Programa principal
-
-* Declaració de constants i variables:
-	* `iptSym`, `iptAlfa`
-	* `fillColor = [0, 80, 70]`
-* `setup()`
-	* Inicialització de les variables per les dimensions del canvas.
-	* Creació del canvas.
-	* Configuració del *framerate*.
-	* Configuració dels events referents al DOM (crida a `setEvents()`)
-	* Configuració del canvas (crida a `clearCanvas()`)
-* `draw()`
-	* Actualització de color (`updateColor()`)
-	* Comprobar si el ratolí està pres:
-		* Si ho està, dibuixar a la posició clicada (`drawSymmetrically()`)
-
-##### Funcions auxiliars
-
-* `updateColor()`
-	* Inicialitzar les variables referents al color de fons depenent de la opcitat i el to.
-	* Actualitzar el to de la variable del color principal.
-	* Actualitzar el color principal.
-* `drawSymmetrically()`
-	* capturar la posició del mouse
-	* per cada simetria:
-		* Rotar el canvas la part proporcional
-		* Dibuixar a la part proporcional
-* `clearCanvas()`
-	* Configurar el mode angular. Radians.
-	* Omplir el background.
-	* Configurar el mode de color. HSL.
-	* Configurar el mode de línia. `noStroke()`. 
-* `setEvents()`
-	* Afegir l'event al botó per refrescar.
-	* Guardar la ruta dels objectes *sliders* del DOM.
-
-### Grid Drawing (Square) (Chess)
-
-<n>Fer!</n>
-
-### Pyramid Drawing (Triangle) (<n>...</n>)
+### Pyramid Drawing (Triangle)
 
 <n>S'ha de fer tot l'artwork</n>
+
+<n>Potser seria una bona ocasió per fer quelcom tipus el que havia de ser el projecte `gallery\mouse`?</n>
+
+<n>xxxx</n>

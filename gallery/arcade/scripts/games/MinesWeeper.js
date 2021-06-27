@@ -4,13 +4,14 @@ class MinesWeeper extends Game {
 		this.info.title = 'Minesweeper';
 		this.info.shortName = 'Minesweeper';
 		this.gameController = new MinesWeeperController();
+		this.flagMode = false;
 		const that = this;
 		this.inputs = [
 			{ label: 'Flag', callback: function(){ that.gameController.putFlag() }, pushable: true }
 			// ... 
 		];
 		this.outputs = [
-			// { label: 'Points', model: this.gameController.points }
+			{ label: 'Mines left', model: function() { return that.gameController.minesLeft } }
 		];
 	}
 }
@@ -21,7 +22,7 @@ class MinesWeeperController extends GameController {
 	constructor () {
 		super();
 		this.numCellsRow = 16;//ToDo: poder triar
-		this.numMines = floor( this.numCellsRow * this.numCellsRow * .3 );
+		this.numMines = floor( this.numCellsRow * this.numCellsRow * .1 );
 	}
 
 	starGame () {
@@ -40,7 +41,7 @@ class MinesWeeperController extends GameController {
 		rect(0, 0, width, height);
 		this.cells.forEach(row => {
 			row.forEach(cell => {
-				cell.draw();
+				cell.draw(this.flagMode);
 			});
 		});
 	}
@@ -99,6 +100,10 @@ class MinesWeeperController extends GameController {
 		}
 	}
 
+	get minesLeft () {
+		return this.numMines;
+	}
+
 	setup () {
 		noFill();
 		textSize( width / this.numCellsRow * .6 );
@@ -110,7 +115,7 @@ class MinesWeeperController extends GameController {
 	}
 
 	putFlag () {
-		console.log('Flag');
+		this.flagMode = !this.flagMode;
 	}
 
 }
@@ -126,7 +131,7 @@ const estatsCella = {
 	},
 	flag: {
 		id: 2,
-		fillColor: [colors.m[0], colors.m[1], colors.m[2], .0]
+		fillColor: [colors.m[0], colors.m[1], colors.m[2], .5]
 	},
 	reveled: {
 		id: 3,
@@ -146,8 +151,8 @@ class MinesWeeperCell {
 		this.neighbourMines = 0;
 	}
 
-	draw() {
-		this.update();
+	draw(flagMode) {
+		this.update(flagMode);
 		this.display();
 	}
 
@@ -168,15 +173,28 @@ class MinesWeeperCell {
 		// ...
 	}
 
-	update() {
-		if (this.state.id <= estatsCella.hover.id)
-			if (this.hover) {
-				this.state = estatsCella.hover;
-				if (mouseIsPressed) this.reveal();
+	update(flagMode) {
+
+
+		if (flagMode) {
+			if (this.hover && mouseIsPressed) {
+				if (this.state.id <= estatsCella.cover.id)
+					this.state = estatsCella.flag;
+				else if (this.state.id <= estatsCella.flag.id)
+					this.state = estatsCella.cover;
 			}
-			else {
-				this.state = estatsCella.cover;
-			}
+		}
+
+		else
+			if (this.state.id <= estatsCella.hover.id)
+				if (this.hover) {
+					this.state = estatsCella.hover;
+					if (mouseIsPressed)
+						this.reveal();
+				}
+				else {
+					this.state = estatsCella.cover;
+				}
 	}
 	
 	get hover() {

@@ -6,14 +6,14 @@ class SnakeGame extends Game {
 		this.gameController = new SnakeGameController();
 		const that = this;
 		this.inputs = [
-			{ label: 'Play/Pause', callback: function(){ that.gameController.pause() }, pushable: true },
-			{ label: 'up',    callback: function(){ that.gameController.updateDirection(UP_ARROW)    }, pushable: false },
-			{ label: 'down',  callback: function(){ that.gameController.updateDirection(DOWN_ARROW)  }, pushable: false },
-			{ label: 'left',  callback: function(){ that.gameController.updateDirection(LEFT_ARROW)  }, pushable: false },
-			{ label: 'right', callback: function(){ that.gameController.updateDirection(RIGHT_ARROW) }, pushable: false }
+			{ label: 'Play/Pause', callback: function ( ) { that.gameController.pause()                      }, pushable: true  },
+			{ label: 'up',         callback: function ( ) { that.gameController.updateDirection(UP_ARROW)    }, pushable: false },
+			{ label: 'down',       callback: function ( ) { that.gameController.updateDirection(DOWN_ARROW)  }, pushable: false },
+			{ label: 'left',       callback: function ( ) { that.gameController.updateDirection(LEFT_ARROW)  }, pushable: false },
+			{ label: 'right',      callback: function ( ) { that.gameController.updateDirection(RIGHT_ARROW) }, pushable: false }
 		];
 		this.outputs = [
-			{ label: 'Points', model: this.gameController.points }
+			{ label: 'Points', model: function() { return that.gameController.points } }
 		];
 	}
 }
@@ -29,23 +29,26 @@ class SnakeGameController extends GameController {
 		const numberOfCells = 18;
 		
 		this.pitch = new SnakePitch( 0, 0, width, height, numberOfCells );
-		this.character = new SnakeCharacter( createVector(numberOfCells * .5, numberOfCells * .5), this.pitch );
+		this.character = new SnakeCharacter( createVector(1, 9), this.pitch );
 		this.apple = new SnakeApple( this.pitch );
 		this.points = 0;
 		this.paused = false;
+
+		this.time = 0;
 	}
 
 	draw () {
 		this.pitch.display();
 		this.character.display();
 		if ( !this.character.isCollidingSomething(this.pitch) ) {
-			if (!this.paused) this.character.update();
+			if (!this.paused) this.character.update( millis()-this.time );
 		}
 		else
 			this.gameover();
 		if ( this.character.eats(this.apple) )
 			this.sumPoint();
 		this.apple.display();
+		this.time = millis();
 	}
 
 	sumPoint () {
@@ -68,19 +71,19 @@ class SnakeCharacter {
 	constructor (position, pitch) {
 		this.pitch = pitch;
 		this.positionGrid = position;
-		this.tail = [];
-		this.speed = .2;
+		this.tail = [ ];
+		this.speed = .005;
 		this.tailLenght = 10;
 		this.size = floor (pitch.size / pitch.numberOfCells) * .9;
 		this.direction = createVector(this.speed, 0);
 	}
 
-	update () {
+	update ( deltaTime ) {
 		this.checkIfUpdateDirection();
 		this.tail.push(this.positionGrid.copy());
 		if (this.tail.length > this.tailLenght)
-			this.tail.shift(); 
-		this.move();
+			this.tail.shift();
+		this.move(deltaTime);
 	}
 
 	display () {
@@ -100,8 +103,8 @@ class SnakeCharacter {
 
 	updateDirection (direction) {
 		const s = this.speed;
-		//this.positionGrid = createVector(floor( this.positionGrid.x ), floor( this.positionGrid.y ));// ToDo: calibrar a la quadricula
-		// ToDo: s'hauria de restringir fer un gir de 180º
+		this.positionGrid = createVector( round( this.positionGrid.x ), round( this.positionGrid.y ) );
+		//ToDo: s'hauria de restringir fer un gir de 180º
 		switch (direction) {
 			case UP_ARROW:    this.direction = createVector( 0, -s); break;
 			case DOWN_ARROW:  this.direction = createVector( 0,  s); break;
@@ -110,14 +113,15 @@ class SnakeCharacter {
 		};
 	}
 
-	move () {
-		this.positionGrid.add(this.direction);
+	move ( deltaTime ) {
+		this.positionGrid = createVector(
+			this.positionGrid.x + this.direction.x * deltaTime,
+			this.positionGrid.y + this.direction.y * deltaTime
+		);
 	}
 
 	eats (apple) {
-		const a = this.pitch.col2pos(apple.gridPosition.x, apple.gridPosition.y);// ToDo: es pot comparar la cella directament
-		const b = this.pitch.col2pos(this.positionGrid.x, this.positionGrid.y);// ToDo: es pot comparar la cella directament
-		return dist(b.x, b.y, a.x, a.y) < this.size;
+		return round(this.positionGrid.x) == round(apple.gridPosition.x) && round(this.positionGrid.y) == round(apple.gridPosition.y);
 	}
 
 	isCollidingSomething (pitch) {
@@ -137,17 +141,16 @@ class SnakeCharacter {
 
 	isCollidingItself () {
 		var res = false;
-		for (let i = 0; i < this.tail.length - this.size * 3; i++) {// ToDo: no funciona
+		for ( let i = 0; i < this.tail.length - 20 ; i++ ) {
 			const t = this.tail[i];
-			const b = this.pitch.col2pos(this.positionGrid.x, this.positionGrid.y);
-			const d = dist( b.x, b.y, t.x, t.y );
-			if ( d < this.size ) res = true;
+			const b = this.positionGrid;
+			if ( dist(b.x, b.y, t.x, t.y ) < .5 ) res = true;
 		}
 		return res;
 	}
 
 	grow () {
-		this.tailLenght += 5;// ToDo: hauria de ser 1, però no creix prou
+		this.tailLenght += 1;// ToDo: hauria de ser 1, però no creix prou
 	}
 }
 
@@ -155,21 +158,19 @@ class SnakeCharacter {
 class SnakeApple {
 	constructor (pitch) {
 		this.pitch = pitch;
-		this.size = floor (pitch.size / pitch.numberOfCells);
+		this.size = floor (pitch.size / pitch.numberOfCells) * .6;
 		this.relocate();
 	}
 
 	relocate () {
-		this.gridPosition = createVector(// ToDo: s'hauria d'intentar que no es posi per sobre la serp
-			random(0, this.pitch.numberOfCells - 1),
-			random(0, this.pitch.numberOfCells - 1)
-		);
+		const t = this.pitch.numberOfCells;
+		this.gridPosition = createVector( floor(random(1, t)), floor(random(1, t)) ); // ToDo: s'hauria d'intentar que no es posi per sobre la serp
 	}
 
 	display () {
 		stroke(colors.m);
 		strokeWeight(this.size);
-		const p = this.pitch.col2pos(this.gridPosition.x, this.gridPosition.y);
+		const p = this.pitch.col2pos( this.gridPosition.x, this.gridPosition.y );
 		point(p.x, p.y);
 	}
 }

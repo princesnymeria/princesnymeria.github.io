@@ -209,3 +209,20 @@ button {
 #gameControllers > button:hover {
 	opacity: 1;
 }
+
+
+
+
+
+
+
+
+
+#gameControllers p {
+	color: var(--primary-color);
+}
+
+
+
+
+

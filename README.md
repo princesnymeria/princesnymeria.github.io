@@ -58,12 +58,13 @@ Root
 
 ## Roadmap
 
-* POSAR SELECTOR DE DRAWS A DRAW
-* DOCUMENTAR EK CANVI D'IDEEA AMB EL DRAW
-* FER UN ALTRE MÀGIC DRAW
 * [x] A `gallery\arcade`, paremetritzar l'URL.
 * [ ] A `com\AdM`, acabar.
-* [ ] A `gallery\arcade\scripts\games\MinesWeeper.js`, GAME OVER + BANDERA.
+* A `gallery\arcade\scripts\games\MinesWeeper.js`, acabar le joc:
+	* [ ] Arreglar el tema de la bandera
+	* [ ] Programar Game Over
+	* [ ] Programar l'etiqueta de mines restants
+	* [ ] Repassar
 * [ ] A `gallery\arcade\scripts\games\MinesWeeper.js`, repassar.
 * [ ] A `gallery\arcade`, arreglar <span class="pendent">les etiquetes</span>.
 * [ ] A `gallery\school\scripts\algorithms\voronoi.js`, acabar.
@@ -72,5 +73,5 @@ Root
 * [ ] A `gallery\arcade`, documentar.
 * [ ] A `gallery\school`, fer més algorismes.
 * [ ] A `gallery\arcade`, fer més jocs.
+* [ ] A `gallery\draw`, fer.ne un altre.
 * [ ] <span class="pendent">Projectes abandonats (poli, see, basic, sine, mouse...)</span>.
-* [ ] <span class="pendent"><strong>Idea nova</strong>: graella per dibuixar</span>.
