@@ -1,11 +1,19 @@
+var gameSelectorEl, gameControllersEl, gameTitleEl, gameScreenEl;
+
 window.onload = function() {
+	gameSelectorEl = document.getElementById('gameSelector');
+	gameControllersEl = document.getElementById('gameControllers');
+	gameTitleEl = document.getElementById('gameTitle');
+	gameScreenEl = document.getElementById('gameScreen');
+
 	const g = new URL(window.location.href).searchParams.get("g");
 	modifyDOM2SelectedGame( g == null ? 0 : g );
 	setInterval(updateLabels, 1000);
+
+	createGameSelectorButtons();
 }
 
 function createGameSelectorButtons() {
-	const cont = document.getElementById('gameSelector');
 	var index = 0;
 	games.forEach(game => {
 		if (game.info.visible || MODE_DEBUG) {
@@ -13,7 +21,7 @@ function createGameSelectorButtons() {
 			btn.innerText = game.info.shortName;
 			btn.setAttribute('game-id', index);
 			btn.addEventListener('click', changeselectedGame);
-			cont.appendChild(btn);
+			gameSelectorEl.appendChild(btn);
 			if (index == selectedGame) btn.classList.add('selected');
 			index++
 		}
@@ -22,7 +30,7 @@ function createGameSelectorButtons() {
 
 function changeselectedGame(ev) {
 	focusSelectedmButton('#gameSelector>button.active', 'active', [ev.target]);
-	document.getElementById('gameControllers').innerHTML = "";
+	gameControllersEl.innerHTML = "";
 	const newSelectedGame = ev.target.getAttribute('game-id');
 	modifyDOM2SelectedGame( newSelectedGame );
 }
@@ -49,11 +57,11 @@ function setupSelectedGame(gameIndex) {
 
 function modifyAppTitle() {
 	const newTitle = selectedGame.info.title;
-	document.getElementById('gameTitle').innerText = newTitle;
+	gameTitleEl.innerText = newTitle;
 }
 
 function loadGameControls() {
-	const cont = document.getElementById('gameControllers');
+	const cont = gameControllersEl;
 	selectedGame.inputs.forEach(input => {
 		const b = document.createElement('BUTTON');
 		b.innerText = input.label;
@@ -72,6 +80,10 @@ function loadGameControls() {
 		p.appendChild(l);
 		p.appendChild(t);
 		cont.appendChild(p);
+	});
+	//gameScreenEl.replaceWith(gameScreenEl.cloneNode(true));//eliminem els eventlisteners
+	selectedGame.events.forEach(event => {
+		gameScreenEl.addEventListener(event.event, event.callback);
 	});
 }
 

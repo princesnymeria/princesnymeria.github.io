@@ -55,17 +55,19 @@ Root
 * [x] A `gallery\arcade`, paremetritzar l'URL.
 * [ ] A `com\AdM`, acabar.
 * A `gallery\arcade\scripts\games\MinesWeeper.js`, acabar le joc:
-	* [ ] Arreglar el tema de la bandera
-	* [ ] Programar Game Over
-	* [ ] Programar l'etiqueta de mines restants
+	* [x] Arreglar el tema de la bandera
+	* [x] Programar Game Over
+	* [x] Programar l'etiqueta de mines restants
+	* [x] Revelació recorsiva de cel·les sense mines veïnes
 	* [ ] Repassar
-* [ ] A `gallery\arcade\scripts\games\MinesWeeper.js`, repassar.
-* [ ] A `gallery\arcade`, arreglar <span class="pendent">les etiquetes</span>.
+	* [ ] PANTALLA PREMI
+* [x] A `gallery\arcade`, publicar!
 * [ ] A `gallery\school\scripts\algorithms\voronoi.js`, acabar.
 * [ ] A `gallery\school`, revisar que els draw/display siguin coherents.
+* [ ] A `gallery\arcade\scripts\games\Snake.js`, <span class="pendent">repassar jugabilitat i mòbil.</span>.
 * [ ] A `gallery\arcade\scripts\games\Snake.js`, repassar disseny descendent.
 * [ ] A `gallery\arcade`, documentar.
+* [ ] A `gallery\arcade\scripts\games\MinesWeeper.js`, repassar disseny descendent.
 * [ ] A `gallery\school`, fer més algorismes.
 * [ ] A `gallery\arcade`, fer més jocs.
-* [ ] A `gallery\draw`, fer.ne un altre.
-* [ ] <span class="pendent">Projectes abandonats (poli, see, basic, sine, mouse...)</span>.
+* [ ] A `gallery\draw`, fer-ne un altre <span class="pendent">tipus vinya</span>.

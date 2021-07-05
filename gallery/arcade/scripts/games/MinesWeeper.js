@@ -4,11 +4,12 @@ class MinesWeeper extends Game {
 		this.info.title = 'Minesweeper';
 		this.info.shortName = 'Minesweeper';
 		this.gameController = new MinesWeeperController();
-		this.flagMode = false;
 		const that = this;
 		this.inputs = [
 			{ label: 'Flag', callback: function(){ that.gameController.putFlag() }, pushable: true }
-			// ... 
+		];
+		this.events = [
+			{ event: 'click', callback: function(){ that.gameController.clicked() } }
 		];
 		this.outputs = [
 			{ label: 'Mines left', model: function() { return that.gameController.minesLeft } }
@@ -21,6 +22,8 @@ class MinesWeeper extends Game {
 class MinesWeeperController extends GameController {
 	constructor () {
 		super();
+		this.flags = 0;
+		this.flagMode = false;
 		this.numCellsRow = 16;//ToDo: poder triar
 		this.numMines = floor( this.numCellsRow * this.numCellsRow * .1 );
 	}
@@ -41,7 +44,7 @@ class MinesWeeperController extends GameController {
 		rect(0, 0, width, height);
 		this.cells.forEach(row => {
 			row.forEach(cell => {
-				cell.draw(this.flagMode);
+				cell.draw();
 			});
 		});
 	}
@@ -71,7 +74,7 @@ class MinesWeeperController extends GameController {
 		});
 	}
 
-	aaa (row, col) {
+	loopCellNeighbour (row, col, callback) {
 		const a = [-1, 0, 1];
 		a.forEach(y => {
 			const r = row + y;
@@ -79,7 +82,7 @@ class MinesWeeperController extends GameController {
 				a.forEach(x => {
 					const c = col + x;
 					if (c >= 0 && c < this.numCellsRow )
-						this.cells[r][c].addNeighbour();
+						callback(r, c);
 				});
 		});
 	}
@@ -93,7 +96,8 @@ class MinesWeeperController extends GameController {
 				var m = this.cells[r][c];
 				if ( !m.mine ) {
 					m.addMine();
-					this.aaa(r, c);
+					const that = this;
+					this.loopCellNeighbour(r, c, function(row, col){that.cells[row][col].addNeighbour()});
 					minaPosada = true;
 				}
 			}
@@ -101,7 +105,7 @@ class MinesWeeperController extends GameController {
 	}
 
 	get minesLeft () {
-		return this.numMines;
+		return this.numMines - this.flags;
 	}
 
 	setup () {
@@ -118,26 +122,26 @@ class MinesWeeperController extends GameController {
 		this.flagMode = !this.flagMode;
 	}
 
-}
 
-const estatsCella = {
-	cover: {
-		id: 0,
-		fillColor: [colors.m[0], colors.m[1], colors.m[2], 0]
-	},
-	hover: {
-		id: 1,
-		fillColor: [colors.y[0], colors.y[1], colors.y[2], .2]
-	},
-	flag: {
-		id: 2,
-		fillColor: [colors.m[0], colors.m[1], colors.m[2], .5]
-	},
-	reveled: {
-		id: 3,
-		fillColor: [colors.c[0], colors.c[1], colors.c[2], .2]
+	clicked () {
+		const c = floor(map( mouseX, 0, width,  0, this.numCellsRow ));
+		const r = floor(map( mouseY, 0, height, 0, this.numCellsRow ));
+		if ( this.flagMode )
+			this.flags += this.cells[r][c].toggleFlag();
+		else
+			this.revealCell(r, c);
 	}
-};
+
+	revealCell (row, col) {
+		const cell = this.cells[row][col];
+		var cellExploted = false;
+		cellExploted = cell.reveal();
+		if ( cellExploted ) this.gameover();
+		const that = this;
+		if ( cell.neighbourMines == 0 ) this.loopCellNeighbour(row, col, function(r, c) { if (that.cells[r][c].covered) that.revealCell(r, c) })
+	}
+
+}
 
 class MinesWeeperCell {
 	constructor (size, column, row) {
@@ -146,18 +150,23 @@ class MinesWeeperCell {
 			column * this.size,
 			row * this.size
 		);
+		this.covered = true;
+		this.flag = false;
 		this.mine = false;
-		this.state = estatsCella.cover;
 		this.neighbourMines = 0;
 	}
 
-	draw(flagMode) {
-		this.update(flagMode);
+	draw() {
 		this.display();
 	}
 
 	reveal() {
-		this.state = estatsCella.reveled;
+		var mineExploted = false;
+		if ( !this.flag ) {
+			this.covered = false;
+			mineExploted = this.mine;
+		}
+		return mineExploted
 	}
 
 	addMine() {
@@ -165,36 +174,13 @@ class MinesWeeperCell {
 		this.neighbourMines -= 1;
 	}
 
-	addNeighbour() {
+	addNeighbour( ) {
 		this.neighbourMines += 1;
 	}
 
-	addFlag() {
-		// ...
-	}
-
-	update(flagMode) {
-
-
-		if (flagMode) {
-			if (this.hover && mouseIsPressed) {
-				if (this.state.id <= estatsCella.cover.id)
-					this.state = estatsCella.flag;
-				else if (this.state.id <= estatsCella.flag.id)
-					this.state = estatsCella.cover;
-			}
-		}
-
-		else
-			if (this.state.id <= estatsCella.hover.id)
-				if (this.hover) {
-					this.state = estatsCella.hover;
-					if (mouseIsPressed)
-						this.reveal();
-				}
-				else {
-					this.state = estatsCella.cover;
-				}
+	toggleFlag() {
+		this.flag = !this.flag;
+		return this.flag ? 1 : -1;
 	}
 	
 	get hover() {
@@ -205,13 +191,25 @@ class MinesWeeperCell {
 			( mouseY < (this.position.y + this.size) )
 		);
 	}
+	
+	get backgroundColor() {
+		var c = [];
+		if ( this.covered ) {
+			if ( this.flag ) c = [colors.m[0], colors.m[1], colors.m[2], .5];
+			else if ( this.hover ) c = [colors.y[0], colors.y[1], colors.y[2], .2];
+			else c = [colors.m[0], colors.m[1], colors.m[2], 0];
+		}
+		else
+			c = [colors.c[0], colors.c[1], colors.c[2], .2];
+		return c;
+	}
 
 	display() {
 		strokeWeight(5);
 		stroke(colors.m);
-		fill( this.state.fillColor );
+		fill( this.backgroundColor );
 		rect(this.position.x, this.position.y, this.size, this.size);
-		if (this.state.id == estatsCella.reveled.id) {
+		if ( !this.covered ) {
 			const s = this.size * .5;
 			const x = this.position.x + s;
 			const y = this.position.y + s;
@@ -220,7 +218,7 @@ class MinesWeeperCell {
 				stroke( colors.y );
 				point(x, y);
 			}
-			else {
+			else if (this.neighbourMines > 0) {
 				noStroke();
 				fill( colors.y );
 				text(this.neighbourMines, x, y);

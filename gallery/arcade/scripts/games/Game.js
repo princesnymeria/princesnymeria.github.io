@@ -5,6 +5,9 @@ class Game {
 			shortName: '...'
 		};
 		this.inputs = [];
+		this.events = [
+			{ event: 'click', callback: function(){} }
+		];
 		this.outputs = [];
 		this.gameController = new GameController();
 	}

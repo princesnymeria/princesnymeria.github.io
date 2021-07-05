@@ -20,8 +20,6 @@ function setup() {
 
 	games.push( new SnakeGame() ); // 127.0.0.1:5500/gallery/arcade/index.html?g=0
 	games.push( new MinesWeeper() ); // 127.0.0.1:5500/gallery/arcade/index.html?g=1
-
-	createGameSelectorButtons();
 }
 
 function draw() {
