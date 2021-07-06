@@ -24,8 +24,8 @@ class MinesWeeperController extends GameController {
 		super();
 		this.flags = 0;
 		this.flagMode = false;
-		this.numCellsRow = 16;//ToDo: poder triar
-		this.numMines = floor( this.numCellsRow * this.numCellsRow * .1 );
+		this.numCellsRow = 8;//ToDo: poder triar
+		this.numMines = floor( this.numCellsRow * this.numCellsRow * .15 );
 	}
 
 	starGame () {
@@ -115,7 +115,6 @@ class MinesWeeperController extends GameController {
 		strokeJoin(ROUND);
 		strokeCap(ROUND);
 		textStyle(BOLD);
-		//textFont(inconsolata);
 	}
 
 	putFlag () {

@@ -33,3 +33,7 @@ function setColor(hue, aplha, action, type) {
 		case FILL:		fill(color);	noStroke();											break;
 	}
 }
+
+function getColor(hue, aplha) {
+	return color(hue, 100, 50, aplha);
+}

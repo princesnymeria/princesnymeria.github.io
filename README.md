@@ -59,8 +59,8 @@ Root
 	* [x] Programar Game Over
 	* [x] Programar l'etiqueta de mines restants
 	* [x] Revelació recorsiva de cel·les sense mines veïnes
-	* [ ] Repassar
-	* [ ] PANTALLA PREMI
+* [ ] A `gallery\arcade\scripts\games\MinesWeeper.js`, repassar.
+* [ ] A `gallery\arcade\scripts\games\MinesWeeper.js`, pantalla de premi.
 * [x] A `gallery\arcade`, publicar!
 * [ ] A `gallery\school\scripts\algorithms\voronoi.js`, acabar.
 * [ ] A `gallery\school`, revisar que els draw/display siguin coherents.
