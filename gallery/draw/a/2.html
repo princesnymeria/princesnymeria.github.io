@@ -9,20 +9,19 @@
 
 		<title>Grid Drawing</title>
 
-		<link rel="stylesheet" href="estils.css">
-		<script src="funcions.js"></script>
+		<link rel="stylesheet" href="../estils/layout.css" />
+		<link rel="stylesheet" href="../estils/estetica.css" />
+		<link rel="stylesheet" href="../estils/shapes.css" />
+		<script src="../funcions.js"></script>
 		<script src="../../../recursos/llibreries/p5js/p5.js"></script>
 
 		<style>
-			button, button::before, button::after {
+			input[type=range], button:before, button:after {
 				border-radius: 0;
 			}
-			input[type=range] {
-				border-radius: 0;
-			}
-			input[type=range]::-webkit-slider-thumb, input[type=range]::-moz-range-thumb/*, input[type=range]::-ms-thumb*/ {
-				border-radius: 0;
-			}
+			input[type=range]::-webkit-slider-thumb { border-radius: 0; }
+			input[type=range]::-moz-range-thumb { border-radius: 0; }
+			input[type=range]::-ms-thumb { border-radius: 0; }
 		</style>
 	</head>
 
@@ -43,7 +42,7 @@
 	</body>
 
 	<script>
-		var cellColor = [0, 80, 35, .2]; // var fillColor = [0, 80, 25];
+		const fillColorAlpha = .4;
 		var cells = [];
 		var magicNumber;
 
@@ -55,7 +54,7 @@
 
 			magicNumber = gcd(width, height);
 
-			updateCellSizeRatio( { value: 10 } ); // updateCellSizeRatio( { value: 2 } );
+			updateCellSizeRatio( { value: 10 } );
 		}
 
 		function draw() {
@@ -149,7 +148,7 @@
 
 			display() {
 				if ( this.marked ) {
-					fill( this.colorHue, cellColor[1], cellColor[2], cellColor[3] );
+					fill( this.colorHue, fillColor[1], fillColor[2], fillColorAlpha );
 					rect(this.position.x, this.position.y, this.size, this.size);
 				} else if ( this.hover ) {
 					fill( 24 );

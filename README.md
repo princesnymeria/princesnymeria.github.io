@@ -70,4 +70,5 @@ Root
 * [ ] A `gallery\arcade\scripts\games\MinesWeeper.js`, repassar disseny descendent.
 * [ ] A `gallery\school`, fer més algorismes.
 * [ ] A `gallery\arcade`, fer més jocs.
-* [ ] A `gallery\draw`, fer-ne un altre <span class="pendent">tipus vinya</span>.
+* [x] A `gallery\draw`, fer-ne un altre <span class="pendent">tipus vinya</span>.
+	* [x] <span class="pendent">Retocar formes per què siguin triangulars</span>

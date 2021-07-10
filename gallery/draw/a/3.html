@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<title>Pyramid Drawing</title>
+
+		<link rel="stylesheet" href="../estils/layout.css" />
+		<link rel="stylesheet" href="../estils/estetica.css" />
+		<link rel="stylesheet" href="../estils/shapes.css" />
+		<script src="../funcions.js"></script>
+		<script src="../../../recursos/llibreries/p5js/p5.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<div id="varsControllers">
+				<input id="inpDensity" type="range" min="1" max="5" step="1" />
+				<input id="inpSize" type="range" min="1" max="5" step="1" />
+				<input id="inpLife" type="range" min="1" max="50" step="1" />
+			</div>
+			<div id="buttonsControllers">
+				<button onclick="cleanNodes()">Clean</button>
+				<button onclick="toggleShowLine()">Show Line</button>
+				<button onclick="resetSliders()">ResetSliders</button>
+			</div>
+			<div id="artworkSelector">
+				<button onclick="changeArwork(1)" class="circle"></button>
+				<button onclick="changeArwork(2)" class="square"></button>
+				<button onclick="changeArwork(3)" class="triangle selected"></button>
+			</div>
+		</div>
+	</body>
+
+	<script>
+		var nodes = [];
+		const c = 5;
+
+		const fillColorAlpha = .8;
+		var inpLife, inpDensity, inpSize;
+
+		var showLine = true;
+
+		function setup() {
+			createCanvas( window.innerWidth, window.innerHeight );
+			frameRate( 24 );
+
+			setStyle();
+			noFill();
+			
+			initializeSliderVars();
+			resetSliders();
+		}
+
+		function draw() {
+			clearCanvas();
+			if (mouseIsPressed)
+				for (let i = 0; i < inpDensity.value; i++)
+					nodes.push( new Node( createVector(mouseX, mouseY) ) );
+			nodes.forEach(node => {
+				node.draw();
+			});
+		}
+
+		function toggleShowLine() {
+			showLine = !showLine;
+		}
+
+		function cleanNodes() {
+			nodes = [];
+		}
+
+		function resetSliders() {
+			inpLife.value = 12;
+			inpDensity.value = 1;
+			inpSize.value = 2;
+		}
+
+		function initializeSliderVars() {
+			inpLife = document.getElementById('inpLife');
+			inpDensity = document.getElementById('inpDensity');
+			inpSize = document.getElementById('inpSize');
+		}
+
+		class Node {
+			constructor ( position ) {
+				this.alive = true;
+				this.initPos = position;
+				this.endPos = position.copy();
+				this.hueColor = random(0, 360);
+				this.life = random(1, inpLife.value * c);
+				this.vel = createVector( random(-c, c), random(-c, c) );
+			}
+
+			draw( ) {
+				if (this.alive) {
+					this.update();
+					this.display();
+				}
+			}
+
+			update( ) {
+				this.endPos.add( this.vel );
+				this.life--;
+				if ( this.life < 1 ) this.alive = false;
+			}
+
+			display( ) {
+				stroke( this.hueColor, fillColor[1], fillColor[2], fillColorAlpha );
+				if (showLine) {
+					strokeWeight(.5);
+					line(this.initPos.x, this.initPos.y, this.endPos.x, this.endPos.y);
+				}
+				strokeWeight(inpSize.value * c);
+				point(this.endPos.x, this.endPos.y);
+			}
+		}
+	</script>
+</html>
