@@ -3,14 +3,18 @@ const STROKE = 1024; const FILL = 1025; const LINE = 1026; const POINT = 1027;
 
 const algorithms = [];
 var selectedAlgorithm;
+var C;
 
 function setup() {
 	createCanvas(window.innerWidth, window.innerHeight);
 	frameRate( MODE_DEBUG ? 12 : 48 );
 
+	C = width < height ? width : height;
+
 	colorMode(HSL);
 
 	algorithms.push( new BezierController() );
+	algorithms.push( new PoissonController() );
 	algorithms.push( new VoronoiController() );
 
 	modifyDOM2SelectedAlgorithm(0);

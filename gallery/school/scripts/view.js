@@ -62,6 +62,9 @@ function createStepInputs(step) {
 		if (inputInfo.minStep <= step) {
 			const input = document.createElement('INPUT');
 			input.type = inputInfo.type;
+			input.min = inputInfo.min;
+			input.max = inputInfo.max;
+			input.value = inputInfo.initValue;
 			input.onchange = inputInfo.callback;
 			cont.appendChild(input);
 		}

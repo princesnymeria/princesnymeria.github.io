@@ -5,8 +5,8 @@ class VoronoiController extends AlgorithmController {
 		this.info.shortName = 'Voronoi';
 		this.info.name = 'Voronoi Diagram';
 		this.info.infolink = 'https://en.wikipedia.org/wiki/Voronoi_diagram';
-		this.cols = 4;
-		this.rows = 2;
+		this.cols = 5;
+		this.rows = 5;
 		this.algorithm = new Voronoi( this.cols, this.rows );
 		const that = this;
 		/*this.steps = [
@@ -92,7 +92,7 @@ class VoronoiCell {
 	constructor (position) {
 		this.position = position;
 		this.dim = 1;
-		this.potantialRadius = width;//this.potantialRadius = width * .5;//this.potantialRadius = random(.1, .5) * width;
+		this.potantialRadius = C * .3;
 		this.shape = { lines: [], arcs:[] };
 	}
 
