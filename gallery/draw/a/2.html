@@ -28,7 +28,7 @@
 	<body>
 		<div id="app">
 			<div id="varsControllers">
-				<input type="range" min="5" max="50" step="1" value="10" onchange="updateCellSizeRatio(this)" /> <!-- <input type="range" min="0" max="10" step="1" value="2" onchange="updateCellSizeRatio(this)" /> -->
+				<input type="range" min="5" max="50" step="1" value="30" onchange="updateCellSizeRatio(this)" /> <!-- <input type="range" min="0" max="10" step="1" value="2" onchange="updateCellSizeRatio(this)" /> -->
 			</div>
 			<div id="buttonsControllers">
 				<button onclick="clearCells()">Clean</button>
@@ -54,7 +54,7 @@
 
 			magicNumber = gcd(width, height);
 
-			updateCellSizeRatio( { value: 10 } );
+			updateCellSizeRatio( { value: 30 } );
 		}
 
 		function draw() {

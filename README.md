@@ -52,16 +52,9 @@ Root
 
 ## Roadmap
 
-* [x] A `gallery\arcade`, paremetritzar l'URL.
 * [ ] A `com\AdM`, acabar.
-* A `gallery\arcade\scripts\games\MinesWeeper.js`, acabar le joc:
-	* [x] Arreglar el tema de la bandera
-	* [x] Programar Game Over
-	* [x] Programar l'etiqueta de mines restants
-	* [x] Revelació recorsiva de cel·les sense mines veïnes
 * [ ] A `gallery\arcade\scripts\games\MinesWeeper.js`, repassar.
 * [ ] A `gallery\arcade\scripts\games\MinesWeeper.js`, pantalla de premi.
-* [x] A `gallery\arcade`, publicar!
 * [ ] A `gallery\school\scripts\algorithms\voronoi.js`, acabar.
 * [ ] A `gallery\school`, revisar que els draw/display siguin coherents.
 * [ ] A `gallery\arcade\scripts\games\Snake.js`, <span class="pendent">repassar jugabilitat i mòbil.</span>.

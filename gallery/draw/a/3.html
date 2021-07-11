@@ -14,19 +14,28 @@
 		<link rel="stylesheet" href="../estils/shapes.css" />
 		<script src="../funcions.js"></script>
 		<script src="../../../recursos/llibreries/p5js/p5.js"></script>
+
+		<style>
+			#buttonsControllers button:before, #buttonsControllers button:after {
+				clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+			}
+			input[type=range]::-webkit-slider-thumb { border-radius: 0; transform: rotate(45deg); width: 10px; height: 10px;  }
+			input[type=range]::-moz-range-thumb { border-radius: 0; transform: rotate(45deg); width: 10px; height: 10px; }
+			input[type=range]::-ms-thumb { border-radius: 0; transform: rotate(45deg); width: 10px; height: 10px; }
+		</style>
 	</head>
 
 	<body>
 		<div id="app">
 			<div id="varsControllers">
-				<input id="inpDensity" type="range" min="1" max="5" step="1" />
+				<input id="inpLife" type="range" min="1" max="20" step="1" />
+				<input id="inpDensity" type="range" min="1" max="10" step="1" />
 				<input id="inpSize" type="range" min="1" max="5" step="1" />
-				<input id="inpLife" type="range" min="1" max="50" step="1" />
 			</div>
 			<div id="buttonsControllers">
 				<button onclick="cleanNodes()">Clean</button>
 				<button onclick="toggleShowLine()">Show Line</button>
-				<button onclick="resetSliders()">ResetSliders</button>
+				<button onclick="resetSliders()">Reset Sliders</button>
 			</div>
 			<div id="artworkSelector">
 				<button onclick="changeArwork(1)" class="circle"></button>
@@ -40,7 +49,6 @@
 		var nodes = [];
 		const c = 5;
 
-		const fillColorAlpha = .8;
 		var inpLife, inpDensity, inpSize;
 
 		var showLine = true;
@@ -75,8 +83,8 @@
 		}
 
 		function resetSliders() {
-			inpLife.value = 12;
-			inpDensity.value = 1;
+			inpLife.value = 9;
+			inpDensity.value = 4;
 			inpSize.value = 2;
 		}
 
@@ -92,8 +100,8 @@
 				this.initPos = position;
 				this.endPos = position.copy();
 				this.hueColor = random(0, 360);
-				this.life = random(1, inpLife.value * c);
 				this.vel = createVector( random(-c, c), random(-c, c) );
+				this.alpha = 1;
 			}
 
 			draw( ) {
@@ -105,12 +113,12 @@
 
 			update( ) {
 				this.endPos.add( this.vel );
-				this.life--;
-				if ( this.life < 1 ) this.alive = false;
+				if ( this.alpha < 0 ) this.alive = false;
+				this.alpha -= inpLife.value/100;
 			}
 
 			display( ) {
-				stroke( this.hueColor, fillColor[1], fillColor[2], fillColorAlpha );
+				stroke( this.hueColor, fillColor[1], fillColor[2], this.alpha );
 				if (showLine) {
 					strokeWeight(.5);
 					line(this.initPos.x, this.initPos.y, this.endPos.x, this.endPos.y);
