@@ -7,6 +7,9 @@
 	</head>
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Beth+Ellen&family=Cinzel+Decorative&family=Fredoka+One&family=Indie+Flower&family=Kodchasan:wght@700&family=Lato:wght@100;400&family=Lemon&family=Major+Mono+Display&family=Modak&family=Monoton&family=Montaga&family=Press+Start+2P&family=Raleway+Dots&family=Reenie+Beanie&family=Syne+Mono&display=swap');
+		@import url('https://fonts.googleapis.com/css2?family=Zen+Loop&display=swap');
+		@import url('https://fonts.googleapis.com/css2?family=Bungee+Hairline&family=Ribeye+Marrow&family=Sarina&family=Zilla+Slab+Highlight:wght@700&display=swap');
+		@import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap');
 		body {
 			margin: 0;
 			padding: 50px;
@@ -47,11 +50,19 @@
 		}
 		#selected #nom {
 			font-size: 96pt;
+			/*line-height: 1;
+			line-height: 100px;
+			height: 50px;*/
 		}
-		#selected #frase {
-			color: #F8F8F8;
-			font-size: 24pt;
-			font-family: 'Lato';
+		#caracteristiques, #record {
+			color: #F8F8F880;
+			font-size: 32pt;
+			font-family: 'Reenie Beanie';
+		}
+		#caracteristiques > u, #record > u {
+			text-decoration: none;
+			border-bottom: 4px dotted;
+			border-color: inherit;
 		}
 		#menu > div {
 			display: inline-block;
@@ -62,6 +73,7 @@
 			border-radius: 5px;
 			font-family: monospace;
 			color: #F8F8F8;
+			line-height: 50px;
 		}
 		#menu > div:hover {
 			background-color: #282828;
@@ -93,15 +105,38 @@
 				font-size: 20pt;
 			}
 		}
+
+
+
+		.disfadingAnimation {
+			animation: disfadingAnimation 3s;
+		}
+		@keyframes disfadingAnimation {
+			0% { opacity: 0 }
+			50% { opacity: 0 }
+			100% { opacity: 1 }
+		}
+
+		.cloringAnimation {
+			animation: cloringAnimation 1s;
+		}
+		@keyframes cloringAnimation {
+			from { filter: grayscale(100%); }
+			to { filter: grayscale(0%); }
+		}
+
+
+
 	</style>
 	<script src="model.js"></script>
 	<script>
-		var companysCont, selectedNom, selectedFrase;
+		var companysContEl, selectedNomEl, selectedCaracteristiquesEl, selectedRecordEl;
 
 		window.onload = function() {
-			companysCont = document.getElementById('menu');
-			selectedNom = document.getElementById('nom');
-			selectedFrase = document.getElementById('frase');
+			companysContEl = document.getElementById('menu');
+			selectedNomEl = document.getElementById('nom');
+			selectedCaracteristiquesEl = document.getElementById('caracteristiques');
+			selectedRecordEl = document.getElementById('record');
 
 			const c = new URL(window.location.href).searchParams.get("c");
 			updateSelectedCompany( c == null ? 0 : c );
@@ -116,13 +151,19 @@
 			el.addEventListener('click', function() {
 				updateSelectedCompany(inx);
 			});
-			companysCont.appendChild(el);
+			companysContEl.appendChild(el);
 		}
 
 		function updateSelectedCompany (companyId) {
 			const company = model[companyId];
-			loadCompany(selectedNom, company);
-			selectedFrase.innerHTML = company.frase;
+			loadCompany(selectedNomEl, company);
+			selectedCaracteristiquesEl.innerHTML = "Trobaré a faltar... " + company.caracteristiques;
+			selectedRecordEl.innerHTML = "I no trobaré a faltar... " + company.record;
+			selectedCaracteristiquesEl.style.borderColor = company.style[0].value;
+			selectedRecordEl.style.borderColor = company.style[0].value;
+			runAnimation( selectedNomEl, 'cloringAnimation' );
+			runAnimation( selectedCaracteristiquesEl, 'disfadingAnimation' );
+			runAnimation( selectedRecordEl, 'disfadingAnimation' );
 		}
 
 		function loadCompany (domElement, companyData) {
@@ -132,14 +173,21 @@
 				domElement.style[s.key] = s.value;
 			});
 		}
+
+		function runAnimation (element, animationClass) {
+			element.classList.remove(animationClass);
+			void element.offsetWidth;
+			element.classList.add(animationClass);
+		}
 	</script>
 	<body>
 		<div id="app">
 			<div id="menu"></div>
 			<div id="selected">
 				<div class="centered">
-					<span id="nom"></span>
-					<span id="frase"></span>
+					<p id="nom"></p>
+					<p id="caracteristiques"></p>
+					<p id="record"></p>
 				</div>
 			</div>
 		</div>

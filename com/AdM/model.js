@@ -1,15 +1,17 @@
 const model = [
 	{
 		nom: 'Anna', /* Fàbragas */
-		frase: 'Lorem Ipsum',
+		caracteristiques: 'la teva <u>determinació</u>',
+		record: '',
 		style: [
-			{ key: 'color', value: 'hsl(0, 0%, 60%)' },
+			{ key: 'color', value: 'hsl(0, 0%, 50%)' },
 			{ key: 'fontFamily',  value: 'Beth Ellen' }
 		]
 	},
 	{
 		nom: 'Mariona',
-		frase: '',
+		caracteristiques: 'la teva <u>puresa</u>',
+		record: 'els milers de <u>blogs abandonats</u>',
 		style: [
 			{ key: 'color', value: 'hsl(75, 40%, 60%)' },
 			{ key: 'fontFamily',  value: 'Amatic SC' }
@@ -17,7 +19,8 @@ const model = [
 	},
 	{
 		nom: 'Dani',
-		frase: '',
+		caracteristiques: 'la teva <u>practicitat</u>',
+		record: 'l\'<u>AMPScript</u> i la seva <u>fantàstica documentació</u>',
 		style: [
 			{ key: 'color', value: 'hsl(0, 40%, 60%)' },
 			{ key: 'fontFamily',  value: 'Syne Mono' }
@@ -25,7 +28,8 @@ const model = [
 	},
 	{
 		nom: 'Carla',
-		frase: '',
+		caracteristiques: 'la teva <u>amabilitat</u>',
+		record: 'l\'actualització de <u>notes de tall</u> 40 vegades per any',
 		style: [
 			{ key: 'color', value: 'hsl(330, 40%, 60%)' },
 			{ key: 'fontFamily',  value: 'Major Mono Display' }
@@ -33,7 +37,8 @@ const model = [
 	},
 	{
 		nom: 'Aina',
-		frase: '',
+		caracteristiques: 'la teva <u>simpatia</u>',
+		record: 'la pàgina de <u>canals socials</u> on hi plouen nous comptes cada dos per tres',
 		style: [
 			{ key: 'color', value: 'hsl(125, 40%, 60%)' },
 			{ key: 'fontFamily',  value: 'Indie Flower' }
@@ -41,7 +46,8 @@ const model = [
 	},
 	{
 		nom: 'Meri',
-		frase: '',
+		caracteristiques: 'el teu <u>lideratge</u>',
+		record: '',
 		style: [
 			{ key: 'color', value: 'hsl(180, 40%, 60%)' },
 			{ key: 'fontFamily',  value: 'Fredoka One' }/*Kodchasan*/
@@ -49,7 +55,8 @@ const model = [
 	},
 	{
 		nom: 'Carme',
-		frase: '',
+		caracteristiques: 'la teva <u>connexió amb la gent</u>',
+		record: 'l\'assistent de PLU',
 		style: [
 			{ key: 'color', value: 'hsl(30, 40%, 60%)' },
 			{ key: 'fontFamily',  value: 'Montaga' }
@@ -57,7 +64,8 @@ const model = [
 	},
 	{
 		nom: 'Noe',
-		frase: '',
+		caracteristiques: 'les teves <u>ironies</u>',
+		record: 'les landings urgents',
 		style: [
 			{ key: 'color', value: 'hsl(60, 40%, 60%)' },
 			{ key: 'fontFamily',  value: 'Modak' }
@@ -65,7 +73,8 @@ const model = [
 	},
 	{
 		nom: 'Lluc',
-		frase: '',
+		caracteristiques: 'la teva <u>transparència</u>',
+		record: 'la landing de tallers',
 		style: [
 			{ key: 'color', value: 'hsl(0, 0%, 80%)' },,
 			{ key: 'fontFamily',  value: 'Reenie Beanie' }
@@ -73,7 +82,8 @@ const model = [
 	},
 	{
 		nom: 'Mireia',
-		frase: '',
+		caracteristiques: 'la teva <u>calma</u>',
+		record: 'Les 30 landings de graus',
 		style: [
 			{ key: 'color', value: 'hsl(170, 40%, 60%)' },
 			{ key: 'fontFamily',  value: 'Raleway Dots' }
@@ -81,43 +91,48 @@ const model = [
 	},
 	{
 		nom: 'Eudald',
-		frase: '',
+		caracteristiques: 'la teva <u>proximitat</u>',
+		record: 'les caòtiques ',
 		style: [
 			{ key: 'color', value: 'hsl(240, 40%, 60%)' },
-			{ key: 'fontFamily',  value: 'Press Start 2P' }
+			{ key: 'fontFamily',  value: 'Bungee Hairline' }
 		]
 	},
 	{
 		nom: 'Sylven',
-		frase: '',
+		caracteristiques: 'el teu <u>dinamisme</u>',
+		record: 'les <u>traduccions al francès</u>',
 		style: [
 			{ key: 'color', value: 'hsl(315, 40%, 60%)' },
-			{ key: 'fontFamily',  value: 'Monoton' }
+			{ key: 'fontFamily',  value: 'Ribeye Marrow' }
 		]
 	},
 	{
 		nom: 'Anna', /* Salles */
-		frase: '',
+		caracteristiques: 'la teva <u>energia</u>',
+		record: 'les 934785934578 <u>landings de webinars</u>',
 		style: [
-			{ key: 'color', value: 'hsl(265, 40%, 60%)' },
-			{ key: 'fontFamily',  value: 'Lemon' }
+			{ key: 'color', value: 'hsl(345, 40%, 60%)' },
+			{ key: 'fontFamily',  value: 'Sarina' }
 		]
 	},
 	{
 		nom: 'Guillem',
-		frase: '',
+		caracteristiques: '',
+		record: '',
 		style: [
-			{ key: 'color', value: 'hsl(265, 40%, 60%)' },
+			{ key: 'color', value: 'hsl(200, 40%, 60%)' },
 			{ key: 'fontFamily',  value: 'Lato' },
 			{ key: 'fontWeight',  value: 100 }
 		]
 	},
 	{
 		nom: 'Clara',
-		frase: '',
+		caracteristiques: '',
+		record: 'la <u>landing del VOD</u>',
 		style: [
 			{ key: 'color', value: 'hsl(265, 40%, 60%)' },
-			{ key: 'fontFamily',  value: 'Cinzel Decorative' }
+			{ key: 'fontFamily',  value: 'Zilla Slab Highlight' }
 		]
 	}
 ];
