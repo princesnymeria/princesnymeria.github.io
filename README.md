@@ -28,8 +28,9 @@ I was born, I went to school, some years later I graduated from university and I
 
 |        Title        |               Path               |                                     Subtitle                                     |  Progress  |
 |---------------------|----------------------------------|----------------------------------------------------------------------------------|------------|
-| Genuary21           | [/Genuary21](./com/Genuary21)    |                                                                                  |        2 % |
-| AdM                 |                                  |                                                                                  |        _ % |
+| Genuary21           | [/Genuary21](./com/Genuary21)    | <span class="pendent">El subreddit generative ha proposat un repte...    </span> |        2 % |
+| AdM                 | [/AdM](./com/AdM)                | <span class="pendent">Regal pels companys de feina... Sorry, excompanys  </span> |        _ % |
+| CV                  | [/CV](./com/CV)                  | <span class="pendent">D'alguna manera m'he de exposar                    </span> |        _ % |
 
 ## Sitemap
 

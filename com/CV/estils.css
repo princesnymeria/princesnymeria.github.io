@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Loop&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;900&display=swap');
+
+
+
+/* ┌──────────────────────────────┐
+   │            Layout            │
+   └──────────────────────────────┘ */
+
+#app {
+	margin: 0;
+	position: fixed;
+	top: 0px; left: 0px; bottom: 0px; right: 0px;
+	overflow-y: scroll;
+	z-index: 2;
+}
+
+#app > .seccio {
+	width: calc(100% - 200px);
+	height: calc(100% - 200px);
+	padding: 100px;
+}
+
+.container {
+	width: 100%;
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+body {
+	margin: 0; padding: 0;
+	overflow: hidden;
+}
+
+/*#defaultCanvas0.p5Canvas {
+	z-index: -1;
+}*/
+
+#footer {
+	position: fixed;
+	bottom: 0;
+	padding: 10px 100px;
+	width: calc(100% - 200px);
+	z-index: 5;
+}
+
+
+
+
+
+/* ┌──────────────────────────────┐
+   │             Aux              │
+   └──────────────────────────────┘ */
+
+.row {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+.row > div {
+	flex-grow: 1;
+	width: 10px;
+}
+
+
+
+
+
+
+
+
+/* ┌──────────────────────────────┐
+   │           Estètica           │
+   └──────────────────────────────┘ */
+
+:root {
+	--primary-color: #F8F8F8;
+	--background-color: #1F1F1F;
+
+	--rainbow-color-1:  hsla(45,   80%, 25%, .8);
+	--rainbow-color-2:  hsla(180,  80%, 25%, .8);
+	--rainbow-color-3:  hsla(315,  80%, 25%, .8);
+}
+
+p, h1, h2, h3, h4, h5, li, a, button {
+	/* font-family: 'Zen Loop'; */
+	font-family: 'Montserrat', 'Raleway', 'Segoe UI Light', 'Segoe UI', Arial, Helvetica, sans-serif;
+	color: var(--primary-color);
+}
+
+
+
+.seccio:nth-child(1) { background-color: var(--rainbow-color-1); }
+.seccio:nth-child(2) { background-color: var(--rainbow-color-2); }
+.seccio:nth-child(3) { background-color: var(--rainbow-color-3); }
+
+
+
+h1 {
+	text-align: center;
+}
+
+h1, h2 {
+	font-weight: 900;
+	font-size: 52pt;
+}
+
+h3 {
+	font-weight: 700;
+	font-size: 24pt;
+}
+
+p {
+	font-size: 18pt;
+	line-height: 1.75;
+}
+
+li {
+	font-size: 18pt;
+	line-height: 1.75;
+}
+
+
+
+
+
+/* ┌──────────────────────────────┐
+   │           Classes            │
+   └──────────────────────────────┘ */
+
+.card {
+	text-align: center;
+}
+
+.card > ul {
+	list-style-type: none;
+	padding: 0;
+}
