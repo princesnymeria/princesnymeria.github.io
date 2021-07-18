@@ -16,9 +16,9 @@
 }
 
 #app > .seccio {
-	width: calc(100% - 200px);
-	height: calc(100% - 200px);
-	padding: 100px;
+	width: calc(100% - 300px);
+	min-height: calc(100% - 300px);
+	padding: 150px;
 }
 
 .container {
@@ -39,9 +39,29 @@ body {
 #footer {
 	position: fixed;
 	bottom: 0;
-	padding: 10px 100px;
+	padding: 20px 100px;
 	width: calc(100% - 200px);
 	z-index: 5;
+}
+
+@media (max-width: 1000px) {
+	#app > .seccio {
+		width: calc(100% - 200px);
+		min-height: calc(100% - 200px);
+		padding: 100px;
+	}
+}
+
+@media (max-width: 600px) {
+	#app > .seccio {
+		width: calc(100% - 100px);
+		min-height: calc(100% - 100px);
+		padding: 50px;
+	}
+	#footer {
+		padding: 20px 50px;
+		width: calc(100% - 100px);
+	}
 }
 
 
@@ -57,13 +77,38 @@ body {
 	flex-direction: row;
 	flex-wrap: nowrap;
 }
+
 .row > div {
 	flex-grow: 1;
 	width: 10px;
 }
 
+.card {
+	text-align: center;
+}
+
+.card > ul {
+	list-style-type: none;
+	padding: 0;
+}
 
 
+
+@media (max-width: 1200px) {
+	.row {
+		flex-wrap: wrap;
+	}
+	div.card {
+		width: 50%;
+	}
+}
+
+@media (max-width: 600px) {
+	div.card {
+		margin: 0 auto;
+		width: 60%;
+	}
+}
 
 
 
@@ -77,9 +122,9 @@ body {
 	--primary-color: #F8F8F8;
 	--background-color: #1F1F1F;
 
-	--rainbow-color-1:  hsla(45,   80%, 25%, .8);
-	--rainbow-color-2:  hsla(180,  80%, 25%, .8);
-	--rainbow-color-3:  hsla(315,  80%, 25%, .8);
+	--rainbow-color-1:  hsla(45,   80%, 25%, .2);
+	--rainbow-color-2:  hsla(180,  80%, 25%, .2);
+	--rainbow-color-3:  hsla(315,  80%, 25%, .2);
 }
 
 p, h1, h2, h3, h4, h5, li, a, button {
@@ -96,6 +141,10 @@ p, h1, h2, h3, h4, h5, li, a, button {
 
 
 
+h1, h2, h3 {
+	margin: 0;
+}
+
 h1 {
 	text-align: center;
 }
@@ -103,11 +152,13 @@ h1 {
 h1, h2 {
 	font-weight: 900;
 	font-size: 52pt;
+
 }
 
 h3 {
 	font-weight: 700;
 	font-size: 24pt;
+	margin-top: 40px;
 }
 
 p {
@@ -120,19 +171,46 @@ li {
 	line-height: 1.75;
 }
 
-
-
-
-
-/* ┌──────────────────────────────┐
-   │           Classes            │
-   └──────────────────────────────┘ */
-
-.card {
-	text-align: center;
+@media (max-width: 600px) {
+	h1, h2 {
+		font-size: 42pt;
+	}
 }
 
-.card > ul {
-	list-style-type: none;
-	padding: 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#footer a {
+	text-decoration: none;
+}
+
+#footer a {
+	position: relative;
+}
+#footer a:hover::after {
+	content: '';
+	width: 100%;
+	display: inline-block;
+	border-bottom: 1px solid #F8F8F8;
+	position: absolute;
+	bottom: 0; left: 0;
+	animation-name: animTextHover;
+	animation-duration: 2s;
+}
+
+
+@keyframes animTextHover {
+	from { width:  10%; left: 45%; }
+	to   { width: 100%; left: 0;   }
 }
